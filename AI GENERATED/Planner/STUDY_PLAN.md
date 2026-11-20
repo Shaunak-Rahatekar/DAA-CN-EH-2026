@@ -19,7 +19,8 @@
 - [x] **CN Unit II**: Logical Link Control (Notes, CheatSheet MD+PDF, 30 Flashcards, Questions, Answers, 5 Diagram PNGs)
 - [x] **CN Unit III**: Medium Access Control (Notes, CheatSheet MD+PDF, 30 Flashcards, Questions, Answers, 5 Diagram PNGs)
 - [x] **CN Unit IV**: Network Layer (Notes, CheatSheet MD+PDF, 30 Flashcards, Questions, Answers, 5 Diagram PNGs)
-- [ ] **CN Units V & VI**: Transport, Application layers + Mock Paper + Last-Hour Sheet
+- [x] **CN Unit V**: Transport Layer (Notes, CheatSheet MD+PDF, 30 Flashcards, Questions, Answers, 5 Diagram PNGs)
+- [ ] **CN Unit VI**: Application layer + Mock Paper + Last-Hour Sheet
 - [ ] **EH (Ethical Hacking)**: Units I to V + Mock Paper + Last-Hour Sheet
 
 ---

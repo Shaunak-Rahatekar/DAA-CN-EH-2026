@@ -192,5 +192,21 @@
 | [CN_Unit4_Diagram4_DistanceVector_vs_LinkState.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit4_Diagram4_DistanceVector_vs_LinkState.png) | High-resolution image: Distance Vector (Count-to-Infinity & Split Horizon) vs Link State (Dijkstra SPF) |
 | [CN_Unit4_Diagram5_Leaky_vs_TokenBucket.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit4_Diagram5_Leaky_vs_TokenBucket.png) | High-resolution image: Traffic shaping comparison: Leaky Bucket rigid policing vs Token Bucket bursty transmission |
 
+### Unit V: Transport Layer
+| File | Description |
+| :--- | :--- |
+| [CN_Unit5_TransportLayer_Notes.md](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Notes/CN_Unit5_TransportLayer_Notes.md) | Sockets API, TCP vs UDP, 3-way handshake & 4-way teardown, sliding window flow control, Silly Window Syndrome (Nagle & Clark), TCP timers (Jacobson RTO, Karn, Persistence, Keep-Alive, 2*MSL Time-Wait), Congestion Control (Slow Start, Congestion Avoidance AIMD, Fast Retransmit/Recovery, Tahoe vs Reno), and QUIC protocol |
+| [CN_Unit5_CheatSheet.md](file:///D:/2026%20EXAM/AI%20GENERATED/CN/CheatSheets/CN_Unit5_CheatSheet.md) | One-page cheat sheet of TCP vs UDP matrix, sockets lifecycle, handshake/teardown steps, sliding window formulas, timer rules, and AIMD/QUIC summary |
+| [CN_Unit5_CheatSheet.pdf](file:///D:/2026%20EXAM/AI%20GENERATED/CN/CheatSheets/CN_Unit5_CheatSheet.pdf) | One-page printable PDF reference of the CN Unit V cheat sheet |
+| [CN_Unit5_Flashcards.csv](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Flashcards/CN_Unit5_Flashcards.csv) | 30 active-recall flashcard pairs (CSV) covering sockets, TCP/UDP headers, 3-way handshake, timers, SWS, AIMD, and QUIC |
+| [CN_Unit5_Questions.md](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Questions/CN_Unit5_Questions.md) | Question bank with 12 exam questions (4M, 8M, 10M) including cwnd evolution traces, RTO calculations, usable window math, and QUIC analysis |
+| [CN_Unit5_Answers.md](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Questions/CN_Unit5_Answers.md) | Complete worked solutions, marking schemes, cwnd trace table (Tahoe vs Reno), Jacobson RTO calculation table, and AIMD convergence proofs |
+| [CN_Unit5_Diagrams.md](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit5_Diagrams.md) | Visual sketches and exam redraw guides for CN Unit V |
+| [CN_Unit5_Diagram1_TCP_vs_UDP_Headers.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit5_Diagram1_TCP_vs_UDP_Headers.png) | High-resolution image: TCP 32-bit segment header (20-60B) vs UDP datagram header (8B) |
+| [CN_Unit5_Diagram2_ThreeWayHandshake_Teardown.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit5_Diagram2_ThreeWayHandshake_Teardown.png) | High-resolution image: TCP connection establishment (3-way) and graceful teardown (4-way) |
+| [CN_Unit5_Diagram3_CongestionControl_Tahoe_Reno.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit5_Diagram3_CongestionControl_Tahoe_Reno.png) | High-resolution image: Congestion window (cwnd) evolution plot showing Slow Start, AIMD, Tahoe vs Reno |
+| [CN_Unit5_Diagram4_SlidingWindow_FlowControl.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit5_Diagram4_SlidingWindow_FlowControl.png) | High-resolution image: Sliding window buffer partitions, rwnd advertising, and Silly Window Syndrome solutions |
+| [CN_Unit5_Diagram5_QUIC_vs_TCP_Stack.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit5_Diagram5_QUIC_vs_TCP_Stack.png) | High-resolution image: Modern transport layer evolution: Traditional TCP+TLS stack vs QUIC+UDP HTTP/3 stack |
+
 ## EH/ (Ethical Hacking - MD***)
 *(Pending — scheduled for 24 Nov)*
