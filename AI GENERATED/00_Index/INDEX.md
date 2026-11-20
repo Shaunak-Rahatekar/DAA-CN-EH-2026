@@ -282,3 +282,19 @@
 | [EH_Unit3_Diagram4_Firewall_Architectures.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit3_Diagram4_Firewall_Architectures.png) | High-resolution image: Firewall evolution (Packet filtering vs Stateful vs NGFW) and Screened-Subnet DMZ architecture |
 | [EH_Unit3_Diagram5_IDS_vs_IPS_Deployment.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit3_Diagram5_IDS_vs_IPS_Deployment.png) | High-resolution image: IDS (Passive out-of-band) vs IPS (Active in-line) with Signature vs Anomaly detection engines |
 
+### Unit IV: Web Application and Wireless Security
+| File | Description |
+| :--- | :--- |
+| [EH_Unit4_WebApp_Wireless_Notes.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Notes/EH_Unit4_WebApp_Wireless_Notes.md) | Comprehensive notes covering HTTP vs HTTPS (TLS handshake), OWASP Top 10 (2025/2021 mapping), SQL Injection (In-band, Blind, Prepared statements), Cross-Site Scripting (Reflected, Stored, DOM), CSRF & Anti-CSRF tokens, Directory Traversal & LFI/RFI, Security Headers (CSP, HSTS, X-Frame-Options), 802.11 Wi-Fi architecture, Protocol evolution (WEP, WPA, WPA2, WPA3), 4-Way Handshake & Deauthentication attacks, and Wireless defense |
+| [EH_Unit4_CheatSheet.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/CheatSheets/EH_Unit4_CheatSheet.md) | One-page cheat sheet of OWASP Top 10, SQLi types, XSS typology, CSRF flow, security headers, Wi-Fi protocol comparison table, 4-way handshake, and exam traps |
+| [EH_Unit4_CheatSheet.pdf](file:///D:/2026%20EXAM/AI%20GENERATED/EH/CheatSheets/EH_Unit4_CheatSheet.pdf) | Formatted 1-page printable PDF reference of the EH Unit IV cheat sheet |
+| [EH_Unit4_Flashcards.csv](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Flashcards/EH_Unit4_Flashcards.csv) | 30 active-recall flashcard pairs (CSV) covering SQLi, XSS types, CSRF tokens, CSP headers, WEP flaws, WPA2 handshake, and WPA3 SAE |
+| [EH_Unit4_Questions.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Questions/EH_Unit4_Questions.md) | Unit IV question bank with marks (4M, 8M, 10M) covering XSS typology, CSRF, directory traversal, SQLi mechanics & prepared statements, wireless protocol evolution, and enterprise threat modeling |
+| [EH_Unit4_Answers.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Questions/EH_Unit4_Answers.md) | Complete worked solutions, marking schemes, SQL prepared statement code examples, WPA2 4-way handshake traces, and wireless hardening checklist |
+| [EH_Unit4_Diagrams.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit4_Diagrams.md) | Direct visual ASCII sketches + Mermaid diagrams for 5 key exam diagrams and 30-second redraw guides |
+| [EH_Unit4_Diagram1_SQL_Injection_Defense.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit4_Diagram1_SQL_Injection_Defense.png) | High-resolution image: SQL Injection (SQLi) mechanics & Parameterized Prepared Statement structural defense |
+| [EH_Unit4_Diagram2_XSS_Typology.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit4_Diagram2_XSS_Typology.png) | High-resolution image: Cross-Site Scripting (XSS) attack typology: Reflected vs Stored vs DOM-based execution |
+| [EH_Unit4_Diagram3_CSRF_Mechanism_Defense.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit4_Diagram3_CSRF_Mechanism_Defense.png) | High-resolution image: Cross-Site Request Forgery (CSRF) flow vs Anti-CSRF Synchronizer Token defense |
+| [EH_Unit4_Diagram4_WiFi_Security_Evolution.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit4_Diagram4_WiFi_Security_Evolution.png) | High-resolution image: 802.11 Wi-Fi security protocol evolution (WEP, WPA, WPA2, WPA3) & WPA2 4-Way Handshake |
+| [EH_Unit4_Diagram5_Wireless_Attacks_EvilTwin.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit4_Diagram5_Wireless_Attacks_EvilTwin.png) | High-resolution image: Wireless threat architecture: Evil Twin Access Point and Deauthentication frame injection |
+
