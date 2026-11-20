@@ -266,3 +266,19 @@
 | [EH_Unit2_Diagram4_Port_States_Firewall_Interaction.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit2_Diagram4_Port_States_Firewall_Interaction.png) | High-resolution image: Nmap port states diagnostic logic: Open vs Closed vs Filtered firewall interaction |
 | [EH_Unit2_Diagram5_Vulnerability_Scanning_Workflow.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit2_Diagram5_Vulnerability_Scanning_Workflow.png) | High-resolution image: Vulnerability Assessment (VA) lifecycle, scan paradigms, and Credentialed vs Non-Credentialed comparison |
 
+### Unit III: System Hacking and Network Security
+| File | Description |
+| :--- | :--- |
+| [EH_Unit3_System_Network_Security_Notes.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Notes/EH_Unit3_System_Network_Security_Notes.md) | Comprehensive notes covering Password attacks (Spray, Stuffing, Brute-force), Salting & Slow hashing (Argon2id, bcrypt), Cracking tools (John the Ripper, Hashcat), Privilege Escalation (Vertical vs Horizontal, SUID, IDOR), Malware taxonomy (Viruses, Worms, Trojans, Ransomware, Rootkits), Sniffing & ARP Spoofing MITM, Session Hijacking, Firewalls (4 generations & DMZ), and IDS vs IPS (Signature vs Anomaly) |
+| [EH_Unit3_CheatSheet.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/CheatSheets/EH_Unit3_CheatSheet.md) | One-page cheat sheet of password attacks, salting formulas, John/Hashcat syntax, malware comparison, ARP spoofing flow, cookie security flags, firewall generations, and IDS vs IPS matrix |
+| [EH_Unit3_CheatSheet.pdf](file:///D:/2026%20EXAM/AI%20GENERATED/EH/CheatSheets/EH_Unit3_CheatSheet.pdf) | Formatted 1-page printable PDF reference of the EH Unit III cheat sheet |
+| [EH_Unit3_Flashcards.csv](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Flashcards/EH_Unit3_Flashcards.csv) | 30 active-recall flashcard pairs (CSV) covering password spraying, salting, JtR/Hashcat modes, SUID escalation, ARP spoofing, DAI defenses, and firewall types |
+| [EH_Unit3_Questions.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Questions/EH_Unit3_Questions.md) | Unit III question bank with marks (4M, 8M, 10M) covering password spraying, rootkits, privilege escalation, ARP spoofing walkthrough, firewall generations, and IDS vs IPS |
+| [EH_Unit3_Answers.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Questions/EH_Unit3_Answers.md) | Complete worked solutions, marking schemes, ARP spoofing step-by-step traces, and DMZ architecture rules |
+| [EH_Unit3_Diagrams.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit3_Diagrams.md) | Direct visual ASCII sketches + Mermaid diagrams for 5 key exam diagrams and 30-second redraw guides |
+| [EH_Unit3_Diagram1_Password_Attack_Taxonomy.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit3_Diagram1_Password_Attack_Taxonomy.png) | High-resolution image: Password Attack taxonomy (Online vs Offline), Salting defense, and John/Hashcat cracking flow |
+| [EH_Unit3_Diagram2_Privilege_Escalation.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit3_Diagram2_Privilege_Escalation.png) | High-resolution image: Vertical (Privilege level elevation) vs Horizontal (Lateral identity shift / IDOR) architectures |
+| [EH_Unit3_Diagram3_ARP_Spoofing_MITM.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit3_Diagram3_ARP_Spoofing_MITM.png) | High-resolution image: ARP Spoofing & Man-in-the-Middle (MITM) execution flow and cache poisoning mechanism |
+| [EH_Unit3_Diagram4_Firewall_Architectures.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit3_Diagram4_Firewall_Architectures.png) | High-resolution image: Firewall evolution (Packet filtering vs Stateful vs NGFW) and Screened-Subnet DMZ architecture |
+| [EH_Unit3_Diagram5_IDS_vs_IPS_Deployment.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit3_Diagram5_IDS_vs_IPS_Deployment.png) | High-resolution image: IDS (Passive out-of-band) vs IPS (Active in-line) with Signature vs Anomaly detection engines |
+
