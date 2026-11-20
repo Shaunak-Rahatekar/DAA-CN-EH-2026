@@ -208,5 +208,21 @@
 | [CN_Unit5_Diagram4_SlidingWindow_FlowControl.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit5_Diagram4_SlidingWindow_FlowControl.png) | High-resolution image: Sliding window buffer partitions, rwnd advertising, and Silly Window Syndrome solutions |
 | [CN_Unit5_Diagram5_QUIC_vs_TCP_Stack.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit5_Diagram5_QUIC_vs_TCP_Stack.png) | High-resolution image: Modern transport layer evolution: Traditional TCP+TLS stack vs QUIC+UDP HTTP/3 stack |
 
+### Unit VI: Application Layer
+| File | Description |
+| :--- | :--- |
+| [CN_Unit6_ApplicationLayer_Notes.md](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Notes/CN_Unit6_ApplicationLayer_Notes.md) | DNS hierarchy & resolution (recursive vs iterative, RR records A/AAAA/CNAME/MX/PTR), HTTP evolution (1.0 vs 1.1 vs 2.0 vs 3.0), REST vs SOAP, Email architecture (SMTP, MIME Base64, POP3 vs IMAP), FTP dual connection (Active vs Passive PASV), and DHCP DORA process & lease timers |
+| [CN_Unit6_CheatSheet.md](file:///D:/2026%20EXAM/AI%20GENERATED/CN/CheatSheets/CN_Unit6_CheatSheet.md) | One-page cheat sheet of DNS records/ports, HTTP evolution matrix, email protocol comparison, FTP modes, and DHCP DORA timers |
+| [CN_Unit6_CheatSheet.pdf](file:///D:/2026%20EXAM/AI%20GENERATED/CN/CheatSheets/CN_Unit6_CheatSheet.pdf) | One-page printable PDF reference of the CN Unit VI cheat sheet |
+| [CN_Unit6_Flashcards.csv](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Flashcards/CN_Unit6_Flashcards.csv) | 30 active-recall flashcard pairs (CSV) covering DNS, HTTP 1.0/1.1/2/3, Base64, SMTP, POP3, IMAP, FTP, and DHCP |
+| [CN_Unit6_Questions.md](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Questions/CN_Unit6_Questions.md) | Question bank with 12 exam questions (4M, 8M, 10M) including Base64 calculations, DNS traces, DHCP sequence charts, and full web journey traces |
+| [CN_Unit6_Answers.md](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Questions/CN_Unit6_Answers.md) | Complete worked solutions, marking schemes, Base64 padding derivations, DHCP DORA message trace charts, and end-to-end packet delivery walkthroughs |
+| [CN_Unit6_Diagrams.md](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit6_Diagrams.md) | Visual sketches and exam redraw guides for CN Unit VI |
+| [CN_Unit6_Diagram1_DNS_Resolution.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit6_Diagram1_DNS_Resolution.png) | High-resolution image: DNS hierarchical domain tree & recursive vs iterative resolution workflow |
+| [CN_Unit6_Diagram2_HTTP_Evolution.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit6_Diagram2_HTTP_Evolution.png) | High-resolution image: Evolution of HTTP (1.0 vs 1.1 vs 2.0 vs 3.0 over QUIC) |
+| [CN_Unit6_Diagram3_Email_Architecture.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit6_Diagram3_Email_Architecture.png) | High-resolution image: Electronic mail architecture: MUA, MTA (SMTP), MAA (POP3 vs IMAP), and MIME Base64 |
+| [CN_Unit6_Diagram4_FTP_DualConnection.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit6_Diagram4_FTP_DualConnection.png) | High-resolution image: FTP dual-connection architecture: Port 21 Control vs Port 20 Data (Active vs Passive PASV) |
+| [CN_Unit6_Diagram5_DHCP_DORA_Process.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit6_Diagram5_DHCP_DORA_Process.png) | High-resolution image: DHCP DORA process message sequence chart and lease renewal timers (T1 and T2) |
+
 ## EH/ (Ethical Hacking - MD***)
 *(Pending — scheduled for 24 Nov)*

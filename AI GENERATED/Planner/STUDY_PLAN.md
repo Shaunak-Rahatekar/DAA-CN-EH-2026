@@ -20,7 +20,9 @@
 - [x] **CN Unit III**: Medium Access Control (Notes, CheatSheet MD+PDF, 30 Flashcards, Questions, Answers, 5 Diagram PNGs)
 - [x] **CN Unit IV**: Network Layer (Notes, CheatSheet MD+PDF, 30 Flashcards, Questions, Answers, 5 Diagram PNGs)
 - [x] **CN Unit V**: Transport Layer (Notes, CheatSheet MD+PDF, 30 Flashcards, Questions, Answers, 5 Diagram PNGs)
-- [ ] **CN Unit VI**: Application layer + Mock Paper + Last-Hour Sheet
+- [x] **CN Unit VI**: Application Layer (Notes, CheatSheet MD+PDF, 30 Flashcards, Questions, Answers, 5 Diagram PNGs)
+- [ ] **CN Full 2-Hour Mock Paper**: Questions (MD+PDF) & Complete Model Answers / Marking Scheme
+- [ ] **CN 60-Minute Last-Hour Revision Pack**: 20 Facts, 5 Formulas/Drawings, 5 Traps
 - [ ] **EH (Ethical Hacking)**: Units I to V + Mock Paper + Last-Hour Sheet
 
 ---
