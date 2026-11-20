@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DAA Unit I: Visual Exam Diagrams</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme: 'default'});</script>
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 30px auto;
+    max-width: 900px;
+    padding: 0 20px;
+    color: #24292e;
+    line-height: 1.5;
+}
+h1 {
+    color: #0366d6;
+    border-bottom: 2px solid #eaecef;
+    padding-bottom: 8px;
+}
+h2 {
+    color: #24292e;
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 5px;
+    margin-top: 30px;
+}
+.diagram-card {
+    background: #ffffff;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    padding: 20px;
+    margin: 15px 0 25px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.ascii-box {
+    background: #f6f8fa;
+    border: 1px solid #e1e4e8;
+    border-radius: 4px;
+    padding: 12px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 12px;
+    white-space: pre;
+    overflow-x: auto;
+    margin: 10px 0;
+}
+.tip {
+    background: #e6f7ff;
+    border-left: 4px solid #1890ff;
+    padding: 8px 12px;
+    margin: 10px 0;
+    font-size: 13px;
+}
+</style>
+</head>
+<body>
+
+<h1>DAA Unit I: Visual Exam Diagrams (Interactive Graphics)</h1>
+<p><b>Course:</b> CS3212 &mdash; Design and Analysis of Algorithms | <b>Unit I:</b> Complexity Analysis</p>
+
+<h2>1. Asymptotic Bounding Curves (Big-O, Big-Omega, Big-Theta)</h2>
+<div class="tip"><b>How to Draw in Exam:</b> Draw an x-axis (input size n) and y-axis (Time). Mark n0 with a dashed vertical line. Show f(n) trapped below c&middot;g(n) for Big-O, above c&middot;g(n) for Big-&Omega;, and sandwiched between c1&middot;g(n) and c2&middot;g(n) for Big-&Theta;.</div>
+<div class="diagram-card">
+    <div class="mermaid">
+flowchart LR
+    subgraph BigO ["1. Big-O: f(n) <= c * g(n) (Upper Bound)"]
+        direction TB
+        cg["c * g(n) -- Ceiling"] --- fn1["f(n) -- Actual Curve"]
+        fn1 --- base1["0 (x-axis)"]
+        note1["Valid for all n >= n0"]
+    end
+
+    subgraph Omega ["2. Big-Omega: f(n) >= c * g(n) (Lower Bound)"]
+        direction TB
+        fn2["f(n) -- Actual Curve"] --- cg2["c * g(n) -- Floor"]
+        cg2 --- base2["0 (x-axis)"]
+        note2["Valid for all n >= n0"]
+    end
+
+    subgraph Theta ["3. Big-Theta: c1*g(n) <= f(n) <= c2*g(n) (Tight)"]
+        direction TB
+        c2g["c2 * g(n) -- Upper Envelope"] --- fn3["f(n) -- Tight Sandwich"]
+        fn3 --- c1g["c1 * g(n) -- Lower Envelope"]
+        note3["f(n) is asymptotically trapped"]
+    end
+    </div>
+</div>
+
+<h2>2. Decision Tree for Sorting Lower Bound (&Omega;(n log n))</h2>
+<div class="tip"><b>Exam Note:</b> A comparison sort for n items has n! leaves. Height h &ge; log&sup2;(n!) = &Omega;(n log n).</div>
+<div class="diagram-card">
+    <div class="mermaid">
+graph TD
+    Root["Compare A : B"]
+    Root -- "A <= B" --> L1["Compare B : C"]
+    Root -- "A > B" --> R1["Compare A : C"]
+
+    L1 -- "B <= C" --> Leaf1["[A, B, C]"]
+    L1 -- "B > C" --> L2["Compare A : C"]
+
+    L2 -- "A <= C" --> Leaf2["[A, C, B]"]
+    L2 -- "A > C" --> Leaf3["[C, A, B]"]
+
+    R1 -- "A <= C" --> Leaf4["[B, A, C]"]
+    R1 -- "A > C" --> R2["Compare B : C"]
+
+    R2 -- "B <= C" --> Leaf5["[B, C, A]"]
+    R2 -- "B > C" --> Leaf6["[C, B, A]"]
+    </div>
+</div>
+
+<h2>3. Merge Sort Divide-and-Conquer Tree (List: 78, 32, 42, 62, 98, 12, 34, 83, 10)</h2>
+<div class="diagram-card">
+    <div class="mermaid">
+graph TD
+    A["[78, 32, 42, 62, 98, 12, 34, 83, 10] (n=9)"]
+    
+    A --> B1["[78, 32, 42, 62, 98] (n=5)"]
+    A --> B2["[12, 34, 83, 10] (n=4)"]
+    
+    B1 --> C1["[78, 32, 42]"]
+    B1 --> C2["[62, 98]"]
+    
+    B2 --> C3["[12, 34]"]
+    B2 --> C4["[83, 10]"]
+    
+    C1 --> D1["[78, 32]"]
+    C1 --> D2["[42]"]
+    
+    D1 --> E1["[78]"]
+    D1 --> E2["[32]"]
+
+    subgraph MergeOrder ["Bottom-Up Merging Flow"]
+        direction LR
+        m1["[32, 78]"] --> m2["[32, 42, 78]"]
+        m2 --> m3["[32, 42, 62, 78, 98]"]
+        m3 --> mFinal["[10, 12, 32, 34, 42, 62, 78, 83, 98]"]
+    end
+    </div>
+</div>
+
+<h2>4. Kahn's Algorithm for Topological Sorting (In-Degree Queue Flow)</h2>
+<div class="diagram-card">
+    <div class="mermaid">
+flowchart TD
+    Start([Calculate In-Degree for all V]) --> EnqueueZero[Enqueue all Vertices with in-degree = 0]
+    EnqueueZero --> CheckQ{Is Queue Empty?}
+    
+    CheckQ -- No --> Dequeue[Dequeue Vertex u]
+    Dequeue --> AddOutput[Append u to Output List]
+    AddOutput --> DecNeighbors["For each edge (u, v): in-degree[v] = in-degree[v] - 1"]
+    
+    DecNeighbors --> CheckNeighbor{Did in-degree[v] reach 0?}
+    CheckNeighbor -- Yes --> EnqueueV[Enqueue vertex v]
+    CheckNeighbor -- No --> CheckQ
+    EnqueueV --> CheckQ
+
+    CheckQ -- Yes --> CheckCount{Processed Count == |V|?}
+    CheckCount -- Yes --> ValidDAG([Valid Topological Ordering Found - O(V+E)])
+    CheckCount -- No --> CycleFound([Cycle Detected! Not a DAG])
+    </div>
+</div>
+
+<h2>5. Loop Invariant State Transition Diagram</h2>
+<div class="diagram-card">
+    <div class="mermaid">
+stateDiagram-v2
+    [*] --> Initialization : Prior to 1st Iteration
+    Initialization --> Maintenance : Invariant holds for base case
+    Maintenance --> Maintenance : Each iteration preserves truth
+    Maintenance --> Termination : Loop exit condition reached
+    Termination --> CorrectnessProof : Invariant + Termination implies algorithm correctness
+    CorrectnessProof --> [*]
+    </div>
+</div>
+
+</body>
+</html>

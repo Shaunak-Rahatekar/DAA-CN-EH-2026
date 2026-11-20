@@ -1,0 +1,5 @@
+# Ignore large textbook PDFs that exceed or approach GitHub limits
+**/BOOKS/
+*.tmp
+.DS_Store
+Thumbs.db
