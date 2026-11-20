@@ -1,44 +1,60 @@
-# 2026 End-Semester Exam Preparation: DAA, CN & Ethical Hacking
+# End-Semester Exam Preparation Suite: DAA, CN & Ethical Hacking
 
-Comprehensive, exam-oriented study materials, notes, 1-page cheat sheets (Markdown & PDF), question banks with separate marking schemes, flashcards (CSV), and high-resolution diagram redraw guides for three written end-semester examinations:
+Comprehensive, exam-oriented study materials, notes, 1-page cheat sheets (Markdown & PDF), question banks with separate marking schemes, flashcards (CSV), high-resolution diagram redraw guides, timed mock examination papers, and last-hour revision checklists for three written end-semester examinations:
 
-1. **Design and Analysis of Algorithms (DAA, CS3212)** — 25 Nov 2026
-2. **Computer Networks (CN, CS3213)** — 26 Nov 2026
-3. **Ethical Hacking (EH, MD***)** — 27 Nov 2026
+1. **Design and Analysis of Algorithms (DAA, CS3212)**
+2. **Computer Networks (CN, CS3213)**
+3. **Ethical Hacking (EH, MD\*\*\*)**
 
 ---
 
 ## 📁 Repository Organization
 
 ```text
-├── AI GENERATED/
-│   ├── 00_Index/          # Master Index (INDEX.md), Inventory, and Exam Patterns
-│   ├── Planner/           # 5-Day Study Plan & Live Progress Tracker
-│   ├── DAA/               # Design and Analysis of Algorithms
-│   │   ├── Notes/         # Units I - VI comprehensive exam notes
-│   │   ├── CheatSheets/   # 1-page reference cheat sheets (MD + PDF)
-│   │   ├── Questions/     # Question banks (4M, 8M, 10M / 12M) & separate answer keys
-│   │   ├── Flashcards/    # 180 active-recall flashcard pairs (CSV)
-│   │   ├── Diagrams/      # 30 high-resolution diagram PNGs & exam redraw guides
-│   │   └── MockPapers/    # Full 2-hour timed mock exam paper & solutions
-│   ├── CN/                # Computer Networks
-│   │   ├── Notes/         # Unit notes
-│   │   ├── CheatSheets/   # 1-page reference cheat sheets (MD + PDF)
-│   │   ├── Questions/     # Question banks & answer keys
-│   │   ├── Flashcards/    # Active-recall flashcards (CSV)
-│   │   └── Diagrams/      # High-resolution diagram PNGs & redraw guides
-│   └── EH/                # Ethical Hacking (Scheduled)
-├── DAA/                   # College source material (Syllabus, Question Bank, Revision)
-├── CN/                    # College source material (Syllabus, Revision, Lab Manual, Past Paper)
-└── EH/                    # College source material (Syllabus, Revision Guide)
+AI GENERATED/
+├── 00_Index/
+│   ├── INDEX.md           # Master directory index of all generated resources
+│   ├── INVENTORY.md       # Inventory of curriculum source syllabi & question banks
+│   └── EXAM_PATTERN.md    # Unit weightages, recurring questions, and mark patterns
+├── DAA/                   # Design and Analysis of Algorithms (Units I - VI)
+│   ├── Notes/             # Comprehensive conceptual & mathematical notes
+│   ├── CheatSheets/       # 1-page reference cheat sheets (Markdown & printable PDF)
+│   ├── Questions/         # Exam question banks (4M, 8M, 10M) & step-by-step model answers
+│   ├── Flashcards/        # 180 active-recall question-answer flashcard pairs (CSV)
+│   ├── Diagrams/          # 30 high-resolution diagram PNGs & ASCII/Mermaid redraw guides
+│   └── MockPapers/        # Full 2-hour timed mock exam paper (MD & PDF) + model answers
+├── CN/                    # Computer Networks (Units I - VI)
+│   ├── Notes/             # Protocol architecture & layer-by-layer notes
+│   ├── CheatSheets/       # 1-page reference cheat sheets (Markdown & printable PDF)
+│   ├── Questions/         # Exam question banks (4M, 8M, 10M) & step-by-step model answers
+│   ├── Flashcards/        # 180 active-recall question-answer flashcard pairs (CSV)
+│   ├── Diagrams/          # 30 high-resolution diagram PNGs & ASCII/Mermaid redraw guides
+│   └── MockPapers/        # Full 2-hour timed mock exam paper (MD & PDF) + model answers
+└── EH/                    # Ethical Hacking (Units I - V)
+    ├── Notes/             # Vulnerability, threat, exploitation & defense notes
+    ├── CheatSheets/       # 1-page reference cheat sheets (Markdown & printable PDF)
+    ├── Questions/         # Exam question banks (4M, 8M, 10M/12M) & model answers
+    ├── Flashcards/        # 150 active-recall question-answer flashcard pairs (CSV)
+    ├── Diagrams/          # 25 high-resolution diagram PNGs & ASCII/Mermaid redraw guides
+    └── MockPapers/        # Full 2-hour timed mock exam paper (MD & PDF) + model answers
 ```
 
 ---
 
 ## 🚀 Navigation & Quick Links
 
-- 📋 **Master Index**: [`AI GENERATED/00_Index/INDEX.md`](AI%20GENERATED/00_Index/INDEX.md) — One-line index of every generated deliverable.
-- 📅 **5-Day Study Plan**: [`AI GENERATED/Planner/STUDY_PLAN.md`](AI%20GENERATED/Planner/STUDY_PLAN.md) — Day-by-day timetable and live completion checklist.
-- 🎯 **Exam Pattern Analysis**: [`AI GENERATED/00_Index/EXAM_PATTERN.md`](AI%20GENERATED/00_Index/EXAM_PATTERN.md) — Unit weightages, recurring questions, and mark distributions.
-- ⏱️ **DAA Last-Hour Review**: [`AI GENERATED/DAA/Notes/DAA_LastHour_Checklist.md`](AI%20GENERATED/DAA/Notes/DAA_LastHour_Checklist.md) — 20 facts, 5 must-draw diagrams, and 5 common traps.
-- 📝 **DAA Mock Exam**: [`AI GENERATED/DAA/MockPapers/DAA_MockPaper_1.md`](AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_1.md) | [Printable PDF](AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_1.pdf)
+### Master Indices
+- 📋 **Master Resource Index**: [`AI GENERATED/00_Index/INDEX.md`](AI%20GENERATED/00_Index/INDEX.md)
+- 🎯 **Exam Pattern Analysis**: [`AI GENERATED/00_Index/EXAM_PATTERN.md`](AI%20GENERATED/00_Index/EXAM_PATTERN.md)
+
+### Design and Analysis of Algorithms (DAA, CS3212)
+- ⏱️ **DAA Last-Hour Review**: [`AI GENERATED/DAA/Notes/DAA_LastHour_Checklist.md`](AI%20GENERATED/DAA/Notes/DAA_LastHour_Checklist.md)
+- 📝 **DAA Mock Exam**: [`AI GENERATED/DAA/MockPapers/DAA_MockPaper_1.md`](AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_1.md) | [Printable PDF](AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_1.pdf) | [Model Answers](AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_1_Answers.md)
+
+### Computer Networks (CN, CS3213)
+- ⏱️ **CN Last-Hour Review**: [`AI GENERATED/CN/Notes/CN_LastHour_Checklist.md`](AI%20GENERATED/CN/Notes/CN_LastHour_Checklist.md)
+- 📝 **CN Mock Exam**: [`AI GENERATED/CN/MockPapers/CN_MockPaper_1.md`](AI%20GENERATED/CN/MockPapers/CN_MockPaper_1.md) | [Printable PDF](AI%20GENERATED/CN/MockPapers/CN_MockPaper_1.pdf) | [Model Answers](AI%20GENERATED/CN/MockPapers/CN_MockPaper_1_Answers.md)
+
+### Ethical Hacking (EH, MD\*\*\*)
+- ⏱️ **EH Last-Hour Review**: [`AI GENERATED/EH/Notes/EH_LastHour_Checklist.md`](AI%20GENERATED/EH/Notes/EH_LastHour_Checklist.md)
+- 📝 **EH Mock Exam**: [`AI GENERATED/EH/MockPapers/EH_MockPaper_1.md`](AI%20GENERATED/EH/MockPapers/EH_MockPaper_1.md) | [Printable PDF](AI%20GENERATED/EH/MockPapers/EH_MockPaper_1.pdf) | [Model Answers](AI%20GENERATED/EH/MockPapers/EH_MockPaper_1_Answers.md)

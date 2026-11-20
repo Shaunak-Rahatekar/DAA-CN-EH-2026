@@ -271,7 +271,7 @@
   Accept: application/json
 
   // Response:
-  {"id": 101, "name": "Shaunak", "branch": "CE"}
+  {"id": 101, "name": "Alice", "branch": "CE"}
   ```
 - **SOAP Request (Verbose XML Envelope)**:
   ```xml

@@ -1,4 +1,7 @@
-# Ignore large textbook PDFs that exceed or approach GitHub limits
+# Ignore reference source folders and materials
+/CN/
+/DAA/
+/EH/
 **/BOOKS/
 *.tmp
 .DS_Store

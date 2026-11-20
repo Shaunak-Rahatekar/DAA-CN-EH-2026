@@ -8,13 +8,8 @@
 | File | Description |
 |------|-------------|
 | [INDEX.md](file:///D:/2026%20EXAM/AI%20GENERATED/00_Index/INDEX.md) | Master directory index listing all created resources with 1-line descriptions |
-| [INVENTORY.md](file:///D:/2026%20EXAM/AI%20GENERATED/00_Index/INVENTORY.md) | Complete file inventory of DAA, CN, and EH folders, including newly added DOCX question banks |
+| [INVENTORY.md](file:///D:/2026%20EXAM/AI%20GENERATED/00_Index/INVENTORY.md) | Complete file inventory of DAA, CN, and EH source syllabi and question banks |
 | [EXAM_PATTERN.md](file:///D:/2026%20EXAM/AI%20GENERATED/00_Index/EXAM_PATTERN.md) | Comprehensive unit-wise topic maps, question bank analysis, and high-yield question patterns |
-
-## Planner/
-| File | Description |
-|------|-------------|
-| [STUDY_PLAN.md](file:///D:/2026%20EXAM/AI%20GENERATED/Planner/STUDY_PLAN.md) | Day-by-day 5-day study timetable and progress tracker (20 Nov – 27 Nov 2026) |
 
 ---
 
