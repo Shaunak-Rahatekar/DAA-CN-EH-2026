@@ -27,7 +27,7 @@
 - [x] **EH Unit II**: Footprinting, Reconnaissance & Scanning (Notes, CheatSheet MD+PDF, 30 Flashcards, Questions, Answers, 5 Diagram PNGs)
 - [x] **EH Unit III**: System Hacking & Network Security (Notes, CheatSheet MD+PDF, 30 Flashcards, Questions, Answers, 5 Diagram PNGs)
 - [x] **EH Unit IV**: Web Application & Wireless Security (Notes, CheatSheet MD+PDF, 30 Flashcards, Questions, Answers, 5 Diagram PNGs)
-- [ ] **EH Unit V**: Penetration Testing, Reporting & Defense
+- [x] **EH Unit V**: Penetration Testing, Reporting & Defense (Notes, CheatSheet MD+PDF, 30 Flashcards, Questions, Answers, 5 Diagram PNGs)
 - [ ] **EH Full 2-Hour Mock Paper**: Questions (MD+PDF) & Complete Model Answers / Marking Scheme
 - [ ] **EH 60-Minute Last-Hour Revision Pack**: 20 Facts, 5 Formulas/Drawings, 5 Traps
 
