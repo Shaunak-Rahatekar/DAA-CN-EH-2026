@@ -314,3 +314,12 @@
 | [EH_Unit5_Diagram4_CVSS_v31_Metrics_Framework.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit5_Diagram4_CVSS_v31_Metrics_Framework.png) | High-resolution image: CVSS v3.1 Base Metric groups (Exploitability, Scope, Impact) and qualitative severity bands |
 | [EH_Unit5_Diagram5_VAPT_Report_Case_Studies.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit5_Diagram5_VAPT_Report_Case_Studies.png) | High-resolution image: Professional VAPT Assessment Report structure and lessons from WannaCry, Equifax & SolarWinds |
 
+### EH Mock Papers & Revision Pack
+| File | Description |
+| :--- | :--- |
+| [EH_MockPaper_1.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/MockPapers/EH_MockPaper_1.md) | Full 60-mark, 2-hour end-semester mock exam paper covering Units I-V (Sections A, B, C) |
+| [EH_MockPaper_1.pdf](file:///D:/2026%20EXAM/AI%20GENERATED/EH/MockPapers/EH_MockPaper_1.pdf) | Formatted 2-page printable PDF question paper adhering to VIT Pune exam format |
+| [EH_MockPaper_1_Answers.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/MockPapers/EH_MockPaper_1_Answers.md) | Complete model answers, point-by-point marking schemes, Nmap diagrams, ARP flow, wireless matrix, Metasploit commands, CVSS v3.1 vector calculation, and professional VAPT report finding entry |
+| [EH_LastHour_Checklist.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Notes/EH_LastHour_Checklist.md) | 60-minute rapid-fire pre-exam checklist: 20 core facts, 5 essential formulas/drawings, and 5 frequent exam traps |
+
+

@@ -2,7 +2,7 @@
 
 > Generated: 20 Nov 2026
 > Strategy: DAA first (exam 25 Nov), then CN (exam 26 Nov), then EH (exam 27 Nov)
-> Current Status: **DAA 100% Complete!** (Units I-VI, Mock Paper 1 + Answers, Last-Hour Checklist, 180 Flashcards, 30 Diagrams). Ready to begin **Computer Networks (CN)**.
+> Current Status: **ALL 3 SUBJECTS 100% COMPLETE!** (DAA, CN, and EH fully complete with Notes, CheatSheets [MD+PDF], 510 Flashcards, Questions, Answers, 85 High-Res Diagram PNGs, 3 Timed 60-Mark Mock Papers [MD+PDF], and 3 60-Minute Last-Hour Revision Packs). Ready for exam success!
 
 ---
 
@@ -28,8 +28,8 @@
 - [x] **EH Unit III**: System Hacking & Network Security (Notes, CheatSheet MD+PDF, 30 Flashcards, Questions, Answers, 5 Diagram PNGs)
 - [x] **EH Unit IV**: Web Application & Wireless Security (Notes, CheatSheet MD+PDF, 30 Flashcards, Questions, Answers, 5 Diagram PNGs)
 - [x] **EH Unit V**: Penetration Testing, Reporting & Defense (Notes, CheatSheet MD+PDF, 30 Flashcards, Questions, Answers, 5 Diagram PNGs)
-- [ ] **EH Full 2-Hour Mock Paper**: Questions (MD+PDF) & Complete Model Answers / Marking Scheme
-- [ ] **EH 60-Minute Last-Hour Revision Pack**: 20 Facts, 5 Formulas/Drawings, 5 Traps
+- [x] **EH Full 2-Hour Mock Paper**: Questions (MD+PDF) & Complete Model Answers / Marking Scheme
+- [x] **EH 60-Minute Last-Hour Revision Pack**: 20 Facts, 5 Formulas/Drawings, 5 Traps
 
 ---
 
