@@ -224,5 +224,13 @@
 | [CN_Unit6_Diagram4_FTP_DualConnection.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit6_Diagram4_FTP_DualConnection.png) | High-resolution image: FTP dual-connection architecture: Port 21 Control vs Port 20 Data (Active vs Passive PASV) |
 | [CN_Unit6_Diagram5_DHCP_DORA_Process.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit6_Diagram5_DHCP_DORA_Process.png) | High-resolution image: DHCP DORA process message sequence chart and lease renewal timers (T1 and T2) |
 
+### CN Mock Papers & Revision Pack
+| File | Description |
+| :--- | :--- |
+| [CN_MockPaper_1.md](file:///D:/2026%20EXAM/AI%20GENERATED/CN/MockPapers/CN_MockPaper_1.md) | Full 60-mark, 2-hour end-semester mock exam paper covering Units I-VI (Sections A, B, C) |
+| [CN_MockPaper_1.pdf](file:///D:/2026%20EXAM/AI%20GENERATED/CN/MockPapers/CN_MockPaper_1.pdf) | Formatted 2-page printable PDF question paper adhering to VIT Pune exam format |
+| [CN_MockPaper_1_Answers.md](file:///D:/2026%20EXAM/AI%20GENERATED/CN/MockPapers/CN_MockPaper_1_Answers.md) | Complete worked solutions, marking schemes, CRC modulo-2 division, Dijkstra execution table, MTU fragmentation tables, and congestion traces |
+| [CN_LastHour_Checklist.md](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Notes/CN_LastHour_Checklist.md) | High-yield 60-minute revision checklist: 20 rapid-fire core facts, 5 essential formulas/drawings, and 5 frequent exam traps |
+
 ## EH/ (Ethical Hacking - MD***)
 *(Pending — scheduled for 24 Nov)*
