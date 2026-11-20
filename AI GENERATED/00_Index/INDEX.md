@@ -250,3 +250,19 @@
 | [EH_Unit1_Diagram4_Cyber_Kill_Chain.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit1_Diagram4_Cyber_Kill_Chain.png) | High-resolution image: Lockheed Martin 7-Stage Cyber Kill Chain and enterprise defensive countermeasures |
 | [EH_Unit1_Diagram5_VAPT_Assessment_Models.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit1_Diagram5_VAPT_Assessment_Models.png) | High-resolution image: VAPT Assessment Models: Black Box vs Grey Box vs White Box comparison matrix |
 
+### Unit II: Footprinting, Reconnaissance and Scanning
+| File | Description |
+| :--- | :--- |
+| [EH_Unit2_Recon_Scanning_Notes.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Notes/EH_Unit2_Recon_Scanning_Notes.md) | Comprehensive notes covering Passive vs Active recon, OSINT (WHOIS, DNS records, theHarvester, Shodan), Google Dorking, Nmap port scanning mechanics (Connect, SYN Stealth, Inverse, UDP, ACK), Port states (Open/Closed/Filtered), Banner Grabbing, Service enumeration (SMB, SNMP, SMTP), and Vulnerability Assessment (Nessus, OpenVAS, Credentialed vs Non-credentialed) |
+| [EH_Unit2_CheatSheet.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/CheatSheets/EH_Unit2_CheatSheet.md) | One-page cheat sheet of OSINT tools, DNS records, Google Dorks, Nmap scan matrix, primary port states, banner grabbing commands, and exam traps |
+| [EH_Unit2_CheatSheet.pdf](file:///D:/2026%20EXAM/AI%20GENERATED/EH/CheatSheets/EH_Unit2_CheatSheet.pdf) | Formatted 1-page printable PDF reference of the EH Unit II cheat sheet |
+| [EH_Unit2_Flashcards.csv](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Flashcards/EH_Unit2_Flashcards.csv) | 30 active-recall flashcard pairs (CSV) covering recon tools, DNS AXFR exploit, Nmap flags, RFC 793 scans, port states, and VA methodology |
+| [EH_Unit2_Questions.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Questions/EH_Unit2_Questions.md) | Unit II question bank with marks (4M, 8M, 10M) covering passive/active recon, Google Dorking, DNS AXFR, TCP Connect vs SYN scan, port states, and credentialed VA |
+| [EH_Unit2_Answers.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Questions/EH_Unit2_Answers.md) | Complete worked solutions, marking schemes, Nmap sequence diagrams, and banner sanitization configs |
+| [EH_Unit2_Diagrams.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit2_Diagrams.md) | Direct visual ASCII sketches + Mermaid diagrams for 5 key exam diagrams and 30-second redraw guides |
+| [EH_Unit2_Diagram1_Passive_vs_Active_Recon.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit2_Diagram1_Passive_vs_Active_Recon.png) | High-resolution image: Passive vs Active Reconnaissance architecture, target contact, and detection surface |
+| [EH_Unit2_Diagram2_DNS_Zone_Transfer_AXFR.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit2_Diagram2_DNS_Zone_Transfer_AXFR.png) | High-resolution image: DNS Zone Transfer (AXFR) mechanism, misconfiguration data leakage, and BIND hardening |
+| [EH_Unit2_Diagram3_Nmap_Scan_Mechanics.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit2_Diagram3_Nmap_Scan_Mechanics.png) | High-resolution image: Nmap port scanning packet exchange mechanics (TCP Connect vs SYN Stealth vs Inverse) |
+| [EH_Unit2_Diagram4_Port_States_Firewall_Interaction.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit2_Diagram4_Port_States_Firewall_Interaction.png) | High-resolution image: Nmap port states diagnostic logic: Open vs Closed vs Filtered firewall interaction |
+| [EH_Unit2_Diagram5_Vulnerability_Scanning_Workflow.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit2_Diagram5_Vulnerability_Scanning_Workflow.png) | High-resolution image: Vulnerability Assessment (VA) lifecycle, scan paradigms, and Credentialed vs Non-Credentialed comparison |
+

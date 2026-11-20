@@ -24,7 +24,7 @@
 - [x] **CN Full 2-Hour Mock Paper**: Questions (MD+PDF) & Complete Model Answers / Marking Scheme
 - [x] **CN 60-Minute Last-Hour Revision Pack**: 20 Facts, 5 Formulas/Drawings, 5 Traps
 - [x] **EH Unit I**: Introduction to Ethical Hacking (Notes, CheatSheet MD+PDF, 30 Flashcards, Questions, Answers, 5 Diagram PNGs)
-- [ ] **EH Unit II**: Footprinting, Reconnaissance & Scanning
+- [x] **EH Unit II**: Footprinting, Reconnaissance & Scanning (Notes, CheatSheet MD+PDF, 30 Flashcards, Questions, Answers, 5 Diagram PNGs)
 - [ ] **EH Unit III**: System Hacking & Network Security
 - [ ] **EH Unit IV**: Web Application & Wireless Security
 - [ ] **EH Unit V**: Penetration Testing, Reporting & Defense
