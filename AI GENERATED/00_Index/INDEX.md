@@ -176,5 +176,21 @@
 | [CN_Unit3_Diagram4_CSMA_CA_RTS_CTS.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit3_Diagram4_CSMA_CA_RTS_CTS.png) | High-resolution image: CSMA/CA virtual carrier sensing with RTS/CTS handshake and NAV timer |
 | [CN_Unit3_Diagram5_BEB_Flowchart.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit3_Diagram5_BEB_Flowchart.png) | High-resolution image: Binary Exponential Back-off algorithm flowchart and wait time calculation |
 
+### Unit IV: Network Layer
+| File | Description |
+| :--- | :--- |
+| [CN_Unit4_NetworkLayer_Notes.md](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Notes/CN_Unit4_NetworkLayer_Notes.md) | Switching (Circuit, Message, Datagram vs Virtual Circuit), IPv4 classful & CIDR/VLSM, NAT/PAT, IPv6 128-bit architecture, IPv4 header & fragmentation, ARP/RARP, ICMP (Ping & Traceroute), Distance Vector (Count-to-Infinity, Split Horizon), Link State (Dijkstra SPF), RIP vs OSPF vs BGP, QoS Leaky & Token Bucket, MPLS, and Mobile IP |
+| [CN_Unit4_CheatSheet.md](file:///D:/2026%20EXAM/AI%20GENERATED/CN/CheatSheets/CN_Unit4_CheatSheet.md) | One-page cheat sheet of switching matrix, subnetting formulas, IPv4 header fields, IPv4 vs IPv6 comparison, routing matrix, and traffic shaping formulas |
+| [CN_Unit4_CheatSheet.pdf](file:///D:/2026%20EXAM/AI%20GENERATED/CN/CheatSheets/CN_Unit4_CheatSheet.pdf) | One-page printable PDF reference of the CN Unit IV cheat sheet |
+| [CN_Unit4_Flashcards.csv](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Flashcards/CN_Unit4_Flashcards.csv) | 30 active-recall flashcard pairs (CSV) covering switching, IPv4/IPv6, CIDR/VLSM, NAT, ARP, ICMP, RIP, OSPF, BGP, and Token Bucket |
+| [CN_Unit4_Questions.md](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Questions/CN_Unit4_Questions.md) | Question bank with 12 exam questions (4M, 8M, 10M) including subnet design numericals, IPv4 fragmentation calculations, and Dijkstra SPF traces |
+| [CN_Unit4_Answers.md](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Questions/CN_Unit4_Answers.md) | Complete worked solutions, marking schemes, fragmentation offset tables, 4-subnet allocation tables, and Dijkstra step-by-step traces |
+| [CN_Unit4_Diagrams.md](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit4_Diagrams.md) | Visual sketches and exam redraw guides for CN Unit IV |
+| [CN_Unit4_Diagram1_IPv4_Header.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit4_Diagram1_IPv4_Header.png) | High-resolution image: IPv4 Datagram 32-bit word aligned header format and field bit offsets |
+| [CN_Unit4_Diagram2_IPv4_vs_IPv6.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit4_Diagram2_IPv4_vs_IPv6.png) | High-resolution image: IPv4 vs IPv6 side-by-side header comparison and extension header daisy chain |
+| [CN_Unit4_Diagram3_Subnetting_VLSM.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit4_Diagram3_Subnetting_VLSM.png) | High-resolution image: Subnet bit decomposition and hierarchical VLSM division tree |
+| [CN_Unit4_Diagram4_DistanceVector_vs_LinkState.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit4_Diagram4_DistanceVector_vs_LinkState.png) | High-resolution image: Distance Vector (Count-to-Infinity & Split Horizon) vs Link State (Dijkstra SPF) |
+| [CN_Unit4_Diagram5_Leaky_vs_TokenBucket.png](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Diagrams/CN_Unit4_Diagram5_Leaky_vs_TokenBucket.png) | High-resolution image: Traffic shaping comparison: Leaky Bucket rigid policing vs Token Bucket bursty transmission |
+
 ## EH/ (Ethical Hacking - MD***)
 *(Pending — scheduled for 24 Nov)*
