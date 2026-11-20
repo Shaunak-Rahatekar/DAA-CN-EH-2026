@@ -233,4 +233,20 @@
 | [CN_LastHour_Checklist.md](file:///D:/2026%20EXAM/AI%20GENERATED/CN/Notes/CN_LastHour_Checklist.md) | High-yield 60-minute revision checklist: 20 rapid-fire core facts, 5 essential formulas/drawings, and 5 frequent exam traps |
 
 ## EH/ (Ethical Hacking - MD***)
-*(Pending — scheduled for 24 Nov)*
+
+### Unit I: Introduction to Ethical Hacking & Threat Landscape
+| File | Description |
+| :--- | :--- |
+| [EH_Unit1_Introduction_Notes.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Notes/EH_Unit1_Introduction_Notes.md) | Comprehensive notes covering Vulnerability/Threat/Exploit/Risk, CIA Triad, Hacker classes, Red/Blue/Purple teams, CEH 5-phase methodology, Lockheed Martin Cyber Kill Chain, Indian IT Act 2000 (Sec 43, 66, 66C-F, 72), and VAPT models |
+| [EH_Unit1_CheatSheet.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/CheatSheets/EH_Unit1_CheatSheet.md) | One-page cheat sheet of definitions, hacker types, team matrix, 5-phase flowchart, Kill Chain summary, IT Act sections, and exam traps |
+| [EH_Unit1_CheatSheet.pdf](file:///D:/2026%20EXAM/AI%20GENERATED/EH/CheatSheets/EH_Unit1_CheatSheet.pdf) | Formatted 1-page printable PDF reference of the EH Unit I cheat sheet |
+| [EH_Unit1_Flashcards.csv](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Flashcards/EH_Unit1_Flashcards.csv) | 30 active-recall flashcard pairs (CSV) covering core terminology, CEH phases, Cyber Kill Chain, IT Act penalties, and VAPT models |
+| [EH_Unit1_Questions.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Questions/EH_Unit1_Questions.md) | Unit I question bank with marks (4M, 8M, 10M) covering terminology, VA vs PT, 5-phase methodology, Cyber Kill Chain, and IT Act provisions |
+| [EH_Unit1_Answers.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Questions/EH_Unit1_Answers.md) | Complete worked solutions, marking schemes, Kill Chain enterprise defense tables, and legal prerequisites |
+| [EH_Unit1_Diagrams.md](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit1_Diagrams.md) | Direct visual ASCII sketches + Mermaid diagrams for 5 key exam diagrams and 30-second redraw guides |
+| [EH_Unit1_Diagram1_CIA_Triad.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit1_Diagram1_CIA_Triad.png) | High-resolution image: CIA Triad & Non-Repudiation with cryptographic and architectural controls |
+| [EH_Unit1_Diagram2_Hacker_Types_Teams.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit1_Diagram2_Hacker_Types_Teams.png) | High-resolution image: Hacker taxonomy (White, Grey, Black, Suicide, APT) and Red/Blue/Purple operational feedback loops |
+| [EH_Unit1_Diagram3_Ethical_Hacking_Methodology.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit1_Diagram3_Ethical_Hacking_Methodology.png) | High-resolution image: CEH 5-Phase Ethical Hacking Methodology showing ethical vs malicious paths |
+| [EH_Unit1_Diagram4_Cyber_Kill_Chain.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit1_Diagram4_Cyber_Kill_Chain.png) | High-resolution image: Lockheed Martin 7-Stage Cyber Kill Chain and enterprise defensive countermeasures |
+| [EH_Unit1_Diagram5_VAPT_Assessment_Models.png](file:///D:/2026%20EXAM/AI%20GENERATED/EH/Diagrams/EH_Unit1_Diagram5_VAPT_Assessment_Models.png) | High-resolution image: VAPT Assessment Models: Black Box vs Grey Box vs White Box comparison matrix |
+

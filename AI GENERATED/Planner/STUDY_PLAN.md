@@ -23,7 +23,13 @@
 - [x] **CN Unit VI**: Application Layer (Notes, CheatSheet MD+PDF, 30 Flashcards, Questions, Answers, 5 Diagram PNGs)
 - [x] **CN Full 2-Hour Mock Paper**: Questions (MD+PDF) & Complete Model Answers / Marking Scheme
 - [x] **CN 60-Minute Last-Hour Revision Pack**: 20 Facts, 5 Formulas/Drawings, 5 Traps
-- [ ] **EH (Ethical Hacking)**: Units I to V + Mock Paper + Last-Hour Sheet
+- [x] **EH Unit I**: Introduction to Ethical Hacking (Notes, CheatSheet MD+PDF, 30 Flashcards, Questions, Answers, 5 Diagram PNGs)
+- [ ] **EH Unit II**: Footprinting, Reconnaissance & Scanning
+- [ ] **EH Unit III**: System Hacking & Network Security
+- [ ] **EH Unit IV**: Web Application & Wireless Security
+- [ ] **EH Unit V**: Penetration Testing, Reporting & Defense
+- [ ] **EH Full 2-Hour Mock Paper**: Questions (MD+PDF) & Complete Model Answers / Marking Scheme
+- [ ] **EH 60-Minute Last-Hour Revision Pack**: 20 Facts, 5 Formulas/Drawings, 5 Traps
 
 ---
 
