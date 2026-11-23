@@ -135,3 +135,21 @@ The newly extracted `.docx` files reveal the exact structure, questions, and mar
 
 - **CN (26 Nov):** Heavy numerical content (Hamming code, CRC division, sliding window efficiency $1/(1+2a)$, subnetting $/24 \to /27$, CIDR, TCP cwnd trace) + standard protocols (OSI vs TCP/IP, CSMA/CD backoff, Distance Vector, DNS, DHCP DORA).
 - **EH (27 Nov):** Pure theory & analytical marks (CIA triad, Cyber Kill Chain, OWASP Top 10 2025 vs 2021, SQLi/XSS/CSRF prevention, WEP/WPA/WPA2/WPA3 comparison table, Incident Response lifecycle, Case studies: WannaCry, Equifax, Log4Shell, SolarWinds).
+
+---
+
+## 4. Analysis of Actual VIT Pune ESE Pattern (Sample Paper 2026)
+
+Based on the actual End Semester Examination (ESE) question paper (Issue 01 : Rev No. 00 : Dt. 01/08/22, FF No. 868), the department has shifted significantly toward **mathematical problem-solving, discrete proofs, case-based decision problems, and non-trivial recurrences**:
+
+### Key Rules & Assessment Philosophy:
+1. **Zero Credit for Informal Arguments**: Proofs must be concrete, step-by-step mathematical inductions, limit arguments, or structural invariants.
+2. **Simple Programming Constructs & Data Structures Only**: The candidate is restricted to fundamental structures (arrays, linked lists, simple trees). Abstract collections (hashmaps, sets) carry no credit unless explicit low-level implementations are given.
+3. **Question Structure & Marks Allocation (60 Marks Total)**:
+   - **Q1 (10M)**: Asymptotic comparison with formal limits/L'Hopital ($o, \Theta, \Omega$) [5M] + Tree-based algorithm (Maximum Independent Set / Coloring) with optimal $\Theta(n)$ time proof [5M].
+   - **Q2 (12M)**: Recursive divide-and-conquer modular exponentiation $O(\log b)$ with manual trace ($3^{83} \bmod 17$) [6M] + Josephus game recurrence derivation, induction proof, and closed-form evaluation for $n = 2^m \pm 1$ [6M].
+   - **Q3 (8M)**: Choice between Bellman-Ford bounded-edges DP recurrence $f(s, t, k)$ OR Huffman Tree with encoded size calculation [5M] + Choice between Master Theorem extended case OR Harmonic number $H_n = O(\log n)$ integral bound [3M].
+   - **Q4 (10M)**: Discrete invariant / bisection proof (Bracelet with $2n$ black, $2n$ white beads cut into $n$ black and $n$ white beads via Discrete IVT) [5M] + String dynamic programming recurrence (Minimum insertions to form palindrome) with base cases and complexity [5M].
+   - **Q5 (10M)**: NP-Completeness polynomial reduction with formal YES/NO instances and bidirectional correctness proof (Vertex Cover to Clique) [5M] + Systematic backtracking formulation with state representation, constraint function, and explicit backtracking step (Sudoku) [5M].
+   - **Q6 (10M)**: Randomized algorithm / Markov decision process on directed graph (Step vs. Jump die roll: Bellman optimality, threshold policy derivation $k^* \approx \sqrt{2n}$, expected time $E[X] = \Theta(\sqrt{n})$) [6M] + Choice between Number Theory coprimality induction (Fermat numbers $\gcd(F_m, F_n) = 1$) OR Combinatorial full binary trees recurrence (Catalan numbers $f(7) = 429$) [4M].
+

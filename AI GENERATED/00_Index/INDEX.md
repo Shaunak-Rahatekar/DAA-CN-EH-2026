@@ -114,9 +114,13 @@
 ### Mock Papers & Final Exam Review (CS3212)
 | File | Description |
 | :--- | :--- |
+| [DAA_Actual_Paper_Solutions.md](file:///D:/2026%20EXAM/AI%20GENERATED/DAA/MockPapers/DAA_Actual_Paper_Solutions.md) | Complete step-by-step solutions & marking scheme for the actual VIT Pune ESE DAA Sample Paper (CS 3205/3212) |
 | [DAA_MockPaper_1.md](file:///D:/2026%20EXAM/AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_1.md) | Full 2-Hour timed mock exam paper (60 Marks, Section A compulsory short [20M], Section B medium [16M], Section C long numericals [24M]) |
 | [DAA_MockPaper_1.pdf](file:///D:/2026%20EXAM/AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_1.pdf) | Printable 2-page examination paper in official university format |
 | [DAA_MockPaper_1_Answers.md](file:///D:/2026%20EXAM/AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_1_Answers.md) | Complete worked solutions, trace tables (LCS, Knapsack), Edmonds-Karp residual steps, and exact marking scheme |
+| [DAA_MockPaper_2.md](file:///D:/2026%20EXAM/AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_2.md) | Full 60-mark, 2-hour case-based exam paper matching the exact mathematical, proof-oriented VIT Pune ESE pattern |
+| [DAA_MockPaper_2.pdf](file:///D:/2026%20EXAM/AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_2.pdf) | Formatted 2-page printable PDF question paper adhering to VIT Pune ESE formatting standards |
+| [DAA_MockPaper_2_Answers.md](file:///D:/2026%20EXAM/AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_2_Answers.md) | Comprehensive step-by-step model answers, proofs, matrix traces, DAG DP algorithms, and marking scheme for Mock Paper 2 |
 | [DAA_LastHour_Checklist.md](file:///D:/2026%20EXAM/AI%20GENERATED/DAA/Notes/DAA_LastHour_Checklist.md) | 60-Minute revision checklist: 20 crucial facts, 5 must-draw exam diagrams/formulas, and 5 high-penalty student traps |
 
 ---

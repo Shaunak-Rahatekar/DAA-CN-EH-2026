@@ -49,7 +49,9 @@ AI GENERATED/
 
 ### Design and Analysis of Algorithms (DAA, CS3212)
 - ⏱️ **DAA Last-Hour Review**: [`AI GENERATED/DAA/Notes/DAA_LastHour_Checklist.md`](AI%20GENERATED/DAA/Notes/DAA_LastHour_Checklist.md)
-- 📝 **DAA Mock Exam**: [`AI GENERATED/DAA/MockPapers/DAA_MockPaper_1.md`](AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_1.md) | [Printable PDF](AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_1.pdf) | [Model Answers](AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_1_Answers.md)
+- 📝 **Actual ESE Sample Paper Solutions**: [`AI GENERATED/DAA/MockPapers/DAA_Actual_Paper_Solutions.md`](AI%20GENERATED/DAA/MockPapers/DAA_Actual_Paper_Solutions.md)
+- 📝 **DAA Mock Exam 1 (Standard)**: [`AI GENERATED/DAA/MockPapers/DAA_MockPaper_1.md`](AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_1.md) | [Printable PDF](AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_1.pdf) | [Model Answers](AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_1_Answers.md)
+- 🎯 **DAA Mock Exam 2 (Case-Based ESE Pattern)**: [`AI GENERATED/DAA/MockPapers/DAA_MockPaper_2.md`](AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_2.md) | [Printable PDF](AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_2.pdf) | [Model Answers](AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_2_Answers.md)
 
 ### Computer Networks (CN, CS3213)
 - ⏱️ **CN Last-Hour Review**: [`AI GENERATED/CN/Notes/CN_LastHour_Checklist.md`](AI%20GENERATED/CN/Notes/CN_LastHour_Checklist.md)
