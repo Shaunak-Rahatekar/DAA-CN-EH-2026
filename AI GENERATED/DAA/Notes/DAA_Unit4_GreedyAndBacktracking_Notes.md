@@ -285,3 +285,58 @@ Sort weights in ascending order `w1 ≤ w2 ≤ ... ≤ wn`. Let current accumula
 | **Problem Type** | Decision problems and Constraint Satisfaction (N-Queens, Sudoku). | Pure Optimization problems (Min/Max: 0/1 Knapsack, TSP). |
 | **Node Expansion** | Explores as deep as possible before backtracking. | Generates all children of current node before moving to next. |
 | **Pruning Mechanism** | Bounding constraint (feasibility check). | Lower/Upper bound functions comparing with best objective so far. |
+
+---
+
+## 4. Classic Backtracking Case Studies
+
+### 4.1 Sudoku 9x9 Puzzle Solver
+- **Problem:** Fill empty cells ($0$) of a $9 \times 9$ grid with digits $1..9$ such that every row, column, and $3 \times 3$ subgrid contains unique digits.
+- **State Representation:** 2D array `grid[0..8][0..8]`.
+- **Constraint Function `isSafe(row, col, num)`:**
+  Verifies that `num` is not already present in row `row`, column `col`, or the $3 \times 3$ box starting at `(row - row % 3, col - col % 3)`.
+- **Algorithm & Explicit Backtracking Step:**
+  ```text
+  Algorithm SolveSudoku(grid):
+      If no unassigned cell exists:
+          return TRUE  // Solved
+
+      (row, col) = FindUnassignedCell(grid)
+
+      For num from 1 to 9:
+          If isSafe(grid, row, col, num):
+              grid[row][col] = num  // Tentative choice
+
+              If SolveSudoku(grid) == TRUE:
+                  return TRUE
+
+              // EXPLICIT BACKTRACKING STEP:
+              grid[row][col] = 0     // Unmake choice, restore state
+
+      return FALSE  // Trigger backtrack to caller
+  ```
+
+---
+
+### 4.2 Knight's Tour Problem
+- **Problem:** Move a knight on an $N \times N$ chessboard such that it visits every cell exactly once.
+- **State Representation:** 2D array `board[0..N-1][0..N-1]` initialized to $-1$. Counter `move_count` from $0$ to $N^2 - 1$.
+- **Choice Vector:** 8 candidate moves:
+  $$\Delta \in \{(2, 1), (1, 2), (-1, 2), (-2, 1), (-2, -1), (-1, -2), (1, -2), (2, -1)\}$$
+- **Algorithm & Backtracking Step:**
+  ```text
+  Algorithm SolveKT(r, c, move_count, board, N):
+      If move_count == N * N:
+          return TRUE
+
+      For each (dr, dc) in 8 moves:
+          next_r = r + dr,  next_c = c + dc
+          If isSafe(next_r, next_c, board, N):
+              board[next_r][next_c] = move_count
+              If SolveKT(next_r, next_c, move_count + 1, board, N):
+                  return TRUE
+              // BACKTRACKING STEP:
+              board[next_r][next_c] = -1  // Revert square to unvisited
+      return FALSE
+  ```
+

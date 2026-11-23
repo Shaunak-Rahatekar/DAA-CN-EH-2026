@@ -431,3 +431,40 @@ A **loop invariant** is a mathematical condition that remains true before and af
    - Compare 98 vs 83 → take `83`
    - Flush remaining from left → take `98`
 - **Final Output:** `[10, 12, 32, 34, 42, 62, 78, 83, 98]`
+
+---
+
+## 11. Advanced Mathematical Proofs & Discrete Invariants
+
+### 11.1 Harmonic Series Bounding via Integrals
+- **Definition:** The $n$-th Harmonic number is $H_n = \sum_{k=1}^n \frac{1}{k} = 1 + \frac{1}{2} + \frac{1}{3} + \dots + \frac{1}{n}$.
+- **Monotonicity & Integral Bounding:**
+  Because $f(x) = \frac{1}{x}$ is strictly positive and monotonically decreasing for all $x \ge 1$:
+  $$\frac{1}{k} \le \int_{k-1}^k \frac{1}{x} \, dx \quad \text{for } k \ge 2$$
+  Summing from $k = 2$ to $n$:
+  $$\sum_{k=2}^n \frac{1}{k} \le \int_1^n \frac{1}{x} \, dx = \ln n$$
+  Adding the initial term $k = 1$:
+  $$H_n = 1 + \sum_{k=2}^n \frac{1}{k} \le 1 + \ln n = O(\log n)$$
+- **Lower Bound:** Similarly, $\sum_{k=1}^n \frac{1}{k} \ge \int_1^{n+1} \frac{1}{x} \, dx = \ln(n+1) = \Omega(\log n)$.
+- **Conclusion:** $H_n = \mathbf{\Theta(\log n)}$.
+
+---
+
+### 11.2 Discrete Invariants: The Bracelet / Necklace Bisection Problem
+- **Problem Statement:** A circular bracelet contains $2n$ black and $2n$ white beads. Prove that we can partition the bracelet into two contiguous arcs by making exactly two cuts such that each arc contains exactly $n$ black and $n$ white beads.
+- **Proof via Discrete Intermediate Value Theorem (IVT):**
+  1. Label the beads along the circular perimeter from $1$ to $4n$.
+  2. For each $i \in \{1, \dots, 2n\}$, let $A(i)$ denote the semicircular arc of length $2n$ starting at bead $i$.
+  3. Let $W(i)$ be the number of white beads in arc $A(i)$.
+  4. The complementary arc is $A(i + 2n)$. Because the total number of white beads is $2n$:
+     $$W(i) + W(i + 2n) = 2n \implies W(i + 2n) = 2n - W(i)$$
+  5. Define the discrepancy function $\Delta(i) = W(i) - n$.
+     Then $\Delta(i + 2n) = W(i + 2n) - n = (2n - W(i)) - n = -\Delta(i)$.
+  6. When advancing from arc $i$ to $i+1$, arc $A(i+1)$ drops bead $i$ and acquires bead $i + 2n$.
+     Therefore, the white bead count changes by at most $\pm 1$:
+     $$|\Delta(i+1) - \Delta(i)| \le 1$$
+  7. If $\Delta(1) = 0$, we are done. If $\Delta(1) > 0$, then $\Delta(1 + 2n) = -\Delta(1) < 0$.
+  8. Since $\Delta(i)$ transitions from positive to negative in integer steps of at most $\pm 1$, by the **Discrete Intermediate Value Theorem**, there must exist an intermediate index $i^*$ such that:
+     $$\Delta(i^*) = 0 \iff W(i^*) = n \quad \text{and} \quad B(i^*) = 2n - n = n$$
+  9. Cutting before bead $i^*$ and after bead $i^* + 2n - 1$ yields two contiguous portions, each with exactly $n$ white and $n$ black beads. $\blacksquare$
+

@@ -344,3 +344,29 @@ A **randomized algorithm** makes random choices (uses random bits) during its ex
   P(All runs fail) ≤ (1 - 2/n²)^k = (1 - 2/n²)^((n²/2) · ln n) ≤ e^(-ln n) = 1 / n
   ```
   The probability of finding the true minimum cut increases to `≥ 1 - 1/n`!
+
+---
+
+## 6. Randomized Decision & Optimal Stopping on Graphs
+
+### 6.1 Directed Path: Step vs. Jump Random Walk
+- **Scenario:** A directed path of $n$ nodes: $1, 2, \dots, n$. Start at node 1, goal is node $n$.
+  - **Action Step:** Go from node $i$ to $i+1$ (cost 1 second).
+  - **Action Jump:** Roll an $n$-sided fair die; land on $j \in \{1, \dots, n\}$ uniformly at random with probability $1/n$ (cost 1 second).
+- **Bellman Equation:**
+  Let $E(i)$ be the expected remaining time from node $i$. $E(n) = 0$.
+  - Stepping cost: $S(i) = 1 + E(i+1)$.
+  - Jumping cost: $J = 1 + \frac{1}{n} \sum_{j=1}^n E(j)$ (a **constant** independent of current node $i$!).
+  - Optimality: $E(i) = \min(1 + E(i+1), J)$.
+- **Threshold Policy ($k^*$):**
+  - Near the goal ($i \ge n - k$): Step! ($E(n-r) = r$ for $0 \le r \le k$).
+  - Far from the goal ($i < n - k$): Jump! ($E(i) = J$).
+- **Solving for $J$ and Optimal $k$:**
+  $$J = 1 + \frac{n - k - 1}{n} J + \frac{k(k+1)}{2n}$$
+  $$(k + 1) J = n + \frac{k(k+1)}{2} \implies J = \frac{n}{k+1} + \frac{k}{2}$$
+  Differentiating with respect to $k$:
+  $$\frac{dJ}{dk} = -\frac{n}{(k+1)^2} + \frac{1}{2} = 0 \implies (k+1)^2 = 2n \implies \mathbf{k^* \approx \lfloor \sqrt{2n} \rfloor}$$
+  Substituting $k+1 = \sqrt{2n}$:
+  $$\mathbf{J^* = \sqrt{2n} - \frac{1}{2} = \Theta(\sqrt{n})}$$
+- **Conclusion:** The optimal threshold strategy reaches node $n$ in **$\mathbf{\Theta(\sqrt{n})}$** expected time.
+

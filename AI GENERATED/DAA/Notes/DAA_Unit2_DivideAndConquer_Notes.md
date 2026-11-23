@@ -322,3 +322,43 @@ Time Complexity = O(m · α(n))
 ```
 Where `α(n)` is the **Inverse Ackermann Function**. For all practical inputs in the universe (`n < 10⁸⁰`), `α(n) ≤ 4`. Thus, DSU runs in **virtually constant amortized time `O(1)`** per operation!
 - **Primary Applications:** Kruskal's Minimum Spanning Tree (cycle detection), connected components in dynamic graphs.
+
+---
+
+## 8. Advanced Number-Theoretic Algorithms & Recurrences
+
+### 8.1 Coprimality of Fermat Numbers via Induction
+- **Fermat Numbers:** Defined for $n \ge 0$ as $f(n) = 2^{2^n} + 1$.
+  $f(0) = 3, f(1) = 5, f(2) = 17, f(3) = 257, f(4) = 65537$.
+- **Theorem:** Any two distinct Fermat numbers $f(m)$ and $f(n)$ are pairwise coprime: $\gcd(f(m), f(n)) = 1$ for $m \ne n$.
+- **Proof:**
+  1. *Lemma (Inductive Identity):* For all $n \ge 1$:
+     $$f(0) f(1) \dots f(n-1) = f(n) - 2$$
+     - Base Case $n=1$: $f(0) = 3 = 5 - 2 = f(1) - 2$. (Holds).
+     - Inductive Step: Assume $\prod_{i=0}^{k-1} f(i) = f(k) - 2$.
+       Multiply by $f(k)$:
+       $$\left(\prod_{i=0}^{k-1} f(i)\right) f(k) = (f(k) - 2)f(k) = (2^{2^k} - 1)(2^{2^k} + 1) = (2^{2^k})^2 - 1 = 2^{2^{k+1}} - 1 = f(k+1) - 2$$
+       Thus the identity holds for all $n \ge 1$ by induction.
+  2. *Coprimality Deduction:*
+     Suppose $m < n$ and let $d = \gcd(f(m), f(n))$.
+     Since $m < n$, $f(m)$ is one of the factors in the product $\prod_{i=0}^{n-1} f(i)$.
+     Therefore, $d \mid f(m) \implies d \mid \prod_{i=0}^{n-1} f(i)$.
+     From the identity, $2 = f(n) - \prod_{i=0}^{n-1} f(i)$.
+     Since $d \mid f(n)$ and $d \mid \prod f(i)$, $d$ must divide their difference: $d \mid 2$.
+     Thus $d \in \{1, 2\}$.
+     However, every Fermat number $f(k) = 2^{2^k} + 1$ is odd. An odd number cannot be divisible by 2.
+     Hence, $d = 1$, proving $\mathbf{\gcd(f(m), f(n)) = 1}$. $\blacksquare$
+
+---
+
+### 8.2 Lamé's Theorem on the Euclidean GCD Algorithm
+- **Theorem:** The number of division steps executed by the Euclidean algorithm for $\gcd(a, b)$ with $a > b \ge 1$ is at most 5 times the number of decimal digits in $b$.
+- **Proof via Fibonacci Numbers:**
+  Let the division steps be $r_{i-1} = q_i r_i + r_{i+1}$ for $i = 1, \dots, k$ with remainder $r_{k+1} = 0$.
+  - In the final step $k$, $q_k \ge 2$, so $r_k \ge 1 = F_2$ and $r_{k-1} \ge 2 = F_3$.
+  - For each prior step $i$, $q_i \ge 1$, so $r_{i-1} \ge r_i + r_{i+1}$.
+  - By reverse induction: $b = r_0 \ge F_{k+1}$.
+  - Since $F_{k+1} > \phi^{k-1}$ where $\phi = \frac{1 + \sqrt{5}}{2} \approx 1.618$:
+    $$b > \phi^{k-1} \implies k - 1 < \log_\phi b \implies k < 4.785 \log_{10} b + 1$$
+- **Time Complexity:** The Euclidean algorithm executes at most $O(\log b)$ divisions, establishing worst-case logarithmic efficiency.
+

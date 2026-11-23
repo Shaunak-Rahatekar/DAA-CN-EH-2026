@@ -294,3 +294,39 @@ D^(k)[i, j] = min( D^(k-1)[i, j],   D^(k-1)[i, k] + D^(k-1)[k, j] )
   I(v) = max( 1 + Sum (I(grandchildren)),   Sum (I(children)) )
   ```
 - **Time Complexity:** `O(n)` using bottom-up post-order tree traversal.
+
+---
+
+## 5. Advanced String & Graph Dynamic Programming Patterns
+
+### 5.1 Minimum Character Insertions to Make String a Palindrome
+- **Problem:** Given string $s[1..n]$, find minimum insertions needed to convert $s$ into a palindrome.
+- **Recurrence:** Let $f(i, j)$ be the minimum insertions for substring $s[i..j]$:
+  $$f(i, j) = \begin{cases}
+  0 & \text{if } i \ge j \\
+  f(i + 1, j - 1) & \text{if } s[i] == s[j] \\
+  1 + \min\big(f(i + 1, j), f(i, j - 1)\big) & \text{if } s[i] \ne s[j]
+  \end{cases}$$
+- **Base Cases:** $f(i, i) = 0$ (single character); $f(i, j) = 0$ for $i > j$ (empty string).
+- **LPS Connection:** $\text{Min Insertions} = n - \text{Length of Longest Palindromic Subsequence (LPS)}$.
+- **Complexity:** Time: $O(n^2)$, Space: $O(n^2)$ (or $O(n)$ space-optimized).
+
+---
+
+### 5.2 Bounded-Edge Shortest Path DP (Bellman-Ford Formulation)
+- **Problem:** In a directed graph $G = (V, E)$ without negative cycles, find the smallest weight path from $s$ to $t$ using at most $k$ edges.
+- **Recurrence:** Let $f(s, t, k)$ be the minimum weight of an $s \to t$ path using $\le k$ edges:
+  $$f(s, t, k) = \min \left\{ f(s, t, k - 1), \, \min_{(u, t) \in E} \big( f(s, u, k - 1) + w(u, t) \big) \right\}$$
+- **Base Cases:**
+  $$f(s, s, 0) = 0; \quad f(s, v, 0) = \infty \text{ for all } v \ne s$$
+- **Complexity:** For simple paths, $k$ ranges from $1$ to $|V| - 1$. Time: $\mathbf{O(|V| \cdot |E|)}$, Space: $O(|V|)$ using two rows.
+
+---
+
+### 5.3 Combinatorial Full Binary Trees Recurrence (Catalan Recurrence)
+- **Problem:** Number of full binary trees with $n + 1$ leaf nodes.
+- **Recurrence:** In a full binary tree, the root has two children. If the left subtree has $i$ leaves ($1 \le i \le n$), the right subtree has $(n + 1) - i$ leaves:
+  $$f(n) = \sum_{i=1}^n f(i - 1) \cdot f(n - i) \quad \text{with } f(0) = 1$$
+- **Closed Form:** $f(n) = C_n = \frac{1}{n + 1} \binom{2n}{n}$.
+- **Values:** $f(0)=1, f(1)=1, f(2)=2, f(3)=5, f(4)=14, f(5)=42, f(6)=132, \mathbf{f(7)=429}$.
+
