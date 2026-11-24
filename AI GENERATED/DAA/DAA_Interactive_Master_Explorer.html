@@ -27,6 +27,14 @@
         linear-gradient(to right, rgba(30, 41, 59, 0.15) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(30, 41, 59, 0.15) 1px, transparent 1px);
       background-size: 32px 32px, 96px 96px, 96px 96px;
+      transition: padding-right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Dynamic Split-Screen adjustment */
+    @media (min-width: 1280px) {
+      .drawer-active {
+        padding-right: 540px !important;
+      }
     }
 
     /* Mind Map Nodes */
@@ -49,18 +57,20 @@
     .branch-path {
       fill: none;
       stroke-linecap: round;
-      transition: stroke 0.25s ease, stroke-width 0.25s ease;
+      transition: stroke 0.25s ease, stroke-width 0.25s ease, d 0.3s ease;
     }
 
     /* Slide-in Study Sheet */
     #detailDrawer {
+      width: 100%;
+      max-width: 530px;
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
     #detailDrawer.drawer-closed {
       transform: translateX(105%);
     }
 
-    /* Scrollbars */
+    /* Custom Scrollbars */
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: #070b14; }
     ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
@@ -70,47 +80,54 @@
 <body class="min-h-screen relative flex flex-col">
 
   <!-- TOP APP CONTROLS HEADER -->
-  <header class="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 px-6 py-3.5 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-4">
+  <header class="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 px-4 md:px-8 py-3 shadow-2xl flex flex-col xl:flex-row items-center justify-between gap-3">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider border border-cyan-500/40">3-Tier Mind Map</span>
+      <span class="px-2.5 py-1 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider border border-cyan-500/40">Dynamic Mind Map</span>
       <div>
-        <h1 class="text-lg md:text-xl font-black text-white tracking-tight flex items-center gap-2">
-          DAA Syllabus & Exam Questions Architecture <span class="text-xs font-normal text-slate-400">• CS3212 / CS3205</span>
+        <h1 class="text-base md:text-lg font-black text-white tracking-tight flex items-center gap-2">
+          DAA Master Architecture Mind Map <span class="text-xs font-normal text-slate-400">• CS3212 / CS3205</span>
         </h1>
-        <p class="text-[11px] text-slate-400">Unit (Syllabus) ⟹ Subtopic (Syllabus) ⟹ Exact Exam Questions & Predictable Questions • Click to study</p>
+        <p class="text-[11px] text-slate-400">Dynamic Multi-Column Fluid Canvas • Interactive Split-Screen Blueprint • Exact & Predictable Questions</p>
       </div>
     </div>
 
-    <!-- Controls -->
+    <!-- Controls Toolbar -->
     <div class="flex flex-wrap items-center gap-2">
+      <!-- Search -->
       <div class="relative">
-        <input type="text" id="mmSearch" placeholder="Search exact question, predictable, Catalan, Huffman..." 
-               class="bg-slate-800 text-slate-200 text-xs rounded-lg px-3 py-2 pl-8 border border-slate-700 focus:outline-none focus:border-cyan-400 w-60 md:w-72" />
-        <svg class="w-4 h-4 text-slate-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <input type="text" id="mmSearch" placeholder="Search questions, formulas, Catalan, Huffman..." 
+               class="bg-slate-800 text-slate-200 text-xs rounded-lg px-3 py-1.5 pl-8 border border-slate-700 focus:outline-none focus:border-cyan-400 w-52 sm:w-64" />
+        <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
         </svg>
       </div>
 
-      <button id="btnExpandAllMM" class="px-3 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-xs font-bold transition shadow-md shadow-cyan-600/30">
+      <!-- Zoom Controls -->
+      <div class="flex items-center bg-slate-800 rounded-lg p-0.5 border border-slate-700 text-xs">
+        <button id="btnZoomOut" class="px-2 py-1 text-slate-300 hover:text-white transition" title="Zoom Out">🔍−</button>
+        <span id="zoomLabel" class="px-2 font-mono text-[11px] text-cyan-400 font-bold select-none">100%</span>
+        <button id="btnZoomIn" class="px-2 py-1 text-slate-300 hover:text-white transition" title="Zoom In">🔍+</button>
+        <button id="btnZoomFit" class="px-2 py-1 text-slate-300 hover:text-cyan-300 border-l border-slate-700 transition" title="Fit Screen">📐 Reset</button>
+      </div>
+
+      <!-- View Expander Buttons -->
+      <button id="btnExpandAllMM" class="px-3 py-1.5 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-xs font-bold transition shadow-md shadow-cyan-600/30">
         ➕ Expand All
       </button>
-      <button id="btnCollapseToTopics" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 rounded-lg text-xs font-bold transition">
-        📂 Topics Only
+      <button id="btnCollapseToTopics" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 rounded-lg text-xs font-bold transition">
+        📂 Topics
       </button>
-      <button id="btnCollapseAllMM" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 rounded-lg text-xs font-bold transition">
-        ➖ Units Only
-      </button>
-      <button id="btnCenterView" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 rounded-lg text-xs font-bold transition">
-        🎯 Top
+      <button id="btnCollapseAllMM" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 rounded-lg text-xs font-bold transition">
+        ➖ Units
       </button>
     </div>
   </header>
 
   <!-- REPEATED CONSTANTS EMERGENCY BAR -->
-  <div class="bg-slate-900/80 border-b border-slate-800 px-6 py-2.5">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
+  <div class="bg-slate-900/80 border-b border-slate-800 px-4 md:px-8 py-2">
+    <div class="w-full flex flex-wrap items-center justify-between gap-3 text-xs">
       <div class="flex items-center gap-2 text-cyan-400 font-bold">
-        <span>⚡ Exam Instant Recall Vault:</span>
+        <span>⚡ Instant Recall Vault:</span>
       </div>
       <div class="flex flex-wrap items-center gap-4 text-[11px]">
         <div><span class="text-slate-400">Catalan:</span> <span class="font-mono text-cyan-300 font-bold">C₆ = 132 | C₇ = 429</span></div>
@@ -122,60 +139,51 @@
     </div>
   </div>
 
-  <!-- INTERACTIVE MIND MAP CANVAS -->
-  <div class="flex-1 mm-canvas relative overflow-auto p-6 md:p-12" id="canvasContainer">
+  <!-- INTERACTIVE MIND MAP CANVAS (FLUID FULL-WIDTH) -->
+  <div class="flex-1 mm-canvas relative overflow-auto p-4 md:p-8" id="canvasContainer">
     
     <!-- Dynamic SVG Bezier Curves -->
     <svg id="svgConnectors" class="absolute top-0 left-0 w-full h-full pointer-events-none z-0"></svg>
 
-    <!-- MIND MAP CONTAINER -->
-    <div class="relative z-10 max-w-6xl mx-auto flex flex-col items-center">
+    <!-- MIND MAP CONTENT WRAPPER WITH SCALING -->
+    <div id="mindmapContent" class="relative z-10 w-full flex flex-col items-center transition-transform duration-200 origin-top">
 
       <!-- CENTRAL HUB NODE -->
-      <div id="node-center" class="mm-node bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 p-5 rounded-2xl border-2 border-cyan-400 shadow-2xl shadow-cyan-500/30 text-center w-84 mb-12">
-        <div class="inline-block px-2.5 py-0.5 rounded-full bg-black/30 text-cyan-200 text-[10px] font-black uppercase tracking-wider mb-1">DAA Syllabus Architecture</div>
-        <h2 class="text-lg font-black text-white leading-tight">Master Mind Map (CS3212 / CS3205)</h2>
-        <p class="text-[11px] text-cyan-100 mt-1">6 Units • Syllabus Subtopics • Exact & Predictable Questions</p>
-        <div class="mt-2 text-[10px] text-cyan-200/90 bg-black/20 rounded py-0.5 px-2">Click Unit ⟹ Click Subtopic ⟹ Click Question for Full Study Blueprint</div>
+      <div id="node-center" class="mm-node bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 px-6 py-4 rounded-2xl border-2 border-cyan-400 shadow-2xl shadow-cyan-500/30 text-center w-full max-w-md mb-8">
+        <div class="inline-block px-2.5 py-0.5 rounded-full bg-black/30 text-cyan-200 text-[10px] font-black uppercase tracking-wider mb-1">Central Architecture Hub</div>
+        <h2 class="text-base md:text-lg font-black text-white leading-tight">DAA Master Architecture (CS3212 / CS3205)</h2>
+        <p class="text-[11px] text-cyan-100 mt-0.5">6 Units • 21 Syllabus Subtopics • 43 Exam Question Blueprints</p>
+        <div class="mt-2 text-[10px] text-cyan-200/90 bg-black/20 rounded py-0.5 px-2">Click any Unit/Topic to expand • Click Question to open Split-Screen Study Sheet</div>
       </div>
 
-      <!-- RADIAL 2-COLUMN UNITS CONTAINER -->
-      <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
-
-        <!-- LEFT COLUMN: UNITS I, II, III -->
-        <div class="space-y-8 flex flex-col" id="leftUnitsCol">
-          <!-- UNITS 1, 2, 3 RENDERED HERE -->
-        </div>
-
-        <!-- RIGHT COLUMN: UNITS IV, V, VI -->
-        <div class="space-y-8 flex flex-col" id="rightUnitsCol">
-          <!-- UNITS 4, 5, 6 RENDERED HERE -->
-        </div>
-
+      <!-- DYNAMIC RESPONSIVE MULTI-COLUMN UNITS GRID -->
+      <!-- Fluid grid: 1 column on mobile, 2 columns on tablets/laptops, 3 columns on wide screens -->
+      <div id="unitsDynamicGrid" class="w-full grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6 transition-all duration-300 items-start">
+        <!-- Units injected dynamically by renderMindMap() -->
       </div>
 
     </div>
 
   </div>
 
-  <!-- SLIDE-IN DETAIL STUDY DRAWER -->
-  <div id="detailDrawer" class="drawer-closed fixed top-0 right-0 h-full w-full max-w-xl bg-slate-900/95 backdrop-blur-xl border-l border-slate-700 shadow-2xl z-50 flex flex-col">
+  <!-- DYNAMIC SPLIT-SCREEN STUDY DRAWER -->
+  <div id="detailDrawer" class="drawer-closed fixed top-0 right-0 h-full bg-slate-900/98 backdrop-blur-2xl border-l border-slate-700 shadow-2xl z-50 flex flex-col">
     <!-- Drawer Header -->
-    <div class="p-5 border-b border-slate-800 flex items-start justify-between bg-slate-950/70">
-      <div>
+    <div class="p-4 border-b border-slate-800 flex items-start justify-between bg-slate-950/80">
+      <div class="pr-3">
         <div class="flex items-center gap-2 mb-1">
           <span id="drawerBadge" class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-rose-500/20 text-rose-300 border border-rose-500/30">🔥 Actual Question</span>
           <span id="drawerExamTag" class="text-xs font-mono text-cyan-400 font-bold">Paper 2 Q1(a)</span>
         </div>
-        <h3 id="drawerTitle" class="text-base font-black text-white leading-snug">Topic Title</h3>
+        <h3 id="drawerTitle" class="text-sm md:text-base font-black text-white leading-snug">Topic Title</h3>
       </div>
-      <button onclick="closeDrawer()" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition">
+      <button onclick="closeDrawer()" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition" title="Close Split View">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
 
     <!-- Drawer Content Body -->
-    <div id="drawerBody" class="flex-1 overflow-y-auto p-5 space-y-4">
+    <div id="drawerBody" class="flex-1 overflow-y-auto p-4 md:p-5 space-y-4">
       <!-- Dynamic content inserted by openDrawer() -->
     </div>
   </div>
@@ -1394,50 +1402,46 @@
   }
 ];
 
-    // Render Mind Map Units & Subtopics & Question Types
+    // Render Mind Map Units & Subtopics & Question Types into Dynamic Grid
     function renderMindMap() {
-      const leftCol = document.getElementById('leftUnitsCol');
-      const rightCol = document.getElementById('rightUnitsCol');
-      leftCol.innerHTML = '';
-      rightCol.innerHTML = '';
+      const grid = document.getElementById('unitsDynamicGrid');
+      grid.innerHTML = '';
 
-      fullMindMapData.forEach((unit, uIdx) => {
-        const targetCol = uIdx < 3 ? leftCol : rightCol;
-
+      fullMindMapData.forEach((unit) => {
         const unitCard = document.createElement('div');
-        unitCard.className = 'w-full';
+        unitCard.className = 'w-full flex flex-col';
         unitCard.innerHTML = `
           <!-- LEVEL 1: UNIT NODE (FROM SYLLABUS) -->
-          <div id="node-${unit.unitId}" class="mm-node bg-slate-900 border-2 border-${unit.colorClass}-500/60 p-4 rounded-xl flex items-center justify-between gap-3 shadow-lg"
+          <div id="node-${unit.unitId}" class="mm-node bg-slate-900 border-2 border-${unit.colorClass}-500/60 p-3.5 rounded-xl flex items-center justify-between gap-3 shadow-lg"
                onclick="toggleUnit('${unit.unitId}')">
             <div class="flex items-center gap-3">
-              <span class="w-9 h-9 rounded-lg bg-${unit.colorClass}-500/20 text-${unit.colorClass}-300 font-black flex items-center justify-center text-sm border border-${unit.colorClass}-500/40">${unit.num}</span>
+              <span class="w-8 h-8 rounded-lg bg-${unit.colorClass}-500/20 text-${unit.colorClass}-300 font-black flex items-center justify-center text-xs border border-${unit.colorClass}-500/40">${unit.num}</span>
               <div>
                 <div class="text-[10px] font-bold text-${unit.colorClass}-400 uppercase tracking-wide">Unit ${unit.num} • ${unit.hours}</div>
-                <h3 class="text-sm font-bold text-white">${unit.name}</h3>
+                <h3 class="text-xs md:text-sm font-bold text-white">${unit.name}</h3>
               </div>
             </div>
-            <span id="badge-${unit.unitId}" class="px-2 py-0.5 rounded bg-slate-800 text-${unit.colorClass}-400 text-xs font-mono font-bold border border-slate-700">[-] ${unit.topics.length} Subtopics</span>
+            <span id="badge-${unit.unitId}" class="px-2 py-0.5 rounded bg-slate-800 text-${unit.colorClass}-400 text-[11px] font-mono font-bold border border-slate-700 whitespace-nowrap">[-] ${unit.topics.length} Subtopics</span>
           </div>
 
           <!-- LEVEL 2: SYLLABUS SUBTOPICS BRANCHES -->
-          <div id="topics-${unit.unitId}" class="mt-3 space-y-3 pl-5 border-l-2 border-${unit.colorClass}-500/30 ml-4">
+          <div id="topics-${unit.unitId}" class="mt-2.5 space-y-2.5 pl-3 border-l-2 border-${unit.colorClass}-500/30 ml-3">
             ${unit.topics.map(topic => `
               <div class="w-full">
                 <!-- SUBTOPIC NODE -->
-                <div id="node-${topic.topicId}" class="mm-node bg-slate-900/90 border border-slate-700/80 hover:border-${unit.colorClass}-400 p-3 rounded-lg text-xs flex items-center justify-between gap-2"
+                <div id="node-${topic.topicId}" class="mm-node bg-slate-900/90 border border-slate-700/80 hover:border-${unit.colorClass}-400 p-2.5 rounded-lg text-xs flex items-center justify-between gap-2"
                      onclick="toggleTopic('${topic.topicId}')">
                   <div class="flex-1 pr-2">
-                    <span class="font-bold text-slate-100 block mb-0.5">${topic.name}</span>
+                    <span class="font-bold text-slate-100 block text-xs leading-snug">${topic.name}</span>
                     <span class="text-[10px] text-slate-400 block line-clamp-1 italic">${topic.syllabusRef}</span>
                   </div>
-                  <span id="badge-${topic.topicId}" class="px-2 py-0.5 rounded bg-slate-800 text-cyan-300 text-[11px] font-mono border border-slate-700 whitespace-nowrap">
+                  <span id="badge-${topic.topicId}" class="px-1.5 py-0.5 rounded bg-slate-800 text-cyan-300 text-[10px] font-mono border border-slate-700 whitespace-nowrap">
                     [-] ${topic.questions.length} Questions
                   </span>
                 </div>
 
-                <!-- LEVEL 3: QUESTION TYPES THAT CAME FROM THIS TOPIC -->
-                <div id="questions-${topic.topicId}" class="mt-2 space-y-2 pl-4 border-l-2 border-slate-700/60 ml-3">
+                <!-- LEVEL 3: QUESTION TYPES THAT CAME FROM THIS TOPIC (DYNAMIC RESPONSIVE 2-COL SUBGRID) -->
+                <div id="questions-${topic.topicId}" class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 pl-2.5 border-l-2 border-slate-700/60 ml-2">
                   ${topic.questions.map(q => {
                     let badgeStyle = 'bg-rose-500/20 text-rose-300 border border-rose-500/30';
                     let dotStyle = 'bg-rose-500 animate-pulse';
@@ -1450,18 +1454,18 @@
                     }
 
                     return `
-                      <div id="qnode-${q.qId}" class="mm-node bg-slate-950/85 border border-slate-800 hover:border-cyan-400 p-2.5 rounded-lg text-xs shadow-sm transition"
+                      <div id="qnode-${q.qId}" class="mm-node bg-slate-950/85 border border-slate-800 hover:border-cyan-400 p-2 rounded-lg text-xs shadow-sm transition flex flex-col justify-between"
                            onclick="openDrawer('${q.qId}')">
-                        <div class="flex items-center justify-between gap-2 mb-1">
-                          <span class="font-bold text-cyan-300 flex items-center gap-1.5">
-                            <span class="w-1.5 h-1.5 rounded-full ${dotStyle}"></span>
-                            ${q.title}
-                          </span>
-                          <span class="px-1.5 py-0.5 rounded ${badgeStyle} text-[10px] font-bold whitespace-nowrap">
-                            ${q.examTag}
+                        <div class="flex items-start justify-between gap-1 mb-1">
+                          <span class="font-bold text-cyan-300 text-[11px] leading-tight flex items-start gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full ${dotStyle} mt-1 flex-shrink-0"></span>
+                            <span>${q.title}</span>
                           </span>
                         </div>
-                        <div class="text-[11px] text-slate-300 font-mono">${q.preview}</div>
+                        <div class="flex items-center justify-between gap-1 mt-1">
+                          <span class="text-[10px] text-slate-400 font-mono truncate max-w-[130px]">${q.preview}</span>
+                          <span class="px-1 py-0.2 rounded ${badgeStyle} text-[9px] font-bold whitespace-nowrap">${q.badgeType === 'danger' ? '🔥 Actual' : (q.badgeType === 'predictable' ? '🔮 Forecast' : '⭐ High Yield')}</span>
+                        </div>
                       </div>
                     `;
                   }).join('')}
@@ -1470,7 +1474,7 @@
             `).join('')}
           </div>
         `;
-        targetCol.appendChild(unitCard);
+        grid.appendChild(unitCard);
       });
 
       setTimeout(drawConnectors, 50);
@@ -1499,7 +1503,7 @@
       if (!container) return;
 
       if (container.style.display === 'none') {
-        container.style.display = 'block';
+        container.style.display = 'grid';
         if (badge) badge.textContent = badge.textContent.replace('[+]', '[-]');
       } else {
         container.style.display = 'none';
@@ -1518,7 +1522,7 @@
       });
     });
 
-    // Open Study Blueprint Drawer
+    // Open Study Blueprint Drawer with Dynamic Split Screen
     function openDrawer(qId) {
       const q = questionLookup[qId];
       if (!q) return;
@@ -1539,14 +1543,14 @@
 
       const content = `
         <!-- EXACT QUESTION STATEMENT -->
-        <div class="p-4 bg-blue-500/10 border-l-4 border-blue-400 rounded-r-lg text-xs">
+        <div class="p-3.5 bg-blue-500/10 border-l-4 border-blue-400 rounded-r-lg text-xs">
           <div class="flex items-center justify-between mb-1">
             <span class="font-bold text-blue-300 flex items-center gap-1.5">
               📝 Exact Exam Question Statement:
             </span>
             <span class="text-[10px] text-blue-400 font-mono uppercase tracking-wider">${q.examTag}</span>
           </div>
-          <p class="text-slate-100 font-medium whitespace-pre-line leading-relaxed italic bg-slate-950/60 p-2.5 rounded border border-blue-900/30">
+          <p class="text-slate-100 font-medium whitespace-pre-line leading-relaxed italic bg-slate-950/70 p-2.5 rounded border border-blue-900/40">
 "${q.exactQuestion}"
           </p>
         </div>
@@ -1595,14 +1599,18 @@
 
       document.getElementById('drawerBody').innerHTML = content;
       document.getElementById('detailDrawer').classList.remove('drawer-closed');
+      document.getElementById('canvasContainer').classList.add('drawer-active');
+      setTimeout(drawConnectors, 310);
     }
 
     function closeDrawer() {
       document.getElementById('detailDrawer').classList.add('drawer-closed');
+      document.getElementById('canvasContainer').classList.remove('drawer-active');
       document.querySelectorAll('.mm-node').forEach(n => n.classList.remove('active-selected'));
+      setTimeout(drawConnectors, 310);
     }
 
-    // Dynamic Bezier connector curves
+    // Dynamic Bezier connector curves linking Center to Units
     function drawConnectors() {
       const svg = document.getElementById('svgConnectors');
       const canvas = document.getElementById('canvasContainer');
@@ -1621,15 +1629,28 @@
         if (!uNode) return;
         const uRect = uNode.getBoundingClientRect();
         const ux = (uRect.left + uRect.right) / 2 - canvasRect.left + canvas.scrollLeft;
-        const uy = (uRect.top + uRect.bottom) / 2 - canvasRect.top + canvas.scrollTop;
+        const uy = uRect.top - canvasRect.top + canvas.scrollTop;
 
         const midY = (cy + uy) / 2;
         const d = `M ${cx} ${cy} C ${cx} ${midY}, ${ux} ${midY}, ${ux} ${uy}`;
-        paths += `<path d="${d}" stroke="${unit.color}" stroke-width="2.2" stroke-opacity="0.6" class="branch-path" />`;
+        paths += `<path d="${d}" stroke="${unit.color}" stroke-width="2.2" stroke-opacity="0.55" class="branch-path" />`;
       });
 
       svg.innerHTML = paths;
     }
+
+    // Zoom Management
+    let currentZoom = 1.0;
+    function applyZoom(z) {
+      currentZoom = Math.max(0.5, Math.min(1.4, z));
+      document.getElementById('mindmapContent').style.transform = `scale(${currentZoom})`;
+      document.getElementById('zoomLabel').textContent = Math.round(currentZoom * 100) + '%';
+      setTimeout(drawConnectors, 220);
+    }
+
+    document.getElementById('btnZoomIn').addEventListener('click', () => applyZoom(currentZoom + 0.1));
+    document.getElementById('btnZoomOut').addEventListener('click', () => applyZoom(currentZoom - 0.1));
+    document.getElementById('btnZoomFit').addEventListener('click', () => applyZoom(1.0));
 
     // Button Controls
     document.getElementById('btnExpandAllMM').addEventListener('click', () => {
@@ -1642,7 +1663,7 @@
         u.topics.forEach(t => {
           const qBox = document.getElementById('questions-' + t.topicId);
           const qBadge = document.getElementById('badge-' + t.topicId);
-          if (qBox) qBox.style.display = 'block';
+          if (qBox) qBox.style.display = 'grid';
           if (qBadge) qBadge.textContent = qBadge.textContent.replace('[+]', '[-]');
         });
       });
@@ -1678,17 +1699,13 @@
       setTimeout(drawConnectors, 50);
     });
 
-    document.getElementById('btnCenterView').addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
     // Real-Time Search Filter
     document.getElementById('mmSearch').addEventListener('input', (e) => {
       const q = e.target.value.toLowerCase().trim();
       if (!q) {
-        document.querySelectorAll('[id^="qnode-"]').forEach(el => el.style.display = 'block');
+        document.querySelectorAll('[id^="qnode-"]').forEach(el => el.style.display = 'flex');
         document.querySelectorAll('[id^="node-t"]').forEach(el => el.style.display = 'flex');
-        document.querySelectorAll('[id^="questions-"]').forEach(el => el.style.display = 'block');
+        document.querySelectorAll('[id^="questions-"]').forEach(el => el.style.display = 'grid');
         document.querySelectorAll('[id^="topics-"]').forEach(el => el.style.display = 'block');
         setTimeout(drawConnectors, 50);
         return;
@@ -1705,14 +1722,14 @@
                           question.exactQuestion.toLowerCase().includes(q) ||
                           question.hinglish.toLowerCase().includes(q);
             const qEl = document.getElementById('qnode-' + question.qId);
-            if (qEl) qEl.style.display = match || topicHasMatch ? 'block' : 'none';
+            if (qEl) qEl.style.display = match || topicHasMatch ? 'flex' : 'none';
             if (match) topicHasMatch = true;
           });
 
           const tEl = document.getElementById('node-' + t.topicId);
           const qBox = document.getElementById('questions-' + t.topicId);
           if (tEl) tEl.style.display = topicHasMatch ? 'flex' : 'none';
-          if (qBox) qBox.style.display = topicHasMatch ? 'block' : 'none';
+          if (qBox) qBox.style.display = topicHasMatch ? 'grid' : 'none';
 
           if (topicHasMatch) unitHasMatch = true;
         });
