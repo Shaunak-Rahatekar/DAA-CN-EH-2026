@@ -77,14 +77,14 @@
         <h1 class="text-lg md:text-xl font-black text-white tracking-tight flex items-center gap-2">
           DAA Syllabus & Exam Questions Architecture <span class="text-xs font-normal text-slate-400">• CS3212 / CS3205</span>
         </h1>
-        <p class="text-[11px] text-slate-400">Unit (Syllabus) ⟹ Subtopic (Syllabus) ⟹ Exam Question Types that Came in Paper • Click to unfold layers & view study blueprints</p>
+        <p class="text-[11px] text-slate-400">Unit (Syllabus) ⟹ Subtopic (Syllabus) ⟹ Exact Exam Questions & Predictable Questions • Click to study</p>
       </div>
     </div>
 
     <!-- Controls -->
     <div class="flex flex-wrap items-center gap-2">
       <div class="relative">
-        <input type="text" id="mmSearch" placeholder="Search syllabus, question types, Catalan, Huffman..." 
+        <input type="text" id="mmSearch" placeholder="Search exact question, predictable, Catalan, Huffman..." 
                class="bg-slate-800 text-slate-200 text-xs rounded-lg px-3 py-2 pl-8 border border-slate-700 focus:outline-none focus:border-cyan-400 w-60 md:w-72" />
         <svg class="w-4 h-4 text-slate-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
@@ -132,11 +132,11 @@
     <div class="relative z-10 max-w-6xl mx-auto flex flex-col items-center">
 
       <!-- CENTRAL HUB NODE -->
-      <div id="node-center" class="mm-node bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 p-5 rounded-2xl border-2 border-cyan-400 shadow-2xl shadow-cyan-500/30 text-center w-80 mb-12">
+      <div id="node-center" class="mm-node bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 p-5 rounded-2xl border-2 border-cyan-400 shadow-2xl shadow-cyan-500/30 text-center w-84 mb-12">
         <div class="inline-block px-2.5 py-0.5 rounded-full bg-black/30 text-cyan-200 text-[10px] font-black uppercase tracking-wider mb-1">DAA Syllabus Architecture</div>
         <h2 class="text-lg font-black text-white leading-tight">Master Mind Map (CS3212 / CS3205)</h2>
-        <p class="text-[11px] text-cyan-100 mt-1">6 Units • Syllabus Subtopics • Exam Question Types</p>
-        <div class="mt-2 text-[10px] text-cyan-200/90 bg-black/20 rounded py-0.5 px-2">Click Unit ⟹ Click Subtopic ⟹ Click Question Type for Study Sheet</div>
+        <p class="text-[11px] text-cyan-100 mt-1">6 Units • Syllabus Subtopics • Exact & Predictable Questions</p>
+        <div class="mt-2 text-[10px] text-cyan-200/90 bg-black/20 rounded py-0.5 px-2">Click Unit ⟹ Click Subtopic ⟹ Click Question for Full Study Blueprint</div>
       </div>
 
       <!-- RADIAL 2-COLUMN UNITS CONTAINER -->
@@ -164,7 +164,7 @@
     <div class="p-5 border-b border-slate-800 flex items-start justify-between bg-slate-950/70">
       <div>
         <div class="flex items-center gap-2 mb-1">
-          <span id="drawerBadge" class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-rose-500/20 text-rose-300 border border-rose-500/30">🔥 Guaranteed Question</span>
+          <span id="drawerBadge" class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-rose-500/20 text-rose-300 border border-rose-500/30">🔥 Actual Question</span>
           <span id="drawerExamTag" class="text-xs font-mono text-cyan-400 font-bold">Paper 2 Q1(a)</span>
         </div>
         <h3 id="drawerTitle" class="text-base font-black text-white leading-snug">Topic Title</h3>
@@ -199,9 +199,10 @@
           {
             "qId": "q1-1-1",
             "title": "Type 1: Non-Polynomial & Square-Root Recurrences",
-            "examTag": "🔥 Paper 2 Q1(a) [4 Marks]",
+            "examTag": "🔥 Actual Paper 2 Q1(a) [4 Marks]",
             "badgeType": "danger",
-            "preview": "T(n) = T(√(n)) + 1 ⟹ O(log log n)",
+            "exactQuestion": "For the following recurrence give best possible asymptotic upper bound on T(n) as a function of n. Express your answer using Big Oh asymptotic notation:\n1. T(n) = T(√n) + 1 where √n denotes square root of n.",
+            "preview": "T(n) = T(√(n)) + 1 ⟹ O(log log n) via n = 2ᵐ",
             "hinglish": "Agar recurrence me square root √(n) ya non-polynomial subproblem dikhe, toh ghabraao mat! Domain variable substitution karo: n = 2^m (yani m = log₂ n). Isse recurrence seedha standard binary search ban jata hai: S(m) = S(m/2) + 1. S(m) ka answer O(log m) aata hai, aur m = log₂ n wapas rakhne par final answer O(log log n) aa jata hai!",
             "academic": "Non-polynomial recurrence transformations using domain substitution. For T(n) = T(√n) + 1, substituting n = 2^m yields S(m) = T(2^m) = T(2^(m/2)) + 1 = S(m/2) + 1. Applying Master Theorem Case 2 on S(m) yields S(m) = Θ(log m) = Θ(log log n).",
             "math": [
@@ -222,9 +223,10 @@
           {
             "qId": "q1-1-2",
             "title": "Type 2: Master's Theorem Watershed Comparisons",
-            "examTag": "🔥 Paper 2 Q1(a) & Paper 1 Q1 [4 Marks]",
+            "examTag": "🔥 Actual Paper 2 Q1(a) & Paper 1 Q1 [4 Marks]",
             "badgeType": "danger",
-            "preview": "T(n) = 3T(n/2) + n ⟹ Θ(n^(log₂ 3)) ≈ O(n^1.585)",
+            "exactQuestion": "For the following recurrence give best possible asymptotic upper bound on T(n) as a function of n. Express your answer using Big Oh asymptotic notation:\n2. T(n) = 3 T(n/2) + n.",
+            "preview": "T(n) = 3T(n/2) + n ⟹ Watershed n^(log₂ 3) ≈ n^1.585 ⟹ Θ(n^1.585)",
             "hinglish": "Divide and conquer recurrence T(n) = a T(n/b) + f(n) me hamesha 'Watershed Function' n^(log_b a) ko f(n) se compare karo. Agar leaves ka work f(n) se polynomially bada hai (Case 1), toh answer seedha Θ(n^(log_b a)) hoga!",
             "academic": "Standard Master Method for divide-and-conquer recurrences T(n) = a T(n/b) + f(n). When a = 3, b = 2, f(n) = n: Watershed n^(log₂ 3) ≈ n^1.585. Since f(n) = O(n^(log₂ 3 - ε)) for ε ≈ 0.585, Case 1 applies, yielding Θ(n^(log₂ 3)).",
             "math": [
@@ -243,9 +245,34 @@
           },
           {
             "qId": "q1-1-3",
-            "title": "Type 3: Formal Asymptotic Notations & Limit Proofs",
+            "title": "Type 3: Predictable Recurrence with Log Factor",
+            "examTag": "🔮 Highly Predictable for Tomorrow [5 Marks]",
+            "badgeType": "predictable",
+            "exactQuestion": "Solve the recurrence T(n) = 2 T(√n) + log n using domain substitution and asymptotic analysis.",
+            "preview": "T(n) = 2T(√n) + log n ⟹ S(m) = 2S(m/2) + m ⟹ O(log n · log log n)",
+            "hinglish": "Agar recurrence me √n ke saath log n ho: Substitute n = 2^m. S(m) = T(2^m) = 2 T(2^(m/2)) + m = 2 S(m/2) + m. Yeh standard Merge Sort recurrence ban gaya! Master Theorem Case 2 se S(m) = Θ(m log m) aayega. Ab m = log₂ n wapas rakho: Answer = Θ(log n · log log n)!",
+            "academic": "Advanced domain substitution: Let n = 2^m, m = log₂ n. T(2^m) = 2 T(2^(m/2)) + m. Let S(m) = T(2^m). Then S(m) = 2 S(m/2) + m. Here a = 2, b = 2, f(m) = m = m^(log₂ 2). By Master Theorem Case 2, S(m) = Θ(m log m). Substituting back m = log₂ n yields T(n) = Θ(log n · log log n).",
+            "math": [
+              "• Recurrence: T(n) = 2 T(√(n)) + log n",
+              "• Let n = 2ᵐ  ⟹  S(m) = 2 S(m/2) + m",
+              "• Watershed: a = 2, b = 2  ⟹  m^(log₂ 2) = m¹ = f(m)",
+              "• Master Case 2: S(m) = Θ(m log m)",
+              "• Result: T(n) = Θ(log n · log log n)"
+            ],
+            "table": {
+              "trigger": "Subproblem square root with logarithmic external work",
+              "paradigm": "Domain Variable Substitution (Extended Master Case 2)",
+              "state": "n = 2ᵐ, S(m) = T(2ᵐ), m = log₂ n",
+              "rubric": "1. Substitute n = 2ᵐ.<br>2. Rewrite as S(m) = 2S(m/2) + m.<br>3. Apply Master Theorem Case 2 to get S(m) = Θ(m log m).<br>4. Back-substitute m = log₂ n to conclude Θ(log n · log log n)."
+            },
+            "clrs": "CLRS 3rd Ed. Chapter 4, Section 4.5, Example 2."
+          },
+          {
+            "qId": "q1-1-4",
+            "title": "Type 4: Formal Asymptotic Definitions & Limit Proofs",
             "examTag": "⭐ High Yield (Theory)",
             "badgeType": "warning",
+            "exactQuestion": "Define asymptotic notations Big-Oh (O), Big-Omega (Ω), and Theta (Θ) formally. Prove that 5n² - 3n + 8 = Θ(n²) using definition constants c₁, c₂ and n₀.",
             "preview": "Formal definitions of O, o, Ω, ω, Θ using c and n₀",
             "hinglish": "Big-O ceiling (upper bound) hai, Big-Omega floor (lower bound) hai, aur Theta tight sandwich hai. Small-o aur small-omega strict bounds hain (limit 0 ya infinity jati hai). Exam me formal constants (c, n₀) likhna zaroori hai!",
             "academic": "Formal asymptotic definitions: T(n) = O(g(n)) iff ∃ c > 0, n₀ ≥ 0 such that ∀ n ≥ n₀, 0 ≤ T(n) ≤ c·g(n). T(n) = Ω(g(n)) iff ∃ c > 0, n₀ ≥ 0 such that ∀ n ≥ n₀, 0 ≤ c·g(n) ≤ T(n). Tight bound Θ(g(n)) holds iff T(n) = O(g(n)) and T(n) = Ω(g(n)).",
@@ -273,8 +300,9 @@
           {
             "qId": "q1-2-1",
             "title": "Type 1: Decision Tree Ω(n log n) Lower Bound for Sorting",
-            "examTag": "🔥 Paper 1 Q1(b) & Theory Core [6 Marks]",
+            "examTag": "🔥 Actual Paper 1 Q1(b) [6 Marks]",
             "badgeType": "danger",
+            "exactQuestion": "Prove that any comparison-based sorting algorithm requires at least Ω(n log n) comparisons in the worst case using an adversary decision tree model.",
             "preview": "h ≥ log₂(n!) ⟹ h = Ω(n log n)",
             "hinglish": "Koi bhi comparison-based sorting algorithm n elements ko O(n) me sort nahi kar sakti! Kyunki n elements ke n! possible permutations hote hain. Decision tree ke leaves L ≥ n! hone chahiye, aur binary tree ki height h ke liye 2^h ≥ L ≥ n! hota hai. Stirling's approximation se h ≥ Ω(n log n) prove hota hai!",
             "academic": "In an adversary decision tree model for comparison sorting, internal nodes represent pairwise comparisons a_i : a_j and leaves represent sorted permutations. With n distinct elements, there are n! distinct permutations, requiring L ≥ n! leaves. A binary tree of height h has at most 2^h leaves: 2^h ≥ L ≥ n! ⟹ h ≥ log₂(n!). By Stirling's approximation, log₂(n!) = Ω(n log n).",
@@ -298,6 +326,7 @@
             "title": "Type 2: Adversary Lower Bound for Min-Max & Selection",
             "examTag": "⭐ High Yield [5 Marks]",
             "badgeType": "warning",
+            "exactQuestion": "Explain the adversary argument to show that finding both minimum and maximum of n elements requires at least ⌈3n/2⌉ - 2 comparisons.",
             "preview": "Finding Min & Max simultaneously requires exactly ⌈3n/2⌉ - 2 comparisons",
             "hinglish": "Agar ek saath min aur max dono dhundna hai, toh alag-alag karne par 2n comparisons lagenge. Lekin pairwise compare karke, winners ko max ke candidate aur losers ko min ke candidate banao! Isse total comparisons sirf 3n/2 ho jate hain.",
             "academic": "Adversary argument tracking item state partitions. For simultaneous minimum and maximum, comparing elements in pairs reduces candidates: winner enters max-candidate set, loser enters min-candidate set. Total comparisons: 1 comparison per pair (n/2), plus (n/2 - 1) for max, plus (n/2 - 1) for min, giving exactly ⌈3n/2⌉ - 2 comparisons.",
@@ -325,8 +354,9 @@
           {
             "qId": "q1-3-1",
             "title": "Type 1: Loop Invariant Proof Framework",
-            "examTag": "🔥 Paper 1 Q2 & Theory Core [5 Marks]",
+            "examTag": "🔥 Actual Paper 1 Q2 [5 Marks]",
             "badgeType": "danger",
+            "exactQuestion": "What is a loop invariant? State the three necessary properties required to prove the correctness of an algorithm using loop invariants. Demonstrate with Insertion Sort.",
             "preview": "Initialization ⟹ Maintenance ⟹ Termination",
             "hinglish": "Loop Invariant mathematical induction jaisa hota hai: 1) Initialization: Loop shuru hone se pehle invariant sach hona chahiye (Base case). 2) Maintenance: Agar iteration se pehle sach hai, toh iteration ke baad bhi sach rahega (Inductive step). 3) Termination: Loop khatam hone par invariant algorithm ki final correctness prove karega!",
             "academic": "A loop invariant is a formal predicate that holds true before and after each iteration of a loop. Correctness proof requires establishing: 1. Initialization: Invariant is true prior to the first iteration. 2. Maintenance: If it is true before an iteration, it remains true before the next iteration. 3. Termination: When the loop terminates, the invariant provides a useful property demonstrating algorithm correctness.",
@@ -356,6 +386,7 @@
             "title": "Type 1: Topological Sort & Cycle Detection in DAGs",
             "examTag": "⭐ High Yield [5 Marks]",
             "badgeType": "warning",
+            "exactQuestion": "Give an efficient algorithm for topological sorting of a Directed Acyclic Graph (DAG). Prove that a directed graph G is a DAG if and only if a depth-first search of G yields no back edges.",
             "preview": "DFS Finish Times (Reverse post-order) or Kahn's In-Degree BFS in O(V + E)",
             "hinglish": "Topological sort DAG me vertices ka linear order hota hai jisme har edge (u, v) ke liye u hamesha v se pehle aata hai. Do tarike hain: 1) DFS Finish Times: Har vertex ko DFS finish time ke decreasing order me list karo (O(V+E)). 2) Kahn's BFS: Zero in-degree wale vertices ko queue me daalo aur edges delete karte jao!",
             "academic": "Topological sorting of a directed acyclic graph (DAG) produces a linear ordering of vertices such that for every directed edge (u, v), u precedes v. Algorithm: 1. Call DFS on G to compute finishing times v.f for each vertex. 2. As each vertex is finished, insert it onto the front of a linked list. Correctness: A directed graph is a DAG iff DFS yields no back edges; if (u, v) ∈ E, then u.f > v.f.",
@@ -378,6 +409,7 @@
             "title": "Type 2: Strassen's Fast Matrix Multiplication",
             "examTag": "⭐ High Yield [6 Marks]",
             "badgeType": "warning",
+            "exactQuestion": "Explain Strassen's algorithm for matrix multiplication. How does it achieve better asymptotic time complexity than the standard algorithm? State the recurrence relation and solve it.",
             "preview": "7 multiplications instead of 8 ⟹ T(n) = 7T(n/2) + O(n²) = O(n^2.81)",
             "hinglish": "Normal matrix multiplication me 8 recursive products lagte hain (O(n³)). Strassen ne 7 intermediate products (P₁ se P₇) introduce kiye. Watershed exponent log₂ 7 ≈ 2.807 hota hai, jisse matrix multiplication O(n^2.81) me ho jata hai!",
             "academic": "Strassen's sub-cubic matrix multiplication: Computes C = A · B of size n × n using 7 recursive multiplications of (n/2) × (n/2) submatrices. Recurrence T(n) = 7T(n/2) + Θ(n²). By Master Theorem Case 1, since f(n) = n² = O(n^(log₂ 7 - ε)), runtime is Θ(n^(log₂ 7)) ≈ O(n^2.807).",
@@ -415,8 +447,9 @@
           {
             "qId": "q2-1-1",
             "title": "Type 1: Finding Median of k Sorted Arrays (Total Size n)",
-            "examTag": "🔥 Paper 2 Q6(a) [7 Marks]",
+            "examTag": "🔥 Actual Paper 2 Q6(a) [7 Marks]",
             "badgeType": "danger",
+            "exactQuestion": "You are given k sorted arrays A₁, A₂, ..., A_k of integers. Assume for each i, 1 ≤ i ≤ k, all elements in A_i are distinct, and any pair of arrays do not share any common element. Let n be size of A₁ ∪ A₂ ∪ ... ∪ A_k. Give an efficient algorithm to find median of A₁ ∪ A₂ ∪ ... ∪ A_k with proper Pseudo-code. Analyze its time complexity as a function of n and k. For full credit, time complexity must be asymptotically equal to the best algorithm.",
             "preview": "Binary search on value range [MIN, MAX] in O(k · log(n/k) · log(MAX - MIN))",
             "hinglish": "Agar k sorted arrays diye hain jinki total size n hai, aur pure union ka median nikaalna hai: Saare arrays ko merge mat karo! Seedha answer ki VALUE range [MIN, MAX] par binary search chalao. Har guess value x ke liye har ek array me binary search (upper_bound) karke count karo ki kitne elements ≤ x hain. Total count O(k · log(n/k)) me aayega!",
             "academic": "Optimal selection of median in k sorted arrays A₁, A₂, ..., A_k of total size n. Instead of merging in O(n log k), perform binary search over value range [MIN, MAX]. For a candidate value x, query the number of elements ≤ x across all k arrays using binary search (std::upper_bound) in O(k · log(n/k)). Find x where total rank equals ⌈n/2⌉. Overall complexity: O(k · log(n/k) · log(MAX - MIN)) or O(k · log² n).",
@@ -436,9 +469,33 @@
           },
           {
             "qId": "q2-1-2",
-            "title": "Type 2: Counting Inversions via Modified Merge Sort",
+            "title": "Type 2: Predictable Two Sorted Arrays Median in O(log n)",
+            "examTag": "🔮 Highly Predictable for Tomorrow [6 Marks]",
+            "badgeType": "predictable",
+            "exactQuestion": "Given two sorted arrays A and B, each of length n, design an O(log n) divide and conquer algorithm to find the median of the combined array of 2n elements.",
+            "preview": "Compare medians m₁ and m₂ ⟹ shrink halves ⟹ O(log n) recurrence",
+            "hinglish": "Do equal length n ke sorted arrays A aur B ka median O(log n) me nikaalna: Dono arrays ke medians m₁ aur m₂ compare karo. Agar m₁ == m₂ toh wahi median hai! Agar m₁ < m₂ toh median zaroor A ke right half aur B ke left half me hoga. Har step me problem size aadhi hoti hai: T(n) = T(n/2) + O(1) = O(log n)!",
+            "academic": "Median of two sorted arrays of size n: Compare medians m₁ = A[n/2] and m₂ = B[n/2]. If m₁ == m₂, median is m₁. If m₁ < m₂, the overall median must lie in A[n/2 .. n] or B[1 .. n/2]. If m₁ > m₂, it lies in A[1 .. n/2] or B[n/2 .. n]. Recurrence T(n) = T(n/2) + O(1) yields O(log n) time.",
+            "math": [
+              "• Median Comparison: Let m₁ = median(A), m₂ = median(B)",
+              "• Discard Rule: If m₁ < m₂, discard A[1..n/2] and B[n/2..n]",
+              "• Recurrence: T(n) = T(n/2) + O(1)",
+              "• Complexity: T(n) = O(log n)"
+            ],
+            "table": {
+              "trigger": "Median of two equal-sized sorted arrays in sublinear time",
+              "paradigm": "Divide and Conquer (Median Comparison Reduction)",
+              "state": "Subarrays A[l₁..r₁] and B[l₂..r₂] with length n",
+              "rubric": "1. Find median elements m₁ and m₂ of current subarrays.<br>2. Compare m₁ and m₂.<br>3. Recursively call on appropriate halves of size n/2.<br>4. Base cases n=1 and n=2; prove T(n) = O(log n)."
+            },
+            "clrs": "CLRS 3rd Ed. Chapter 9, Exercise 9.3-8."
+          },
+          {
+            "qId": "q2-1-3",
+            "title": "Type 3: Counting Inversions via Modified Merge Sort",
             "examTag": "⭐ High Yield [6 Marks]",
             "badgeType": "warning",
+            "exactQuestion": "Let A[1..n] be an array of n distinct numbers. If i < j and A[i] > A[j], then the pair (i, j) is called an inversion of A. Give an algorithm that determines the number of inversions in any permutation on n elements in O(n log n) worst-case time.",
             "preview": "Count pairs (i, j) with i < j and A[i] > A[j] in O(n log n)",
             "hinglish": "Inversion count karta hai ki array kitna unsorted hai. Divide and conquer use karo: Left half ke inversions count karo, Right half ke count karo, aur Merge step ke dauran split inversions count karo! Jab bhi right array ka element pick hota hai, left array me bache huye saare elements usse bade hote hain (mid - i + 1 inversions judte hain).",
             "academic": "Inversion counting problem: count pairs (i, j) such that i < j and A[i] > A[j]. By extending Merge Sort, divide array into halves: recursively count inversions in Left and Right subarrays. During Merge step, when element R[j] is smaller than L[i], all remaining elements L[i .. mid] are strictly greater than R[j], contributing exactly (mid - i + 1) split inversions. Total time: O(n log n).",
@@ -457,10 +514,11 @@
             "clrs": "CLRS 3rd Ed. Chapter 2, Problem 2-4 (Inversions)."
           },
           {
-            "qId": "q2-1-3",
-            "title": "Type 3: Deterministic Median-of-Medians Selection in O(n)",
+            "qId": "q2-1-4",
+            "title": "Type 4: Deterministic Median-of-Medians Selection in O(n)",
             "examTag": "⭐ High Yield Core [6 Marks]",
             "badgeType": "warning",
+            "exactQuestion": "Describe the worst-case linear time algorithm (SELECT) to find the k-th smallest element in an array of n numbers. Explain why elements are divided into groups of 5 and show that the recurrence yields O(n).",
             "preview": "Groups of 5 guarantee at least 3n/10 elements eliminated ⟹ T(n) = O(n)",
             "hinglish": "Worst-case linear time selection (k-th smallest element) ke liye: 1) Elements ko 5-5 ke groups me baanto (⌈n/5⌉ groups). 2) Har group ka median nikaalo. 3) In sabhi medians ka median x recursively dhundo. 4) Array ko x ke around partition karo. Groups of 5 guarantee karte hain ki kam se kam 30% elements x se chhote aur 30% bade honge, isliye remaining subproblem size at most 7n/10 hota hai! Recurrence T(n) ≤ T(n/5) + T(7n/10) + O(n) = O(n).",
             "academic": "Deterministic selection in worst-case linear time O(n) (BFPRT algorithm): Divide n elements into groups of 5. Find median of each group in O(1) time. Recursively find median-of-medians x among ⌈n/5⌉ group medians. Partition array around x. At least 3(⌈1/2 ⌈n/5⌉⌉ - 2) ≥ 3n/10 - 6 elements are strictly greater than x (and at least 3n/10 are strictly less). Thus the recursive call on the partition has size at most 7n/10. Recurrence: T(n) ≤ T(n/5) + T(7n/10) + O(n). Since 1/5 + 7/10 = 9/10 < 1, T(n) = O(n).",
@@ -490,6 +548,7 @@
             "title": "Type 1: 2D Closest Pair of Points in O(n log n)",
             "examTag": "⭐ High Yield [8 Marks]",
             "badgeType": "warning",
+            "exactQuestion": "Given a set of n points in a 2D plane, describe an efficient divide and conquer algorithm to find the closest pair of points. Prove why checking at most 7 points in the 2δ strip suffices to guarantee correctness in O(n log n) time.",
             "preview": "δ-strip geometric divide-and-conquer with at most 7-8 checks per point",
             "hinglish": "Points ko x-coordinate se sort karo aur do halves me divide karo. Left aur right me se min distance δ = min(δ_L, δ_R) nikaalo. Ab dividing line ke dono taraf 2δ strip banao. Y-coordinate se sorted strip me har point ko sirf agle 7 points se compare karna padta hai kyunki ek box me geometric packing limit hoti hai! Total time O(n log n).",
             "academic": "Divide and conquer algorithm for 2D closest pair: Sort points by x-coordinate. Split by vertical line L into P_L and P_R. Recursively find δ = min(δ_L, δ_R). Construct strip of width 2δ around line L. Sort strip points by y-coordinate. For each point in strip, only check subsequent points with y-difference < δ. Due to geometric packing, at most 7 points can reside in a δ × 2δ rectangle. Recurrence T(n) = 2T(n/2) + O(n) ⟹ O(n log n).",
@@ -517,8 +576,9 @@
           {
             "qId": "q2-3-1",
             "title": "Type 1: Digital Root & Modular Arithmetic (4444⁴⁴⁴⁴)",
-            "examTag": "🔥 Paper 2 Q2(b)(ii) [5 Marks]",
+            "examTag": "🔥 Actual Paper 2 Q2(b)(ii) [5 Marks]",
             "badgeType": "danger",
+            "exactQuestion": "A digital root of a natural number is defined recursively as follows. If n is less than 10 then root(n)=n. If n>=10 then root(n)=root(m) where m is sum of digits of n (expressed in base 10). Basically, you keep on taking sum of digits until you get a single digit number. For example, root(72518)=root(23)=root(5)=5. Find a digital root of 4444^4444.",
             "preview": "root(n) ≡ n (mod 9) ⟹ 4444⁴⁴⁴⁴ ≡ (-2)⁴⁴⁴⁴ ≡ 7",
             "hinglish": "Digital root ka matlab hai digits ka sum karte raho jab tak single digit na mile. Base 10 me kisi bhi number ka digital root uske n mod 9 ke barabar hota hai (agar mod 9 zero ho toh 9). 4444 ke digits ka sum 16 hota hai, aur 16 mod 9 = 7 ≡ -2 hota hai. (-2)⁴⁴⁴⁴ = (-8)¹⁴⁸¹ · (-2) ≡ (1)¹⁴⁸¹ · (-2) ≡ -2 ≡ 7 (mod 9). Answer 7 hai!",
             "academic": "The digital root of a natural number in base 10 corresponds to its modulo 9 congruence: root(n) = n mod 9 (or 9 if n mod 9 = 0). For 4444⁴⁴⁴⁴: 4444 ≡ 4+4+4+4 = 16 ≡ 7 ≡ -2 (mod 9). Raising to power 4444: 4444 = 3 · 1481 + 1. Thus (-2)⁴⁴⁴⁴ = ((-2)³)¹⁴⁸¹ · (-2)¹ = (-8)¹⁴⁸¹ · (-2) ≡ (1)¹⁴⁸¹ · (-2) ≡ -2 ≡ 7 (mod 9). The digital root is 7.",
@@ -542,6 +602,7 @@
             "title": "Type 2: Fast Modular Exponentiation & Karatsuba",
             "examTag": "⭐ High Yield [5 Marks]",
             "badgeType": "warning",
+            "exactQuestion": "Explain the repeated squaring method for computing a^b mod m in O(log b) time. Formulate Karatsuba's integer multiplication algorithm and derive its recurrence.",
             "preview": "a^b mod m in O(log b) & Karatsuba O(n^1.585)",
             "hinglish": "a^b seedha multiply karne me O(b) time lagta hai. Binary exponentiation se power ko aadha karte jao: Agar b even hai toh a^b = (a^(b/2))², agar odd hai toh a · a^(b-1). Sirf O(log b) multiplications lagti hain!",
             "academic": "Repeated squaring for modular exponentiation computes a^b mod m in O(log b) steps. Karatsuba's algorithm multiplies two n-digit numbers using 3 recursive multiplications instead of 4: xy = 2ⁿ x₁y₁ + 2^(n/2)((x₁+x₀)(y₁+y₀) - x₁y₁ - x₀y₀) + x₀y₀, giving recurrence T(n) = 3T(n/2) + O(n) = O(n^(log₂ 3)) ≈ O(n^1.585).",
@@ -568,8 +629,9 @@
           {
             "qId": "q2-4-1",
             "title": "Type 1: Josephus Problem Recurrence & Binary Bit-Shift",
-            "examTag": "⭐ High Yield [5 Marks]",
+            "examTag": "⭐ Practical 3 Core [5 Marks]",
             "badgeType": "warning",
+            "exactQuestion": "Define the Josephus Problem. Derive recurrence relations for even and odd numbers of people for elimination step k=2. Show how expressing n as 2^m + l yields the closed form J(n) = 2l + 1 and explain its binary cyclic shift interpretation.",
             "preview": "n = 2ᵐ + l ⟹ J(n) = 2l + 1 (Cyclic 1-bit left shift)",
             "hinglish": "Josephus circle me har alternate banda eliminate hota hai (step k=2). Agar total log n = 2^m hain (power of 2), toh hamesha 1st person bachta hai: J(2^m) = 1. Agar n = 2^m + l hai, toh survivor hamesha J(n) = 2l + 1 hota hai! Binary me yeh sirf most significant bit ko cyclic left rotate karne par mil jata hai!",
             "academic": "The Josephus Problem for step k = 2 has the recurrence: J(2n) = 2J(n) - 1, and J(2n+1) = 2J(n) + 1, with base case J(1) = 1. By expressing n as n = 2ᵐ + l (where 2ᵐ is the largest power of 2 ≤ n and 0 ≤ l < 2ᵐ), the solution is closed-form: J(n) = 2l + 1. In binary representation, J(n) is obtained by a 1-bit cyclic left shift of n.",
@@ -597,8 +659,9 @@
           {
             "qId": "q2-5-1",
             "title": "Type 1: Finding Popular Element (≥ n/3): Monte Carlo vs Las Vegas",
-            "examTag": "🔥 Paper 2 Q5 [8 Marks]",
+            "examTag": "🔥 Actual Paper 2 Q5 [8 Marks]",
             "badgeType": "danger",
+            "exactQuestion": "Let A be array of integers. Let n be size of the array. An element a in A is called a popular element if a repeats at least n/3 times in A. Given an array A with the promise that A has at least one popular element, goal is to find a popular element.\n1. Give an efficient Monte-Carlo algorithm for the problem which gives correct answer with probability at least 1 - 3^(-100). What is the time complexity of the algorithm?\n2. Give an efficient Las-Vegas algorithm for the problem. Analyze the expected time complexity of the algorithm.",
             "preview": "Monte Carlo: m ≥ 271 samples for error ≤ 3⁻¹⁰⁰ | Las Vegas: E[T] = O(n)",
             "hinglish": "Popular element array me kam se kam n/3 baar aata hai. 1) Monte Carlo: Random index chuno. Har trial me galat element chunne ki probability ≤ 2/3 hai. Agar m trials me se ek bhi baar popular element mil jaye toh success. Failure probability (2/3)^m ≤ 3^(-100) karne ke liye m ≥ 271 samples lena padta hai! 2) Las Vegas: Random element chuno aur array me count karo (O(n)). Agar count ≥ n/3 toh return karo, warna repeat! Har trial me success probability ≥ 1/3 hai, toh expected trials ≤ 3 honge, aur expected time 3 · O(n) = O(n) hoga!",
             "academic": "A popular element appears with frequency ≥ n/3. 1. Monte Carlo Algorithm: Sample m independent random indices from A. Probability that a single trial misses popular element is ≤ (1 - 1/3) = 2/3. For m independent trials, P(all miss) ≤ (2/3)ᵐ. Setting (2/3)ᵐ ≤ 3⁻¹⁰⁰ yields m · ln(3/2) ≥ 100 · ln 3 ⟹ m ≥ (100 · 1.0986) / 0.4055 ≈ 271. Running time is O(m) = O(1). 2. Las Vegas Algorithm: Pick random element x ∈ A, verify count in O(n). If count ≥ n/3 return x; else repeat. Each iteration has success probability p ≥ 1/3. Expected iterations = 1/p ≤ 3. Total expected runtime: 3 · O(n) = O(n).",
@@ -622,6 +685,7 @@
             "title": "Type 2: Randomized QuickSort Expected Time Proof",
             "examTag": "⭐ High Yield [6 Marks]",
             "badgeType": "warning",
+            "exactQuestion": "Prove that the expected running time of Randomized QuickSort is O(n log n). Define the indicator random variables used and show how linearity of expectation leads to the harmonic sum.",
             "preview": "Expected comparisons E[X] = 2n ln n = Θ(n log n)",
             "hinglish": "Randomized QuickSort me pivot uniformly random chuna jata hai. Indicator random variable X_ij define karo: X_ij = 1 agar i-th smallest aur j-th smallest element aapas me compare hote hain. Probability ki wo compare honge 2/(j - i + 1) hoti hai. Expectation ka sum lene par E[X] = ∑ 2/(j - i + 1) = 2n ln n = Θ(n log n) prove ho jata hai!",
             "academic": "Expected comparison analysis for Randomized QuickSort: Let z_i be the i-th smallest element. Elements z_i and z_j are compared iff either z_i or z_j is chosen as pivot before any element strictly between them in the sorted order. Since pivot selection is uniformly random among j - i + 1 candidates, P(z_i compared with z_j) = 2 / (j - i + 1). Summing over all pairs: E[X] = ∑_{i=1}^{n-1} ∑_{j=i+1}^n 2/(j - i + 1) ≤ 2n ln n = Θ(n log n).",
@@ -659,8 +723,9 @@
           {
             "qId": "q3-1-1",
             "title": "Type 1: Matrix Parenthesization Recurrence, f(7), f(8), & Ω(2ⁿ)",
-            "examTag": "🔥 Paper 2 Q1(b) [6 Marks]",
+            "examTag": "🔥 Actual Paper 2 Q1(b) [6 Marks]",
             "badgeType": "danger",
+            "exactQuestion": "(1) Let f(n) be different number of ways to multiply a chain of matrices containing n matrices of compatible dimensions. E.g. f(3) = 2, f(4) = 5. Give a recurrence relation for f(n).\n(2) Find value of f(7) and f(8) using the recurrence.\n(3) Prove that f(n) is Ω(2^n).",
             "preview": "f(n) = ∑ f(k)f(n-k) = C_(n-1) ⟹ f(7) = 132, f(8) = 429, Ω(2ⁿ)",
             "hinglish": "n matrices ke product ko parenthesize karne ke total kitne tarike hote hain? Recurrence relation hai: f(n) = ∑ f(k) · f(n-k). Yeh Catalan number series hai: f(n) = C_(n-1) = (1/n) · (2n-2 choose n-1). f(7) = C₆ = 132 aur f(8) = C₇ = 429 hota hai! Aur Catalan series asymptotically 4ⁿ / (n^(1.5) √π) hoti hai, jo clearly Ω(2ⁿ) exponential growth prove karti hai!",
             "academic": "Number of ways to parenthesize a chain of n matrices satisfies the Catalan recurrence: f(n) = ∑_{k=1}^{n-1} f(k) · f(n-k) for n ≥ 2, with f(1) = 1. The solution is the (n-1)-th Catalan number: f(n) = C_{n-1} = (1/n) (2n-2 choose n-1). Values: f(7) = C₆ = (1/7)(12 choose 6) = 132; f(8) = C₇ = (1/8)(14 choose 7) = 429. Lower bound proof: f(n) ≥ 2 · f(n-1) for n ≥ 3 ⟹ f(n) = Ω(2ⁿ).",
@@ -684,6 +749,7 @@
             "title": "Type 2: Optimal Matrix Chain Cost DP Table & Traceback",
             "examTag": "⭐ High Yield [7 Marks]",
             "badgeType": "warning",
+            "exactQuestion": "Formulate the dynamic programming solution for the Matrix Chain Multiplication problem. Given dimensions array P = <10, 100, 5, 50, 1>, compute the minimum number of scalar multiplications and give the optimal parenthesization.",
             "preview": "m[i,j] = min_{k} (m[i,k] + m[k+1,j] + p_{i-1}p_k p_j) in O(n³)",
             "hinglish": "Matrices ko multiply karne ka sabse sasta order nikaalna: m[i,j] = Matrix A_i se A_j ko multiply karne ka minimum scalar multiplications cost. Table ko diagonal by diagonal (chain length l = 2 to n) bhara jata hai. Space O(n²) aur Time O(n³) lagta hai!",
             "academic": "Matrix Chain Multiplication DP: Given dimensions p_0, p_1, ..., p_n where matrix A_i has dimension p_{i-1} × p_i. Let m[i, j] be minimum scalar multiplications to compute A_i..j. Recurrence: m[i, j] = 0 if i = j, and min_{i ≤ k < j} {m[i, k] + m[k+1, j] + p_{i-1} p_k p_j} if i < j. Fill table in increasing order of chain length l. Time O(n³), Space O(n²).",
@@ -711,8 +777,9 @@
           {
             "qId": "q3-2-1",
             "title": "Type 1: Probability of Exactly k Heads from n Biased Coins",
-            "examTag": "🔥 Paper 2 Q3(b)(ii) [7 Marks]",
+            "examTag": "🔥 Actual Paper 2 Q3(b)(ii) [7 Marks]",
             "badgeType": "danger",
+            "exactQuestion": "Given integers n and k, and numbers p₁, ..., p_n ∈ [0, 1] (that is 0 <= p_i <= 1 for every i). You want to determine the probability of obtaining exactly k heads when n biased coins are tossed independently at random, where p_i is the probability that the i-th coin comes up heads. Give an efficient algorithm for this task with proper Pseudo code. Give an argument justifying correctness of the algorithm and analyze the time complexity. Assume you can multiply and add two numbers in [0, 1] in O(1) time.",
             "preview": "DP[i][j] = DP[i-1][j]·(1 - p_i) + DP[i-1][j-1]·p_i in O(n · k)",
             "hinglish": "Agar n biased coins hain jinki head aane ki probabilities p₁, p₂, ..., p_n hain, aur exactly k heads ki probability nikaalni hai: DP table banao DP[i][j] = pehle i coins me se exactly j heads aane ki probability. i-th coin do hi kaam kar sakta hai: ya toh tails aayega (prob 1-p_i, aur pichle i-1 me j heads hone chahiye) ya heads aayega (prob p_i, aur pichle i-1 me j-1 heads hone chahiye). Space O(k) me optimize ho jata hai!",
             "academic": "Poisson Binomial distribution DP: Given coin probabilities p₁, ..., p_n ∈ [0, 1], find probability of exactly k heads. Let DP[i][j] be probability of obtaining j heads among first i coins. Recurrence: DP[i][j] = DP[i-1][j] · (1 - p_i) + DP[i-1][j-1] · p_i. Base cases: DP[0][0] = 1, DP[0][j] = 0 for j > 0. Time complexity: O(n · k) steps. Space complexity: O(k) using rolling 1D array.",
@@ -733,8 +800,9 @@
           {
             "qId": "q3-2-2",
             "title": "Type 2: Distinct Directed Paths from s to t of Length ≤ k",
-            "examTag": "🔥 Paper 2 Q6(b) [5 Marks]",
+            "examTag": "🔥 Actual Paper 2 Q6(b) [5 Marks]",
             "badgeType": "danger",
+            "exactQuestion": "You are given a directed graph G(V, E) and vertices s, t in V and a natural number k as input. Give an efficient algorithm to compute number of distinct directed paths from vertex s to vertex t in G which have length at most k. Give proper Pseudocode of the algorithm and analyze its time complexity. For full credit, time complexity must be asymptotically equal to the best algorithm.",
             "preview": "Layered DP: DP[l][v] = ∑ DP[l-1][u] for (u, v) ∈ E in O(k · (|V| + |E|))",
             "hinglish": "Directed graph me s se t tak ke un saare distinct paths ka count nikaalna hai jinki length at most k ho. DP state banao: DP[l][v] = s se vertex v tak exactly l length ke paths ka count. Har step me edges (u, v) ko relax karo: DP[l][v] = sum of DP[l-1][u]. Akhir me length 0 se k tak DP[l][t] ka sum le lo! Total time O(k · (|V| + |E|)) lagta hai.",
             "academic": "Counting paths of bounded length: Let DP[l][v] be the number of distinct directed paths from s to v of length exactly l (0 ≤ l ≤ k). Recurrence: DP[l][v] = ∑_{(u, v) ∈ E} DP[l-1][u]. Base case: DP[0][s] = 1, and DP[0][v] = 0 for all v ≠ s. Total paths of length ≤ k equals ∑_{l=0}^k DP[l][t]. Time complexity: O(k · (|V| + |E|)).",
@@ -763,8 +831,9 @@
           {
             "qId": "q3-3-1",
             "title": "Type 1: Longest Arithmetic Progression Subsequence (LAPS)",
-            "examTag": "🔥 Paper 2 Q3(b)(i) [7 Marks]",
+            "examTag": "🔥 Actual Paper 2 Q3(b)(i) [7 Marks]",
             "badgeType": "danger",
+            "exactQuestion": "Let A be an array of integers containing n distinct integers. Give an efficient algorithm to find a longest length subsequence of A which forms an arithmetic progression. An arithmetic progression is a sequence of numbers a₁, a₂, ..., a_k such that a₂ - a₁ = a₃ - a₂ = ... = a_k - a_{k-1}, e.g. 3, 7, 11, 15 is an arithmetic progression.",
             "preview": "DP[i][j] = length of AP ending at A[i], A[j] in O(n²)",
             "hinglish": "Array me se numbers chun kar sabse lambi Arithmetic Progression banani hai. Array ko sort karo. 2D DP state banao: DP[i][j] = longest AP jo elements A[i] aur A[j] par khatam hoti hai (jisme common difference d = A[j] - A[i] hai). Ek third pointer k dhundo jisse A[i] - A[k] = A[j] - A[i] ho jaye. Yeh two-pointer search se pure DP ko O(n²) time me solve kar deta hai!",
             "academic": "Longest Arithmetic Progression in an array of n distinct integers: Sort array A in O(n log n). Define DP[i][j] as the length of the longest arithmetic progression ending with terms A[i] and A[j] (i < j). For each pair (i, j), we seek index k < i such that A[i] - A[k] = A[j] - A[i] (i.e. 2A[i] = A[k] + A[j]). If such k exists, DP[i][j] = DP[k][i] + 1; else DP[i][j] = 2. Using two pointers across sorted elements, filling the DP table takes O(n²) time and O(n²) space.",
@@ -785,8 +854,9 @@
           {
             "qId": "q3-3-2",
             "title": "Type 2: Minimum Insertions to Form Palindrome (LCS Variant)",
-            "examTag": "🔥 Paper 1 Q4 [6 Marks]",
+            "examTag": "🔥 Actual Paper 1 Q4 [6 Marks]",
             "badgeType": "danger",
+            "exactQuestion": "Given a string of characters, design an efficient algorithm to find the minimum number of character insertions needed to make the string a palindrome. State the recurrence and analyze the time and space complexity.",
             "preview": "Min Insertions = n - LCS(S, reverse(S)) in O(n²)",
             "hinglish": "Kisi string me kam se kam kitne characters insert karein taaki wo Palindrome ban jaye? Seedha formula hai: Minimum Insertions = (Length of string) - (Longest Palindromic Subsequence). Aur LPS kuch aur nahi, string S aur uske Reverse S^R ka LCS hota hai! Bas standard LCS table O(n²) me bharo aur n - LCS answer dedo!",
             "academic": "Minimum insertions to form a palindrome: Given string S of length n, the minimum number of character insertions to make S a palindrome is n - LPS(S), where LPS(S) is the Longest Palindromic Subsequence. LPS(S) equals LCS(S, S^R) where S^R is the reverse of S. The LCS table is computed in O(n²) time and O(n²) space using standard recurrence.",
@@ -803,6 +873,29 @@
               "rubric": "1. State relationship: MinInsertions = n - LPS(S).<br>2. Prove LPS(S) = LCS(S, S^R).<br>3. Formulate standard LCS recurrence.<br>4. State O(n²) time and space complexity with trace-back."
             },
             "clrs": "CLRS 3rd Ed. Chapter 15, Section 15.4 & Paper 1 Q4."
+          },
+          {
+            "qId": "q3-3-3",
+            "title": "Type 3: Predictable 0/1 Knapsack & Coin Change DP",
+            "examTag": "🔮 Highly Predictable for Tomorrow [7 Marks]",
+            "badgeType": "predictable",
+            "exactQuestion": "Given n items with weights w_1..w_n and values v_1..v_n, and a knapsack of capacity W. Formulate the dynamic programming recurrence for the 0/1 Knapsack problem. Give pseudo-code and prove that the time complexity is O(n · W).",
+            "preview": "K[i, w] = max(K[i-1, w], K[i-1, w - w_i] + v_i) in O(n · W)",
+            "hinglish": "0/1 Knapsack me har item ko ya toh pura lo ya chhod do. K[i, w] = pehle i items me se capacity w ke andar maximum profit. Agar current item ka weight w_i > w hai toh exclude karo: K[i-1, w]. Agar w_i ≤ w hai toh max(K[i-1, w], K[i-1, w - w_i] + v_i). Pseudo-polynomial time O(nW) lagta hai!",
+            "academic": "0/1 Knapsack DP formulation: Let K[i, w] denote the maximum value achievable using a subset of the first i items with total weight at most w. Recurrence: K[i, w] = K[i-1, w] if w_i > w, and max( K[i-1, w], K[i-1, w - w_i] + v_i ) if w_i ≤ w. Base cases: K[0, w] = 0 and K[i, 0] = 0. Runtime: O(n · W) pseudo-polynomial time, O(W) space using 1D rolling array.",
+            "math": [
+              "• State: K[i, w] = max profit using items 1..i within weight capacity w",
+              "• Recurrence: K[i, w] = max( K[i-1, w], K[i-1, w - wᵢ] + vᵢ ) for w ≥ wᵢ",
+              "• Base Case: K[0, w] = 0  ∀ w,  K[i, 0] = 0  ∀ i",
+              "• Complexity: O(n · W) pseudo-polynomial time, O(W) space"
+            ],
+            "table": {
+              "trigger": "Discrete resource budget selection, binary item packing",
+              "paradigm": "Dynamic Programming (Prefix Items and Weight Capacity State)",
+              "state": "K[0..n, 0..W] table or rolling 1D array dp[0..W]",
+              "rubric": "1. Define DP table K[i, w] and explain indices.<br>2. Formulate recurrence comparing include vs exclude decisions.<br>3. Provide iterative nested loops pseudocode.<br>4. State O(n · W) runtime and clarify why it is pseudo-polynomial."
+            },
+            "clrs": "CLRS 3rd Ed. Chapter 16, Section 16.2."
           }
         ]
       },
@@ -814,8 +907,9 @@
           {
             "qId": "q3-4-1",
             "title": "Type 1: Largest Independent Set for Trees (Blue Vertices)",
-            "examTag": "🔥 Paper 1 Q5 & Syllabus Core [7 Marks]",
+            "examTag": "🔥 Actual Paper 1 Q5 [7 Marks]",
             "badgeType": "danger",
+            "exactQuestion": "You are given a tree T = (V, E). A subset of vertices S ⊆ V is called independent if no two vertices in S are adjacent. Give an efficient dynamic programming algorithm to find the size of the largest independent set in T. Analyze its time and space complexity.",
             "preview": "Tree DP: I(u) = max(1 + ∑ I(grandchildren), ∑ I(children)) in O(V)",
             "hinglish": "Tree me maximum vertices ko Blue color karna hai taaki koi bhi do adjacent vertices Blue na hon! Rooted tree par DP lagao: Root u ke liye do options hain: 1) Agar u ko include kiya (+1), toh uske direct children ko include nahi kar sakte, sirf grandchildren ko include kar sakte hain. 2) Agar u ko exclude kiya, toh children ka max independent set le lo. Bottom-up post-order traversal se O(V) time me solve hota hai!",
             "academic": "Largest Independent Set on trees: For rooted tree T, let I(u) be the size of the maximum independent set in the subtree rooted at u. Recurrence: I(u) = max( 1 + ∑_{w ∈ grandchildren(u)} I(w), ∑_{v ∈ children(u)} I(v) ). Base case: for a leaf node, I(leaf) = 1. A post-order traversal computes I(u) for all vertices in linear time O(|V|).",
@@ -838,6 +932,7 @@
             "title": "Type 2: Floyd-Warshall All-Pairs Shortest Paths in O(V³)",
             "examTag": "⭐ High Yield [6 Marks]",
             "badgeType": "warning",
+            "exactQuestion": "Explain the Floyd-Warshall algorithm for finding all-pairs shortest paths in a directed graph with negative edge weights. State the recurrence relation and show how negative weight cycles are detected.",
             "preview": "d^(k)[i,j] = min(d^(k-1)[i,j], d^(k-1)[i,k] + d^(k-1)[k,j]) in O(V³)",
             "hinglish": "Graph ke har pair (i, j) ke beech shortest path nikaalna: Intermediate vertices ko 1 se k tak allow karo. d^(k)[i,j] = min(bina vertex k ke path d^(k-1)[i,j], ya vertex k se hokar jane wala path d^(k-1)[i,k] + d^(k-1)[k,j]). Negative cycle tab hoti hai jab kisi diagonal element d[i,i] < 0 ho jaye!",
             "academic": "Floyd-Warshall dynamic programming computes shortest paths between all pairs of vertices in O(|V|³) time. Let d^(k)[i, j] be weight of shortest path from i to j with all intermediate vertices in {1, 2, ..., k}. Recurrence: d^(k)[i, j] = min( d^(k-1)[i, j], d^(k-1)[i, k] + d^(k-1)[k, j] ). Base case: d^(0)[i, j] = w(i, j) if (i, j) ∈ E, 0 if i = j, and ∞ otherwise.",
@@ -860,6 +955,7 @@
             "title": "Type 3: Traveling Salesperson Problem (TSP) Bitmask DP",
             "examTag": "⭐ High Yield [7 Marks]",
             "badgeType": "warning",
+            "exactQuestion": "Formulate the Bellman-Held-Karp dynamic programming algorithm for the Traveling Salesperson Problem (TSP) using bitmasks. Derive its time complexity and compare it with the brute-force O(n!) approach.",
             "preview": "C(S, j) = min_{i ∈ S - {j}} { C(S - {j}, i) + dist(i, j) } in O(n² · 2ⁿ)",
             "hinglish": "TSP me saare n cities ko exactly ek baar visit karke wapas starting city aana hai with min cost. Naive brute force O(n!) leta hai. Dynamic programming me visited cities ko ek Bitmask subset S se represent karte hain: C(S, j) = subset S ki cities ko visit karke city j par khatam hone ka min cost. Held-Karp algorithm se time O(n² · 2^n) ho jata hai!",
             "academic": "Held-Karp Dynamic Programming algorithm for TSP: Let S ⊆ {1, 2, ..., n} be a subset of vertices containing 1, and j ∈ S. Define C(S, j) as the minimum cost of a path starting at 1, visiting all vertices in S exactly once, and terminating at j. Recurrence: C(S, j) = min_{i ∈ S, i ≠ j} { C(S - {j}, i) + dist(i, j) }. Base case: C({1}, 1) = 0. Final answer: min_{j ≠ 1} { C(V, j) + dist(j, 1) }. Time complexity: O(n² · 2ⁿ), space: O(n · 2ⁿ).",
@@ -898,8 +994,9 @@
           {
             "qId": "q4-1-1",
             "title": "Type 1: Huffman Coding Tree & Encoded Text Size Calculation",
-            "examTag": "🔥 Paper 2 Q3(a) & Paper 1 Q3(a) [5 Marks - IDENTICAL IN BOTH!]",
+            "examTag": "🔥 Actual Paper 2 Q3(a) & Paper 1 Q3(a) [5 Marks - VERBATIM IN BOTH!]",
             "badgeType": "danger",
+            "exactQuestion": "Consider a text over alphabet {a,b,c,d,e,f,g} relative frequencies of the characters are 5, 7, 8, 16, 18, 22, 24 respectively. Construct Huffman tree. Find Huffman encoding for each of the seven characters. Suppose original text contains total 1,00,000 characters what will be size of the text in bits after encoding. (4 marks for Huffman tree and correct codes, 1 mark for correct text size after encoding).",
             "preview": "Alphabet {a:5, b:7, c:8, d:16, e:18, f:22, g:24} ⟹ 266,000 bits (33,250 B)",
             "hinglish": "Yeh question VIT Pune ke dono papers me VERBATIM aya hai! Min-Priority Queue me frequencies daalo. Har step me do lowest frequencies ko merge karo: 5+7=12, 8+12=20, 16+18=34, 20+22=42, 24+34=58, 42+58=100. Codes: a:1100, b:1101, c:111, d:100, e:101, f:00, g:01. Average length = 2.66 bits/char. 100,000 characters ke text ka total size = 266,000 bits (33,250 Bytes)!",
             "academic": "Huffman Coding constructs an optimal prefix-free binary tree using a greedy min-heap. For frequencies {a:5, b:7, c:8, d:16, e:18, f:22, g:24}: Merging steps yield root 100 with weighted path length B(T) = ∑ f_i · d_i = 266. Average code length L = 2.66 bits/character. For a file of 100,000 characters, total encoded size is 100,000 × 2.66 = 266,000 bits = 33,250 bytes.",
@@ -922,6 +1019,7 @@
             "title": "Type 2: Conflict-Free Activity Scheduling & Fractional Knapsack",
             "examTag": "⭐ High Yield [6 Marks]",
             "badgeType": "warning",
+            "exactQuestion": "Explain the Greedy Choice Property and Optimal Substructure for the Activity Selection problem. Prove that choosing the activity that finishes earliest always produces an optimal schedule.",
             "preview": "Greedy Earliest Finish Time in O(n log n) & Value-to-Weight density sorting",
             "hinglish": "1) Activity Selection: Maximum non-overlapping meetings select karne ke liye activities ko unke FINISH TIME ke ascending order me sort karo. Jo meeting sabse pehle khatam ho, use pick karo aur aglecompatible meeting par jao. 2) Fractional Knapsack: Items ko profit/weight ratio (density) ke descending order me sort karo. Greedy choice 0/1 knapsack me fail ho jati hai lekin fractional knapsack me optimal hoti hai!",
             "academic": "Interval scheduling / Activity Selection problem: Given n activities with start times s_i and finish times f_i. Greedy choice property: The earliest finishing activity f_m that is compatible with current schedule leaves maximum remaining capacity for future activities. Sorting by finish time yields optimal schedule in O(n log n). In Fractional Knapsack, sorting by value density v_i / w_i yields optimal fractional solution in O(n log n).",
@@ -949,8 +1047,9 @@
           {
             "qId": "q4-2-1",
             "title": "Type 1: N-Queens Problem with State Space Tree & Bounding",
-            "examTag": "🔥 Paper 2 Q2(a) [5 Marks]",
+            "examTag": "🔥 Actual Paper 2 Q2(a) [5 Marks]",
             "badgeType": "danger",
+            "exactQuestion": "Discuss the backtracking strategy? Elaborate it in detail through an example of n-queen problem.",
             "preview": "Row-by-row placement; prune if x[i] == x[k] or |x[i] - x[k]| == |i - k|",
             "hinglish": "Backtracking me depth-first search se state-space tree explore karte hain aur bounding function se invalid branches ko turant prune kar dete hain! N-Queens me 1D array x[1..n] use karte hain jahan x[k] = column index of queen in row k. Do queens clash tab karti hain jab: 1) Same column: x[i] == x[k], ya 2) Same diagonal: |x[i] - x[k]| == |i - k|!",
             "academic": "Backtracking strategy systematically searches the state-space tree using depth-first exploration with bounding functions to prune infeasible subtrees. In the N-Queens problem, represent placement as n-tuple (x₁, x₂, ..., x_n) where x_k is the column of the queen in row k. A placement in row k is valid iff for all i < k: 1) x[i] ≠ x[k] (no column conflict), and 2) |x[i] - x[k]| ≠ |i - k| (no diagonal conflict).",
@@ -970,9 +1069,33 @@
           },
           {
             "qId": "q4-2-2",
-            "title": "Type 2: Graph m-Coloring & Hamiltonian Cycle Backtracking",
+            "title": "Type 2: Predictable Subset Sum Backtracking",
+            "examTag": "🔮 Highly Predictable for Tomorrow [6 Marks]",
+            "badgeType": "predictable",
+            "exactQuestion": "Given a set of positive integers S = {w₁, w₂, ..., w_n} and a target sum M, formulate a backtracking algorithm to find all subsets of S whose sum equals M. Specify the bounding conditions used to prune the state space tree.",
+            "preview": "Sum-of-subsets: prune if current_sum + w[k] > M or current_sum + remaining < M",
+            "hinglish": "Subset Sum me elements ko ascending order me sort karo. Har step par element ko ya toh include karo (x[k] = 1) ya exclude karo (x[k] = 0). Do bounding conditions se branches cut hoti hain: 1) Agar current_sum + w[k] > M ho gaya toh aage mat jao. 2) Agar current_sum + (bache huye sabhi elements ka sum) < M ho gaya, toh bhi answer kabhi nahi ban sakta!",
+            "academic": "Subset Sum via Backtracking: Given set S sorted in ascending order. State vector x[1..n] where x[k] ∈ {0, 1}. Maintain current sum s and remaining sum r. Prune search tree if: 1. s + w_k > M (exceeds target sum), or 2. s + r < M (remaining elements cannot reach target sum).",
+            "math": [
+              "• Target Equation: ∑_{i=1}^n wᵢ · xᵢ = M where xᵢ ∈ {0, 1}",
+              "• Upper Bounding: Prune if s + wₖ > M",
+              "• Lower Bounding: Prune if s + ∑_{i=k}^n wᵢ < M",
+              "• State-Space Reduction: Sorting S enables massive pruning"
+            ],
+            "table": {
+              "trigger": "Combinatorial subset partition, exact target sum matching",
+              "paradigm": "Backtracking (Sum Bounded Depth-First Search)",
+              "state": "s = current accumulated sum, r = remaining elements sum, index k",
+              "rubric": "1. Sort weights w₁ ≤ w₂ ≤ ... ≤ w_n.<br>2. Formulate recursive `SumOfSub(s, k, r)`.<br>3. Check bounding inequalities s + w_k ≤ M and s + r ≥ M.<br>4. Draw partial state space tree for example set."
+            },
+            "clrs": "Horowitz & Sahni Fundamentals & Syllabus Core."
+          },
+          {
+            "qId": "q4-2-3",
+            "title": "Type 3: Graph m-Coloring & Hamiltonian Cycle Backtracking",
             "examTag": "⭐ High Yield [6 Marks]",
             "badgeType": "warning",
+            "exactQuestion": "Explain the backtracking algorithm for the graph m-coloring problem. Describe the bounding function used to ensure no two adjacent vertices share the same color.",
             "preview": "Vertex-by-vertex color assignment; prune if adjacent vertices share color",
             "hinglish": "1) Graph m-Coloring: Har vertex v ko 1 se m tak koi color assign karo. Agar koi adjacent neighbor pehle se wahi color rakhta hai, toh color change karo ya backtrack karo! 2) Hamiltonian Cycle: Aisa closed cycle jo har vertex ko exactly ek baar visit kare. Next vertex tabhi add karo jab wo pichle vertex se connected ho aur pehle visit na hua ho!",
             "academic": "Graph m-Coloring via Backtracking: Assign colors from {1, ..., m} to vertices such that no two adjacent vertices share the same color. State vector x[1..n] where x[k] ∈ {1..m} is color of vertex k. Pruning condition: for every edge (u, k) with u < k, require x[u] ≠ x[k]. In Hamiltonian Cycle backtracking, vector x[1..n] stores path of vertices; prune if (x[k-1], x[k]) ∉ E or x[k] already visited.",
@@ -1002,6 +1125,7 @@
             "title": "Type 1: Minimum Spanning Tree Cut Property Proof",
             "examTag": "⭐ High Yield [6 Marks]",
             "badgeType": "warning",
+            "exactQuestion": "State and prove the Cut Property for Minimum Spanning Trees. Use it to justify the correctness of Kruskal's or Prim's algorithm.",
             "preview": "Cut Property: Light edge crossing any cut (S, V-S) is safe for MST",
             "hinglish": "Kruskal aur Prim algorithm ki correctness 'Cut Property' par depend karti hai! Agar graph ke vertices ko do hisso (S, V-S) me cut karo, toh is cut ko cross karne wali sabse sasti (lightest) edge e hamesha kisi na kisi MST ka hissa hogi. Proof: Agar MST T me e nahi hai, toh e add karne par cycle banegi. Us cycle me se cut cross karne wali dusri edge e' hata do, nayi tree ka weight T' ≤ T hoga!",
             "academic": "Cut Property for MSTs: Let G = (V, E) be a connected undirected graph with real-valued edge weights. Let (S, V - S) be any cut of G that respects a subset of edges A ⊆ E. If e = (u, v) is a light edge crossing (S, V - S), then e is safe for A (i.e. A ∪ {e} is part of some MST). Proof via cut-and-paste exchange argument.",
@@ -1039,8 +1163,9 @@
           {
             "qId": "q5-1-1",
             "title": "Type 1: Max-Flow Min-Cut Theorem Statement & Formal Proof",
-            "examTag": "🔥 Paper 1 Q6(a) & Syllabus Core [7 Marks]",
+            "examTag": "🔥 Actual Paper 1 Q6(a) [7 Marks]",
             "badgeType": "danger",
+            "exactQuestion": "Define a flow network, source, sink, capacity constraint, and flow conservation. State and prove the Max-Flow Min-Cut Theorem.",
             "preview": "|f| = c(S, T) ⟺ No augmenting path exists in residual graph G_f",
             "hinglish": "Network flow ka sabse bada theorem: Ek flow network me maximum flow ki value hamesha minimum cut ki capacity ke barabar hoti hai! Teen statements mathematically equivalent hote hain: 1) f maximum flow hai, 2) Residual graph G_f me s se t tak koi augmenting path nahi hai, 3) |f| = c(S, T) kisi cut ke liye. Proof me S = vertices reachable from s in G_f lete hain!",
             "academic": "Max-Flow Min-Cut Theorem: In a flow network G = (V, E) with source s and sink t, the following three conditions are equivalent: 1. f is a maximum flow in G. 2. The residual network G_f contains no augmenting paths. 3. |f| = c(S, T) for some cut (S, T) of G. Proof establishes: (1) ⟹ (2) trivially; (2) ⟹ (3) by defining S as all vertices reachable from s in G_f, showing net flow across (S, T) equals c(S, T); (3) ⟹ (1) by weak duality (|f| ≤ c(S, T)).",
@@ -1058,6 +1183,29 @@
               "rubric": "1. Define flow properties (capacity, skew symmetry, conservation) and cut capacity.<br>2. State the three equivalent conditions of Max-Flow Min-Cut.<br>3. Construct cut S = {v ∈ V : ∃ path s ↝ v in G_f}.<br>4. Prove net flow across cut equals |f| and equals c(S, T)."
             },
             "clrs": "CLRS 3rd Ed. Chapter 26, Section 26.2 (Pages 718-730). Paper 1 Q6(a)."
+          },
+          {
+            "qId": "q5-1-2",
+            "title": "Type 2: Predictable Edge-Disjoint Directed Paths Reduction",
+            "examTag": "🔮 Highly Predictable for Tomorrow [6 Marks]",
+            "badgeType": "predictable",
+            "exactQuestion": "Given a directed graph G = (V, E) and vertices s, t ∈ V. Formulate an algorithm using network flow to find the maximum number of edge-disjoint directed paths from s to t. Prove its correctness.",
+            "preview": "Assign unit capacity c(u, v) = 1 to all edges ⟹ Max Flow = Max Edge-Disjoint Paths",
+            "hinglish": "Do vertices s aur t ke beech maximum kitne edge-disjoint (bina shared edges ke) paths ho sakte hain? Har directed edge ki capacity 1 rakh do! Integrality theorem kehti hai ki max flow har edge par 0 ya 1 hoga. Jinke flow 1 hai, wo s se t tak ke edge-disjoint paths banate hain. Max flow ki value = Max edge-disjoint paths!",
+            "academic": "Edge-Disjoint Paths Reduction: Assign capacity c(u, v) = 1 to every directed edge e ∈ E. Find maximum flow f* from s to t using Ford-Fulkerson. By the Integrality Theorem, flow on each edge is 0 or 1. The value |f*| equals the maximum number of edge-disjoint paths from s to t. Time complexity: O(|V| · |E|).",
+            "math": [
+              "• Capacity Assignment: c(u, v) = 1  ∀ (u, v) ∈ E",
+              "• Integrality Guarantee: f*(u, v) ∈ {0, 1}",
+              "• Menger's Theorem Duality: Max edge-disjoint paths = Min edge cut size",
+              "• Complexity: O(|V| · |E|) using unit-capacity network flow"
+            ],
+            "table": {
+              "trigger": "Network reliability, parallel packet routing without shared links",
+              "paradigm": "Polynomial Reduction to Unit-Capacity Max Flow",
+              "state": "Unit flow network G' with capacities c(e) = 1",
+              "rubric": "1. Assign capacity 1 to every edge in G.<br>2. Compute max flow from s to t via Ford-Fulkerson.<br>3. Decompose flow into path components using DFS.<br>4. Prove equivalence by Menger's Theorem."
+            },
+            "clrs": "CLRS 3rd Ed. Chapter 26, Section 26.3."
           }
         ]
       },
@@ -1069,8 +1217,9 @@
           {
             "qId": "q5-2-1",
             "title": "Type 1: Maximum Bipartite Matching Reduction to Max-Flow",
-            "examTag": "🔥 Paper 1 Q6(b) [5 Marks]",
+            "examTag": "🔥 Actual Paper 1 Q6(b) [5 Marks]",
             "badgeType": "danger",
+            "exactQuestion": "Given an undirected bipartite graph G = (V, E) with vertex partition V = L ∪ R. Show how the problem of finding a maximum matching in G can be reduced to the maximum flow problem on a directed graph G'. Prove that the size of maximum matching equals the value of maximum flow.",
             "preview": "Super-source s → L (cap 1), L → R (cap 1), R → sink t (cap 1) ⟹ Max Matching = Max Flow",
             "hinglish": "Bipartite graph G = (L ∪ R, E) me maximum matching dhundne ke liye network flow me convert karo: 1) Ek super source s banao aur har left vertex u ∈ L ko edge do with capacity 1. 2) Bipartite edges (u, v) ki capacity 1 rakho. 3) Har right vertex v ∈ R se super sink t ko edge do with capacity 1. Integrality Theorem kehti hai ki max flow integer hoga (0 ya 1), toh max flow ki value exactly maximum matching ke barabar hogi! Ford-Fulkerson se O(V · E) me solve hota hai.",
             "academic": "Reduction of Maximum Bipartite Matching to Max-Flow: Construct flow network G' = (V', E'): V' = L ∪ R ∪ {s, t}. Directed edges: (s, u) with capacity 1 for all u ∈ L; (u, v) with capacity 1 for all (u, v) ∈ E; (v, t) with capacity 1 for all v ∈ R. By the Integrality Theorem, if capacities are integers, maximum flow f is integer-valued (f(e) ∈ {0, 1}). Edges in E with f(u, v) = 1 form a maximum matching. Runtime: O(|V| · |E|).",
@@ -1109,8 +1258,9 @@
           {
             "qId": "q6-1-1",
             "title": "Type 1: Prover-Verifier Definition of NP & Concrete Problems",
-            "examTag": "🔥 Paper 2 Q2(b)(i) [5 Marks]",
+            "examTag": "🔥 Actual Paper 2 Q2(b)(i) [5 Marks]",
             "badgeType": "danger",
+            "exactQuestion": "1. Give prover-verifier based definition of complexity class NP.\n2. Define NP-completeness and NP-hardness.\nGive two concrete examples of NP-complete problems. For each problem specify the input, the YES instances and the NO instance of the problem.",
             "preview": "Language L ∈ NP iff ∃ poly-time verifier V(x, y) with certificate |y| ≤ |x|ᶜ",
             "hinglish": "Complexity Class NP ki sabse accurate definition Prover-Verifier model hai: Ek language L ∈ NP hoti hai agar kisi input x ke liye ek chhota polynomial-sized certificate y (proof) exist karta ho, jise ek Deterministic Polynomial-time Verifier V(x, y) verify karke 'YES' accept kar sake! NP-Hard wo problems hote hain jinpar NP ki har problem reduce ho sakti hai. Aur jo problem NP me bhi ho aur NP-hard bhi ho, use NP-Complete kehte hain!",
             "academic": "Prover-Verifier definition of complexity class NP: A language L ⊆ {0, 1}* belongs to NP iff there exists a two-input polynomial-time deterministic verification algorithm V and constant c such that: x ∈ L ⟺ ∃ certificate y with |y| ≤ |x|^c such that V(x, y) = 1. Definitions: 1. NP-Hard: Language B is NP-hard if ∀ A ∈ NP, A ≤_P B. 2. NP-Complete: Language B is NP-complete if B ∈ NP and B is NP-hard. Two concrete examples: 3-SAT and Vertex Cover with explicit YES and NO instances.",
@@ -1129,6 +1279,29 @@
               "rubric": "1. Write prover-verifier definition: x ∈ L ⟺ ∃ y, |y| ≤ |x|^c, V(x,y)=1.<br>2. Define NP-Hard (∀ L' ∈ NP, L' ≤_P L) and NP-Complete (L ∈ NP and L is NP-Hard).<br>3. Give 3-SAT example with explicit input, YES instance, and NO instance.<br>4. Give Vertex Cover example with explicit input, YES instance, and NO instance."
             },
             "clrs": "CLRS 3rd Ed. Chapter 34, Section 34.2 & 34.3. Verbatim Paper 2 Q2(b)(i) [5 Marks]."
+          },
+          {
+            "qId": "q6-1-2",
+            "title": "Type 2: Predictable Vertex Cover 2-Approximation",
+            "examTag": "🔮 Highly Predictable for Tomorrow [6 Marks]",
+            "badgeType": "predictable",
+            "exactQuestion": "Describe the 2-approximation algorithm for the Minimum Vertex Cover problem based on maximal matching. Prove that it achieves an approximation ratio of at most 2.",
+            "preview": "Approx-Vertex-Cover: Pick maximal matching edges C = endpoints(M) ⟹ |C| ≤ 2 · |C*|",
+            "hinglish": "Minimum Vertex Cover NP-Complete hai, lekin 2-approximation polynomial time me mil jata hai! Alg: Graph me se edges pick karte raho jo aapas me disjoint hon (Maximal Matching M). Dono endpoints ko Vertex Cover C me daalo aur unse judi saare edges delete kar do. Proof: Har matching edge ko cover karne ke liye optimal cover C* ko kam se kam ek endpoint lena hi padega (|C*| ≥ |M|). Humne dono endpoints liye (|C| = 2|M|). Toh |C| ≤ 2 · |C*|!",
+            "academic": "2-Approximation for Vertex Cover: Let M be a maximal matching in G = (V, E) computed greedily in O(V + E). Let C be the set of all endpoints of edges in M. Since M is maximal, no edge in E is uncovered by C, so C is a valid vertex cover with |C| = 2|M|. Furthermore, any vertex cover must include at least one endpoint of each edge in M, so |C*| ≥ |M|. Therefore, |C| = 2|M| ≤ 2|C*|, proving approximation ratio 2.",
+            "math": [
+              "• Matching Lower Bound: |C*| ≥ |M|",
+              "• Candidate Size: |C| = 2 · |M|",
+              "• Ratio Guarantee: |C| / |C*| ≤ (2 |M|) / |M| = 2",
+              "• Runtime: O(|V| + |E|) linear greedy selection"
+            ],
+            "table": {
+              "trigger": "Polynomial approximation algorithm for NP-hard graph optimization",
+              "paradigm": "Approximation Algorithm (Maximal Matching Lower Bound)",
+              "state": "Edge matching set M, vertex cover set C",
+              "rubric": "1. Describe greedy maximal matching algorithm.<br>2. Add both endpoints of each selected edge to cover C.<br>3. Prove |C*| ≥ |M| using disjoint edges argument.<br>4. Prove |C| = 2|M| ≤ 2|C*| to conclude 2-approximation."
+            },
+            "clrs": "CLRS 3rd Ed. Chapter 35, Section 35.1 (The vertex-cover problem)."
           }
         ]
       },
@@ -1140,8 +1313,9 @@
           {
             "qId": "q6-2-1",
             "title": "Type 1: 3-SAT to CLIQUE / Vertex Cover Reduction",
-            "examTag": "🔥 Paper 1 Q7 [7 Marks]",
+            "examTag": "🔥 Actual Paper 1 Q7 [7 Marks]",
             "badgeType": "danger",
+            "exactQuestion": "Define the 3-CNF Satisfiability problem (3-SAT) and the CLIQUE problem. Give a polynomial-time reduction from 3-SAT to CLIQUE. Prove the correctness of the reduction in both directions.",
             "preview": "k clauses ⟹ k-partite graph; edges between non-contradicting literals across clauses",
             "hinglish": "3-SAT ko CLIQUE par reduce karne ka standard gadget: Har clause (l₁ ∨ l₂ ∨ l₃) ke liye 3 vertices banao (k clauses me total 3k vertices). Do vertices ke beech edge tabhi jodo jab: 1) Wo alag-alag clauses me hon, aur 2) Wo aapas me contradictory na hon (yani x aur ¬x ke beech edge mat jodo). Formula satisfiable tabhi hoga jab graph me size k ka CLIQUE milega!",
             "academic": "Polynomial-time reduction from 3-SAT to CLIQUE: Given 3-CNF formula φ with k clauses. Construct graph G: for each clause C_r = (l_r1 ∨ l_r2 ∨ l_r3), create 3 vertices. Place an undirected edge between two vertices u and v iff: 1. They belong to different clauses (r ≠ s), and 2. Their literals are consistent (l_ri ≠ ¬l_sj). Proof: φ is satisfiable ⟺ G has a clique of size k. Running time is polynomial O(k²).",
@@ -1162,8 +1336,9 @@
           {
             "qId": "q6-2-2",
             "title": "Type 2: Modeling NP-Complete Problems using Integer Linear Programming (ILP)",
-            "examTag": "⭐ High Yield (Practical 9) [6 Marks]",
+            "examTag": "⭐ Practical 9 Core [6 Marks]",
             "badgeType": "warning",
+            "exactQuestion": "Formulate the Minimum Vertex Cover and Maximum Independent Set problems as 0-1 Integer Linear Programs (ILP). Define decision variables, objective functions, and constraints.",
             "preview": "Vertex Cover ILP: min ∑ x_v subject to x_u + x_v ≥ 1 and x_v ∈ {0, 1}",
             "hinglish": "Syllabus practical me NP-complete problems ko 0-1 Integer Linear Programming me formulate karna sikhaya gaya hai. Vertex Cover ke liye: Har vertex v ke liye binary variable x_v ∈ {0, 1} banao (1 = vertex cover me shamil hai). Objective function: min ∑ x_v. Har edge (u, v) ke liye constraint: x_u + x_v ≥ 1 (yani dono me se kam se kam ek vertex zaroor cover hona chahiye)! Independent Set ke liye: max ∑ x_v subject to x_u + x_v ≤ 1.",
             "academic": "Formulating NP-Complete problems via 0-1 Integer Linear Programming (ILP): 1. Minimum Vertex Cover: Minimize ∑_{v ∈ V} x_v subject to x_u + x_v ≥ 1 for all (u, v) ∈ E, and x_v ∈ {0, 1}. 2. Maximum Independent Set: Maximize ∑_{v ∈ V} x_v subject to x_u + x_v ≤ 1 for all (u, v) ∈ E, and x_v ∈ {0, 1}. 3. Maximum Clique: In complement graph G^c, solve Independent Set. Since 0-1 ILP is NP-hard, these formulations represent standard exact mathematical programming models.",
@@ -1192,8 +1367,9 @@
           {
             "qId": "q6-3-1",
             "title": "Type 1: Planar Red & Blue Points: Bisecting Pair & Non-Intersecting Segments",
-            "examTag": "🔥 Paper 2 Q4 [8 Marks]",
+            "examTag": "🔥 Actual Paper 2 Q4 [8 Marks]",
             "badgeType": "danger",
+            "exactQuestion": "You are given n red and n blue points in a plane such that no three points among the given 2n points are colinear.\n1. Give an efficient algorithm to find a pair of red and blue point such that the line joining the pair contains exactly k red and k blue points on one side and the remaining n-k-1 red and n-k-1 blue points on the other, for some k, such that 0<=k<n. (6 marks)\n2. Use 1 to give an efficient algorithm to pair up red points with blue so that the line segments joining pairs of points do not intersect. (2 marks)",
             "preview": "Angular sweep bisects k red & k blue ⟹ D&C non-intersecting matching",
             "hinglish": "Plane me n red aur n blue points hain (total 2n, koi 3 collinear nahi). Part 1: Ek red point r aur blue point b se guzarne wali line aisi dhundni hai jiske ek taraf exactly k red aur k blue hon! Extreme point r chuno aur baaki sabhi points ko r ke around angular order me radial sweep karo: Red ko +1 aur Blue ko -1 count karo. Intermediate Value Theorem se zaroor balance point milega! Part 2: Is bisecting line se plane do hisso me bat gaya (size k and size n-k-1). Dono hisso ko independently divide-and-conquer karke solve karo—kyunki dono sets alag-alag half-planes me hain, unke connecting segments kabhi intersect nahi karenge!",
             "academic": "Planar Red-Blue Points: 1. Finding bisecting pair: Pick an extreme point r (e.g. minimum x). Sort all remaining 2n-1 points radially around r. Define counter f(θ) = (# red points) - (# blue points) swept up to angle θ. As θ sweeps from 0 to π, f(θ) transitions between complementary counts. By discrete continuity, there exists a blue point b such that the line through (r, b) partitions the remaining points into k red and k blue points on one side, and n-k-1 red and n-k-1 blue points on the other (6 Marks). 2. Non-intersecting pairing: Use (1) to connect (r, b). The line strictly separates the remaining points into two independent subproblems of size k and n-k-1. Recursively pair each subproblem. Since segments in the two subproblems lie in disjoint open half-planes and do not cross the separating line, no two line segments intersect (2 Marks).",
@@ -1262,21 +1438,33 @@
 
                 <!-- LEVEL 3: QUESTION TYPES THAT CAME FROM THIS TOPIC -->
                 <div id="questions-${topic.topicId}" class="mt-2 space-y-2 pl-4 border-l-2 border-slate-700/60 ml-3">
-                  ${topic.questions.map(q => `
-                    <div id="qnode-${q.qId}" class="mm-node bg-slate-950/80 border border-slate-800/90 hover:border-cyan-400 p-2.5 rounded-lg text-xs shadow-sm transition"
-                         onclick="openDrawer('${q.qId}')">
-                      <div class="flex items-center justify-between gap-2 mb-1">
-                        <span class="font-bold text-cyan-300 flex items-center gap-1.5">
-                          <span class="w-1.5 h-1.5 rounded-full ${q.badgeType === 'danger' ? 'bg-rose-500 animate-pulse' : 'bg-amber-400'}"></span>
-                          ${q.title}
-                        </span>
-                        <span class="px-1.5 py-0.5 rounded ${q.badgeType === 'danger' ? 'bg-rose-500/20 text-rose-300' : 'bg-amber-500/20 text-amber-300'} text-[10px] font-bold whitespace-nowrap">
-                          ${q.examTag}
-                        </span>
+                  ${topic.questions.map(q => {
+                    let badgeStyle = 'bg-rose-500/20 text-rose-300 border border-rose-500/30';
+                    let dotStyle = 'bg-rose-500 animate-pulse';
+                    if (q.badgeType === 'predictable') {
+                      badgeStyle = 'bg-purple-500/20 text-purple-300 border border-purple-500/30';
+                      dotStyle = 'bg-purple-400';
+                    } else if (q.badgeType === 'warning') {
+                      badgeStyle = 'bg-amber-500/20 text-amber-300 border border-amber-500/30';
+                      dotStyle = 'bg-amber-400';
+                    }
+
+                    return `
+                      <div id="qnode-${q.qId}" class="mm-node bg-slate-950/85 border border-slate-800 hover:border-cyan-400 p-2.5 rounded-lg text-xs shadow-sm transition"
+                           onclick="openDrawer('${q.qId}')">
+                        <div class="flex items-center justify-between gap-2 mb-1">
+                          <span class="font-bold text-cyan-300 flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full ${dotStyle}"></span>
+                            ${q.title}
+                          </span>
+                          <span class="px-1.5 py-0.5 rounded ${badgeStyle} text-[10px] font-bold whitespace-nowrap">
+                            ${q.examTag}
+                          </span>
+                        </div>
+                        <div class="text-[11px] text-slate-300 font-mono">${q.preview}</div>
                       </div>
-                      <div class="text-[11px] text-slate-300 font-mono">${q.preview}</div>
-                    </div>
-                  `).join('')}
+                    `;
+                  }).join('')}
                 </div>
               </div>
             `).join('')}
@@ -1350,6 +1538,19 @@
       `).join('');
 
       const content = `
+        <!-- EXACT QUESTION STATEMENT -->
+        <div class="p-4 bg-blue-500/10 border-l-4 border-blue-400 rounded-r-lg text-xs">
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-bold text-blue-300 flex items-center gap-1.5">
+              📝 Exact Exam Question Statement:
+            </span>
+            <span class="text-[10px] text-blue-400 font-mono uppercase tracking-wider">${q.examTag}</span>
+          </div>
+          <p class="text-slate-100 font-medium whitespace-pre-line leading-relaxed italic bg-slate-950/60 p-2.5 rounded border border-blue-900/30">
+"${q.exactQuestion}"
+          </p>
+        </div>
+
         <!-- Hinglish Intuition -->
         <div class="p-3.5 bg-amber-500/10 border-l-4 border-amber-400 rounded-r-lg text-xs text-amber-200">
           <span class="font-bold text-amber-300 block mb-1">💡 Asli Baat (1-Sec Recognition in Hinglish):</span>
@@ -1501,6 +1702,7 @@
             const match = question.title.toLowerCase().includes(q) ||
                           question.examTag.toLowerCase().includes(q) ||
                           question.preview.toLowerCase().includes(q) ||
+                          question.exactQuestion.toLowerCase().includes(q) ||
                           question.hinglish.toLowerCase().includes(q);
             const qEl = document.getElementById('qnode-' + question.qId);
             if (qEl) qEl.style.display = match || topicHasMatch ? 'block' : 'none';
