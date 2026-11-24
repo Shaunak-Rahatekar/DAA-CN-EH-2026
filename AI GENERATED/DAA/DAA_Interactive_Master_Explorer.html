@@ -372,6 +372,28 @@
               "rubric": "1. State DAG condition and absence of back edges.<br>2. Run DFS to compute finish times for all v ∈ V.<br>3. Prepend finished nodes to output list (reverse post-order).<br>4. Conclude O(|V| + |E|) time and prove order correctness."
             },
             "clrs": "CLRS 3rd Ed. Chapter 22, Section 22.4 (Topological Sort). Question Bank."
+          },
+          {
+            "qId": "q1-4-2",
+            "title": "Type 2: Strassen's Fast Matrix Multiplication",
+            "examTag": "⭐ High Yield [6 Marks]",
+            "badgeType": "warning",
+            "preview": "7 multiplications instead of 8 ⟹ T(n) = 7T(n/2) + O(n²) = O(n^2.81)",
+            "hinglish": "Normal matrix multiplication me 8 recursive products lagte hain (O(n³)). Strassen ne 7 intermediate products (P₁ se P₇) introduce kiye. Watershed exponent log₂ 7 ≈ 2.807 hota hai, jisse matrix multiplication O(n^2.81) me ho jata hai!",
+            "academic": "Strassen's sub-cubic matrix multiplication: Computes C = A · B of size n × n using 7 recursive multiplications of (n/2) × (n/2) submatrices. Recurrence T(n) = 7T(n/2) + Θ(n²). By Master Theorem Case 1, since f(n) = n² = O(n^(log₂ 7 - ε)), runtime is Θ(n^(log₂ 7)) ≈ O(n^2.807).",
+            "math": [
+              "• Standard Multiplication: 8 recursive calls  ⟹  T(n) = 8T(n/2) + O(n²) = O(n³)",
+              "• Strassen's Formulas: 7 products P₁..P₇ using 10 additions/subtractions",
+              "• Watershed Comparison: log₂ 7 ≈ 2.807",
+              "• Complexity: T(n) = 7 T(n/2) + Θ(n²) = Θ(n^2.807)"
+            ],
+            "table": {
+              "trigger": "Fast dense matrix multiplication beyond cubic barrier",
+              "paradigm": "Divide and Conquer (Algebraic Subproblem Reduction)",
+              "state": "Quadrants A₁₁, A₁₂, A₂₁, A₂₂ and products P₁ through P₇",
+              "rubric": "1. Partition matrices A and B into four n/2 × n/2 submatrices.<br>2. Define Strassen's 7 products P₁ through P₇.<br>3. Express result blocks C_ij as linear sums of P_k.<br>4. Solve recurrence via Master Theorem to obtain O(n^2.81)."
+            },
+            "clrs": "CLRS 3rd Ed. Chapter 4, Section 4.2."
           }
         ]
       }
@@ -433,6 +455,28 @@
               "rubric": "1. Divide array into two equal halves at mid.<br>2. Recursively solve left and right halves.<br>3. In merge step, when A[j] < A[i], add (mid - i + 1) to count.<br>4. Recurrence T(n) = 2T(n/2) + O(n) yields O(n log n)."
             },
             "clrs": "CLRS 3rd Ed. Chapter 2, Problem 2-4 (Inversions)."
+          },
+          {
+            "qId": "q2-1-3",
+            "title": "Type 3: Deterministic Median-of-Medians Selection in O(n)",
+            "examTag": "⭐ High Yield Core [6 Marks]",
+            "badgeType": "warning",
+            "preview": "Groups of 5 guarantee at least 3n/10 elements eliminated ⟹ T(n) = O(n)",
+            "hinglish": "Worst-case linear time selection (k-th smallest element) ke liye: 1) Elements ko 5-5 ke groups me baanto (⌈n/5⌉ groups). 2) Har group ka median nikaalo. 3) In sabhi medians ka median x recursively dhundo. 4) Array ko x ke around partition karo. Groups of 5 guarantee karte hain ki kam se kam 30% elements x se chhote aur 30% bade honge, isliye remaining subproblem size at most 7n/10 hota hai! Recurrence T(n) ≤ T(n/5) + T(7n/10) + O(n) = O(n).",
+            "academic": "Deterministic selection in worst-case linear time O(n) (BFPRT algorithm): Divide n elements into groups of 5. Find median of each group in O(1) time. Recursively find median-of-medians x among ⌈n/5⌉ group medians. Partition array around x. At least 3(⌈1/2 ⌈n/5⌉⌉ - 2) ≥ 3n/10 - 6 elements are strictly greater than x (and at least 3n/10 are strictly less). Thus the recursive call on the partition has size at most 7n/10. Recurrence: T(n) ≤ T(n/5) + T(7n/10) + O(n). Since 1/5 + 7/10 = 9/10 < 1, T(n) = O(n).",
+            "math": [
+              "• Elimination Guarantee: At least 3/10 n elements guaranteed on each side",
+              "• Subproblem Recurrence: T(n) ≤ T(n/5) + T(7n/10) + c·n",
+              "• Sum of Fractions: 1/5 + 7/10 = 9/10 < 1  ⟹  Linear time",
+              "• Worst-Case Runtime: T(n) = Θ(n)"
+            ],
+            "table": {
+              "trigger": "Guaranteed linear time selection of k-th smallest element without randomization",
+              "paradigm": "Divide and Conquer (Median-of-Medians BFPRT)",
+              "state": "Group medians M, pivot x = Select(M, |M|/2), rank of x",
+              "rubric": "1. Divide into groups of 5; find each median.<br>2. Recursively find median-of-medians x.<br>3. Partition around x; show subproblem size ≤ 7n/10.<br>4. Solve T(n) ≤ T(n/5) + T(7n/10) + O(n) via substitution to prove O(n)."
+            },
+            "clrs": "CLRS 3rd Ed. Chapter 9, Section 9.3 (Selection in worst-case linear time)."
           }
         ]
       },
@@ -572,6 +616,28 @@
               "rubric": "1. Define Monte Carlo sampling m times; derive (2/3)ᵐ ≤ 3⁻¹⁰⁰ to get m ≥ 271.<br>2. State Monte Carlo runtime: O(m) = O(1).<br>3. Define Las Vegas: pick random element, verify in O(n), repeat if false.<br>4. Prove expected iterations = 1/p ≤ 3 ⟹ expected time = O(n)."
             },
             "clrs": "Motwani & Raghavan (Randomized Algorithms) Ch. 1 & Paper 2 Q5 [8 Marks]."
+          },
+          {
+            "qId": "q2-5-2",
+            "title": "Type 2: Randomized QuickSort Expected Time Proof",
+            "examTag": "⭐ High Yield [6 Marks]",
+            "badgeType": "warning",
+            "preview": "Expected comparisons E[X] = 2n ln n = Θ(n log n)",
+            "hinglish": "Randomized QuickSort me pivot uniformly random chuna jata hai. Indicator random variable X_ij define karo: X_ij = 1 agar i-th smallest aur j-th smallest element aapas me compare hote hain. Probability ki wo compare honge 2/(j - i + 1) hoti hai. Expectation ka sum lene par E[X] = ∑ 2/(j - i + 1) = 2n ln n = Θ(n log n) prove ho jata hai!",
+            "academic": "Expected comparison analysis for Randomized QuickSort: Let z_i be the i-th smallest element. Elements z_i and z_j are compared iff either z_i or z_j is chosen as pivot before any element strictly between them in the sorted order. Since pivot selection is uniformly random among j - i + 1 candidates, P(z_i compared with z_j) = 2 / (j - i + 1). Summing over all pairs: E[X] = ∑_{i=1}^{n-1} ∑_{j=i+1}^n 2/(j - i + 1) ≤ 2n ln n = Θ(n log n).",
+            "math": [
+              "• Indicator Variable: X_ij = I{z_i is compared with z_j}",
+              "• Pair Comparison Probability: Pr{z_i compared to z_j} = 2 / (j - i + 1)",
+              "• Linearity of Expectation: E[X] = ∑_{i<j} 2 / (j - i + 1)",
+              "• Harmonic Summation: E[X] = ∑_{i=1}^n O(ln n) = 2n ln n = Θ(n log n)"
+            ],
+            "table": {
+              "trigger": "Average-case / randomized analysis of recursive partitioning",
+              "paradigm": "Randomized Divide and Conquer (Indicator Random Variables)",
+              "state": "Rank-ordered elements z₁..z_n and pairwise indicator matrix X_ij",
+              "rubric": "1. Define indicator variable X_ij for comparison of z_i and z_j.<br>2. Prove Pr(z_i compared to z_j) = 2 / (j - i + 1).<br>3. Apply Linearity of Expectation: E[X] = ∑_{i<j} E[X_ij].<br>4. Bound by harmonic series to establish Θ(n log n)."
+            },
+            "clrs": "CLRS 3rd Ed. Chapter 7, Section 7.4 (Analysis of quicksort)."
           }
         ]
       }
@@ -612,6 +678,28 @@
               "rubric": "1. Write recurrence: f(n) = ∑_{k=1}^{n-1} f(k)f(n-k) with base f(1)=1.<br>2. Compute f(7) = C₆ = 132 and f(8) = C₇ = 429.<br>3. Prove f(n) ≥ 2f(n-1) by keeping k=1 and k=n-1 terms.<br>4. Conclude f(n) = Ω(2ⁿ) by mathematical induction."
             },
             "clrs": "CLRS 3rd Ed. Chapter 15, Section 15.2 (Pages 370-378). Verbatim Paper 2 Q1(b)."
+          },
+          {
+            "qId": "q3-1-2",
+            "title": "Type 2: Optimal Matrix Chain Cost DP Table & Traceback",
+            "examTag": "⭐ High Yield [7 Marks]",
+            "badgeType": "warning",
+            "preview": "m[i,j] = min_{k} (m[i,k] + m[k+1,j] + p_{i-1}p_k p_j) in O(n³)",
+            "hinglish": "Matrices ko multiply karne ka sabse sasta order nikaalna: m[i,j] = Matrix A_i se A_j ko multiply karne ka minimum scalar multiplications cost. Table ko diagonal by diagonal (chain length l = 2 to n) bhara jata hai. Space O(n²) aur Time O(n³) lagta hai!",
+            "academic": "Matrix Chain Multiplication DP: Given dimensions p_0, p_1, ..., p_n where matrix A_i has dimension p_{i-1} × p_i. Let m[i, j] be minimum scalar multiplications to compute A_i..j. Recurrence: m[i, j] = 0 if i = j, and min_{i ≤ k < j} {m[i, k] + m[k+1, j] + p_{i-1} p_k p_j} if i < j. Fill table in increasing order of chain length l. Time O(n³), Space O(n²).",
+            "math": [
+              "• State: m[i, j] = Min scalar multiplications for chain A_i..A_j",
+              "• Recurrence: m[i, j] = min_{i ≤ k < j} {m[i, k] + m[k+1, j] + p_{i-1} p_k p_j}",
+              "• Complexity: O(n³) time (three nested loops) and O(n²) space",
+              "• Optimal Parenthesization: Reconstruct using split table s[i, j]"
+            ],
+            "table": {
+              "trigger": "Associative operation ordering with differing intermediate costs",
+              "paradigm": "Interval Dynamic Programming (Diagonal Tabulation)",
+              "state": "Cost table m[1..n, 1..n] and split index table s[1..n, 1..n]",
+              "rubric": "1. Define state m[i,j] and base cases m[i,i] = 0.<br>2. Formulate recurrence testing split position k.<br>3. Describe diagonal filling order (chain length 2..n).<br>4. Prove O(n³) time complexity and show recursive traceback print."
+            },
+            "clrs": "CLRS 3rd Ed. Chapter 15, Section 15.2."
           }
         ]
       },
@@ -721,7 +809,7 @@
       {
         "topicId": "t3-4",
         "name": "Tree & Classical Optimization DP",
-        "syllabusRef": "Largest independent set for trees, Traveling Salesperson Problem, Optimal Binary Search Tree.",
+        "syllabusRef": "Largest independent set for trees, Traveling Salesperson Problem, Optimal Binary Search Tree, All pair shortest paths.",
         "questions": [
           {
             "qId": "q3-4-1",
@@ -744,6 +832,51 @@
               "rubric": "1. Root the tree arbitrarily.<br>2. Formulate recurrence: I(u) = max(1 + ∑ grandchildren, ∑ children).<br>3. Provide post-order recursive or memoized algorithm.<br>4. Prove O(|V|) time complexity since each node is visited once."
             },
             "clrs": "CLRS 3rd Ed. Chapter 15, Problem 15-4 (Printing neatly / Tree DP)."
+          },
+          {
+            "qId": "q3-4-2",
+            "title": "Type 2: Floyd-Warshall All-Pairs Shortest Paths in O(V³)",
+            "examTag": "⭐ High Yield [6 Marks]",
+            "badgeType": "warning",
+            "preview": "d^(k)[i,j] = min(d^(k-1)[i,j], d^(k-1)[i,k] + d^(k-1)[k,j]) in O(V³)",
+            "hinglish": "Graph ke har pair (i, j) ke beech shortest path nikaalna: Intermediate vertices ko 1 se k tak allow karo. d^(k)[i,j] = min(bina vertex k ke path d^(k-1)[i,j], ya vertex k se hokar jane wala path d^(k-1)[i,k] + d^(k-1)[k,j]). Negative cycle tab hoti hai jab kisi diagonal element d[i,i] < 0 ho jaye!",
+            "academic": "Floyd-Warshall dynamic programming computes shortest paths between all pairs of vertices in O(|V|³) time. Let d^(k)[i, j] be weight of shortest path from i to j with all intermediate vertices in {1, 2, ..., k}. Recurrence: d^(k)[i, j] = min( d^(k-1)[i, j], d^(k-1)[i, k] + d^(k-1)[k, j] ). Base case: d^(0)[i, j] = w(i, j) if (i, j) ∈ E, 0 if i = j, and ∞ otherwise.",
+            "math": [
+              "• DP Recurrence: d^(k)[i, j] = min( d^(k-1)[i, j], d^(k-1)[i, k] + d^(k-1)[k, j] )",
+              "• Base Matrix: D^(0) is direct edge weight matrix",
+              "• Negative Cycle Detection: ∃ i such that d^(n)[i, i] < 0",
+              "• Complexity: O(|V|³) time, O(|V|²) space"
+            ],
+            "table": {
+              "trigger": "Dense graph all-pairs routing, transitive closure, negative weight edges",
+              "paradigm": "Dynamic Programming (Vertex-Indexed Intermediate Paths)",
+              "state": "Distance matrix D[i][j] updated in outer loop k from 1 to |V|",
+              "rubric": "1. Define state d^(k)[i,j] using intermediate vertex set {1..k}.<br>2. Formulate recurrence choosing between excluding or including k.<br>3. Provide 3 nested loops pseudocode.<br>4. Prove O(|V|³) time complexity and negative cycle test."
+            },
+            "clrs": "CLRS 3rd Ed. Chapter 25, Section 25.2 (The Floyd-Warshall algorithm)."
+          },
+          {
+            "qId": "q3-4-3",
+            "title": "Type 3: Traveling Salesperson Problem (TSP) Bitmask DP",
+            "examTag": "⭐ High Yield [7 Marks]",
+            "badgeType": "warning",
+            "preview": "C(S, j) = min_{i ∈ S - {j}} { C(S - {j}, i) + dist(i, j) } in O(n² · 2ⁿ)",
+            "hinglish": "TSP me saare n cities ko exactly ek baar visit karke wapas starting city aana hai with min cost. Naive brute force O(n!) leta hai. Dynamic programming me visited cities ko ek Bitmask subset S se represent karte hain: C(S, j) = subset S ki cities ko visit karke city j par khatam hone ka min cost. Held-Karp algorithm se time O(n² · 2^n) ho jata hai!",
+            "academic": "Held-Karp Dynamic Programming algorithm for TSP: Let S ⊆ {1, 2, ..., n} be a subset of vertices containing 1, and j ∈ S. Define C(S, j) as the minimum cost of a path starting at 1, visiting all vertices in S exactly once, and terminating at j. Recurrence: C(S, j) = min_{i ∈ S, i ≠ j} { C(S - {j}, i) + dist(i, j) }. Base case: C({1}, 1) = 0. Final answer: min_{j ≠ 1} { C(V, j) + dist(j, 1) }. Time complexity: O(n² · 2ⁿ), space: O(n · 2ⁿ).",
+            "math": [
+              "• State: C(S, j) = min cost path from 1 through subset S ending at j",
+              "• Recurrence: C(S, j) = min_{i ∈ S - {j}} [ C(S \\ {j}, i) + cost(i, j) ]",
+              "• Base Case: C({1}, 1) = 0",
+              "• Tour Completion: min_{j=2..n} [ C(V, j) + cost(j, 1) ]",
+              "• Complexity: O(n² · 2ⁿ) vs Brute-force O(n!)"
+            ],
+            "table": {
+              "trigger": "Exact minimum Hamiltonian cycle, permutation optimization with small n (n ≤ 20)",
+              "paradigm": "Dynamic Programming with Bitmask Subset States (Held-Karp)",
+              "state": "dp[mask][j]: mask represents visited city set, j is last visited city",
+              "rubric": "1. Define subset state C(S, j) with bitmask representation.<br>2. Formulate Bellman-Held-Karp recurrence over subsets of size 2 to n.<br>3. Provide iterative bitmask pseudocode.<br>4. State O(n² · 2ⁿ) runtime and contrast with n! brute force."
+            },
+            "clrs": "CLRS 3rd Ed. Chapter 35 / Advanced DP & Syllabus Core."
           }
         ]
       }
@@ -783,6 +916,28 @@
               "rubric": "1. Show step-by-step tree merges.<br>2. Draw complete binary tree with left=0, right=1 branches.<br>3. Tabulate characters with assigned bit codes and bit lengths.<br>4. Compute total bits: ∑ (f_i · len_i) × 1,000 = 266,000 bits."
             },
             "clrs": "CLRS 3rd Ed. Chapter 16, Section 16.3 (Pages 428-436). Verbatim Paper 1 & 2 Q3(a)."
+          },
+          {
+            "qId": "q4-1-2",
+            "title": "Type 2: Conflict-Free Activity Scheduling & Fractional Knapsack",
+            "examTag": "⭐ High Yield [6 Marks]",
+            "badgeType": "warning",
+            "preview": "Greedy Earliest Finish Time in O(n log n) & Value-to-Weight density sorting",
+            "hinglish": "1) Activity Selection: Maximum non-overlapping meetings select karne ke liye activities ko unke FINISH TIME ke ascending order me sort karo. Jo meeting sabse pehle khatam ho, use pick karo aur aglecompatible meeting par jao. 2) Fractional Knapsack: Items ko profit/weight ratio (density) ke descending order me sort karo. Greedy choice 0/1 knapsack me fail ho jati hai lekin fractional knapsack me optimal hoti hai!",
+            "academic": "Interval scheduling / Activity Selection problem: Given n activities with start times s_i and finish times f_i. Greedy choice property: The earliest finishing activity f_m that is compatible with current schedule leaves maximum remaining capacity for future activities. Sorting by finish time yields optimal schedule in O(n log n). In Fractional Knapsack, sorting by value density v_i / w_i yields optimal fractional solution in O(n log n).",
+            "math": [
+              "• Greedy Selection Invariant: Always pick compatible activity with min finish time f_i",
+              "• Compatibility Condition: s_j ≥ f_i",
+              "• Fractional Density Invariant: v_1/w_1 ≥ v_2/w_2 ≥ ... ≥ v_n/w_n",
+              "• Time Complexity: O(n log n) for sorting + O(n) linear scan"
+            ],
+            "table": {
+              "trigger": "Resource scheduling, maximum mutually compatible requests, continuous packing",
+              "paradigm": "Greedy Strategy (Earliest Finish Time / Density Ranking)",
+              "state": "Last scheduled finish time last_f, remaining weight capacity W",
+              "rubric": "1. Sort activities by finish time f_i in O(n log n).<br>2. Iterate and greedily select activity whenever s_i ≥ last_f.<br>3. Prove exchange argument (replacing first activity keeps schedule valid).<br>4. Conclude O(n log n) runtime."
+            },
+            "clrs": "CLRS 3rd Ed. Chapter 16, Section 16.1 (An activity-selection problem)."
           }
         ]
       },
@@ -812,6 +967,28 @@
               "rubric": "1. Define general backtracking concept and bounding function.<br>2. Formulate 1D state array x[k] and column/diagonal clash tests.<br>3. Write recursive `Place(k, i)` and `NQueens(k, n)` pseudocode.<br>4. Draw 4-Queens state-space tree showing pruned dead-ends."
             },
             "clrs": "CLRS 3rd Ed. Appendix / Foundations & Paper 2 Q2(a) [5 Marks]."
+          },
+          {
+            "qId": "q4-2-2",
+            "title": "Type 2: Graph m-Coloring & Hamiltonian Cycle Backtracking",
+            "examTag": "⭐ High Yield [6 Marks]",
+            "badgeType": "warning",
+            "preview": "Vertex-by-vertex color assignment; prune if adjacent vertices share color",
+            "hinglish": "1) Graph m-Coloring: Har vertex v ko 1 se m tak koi color assign karo. Agar koi adjacent neighbor pehle se wahi color rakhta hai, toh color change karo ya backtrack karo! 2) Hamiltonian Cycle: Aisa closed cycle jo har vertex ko exactly ek baar visit kare. Next vertex tabhi add karo jab wo pichle vertex se connected ho aur pehle visit na hua ho!",
+            "academic": "Graph m-Coloring via Backtracking: Assign colors from {1, ..., m} to vertices such that no two adjacent vertices share the same color. State vector x[1..n] where x[k] ∈ {1..m} is color of vertex k. Pruning condition: for every edge (u, k) with u < k, require x[u] ≠ x[k]. In Hamiltonian Cycle backtracking, vector x[1..n] stores path of vertices; prune if (x[k-1], x[k]) ∉ E or x[k] already visited.",
+            "math": [
+              "• m-Coloring Invariant: (u, v) ∈ E  ⟹  x[u] ≠ x[v]",
+              "• State Space Size: mⁿ potential leaves pruned by bounding function",
+              "• Hamiltonian Adjacency Invariant: (x[k-1], x[k]) ∈ E  and  x[k] ∉ {x[1] .. x[k-1]}",
+              "• Cycle Closure Invariant: (x[n], x[1]) ∈ E"
+            ],
+            "table": {
+              "trigger": "Resource conflict coloring, cycle covering, combinatorial constraint satisfaction",
+              "paradigm": "Backtracking (Pruned Depth-First Search on Permutations)",
+              "state": "Color array x[1..n] or path permutation array x[1..n]",
+              "rubric": "1. Define state array and valid assignment check.<br>2. Formulate bounding condition checking adjacency constraints.<br>3. Provide recursive pseudocode with backtracking undo step.<br>4. Analyze exponential worst-case tree and effectiveness of pruning."
+            },
+            "clrs": "CLRS 3rd Ed. Chapter 34 & Syllabus Core."
           }
         ]
       },
@@ -958,7 +1135,7 @@
       {
         "topicId": "t6-2",
         "name": "Polynomial-Time Reductions & Core Problems",
-        "syllabusRef": "Cook-Levin theorem, NP-Complete problems (Circuit-SAT, 3-CNF SAT, clique, vertex cover, ILP).",
+        "syllabusRef": "Cook-Levin theorem, NP-Complete problems (Circuit-SAT, 3-CNF SAT, clique, vertex cover, ILP), Modeling NP-complete problems using ILP.",
         "questions": [
           {
             "qId": "q6-2-1",
@@ -981,6 +1158,29 @@
               "rubric": "1. Define graph vertex gadgets for each 3-variable clause.<br>2. Define edge compatibility rules between non-contradictory literals.<br>3. Prove Forward direction: Satisfying assignment ⟹ Clique of size k.<br>4. Prove Backward direction: Clique of size k ⟹ Valid truth assignment."
             },
             "clrs": "CLRS 3rd Ed. Chapter 34, Section 34.5 (Reduction of 3-SAT to CLIQUE)."
+          },
+          {
+            "qId": "q6-2-2",
+            "title": "Type 2: Modeling NP-Complete Problems using Integer Linear Programming (ILP)",
+            "examTag": "⭐ High Yield (Practical 9) [6 Marks]",
+            "badgeType": "warning",
+            "preview": "Vertex Cover ILP: min ∑ x_v subject to x_u + x_v ≥ 1 and x_v ∈ {0, 1}",
+            "hinglish": "Syllabus practical me NP-complete problems ko 0-1 Integer Linear Programming me formulate karna sikhaya gaya hai. Vertex Cover ke liye: Har vertex v ke liye binary variable x_v ∈ {0, 1} banao (1 = vertex cover me shamil hai). Objective function: min ∑ x_v. Har edge (u, v) ke liye constraint: x_u + x_v ≥ 1 (yani dono me se kam se kam ek vertex zaroor cover hona chahiye)! Independent Set ke liye: max ∑ x_v subject to x_u + x_v ≤ 1.",
+            "academic": "Formulating NP-Complete problems via 0-1 Integer Linear Programming (ILP): 1. Minimum Vertex Cover: Minimize ∑_{v ∈ V} x_v subject to x_u + x_v ≥ 1 for all (u, v) ∈ E, and x_v ∈ {0, 1}. 2. Maximum Independent Set: Maximize ∑_{v ∈ V} x_v subject to x_u + x_v ≤ 1 for all (u, v) ∈ E, and x_v ∈ {0, 1}. 3. Maximum Clique: In complement graph G^c, solve Independent Set. Since 0-1 ILP is NP-hard, these formulations represent standard exact mathematical programming models.",
+            "math": [
+              "• Binary Decision Variable: x_v = 1 if v ∈ Cover, else 0",
+              "• Vertex Cover Objective: Minimize ∑_{v ∈ V} x_v",
+              "• Edge Coverage Constraint: x_u + x_v ≥ 1  ∀ (u, v) ∈ E",
+              "• Independent Set Objective: Maximize ∑_{v ∈ V} x_v  s.t.  x_u + x_v ≤ 1  ∀ (u, v) ∈ E",
+              "• Integrality Constraint: x_v ∈ {0, 1}  ∀ v ∈ V"
+            ],
+            "table": {
+              "trigger": "Mathematical optimization modeling of graph combinatorial problems",
+              "paradigm": "Integer Linear Programming (ILP Formulation)",
+              "state": "Binary variables x_v ∈ {0, 1}, linear objective, edge constraints",
+              "rubric": "1. Define binary decision variables x_v ∈ {0, 1}.<br>2. Formulate linear objective function.<br>3. State linear inequality constraint for every edge in E.<br>4. Explain that relaxation to linear programming (LP) yields a 2-approximation."
+            },
+            "clrs": "CLRS 3rd Ed. Chapter 35, Section 35.4 (The set-covering problem & LP relaxation)."
           }
         ]
       },
