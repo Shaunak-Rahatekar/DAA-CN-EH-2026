@@ -3,62 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DAA Master Interactive Tree Flowchart (CS3212 / CS3205)</title>
+  <title>DAA Master Interactive Mind Map (CS3212 / CS3205)</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
     :root {
-      --bg: #0b1120;
-      --tree-line: #334155;
-      --tree-line-active: #38bdf8;
+      --bg: #090d16;
+      --card-bg: #131c2e;
+      --border: #23324d;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
     }
     body {
       background-color: var(--bg);
-      color: #f8fafc;
+      color: var(--text);
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      overflow-x: hidden;
+    }
+    /* Mind Map Canvas Background Grid */
+    .mindmap-canvas {
+      background-image: radial-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px);
+      background-size: 24px 24px;
     }
 
-    /* Flowchart Tree Branch Connectors */
-    .tree-branch {
+    /* Mind Map Nodes Styling */
+    .mm-node {
       position: relative;
-      padding-left: 32px;
-      margin-left: 20px;
-      border-left: 2px solid var(--tree-line);
-      transition: border-color 0.2s ease;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      user-select: none;
     }
-    .tree-branch:hover {
-      border-left-color: var(--tree-line-active);
+    .mm-node:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.3);
     }
-    .tree-node-connector {
-      position: absolute;
-      top: 24px;
-      left: 0;
-      width: 28px;
-      height: 2px;
-      background: var(--tree-line);
-    }
-    .tree-branch:hover > .tree-node-connector {
-      background: var(--tree-line-active);
+    .mm-node.active-selected {
+      outline: 2px solid #38bdf8;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
     }
 
-    /* Node Box Hover Glow */
-    .node-box {
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Organic SVG Branch Lines */
+    .branch-path {
+      fill: none;
+      stroke-linecap: round;
+      transition: stroke 0.25s ease, stroke-width 0.25s ease;
     }
-    .node-box:hover {
-      box-shadow: 0 8px 25px -4px rgba(56, 189, 248, 0.2);
-      border-color: #38bdf8;
+    .branch-path:hover {
+      stroke-width: 3.5px !important;
     }
 
     /* Math Formula Typography */
     .math-sym {
       font-family: 'Cambria Math', 'Times New Roman', serif;
       font-style: italic;
-      letter-spacing: 0.5px;
     }
-    .math-box {
+    .math-card {
       font-family: 'Cambria Math', 'Times New Roman', serif;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(56, 189, 248, 0.3);
+      background: #0d1526;
+      border: 1px solid #1e293b;
       padding: 10px 14px;
       border-radius: 8px;
       font-size: 15px;
@@ -66,789 +67,860 @@
       color: #38bdf8;
     }
 
-    /* Animations for Expand/Collapse */
-    .node-children {
-      transition: max-height 0.3s ease, opacity 0.2s ease;
-      overflow: hidden;
+    /* Smooth Slide Drawer */
+    #detailDrawer {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .node-children.collapsed {
-      display: none;
+    #detailDrawer.drawer-closed {
+      transform: translateX(105%);
     }
 
     /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 8px; height: 8px; }
-    ::-webkit-scrollbar-track { background: #0b1120; }
-    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #090d16; }
+    ::-webkit-scrollbar-thumb { background: #23324d; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
   </style>
 </head>
-<body class="min-h-screen pb-28">
+<body class="min-h-screen relative flex flex-col">
 
-  <!-- TOP STICKY CONTROLLER BAR -->
-  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 px-6 py-4 shadow-2xl">
-    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-4">
+  <!-- TOP APP HEADER -->
+  <header class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-6 py-3.5 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <span class="px-2.5 py-1 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider border border-cyan-500/30">Interactive Mind Map</span>
       <div>
-        <div class="flex items-center gap-3">
-          <span class="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider border border-cyan-500/40">Interactive Tree Flowchart</span>
-          <h1 class="text-xl md:text-2xl font-black text-white tracking-tight">DAA Exam Flowchart & Case-Study Decoder</h1>
-        </div>
-        <p class="text-xs text-slate-400 mt-1">Click any node or <span class="text-cyan-400 font-semibold">[+] / [-]</span> to expand or collapse sub-trees • Crystal-clear readable symbols • 4-Section Answer Rubrics</p>
+        <h1 class="text-lg md:text-xl font-black text-white tracking-tight flex items-center gap-2">
+          DAA Master Mind Map <span class="text-xs font-normal text-slate-400">• CS3212 / CS3205</span>
+        </h1>
+        <p class="text-[11px] text-slate-400">Click any mind map node to expand/collapse • Click topics to open deep-dive study sheet</p>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="flex flex-wrap items-center gap-2">
+      <div class="relative">
+        <input type="text" id="mmSearch" placeholder="Search mind map (e.g. Catalan, Huffman)..." 
+               class="bg-slate-800 text-slate-200 text-xs rounded-lg px-3 py-2 pl-8 border border-slate-700 focus:outline-none focus:border-cyan-400 w-52 md:w-64" />
+        <svg class="w-4 h-4 text-slate-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
       </div>
 
-      <!-- Quick Action Buttons -->
-      <div class="flex flex-wrap items-center gap-2">
-        <div class="relative">
-          <input type="text" id="flowchartSearch" placeholder="Search topic, formula, CLRS..." 
-                 class="bg-slate-800 text-slate-200 text-xs rounded-lg px-3 py-2 pl-8 border border-slate-700 focus:outline-none focus:border-cyan-400 w-52 md:w-64" />
-          <svg class="w-4 h-4 text-slate-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-          </svg>
-        </div>
-
-        <button id="btnExpandAll" class="px-3 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-xs font-bold transition shadow-md shadow-cyan-600/30">
-          ➕ Expand All
-        </button>
-        <button id="btnCollapseAll" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 rounded-lg text-xs font-bold transition">
-          ➖ Collapse All
-        </button>
-        <button id="btnUnitsOnly" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 rounded-lg text-xs font-bold transition">
-          📂 Show Units Only
-        </button>
-      </div>
+      <button id="btnExpandAllMM" class="px-3 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-xs font-bold transition shadow-md shadow-cyan-600/30">
+        Expand All
+      </button>
+      <button id="btnCollapseAllMM" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 rounded-lg text-xs font-bold transition">
+        Collapse to Center
+      </button>
+      <button id="btnResetView" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 rounded-lg text-xs font-bold transition">
+        Center View
+      </button>
     </div>
   </header>
 
-  <!-- QUICK ACCESS MEMORY VAULT (BANNER) -->
-  <div class="max-w-7xl mx-auto px-6 mt-6">
-    <div class="bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border border-cyan-800/40 rounded-xl p-4 shadow-xl">
-      <div class="flex items-center justify-between mb-2">
-        <h2 class="text-xs font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
-          <span>⚡ Emergency Exam Constants Vault (Repeated in Actual Papers)</span>
-        </h2>
-        <span class="text-[11px] text-slate-400">Do not derive in exam hall — memorize directly</span>
+  <!-- REPEATED CONSTANTS EMERGENCY BAR -->
+  <div class="bg-slate-900/80 border-b border-slate-800 px-6 py-2">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div class="flex items-center gap-2 text-cyan-400 font-bold">
+        <span>⚡ Exam Instant Recall:</span>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-        <div class="bg-slate-800/80 p-2.5 rounded-lg border border-slate-700">
-          <div class="text-slate-400 text-[11px]">Catalan Numbers (<span class="math-sym">C<sub>n</sub></span>)</div>
-          <div class="font-mono text-cyan-300 font-bold mt-0.5 text-sm">C₆ = 132 | C₇ = 429</div>
-          <div class="text-[11px] text-slate-400">MCM f(7) = 132, Binary Trees = 429</div>
-        </div>
-        <div class="bg-slate-800/80 p-2.5 rounded-lg border border-slate-700">
-          <div class="text-slate-400 text-[11px]">Huffman 100k Size</div>
-          <div class="font-mono text-emerald-300 font-bold mt-0.5 text-sm">266,000 bits (33,250 B)</div>
-          <div class="text-[11px] text-slate-400">L<sub>avg</sub> = 2.66 bits/char</div>
-        </div>
-        <div class="bg-slate-800/80 p-2.5 rounded-lg border border-slate-700">
-          <div class="text-slate-400 text-[11px]">Digital Root of 4444⁴⁴⁴⁴</div>
-          <div class="font-mono text-amber-300 font-bold mt-0.5 text-sm">Root = 7</div>
-          <div class="text-[11px] text-slate-400">4444 ≡ -2 mod 9, (-2)³ ≡ 1 mod 9</div>
-        </div>
-        <div class="bg-slate-800/80 p-2.5 rounded-lg border border-slate-700">
-          <div class="text-slate-400 text-[11px]">Square Root Recurrence</div>
-          <div class="font-mono text-purple-300 font-bold mt-0.5 text-sm">T(n) = O(log log n)</div>
-          <div class="text-[11px] text-slate-400">T(n) = T(√n) + 1 via n = 2<sup>m</sup></div>
-        </div>
+      <div class="flex flex-wrap items-center gap-4 text-[11px]">
+        <div><span class="text-slate-400">Catalan:</span> <span class="font-mono text-cyan-300 font-bold">C₆ = 132 | C₇ = 429</span></div>
+        <div><span class="text-slate-400">Huffman 100k Size:</span> <span class="font-mono text-emerald-300 font-bold">266,000 bits (33,250 B)</span></div>
+        <div><span class="text-slate-400">Digital Root 4444⁴⁴⁴⁴:</span> <span class="font-mono text-amber-300 font-bold">Root = 7</span></div>
+        <div><span class="text-slate-400">Sqrt Recurrence:</span> <span class="font-mono text-purple-300 font-bold">T(n) = O(log log n)</span></div>
+        <div><span class="text-slate-400">Popular Element (≥ n/3):</span> <span class="font-mono text-rose-300 font-bold">Monte Carlo m=271 | Las Vegas E=3</span></div>
       </div>
     </div>
   </div>
 
-  <!-- MAIN FLOWCHART TREE CANVAS -->
-  <main class="max-w-7xl mx-auto px-6 mt-8">
+  <!-- INTERACTIVE MIND MAP CANVAS -->
+  <div class="flex-1 mindmap-canvas relative overflow-auto p-8 md:p-14" id="canvasContainer">
+    
+    <!-- SVG Connections Layer -->
+    <svg id="svgConnectors" class="absolute top-0 left-0 w-full h-full pointer-events-none z-0"></svg>
 
-    <!-- LEVEL 0: ROOT NODE -->
-    <div class="flex items-center gap-3">
-      <div class="node-box bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-6 py-3.5 rounded-xl border border-cyan-400 shadow-lg shadow-cyan-500/20 flex items-center justify-between gap-4 cursor-pointer"
-           onclick="toggleNode('children-root', this)">
-        <div class="flex items-center gap-3">
-          <span class="w-8 h-8 rounded-lg bg-white/20 text-white flex items-center justify-center font-black text-sm">DAA</span>
-          <div>
-            <h2 class="text-lg font-black tracking-tight leading-tight">Design and Analysis of Algorithms (CS3212 / CS3205)</h2>
-            <p class="text-xs text-cyan-100">End-Semester Exam Curriculum • 6 Units • 25 High-Probability Subtopics</p>
-          </div>
-        </div>
-        <span class="toggle-icon px-2.5 py-1 rounded bg-black/30 text-white font-mono text-xs font-bold border border-white/20">[-]</span>
-      </div>
-    </div>
+    <!-- MIND MAP NODES GRID (Bi-Directional Radial Layout) -->
+    <div class="relative z-10 max-w-6xl mx-auto flex flex-col items-center">
 
-    <!-- LEVEL 1: UNITS BRANCH -->
-    <div class="tree-branch" id="children-root">
-      <div class="tree-node-connector"></div>
-
-      <!-- ========================================== -->
-      <!-- UNIT I NODE -->
-      <!-- ========================================== -->
-      <div class="pt-6">
-        <div class="node-box bg-slate-900 border border-cyan-800/60 p-4 rounded-xl flex items-center justify-between gap-4 cursor-pointer hover:border-cyan-400"
-             onclick="toggleNode('children-unit1', this)">
-          <div class="flex items-center gap-3">
-            <span class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-300 font-bold flex items-center justify-center text-sm border border-cyan-500/30">I</span>
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="text-xs font-bold text-cyan-400 uppercase tracking-wide">Unit I</span>
-                <span class="text-[11px] text-slate-400">(4 Exam Subtopics)</span>
-              </div>
-              <h3 class="text-base font-bold text-white">Basic Complexity Analysis & Recurrences</h3>
-            </div>
-          </div>
-          <span class="toggle-icon px-2 py-0.5 rounded bg-slate-800 text-cyan-400 font-mono text-xs font-bold border border-slate-700">[-]</span>
-        </div>
-
-        <!-- Unit I Subtopics Branch -->
-        <div class="tree-branch" id="children-unit1">
-          <div class="tree-node-connector"></div>
-
-          <!-- TOPIC 1.1 -->
-          <div class="pt-5">
-            <div class="node-box bg-slate-900/90 border border-slate-800 p-4 rounded-xl cursor-pointer hover:border-cyan-400"
-                 onclick="toggleNode('details-topic-1-1', this)">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-2.5">
-                  <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30">🔥 Guaranteed Question</span>
-                  <h4 class="text-sm font-bold text-white">Topic 1.1: Square Root Recurrence & Master Theorem</h4>
-                </div>
-                <span class="toggle-icon px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-xs font-bold border border-slate-700">[-]</span>
-              </div>
-            </div>
-
-            <!-- Topic 1.1 Detail Fan-Out -->
-            <div class="tree-branch" id="details-topic-1-1">
-              <div class="tree-node-connector"></div>
-
-              <!-- Fan-out Node A: Hinglish -->
-              <div class="pt-3">
-                <div class="bg-amber-500/10 border-l-4 border-amber-400 p-3 rounded-r-lg text-xs text-amber-200">
-                  <span class="font-bold text-amber-300">💡 Asli Baat (1-Sec Intuition):</span>
-                  Recurrence me agar <span class="math-sym">√(n)</span> dikhe toh panic mat karo! Domain variable <span class="math-sym">n = 2<sup>m</sup></span> substitute karo, jisse recurrence normal binary search <span class="math-sym">S(m) = S(m/2) + 1</span> ban jata hai. Answer seedha <span class="font-bold text-white">O(log log n)</span> aayega!
-                </div>
-              </div>
-
-              <!-- Fan-out Node B: English -->
-              <div class="pt-2">
-                <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg text-xs text-slate-300">
-                  <span class="font-bold text-cyan-300">🎯 Formal Academic Definition:</span>
-                  Domain substitution transforms non-polynomial subproblem reductions into linear form. By setting <span class="math-sym">n = 2<sup>m</sup></span> (hence <span class="math-sym">m = log₂ n</span>), <span class="math-sym">T(n) = T(√n) + 1</span> becomes <span class="math-sym">S(m) = S(m/2) + 1 = Θ(log m) = Θ(log log n)</span>.
-                </div>
-              </div>
-
-              <!-- Fan-out Node C: Clear Math Box -->
-              <div class="pt-2">
-                <div class="math-box">
-                  <span class="font-bold text-emerald-400 block mb-1">📐 Crystal-Clear Formulas (No Raw Syntax):</span>
-                  <div>• Square Root Recurrence: <span class="text-white font-bold">T(n) = T(√(n)) + 1</span> &nbsp;⟹&nbsp; Substitute <span class="text-white">n = 2<sup>m</sup></span> &nbsp;⟹&nbsp; <span class="text-white">S(m) = S(m/2) + 1</span> &nbsp;⟹&nbsp; <span class="text-emerald-300 font-bold">T(n) = O(log log n)</span></div>
-                  <div class="mt-1">• Master Theorem Case 1: <span class="text-white font-bold">T(n) = 3T(n/2) + n</span> &nbsp;⟹&nbsp; Watershed <span class="text-white">n<sup>log₂ 3</sup> ≈ n<sup>1.585</sup></span> &nbsp;⟹&nbsp; Since <span class="text-white">n<sup>1</sup> = O(n<sup>1.585 - 0.585</sup>)</span>, <span class="text-emerald-300 font-bold">T(n) = Θ(n<sup>log₂ 3</sup>) ≈ O(n<sup>1.585</sup>)</span></div>
-                </div>
-              </div>
-
-              <!-- Fan-out Node D: Case Study Table -->
-              <div class="pt-2">
-                <div class="overflow-x-auto text-xs bg-slate-900 border border-slate-800 rounded-lg p-3">
-                  <div class="font-bold text-cyan-300 mb-2">🛠️ Case-Study Algorithm Design Blueprint:</div>
-                  <table class="w-full text-left border-collapse">
-                    <tr class="border-b border-slate-800 text-slate-400">
-                      <th class="p-1.5">Real-World Trigger</th>
-                      <th class="p-1.5">Underlying Paradigm</th>
-                      <th class="p-1.5">State Substitution</th>
-                      <th class="p-1.5">4-Section Answer Rubric</th>
-                    </tr>
-                    <tr class="text-slate-300">
-                      <td class="p-1.5 font-medium text-white">Algorithms with square root domain shrinkage (Jump Search / Sqrt Decomposition)</td>
-                      <td class="p-1.5 text-indigo-300">Variable Substitution</td>
-                      <td class="p-1.5 font-mono text-amber-300">n = 2<sup>m</sup>, S(m) = T(2<sup>m</sup>)</td>
-                      <td class="p-1.5 text-slate-400">1. State substitution n = 2<sup>m</sup><br>2. Derive S(m) = S(m/2) + 1<br>3. Master Theorem on S(m) gives Θ(log m)<br>4. Substitute m = log₂ n ⟹ <span class="text-emerald-300 font-bold">O(log log n)</span></td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-
-              <!-- Fan-out Node E: CLRS Questions -->
-              <div class="pt-2">
-                <div class="bg-cyan-950/20 border border-cyan-800/40 p-3 rounded-lg text-xs text-slate-300">
-                  <span class="font-bold text-cyan-300 block mb-1">📚 CLRS 3rd Ed. & Actual Exam Practice Questions:</span>
-                  <div>• <span class="text-white font-semibold">CLRS Ch. 4, Section 4.5 & Exercise 4.5-3:</span> Master Theorem cases and square-root transformations.</div>
-                  <div>• <span class="text-white font-semibold">Actual Paper 2, Q1(a) [4 Marks]:</span> Solve (1) T(n) = T(√n) + 1 ⟹ <span class="text-emerald-300 font-bold">O(log log n)</span>; (2) T(n) = 3T(n/2) + n ⟹ <span class="text-emerald-300 font-bold">O(n<sup>log₂ 3</sup>)</span>.</div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- TOPIC 1.2 -->
-          <div class="pt-5">
-            <div class="node-box bg-slate-900/90 border border-slate-800 p-4 rounded-xl cursor-pointer hover:border-cyan-400"
-                 onclick="toggleNode('details-topic-1-2', this)">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-2.5">
-                  <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">⭐ High Probability</span>
-                  <h4 class="text-sm font-bold text-white">Topic 1.2: Decision Tree Lower Bound for Sorting (Ω(n log n))</h4>
-                </div>
-                <span class="toggle-icon px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-xs font-bold border border-slate-700">[-]</span>
-              </div>
-            </div>
-
-            <div class="tree-branch" id="details-topic-1-2">
-              <div class="tree-node-connector"></div>
-              <div class="pt-3">
-                <div class="bg-amber-500/10 border-l-4 border-amber-400 p-3 rounded-r-lg text-xs text-amber-200">
-                  <span class="font-bold text-amber-300">💡 Asli Baat:</span>
-                  Koi bhi comparison sort n elements ko O(n) me sort nahi kar sakta kyunki n! possible orders ko distinguish karne ke liye binary tree ki height kam se kam <span class="font-bold text-white">Ω(n log n)</span> honi hi padegi!
-                </div>
-              </div>
-              <div class="pt-2">
-                <div class="math-box">
-                  <span class="font-bold text-emerald-400 block mb-1">📐 Stirling's Lower Bound Derivation:</span>
-                  Tree height <span class="math-sym">h</span> has at most <span class="math-sym">2<sup>h</sup></span> leaves. To distinguish all <span class="math-sym">n!</span> permutations: <span class="text-white font-bold">2<sup>h</sup> ≥ n!</span> &nbsp;⟹&nbsp; <span class="text-white font-bold">h ≥ log₂(n!) = ∑<sub>i=1</sub><sup>n</sup> log₂ i ≥ (n/2) log₂(n/2) = <span class="text-emerald-300">Ω(n log n)</span></span>.
-                </div>
-              </div>
-              <div class="pt-2">
-                <div class="bg-cyan-950/20 border border-cyan-800/40 p-3 rounded-lg text-xs text-slate-300">
-                  <span class="font-bold text-cyan-300">📚 CLRS Mapping:</span> CLRS Ch. 8, Section 8.1 (Theorem 8.1). Draw tree for n=3 with 6 leaves.
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
+      <!-- CENTER HUB NODE -->
+      <div id="node-center" class="mm-node bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 p-5 rounded-2xl border-2 border-cyan-400 shadow-2xl shadow-cyan-500/30 text-center w-72 mb-12">
+        <div class="inline-block px-2.5 py-0.5 rounded-full bg-black/30 text-cyan-200 text-[10px] font-black uppercase tracking-wider mb-1">Central Mind Map Hub</div>
+        <h2 class="text-lg font-black text-white leading-tight">DAA Master Architecture</h2>
+        <p class="text-[11px] text-cyan-100 mt-1">CS3212 / CS3205 • 6 Units</p>
+        <div class="mt-2 text-[10px] text-cyan-200/80 bg-black/20 rounded py-0.5 px-2">Click any Unit below to expand branches</div>
       </div>
 
-      <!-- ========================================== -->
-      <!-- UNIT II NODE -->
-      <!-- ========================================== -->
-      <div class="pt-6">
-        <div class="node-box bg-slate-900 border border-cyan-800/60 p-4 rounded-xl flex items-center justify-between gap-4 cursor-pointer hover:border-cyan-400"
-             onclick="toggleNode('children-unit2', this)">
-          <div class="flex items-center gap-3">
-            <span class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-300 font-bold flex items-center justify-center text-sm border border-cyan-500/30">II</span>
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="text-xs font-bold text-cyan-400 uppercase tracking-wide">Unit II</span>
-                <span class="text-[11px] text-slate-400">(4 Exam Subtopics)</span>
-              </div>
-              <h3 class="text-base font-bold text-white">Divide & Conquer and Combinatorial Search</h3>
-            </div>
-          </div>
-          <span class="toggle-icon px-2 py-0.5 rounded bg-slate-800 text-cyan-400 font-mono text-xs font-bold border border-slate-700">[-]</span>
-        </div>
+      <!-- UNITS CONTAINER (2 Columns: Left Column Units IV-VI, Right Column Units I-III) -->
+      <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
 
-        <div class="tree-branch" id="children-unit2">
-          <div class="tree-node-connector"></div>
+        <!-- ============================================== -->
+        <!-- LEFT COLUMN: UNITS I, II, III (Core Design)   -->
+        <!-- ============================================== -->
+        <div class="space-y-8 flex flex-col items-end">
 
-          <!-- TOPIC 2.1 -->
-          <div class="pt-5">
-            <div class="node-box bg-slate-900/90 border border-slate-800 p-4 rounded-xl cursor-pointer hover:border-cyan-400"
-                 onclick="toggleNode('details-topic-2-1', this)">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-2.5">
-                  <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30">🔥 Guaranteed Question</span>
-                  <h4 class="text-sm font-bold text-white">Topic 2.1: Median of k Sorted Arrays of Total Size n</h4>
+          <!-- UNIT I NODE -->
+          <div class="w-full max-w-md">
+            <div id="node-unit-1" class="mm-node bg-slate-900 border-2 border-cyan-500/60 p-4 rounded-xl flex items-center justify-between gap-3 shadow-lg"
+                 onclick="toggleUnitBranches('unit-1')">
+              <div class="flex items-center gap-3">
+                <span class="w-9 h-9 rounded-lg bg-cyan-500/20 text-cyan-300 font-black flex items-center justify-center text-sm border border-cyan-500/40">I</span>
+                <div>
+                  <div class="text-[10px] font-bold text-cyan-400 uppercase tracking-wide">Unit I Branch</div>
+                  <h3 class="text-sm font-bold text-white">Complexity & Recurrences</h3>
                 </div>
-                <span class="toggle-icon px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-xs font-bold border border-slate-700">[-]</span>
               </div>
+              <span id="badge-unit-1" class="px-2 py-0.5 rounded bg-slate-800 text-cyan-400 text-xs font-mono font-bold border border-slate-700">[-] 3 Topics</span>
             </div>
 
-            <div class="tree-branch" id="details-topic-2-1">
-              <div class="tree-node-connector"></div>
-              <div class="pt-3">
-                <div class="bg-amber-500/10 border-l-4 border-amber-400 p-3 rounded-r-lg text-xs text-amber-200">
-                  <span class="font-bold text-amber-300">💡 Asli Baat:</span>
-                  k arrays ka median nikaalne ke liye har array ke pehle element ko size-k ke Min-Heap me dalo. Smallest element bahar nikalo aur usi array ka agla element heap me bharo. n/2 baar karne par median mil jayega in <span class="font-bold text-white">O(n log k)</span>!
+            <!-- Unit I Subtopics Branches -->
+            <div id="branches-unit-1" class="mt-3 space-y-2.5 pl-6 border-l-2 border-cyan-500/30 ml-4">
+              
+              <!-- Topic 1.1 -->
+              <div id="topic-1-1" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-cyan-400 p-3 rounded-lg text-xs"
+                   onclick="openDrawer('1-1')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                    1.1 Sqrt Recurrence & Master Theorem
+                  </span>
+                  <span class="px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 text-[10px] font-bold">🔥 Guaranteed</span>
                 </div>
+                <div class="text-[11px] text-cyan-300 mt-1 font-mono">T(n) = T(√n) + 1 ⟹ O(log log n)</div>
               </div>
-              <div class="pt-2">
-                <div class="math-box">
-                  <span class="font-bold text-emerald-400 block mb-1">📐 Complexity & Heap Invariant:</span>
-                  Heap size = <span class="text-white font-bold">k</span>. Total extractions = <span class="text-white font-bold">⌊n/2⌋</span>.<br>
-                  Time Complexity: <span class="text-emerald-300 font-bold">O(k + n log k) = O(n log k)</span> &nbsp;|&nbsp; Auxiliary Space: <span class="text-emerald-300 font-bold">O(k)</span>.
-                </div>
-              </div>
-              <div class="pt-2">
-                <div class="bg-cyan-950/20 border border-cyan-800/40 p-3 rounded-lg text-xs text-slate-300">
-                  <span class="font-bold text-cyan-300">📚 Exam Question:</span> Actual Paper 2, Q6(a) [7 Marks] — Pseudocode & Complexity for median of k sorted arrays.
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <!-- TOPIC 2.2 -->
-          <div class="pt-5">
-            <div class="node-box bg-slate-900/90 border border-slate-800 p-4 rounded-xl cursor-pointer hover:border-cyan-400"
-                 onclick="toggleNode('details-topic-2-2', this)">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-2.5">
-                  <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">⭐ High Probability</span>
-                  <h4 class="text-sm font-bold text-white">Topic 2.2: Fast Modular Exponentiation & Josephus Cycle</h4>
+              <!-- Topic 1.2 -->
+              <div id="topic-1-2" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-cyan-400 p-3 rounded-lg text-xs"
+                   onclick="openDrawer('1-2')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white">1.2 Sorting Lower Bound & Decision Trees</span>
+                  <span class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-bold">⭐ High Yield</span>
                 </div>
-                <span class="toggle-icon px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-xs font-bold border border-slate-700">[-]</span>
+                <div class="text-[11px] text-slate-400 mt-1 font-mono">h ≥ log₂(n!) = Ω(n log n)</div>
               </div>
-            </div>
 
-            <div class="tree-branch" id="details-topic-2-2">
-              <div class="tree-node-connector"></div>
-              <div class="pt-3">
-                <div class="bg-amber-500/10 border-l-4 border-amber-400 p-3 rounded-r-lg text-xs text-amber-200">
-                  <span class="font-bold text-amber-300">💡 Asli Baat:</span>
-                  a<sup>b</sup> mod n me power ko aadha karte jao in O(log b). Josephus game me n = 2<sup>m</sup> + l log hain toh winner hamesha <span class="font-bold text-white">2l + 1</span> hota hai!
+              <!-- Topic 1.3 -->
+              <div id="topic-1-3" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-cyan-400 p-3 rounded-lg text-xs"
+                   onclick="openDrawer('1-3')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white">1.3 Strassen's Matrix Multiplication</span>
+                  <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">CLRS Ch. 4</span>
                 </div>
+                <div class="text-[11px] text-slate-400 mt-1 font-mono">T(n) = 7T(n/2) + Θ(n²) ⟹ O(n<sup>2.81</sup>)</div>
               </div>
-              <div class="pt-2">
-                <div class="math-box">
-                  <span class="font-bold text-emerald-400 block mb-1">📐 Formulas & Exam Values:</span>
-                  <div>• 3<sup>83</sup> mod 17: By Fermat's Little Theorem, 3<sup>16</sup> ≡ 1 mod 17 ⟹ 83 = 16(5) + 3 ⟹ 3³ = 27 ≡ <span class="text-emerald-300 font-bold">10 mod 17</span>.</div>
-                  <div class="mt-1">• Josephus for n = 2<sup>m</sup> + 1 ⟹ Winner = <span class="text-emerald-300 font-bold">3</span>. For n = 2<sup>m</sup> - 1 ⟹ Winner = <span class="text-emerald-300 font-bold">2<sup>m</sup> - 3</span>.</div>
-                </div>
-              </div>
+
             </div>
           </div>
 
-        </div>
-      </div>
-
-      <!-- ========================================== -->
-      <!-- UNIT III NODE -->
-      <!-- ========================================== -->
-      <div class="pt-6">
-        <div class="node-box bg-slate-900 border border-cyan-800/60 p-4 rounded-xl flex items-center justify-between gap-4 cursor-pointer hover:border-cyan-400"
-             onclick="toggleNode('children-unit3', this)">
-          <div class="flex items-center gap-3">
-            <span class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-300 font-bold flex items-center justify-center text-sm border border-cyan-500/30">III</span>
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="text-xs font-bold text-cyan-400 uppercase tracking-wide">Unit III</span>
-                <span class="text-[11px] text-slate-400">(4 Exam Subtopics)</span>
-              </div>
-              <h3 class="text-base font-bold text-white">Dynamic Programming</h3>
-            </div>
-          </div>
-          <span class="toggle-icon px-2 py-0.5 rounded bg-slate-800 text-cyan-400 font-mono text-xs font-bold border border-slate-700">[-]</span>
-        </div>
-
-        <div class="tree-branch" id="children-unit3">
-          <div class="tree-node-connector"></div>
-
-          <!-- TOPIC 3.1 -->
-          <div class="pt-5">
-            <div class="node-box bg-slate-900/90 border border-slate-800 p-4 rounded-xl cursor-pointer hover:border-cyan-400"
-                 onclick="toggleNode('details-topic-3-1', this)">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-2.5">
-                  <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30">🔥 Guaranteed Question</span>
-                  <h4 class="text-sm font-bold text-white">Topic 3.1: Matrix Chain Parenthesizations & Catalan Series</h4>
+          <!-- UNIT II NODE -->
+          <div class="w-full max-w-md">
+            <div id="node-unit-2" class="mm-node bg-slate-900 border-2 border-indigo-500/60 p-4 rounded-xl flex items-center justify-between gap-3 shadow-lg"
+                 onclick="toggleUnitBranches('unit-2')">
+              <div class="flex items-center gap-3">
+                <span class="w-9 h-9 rounded-lg bg-indigo-500/20 text-indigo-300 font-black flex items-center justify-center text-sm border border-indigo-500/40">II</span>
+                <div>
+                  <div class="text-[10px] font-bold text-indigo-400 uppercase tracking-wide">Unit II Branch</div>
+                  <h3 class="text-sm font-bold text-white">Divide & Conquer & Search</h3>
                 </div>
-                <span class="toggle-icon px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-xs font-bold border border-slate-700">[-]</span>
               </div>
+              <span id="badge-unit-2" class="px-2 py-0.5 rounded bg-slate-800 text-indigo-400 text-xs font-mono font-bold border border-slate-700">[-] 3 Topics</span>
             </div>
 
-            <div class="tree-branch" id="details-topic-3-1">
-              <div class="tree-node-connector"></div>
-              <div class="pt-3">
-                <div class="bg-amber-500/10 border-l-4 border-amber-400 p-3 rounded-r-lg text-xs text-amber-200">
-                  <span class="font-bold text-amber-300">💡 Asli Baat:</span>
-                  Matrix Chain me distinct parenthesizations ki count hamesha <span class="font-bold text-white">Catalan Number C<sub>n-1</sub></span> hoti hai! Yaad rakho: <span class="font-bold text-emerald-300">f(7) = C₆ = 132</span> aur <span class="font-bold text-emerald-300">f(8) = C₇ = 429</span>!
+            <!-- Unit II Subtopics -->
+            <div id="branches-unit-2" class="mt-3 space-y-2.5 pl-6 border-l-2 border-indigo-500/30 ml-4">
+              
+              <!-- Topic 2.1 -->
+              <div id="topic-2-1" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-indigo-400 p-3 rounded-lg text-xs"
+                   onclick="openDrawer('2-1')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                    2.1 Median of k Sorted Arrays (Size n)
+                  </span>
+                  <span class="px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 text-[10px] font-bold">🔥 Guaranteed</span>
                 </div>
+                <div class="text-[11px] text-indigo-300 mt-1 font-mono">Min-Heap size k ⟹ O(n log k) time, O(k) space</div>
               </div>
-              <div class="pt-2">
-                <div class="math-box">
-                  <span class="font-bold text-emerald-400 block mb-1">📐 Recurrence & Catalan Values:</span>
-                  <div>• Recurrence: <span class="text-white font-bold">f(n) = ∑<sub>k=1</sub><sup>n-1</sup> f(k) f(n-k)</span> with <span class="text-white">f(1) = 1</span> &nbsp;⟹&nbsp; <span class="text-emerald-300 font-bold">f(n) = C<sub>n-1</sub></span>.</div>
-                  <div class="mt-1">• Numerical Values: <span class="text-white font-bold">f(7) = C₆ = 132</span> &nbsp;|&nbsp; <span class="text-white font-bold">f(8) = C₇ = 429</span>.</div>
-                  <div class="mt-1">• Proof of Ω(2ⁿ): <span class="text-white">f(n) ≥ 2 f(n-1) ≥ 2<sup>n-2</sup> = (1/4) 2ⁿ ⟹ <span class="text-emerald-300 font-bold">Ω(2ⁿ)</span></span>.</div>
+
+              <!-- Topic 2.2 -->
+              <div id="topic-2-2" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-indigo-400 p-3 rounded-lg text-xs"
+                   onclick="openDrawer('2-2')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white">2.2 Fast Mod Exp & Josephus Invariant</span>
+                  <span class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-bold">⭐ High Yield</span>
                 </div>
+                <div class="text-[11px] text-slate-400 mt-1 font-mono">3<sup>83</sup> mod 17 = 10 | Josephus W = 2l + 1</div>
               </div>
-              <div class="pt-2">
-                <div class="bg-cyan-950/20 border border-cyan-800/40 p-3 rounded-lg text-xs text-slate-300">
-                  <span class="font-bold text-cyan-300">📚 Exam Question:</span> Actual Paper 2, Q1(b) [6 Marks] — Recurrence, compute f(7) & f(8), prove Ω(2ⁿ).
+
+              <!-- Topic 2.3 -->
+              <div id="topic-2-3" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-indigo-400 p-3 rounded-lg text-xs"
+                   onclick="openDrawer('2-3')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white">2.3 2D Closest Pair of Points</span>
+                  <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Geometry</span>
                 </div>
+                <div class="text-[11px] text-slate-400 mt-1 font-mono">2δ vertical strip check ≤ 7 points ⟹ O(n log n)</div>
               </div>
+
             </div>
           </div>
 
-          <!-- TOPIC 3.2 -->
-          <div class="pt-5">
-            <div class="node-box bg-slate-900/90 border border-slate-800 p-4 rounded-xl cursor-pointer hover:border-cyan-400"
-                 onclick="toggleNode('details-topic-3-2', this)">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-2.5">
-                  <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30">🔥 Guaranteed Question</span>
-                  <h4 class="text-sm font-bold text-white">Topic 3.2: Poisson Binomial Coins DP (Probability of Exactly k Heads)</h4>
+          <!-- UNIT III NODE -->
+          <div class="w-full max-w-md">
+            <div id="node-unit-3" class="mm-node bg-slate-900 border-2 border-violet-500/60 p-4 rounded-xl flex items-center justify-between gap-3 shadow-lg"
+                 onclick="toggleUnitBranches('unit-3')">
+              <div class="flex items-center gap-3">
+                <span class="w-9 h-9 rounded-lg bg-violet-500/20 text-violet-300 font-black flex items-center justify-center text-sm border border-violet-500/40">III</span>
+                <div>
+                  <div class="text-[10px] font-bold text-violet-400 uppercase tracking-wide">Unit III Branch</div>
+                  <h3 class="text-sm font-bold text-white">Dynamic Programming</h3>
                 </div>
-                <span class="toggle-icon px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-xs font-bold border border-slate-700">[-]</span>
               </div>
+              <span id="badge-unit-3" class="px-2 py-0.5 rounded bg-slate-800 text-violet-400 text-xs font-mono font-bold border border-slate-700">[-] 3 Topics</span>
             </div>
 
-            <div class="tree-branch" id="details-topic-3-2">
-              <div class="tree-node-connector"></div>
-              <div class="pt-3">
-                <div class="bg-amber-500/10 border-l-4 border-amber-400 p-3 rounded-r-lg text-xs text-amber-200">
-                  <span class="font-bold text-amber-300">💡 Asli Baat:</span>
-                  n biased coins me se exactly k heads chahiye. DP table banao: i-th coin ya toh heads aayega (p<sub>i</sub> chance se, prior j-1 heads) ya tails aayega ((1-p<sub>i</sub>) chance se, prior j heads)!
+            <!-- Unit III Subtopics -->
+            <div id="branches-unit-3" class="mt-3 space-y-2.5 pl-6 border-l-2 border-violet-500/30 ml-4">
+              
+              <!-- Topic 3.1 -->
+              <div id="topic-3-1" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-violet-400 p-3 rounded-lg text-xs"
+                   onclick="openDrawer('3-1')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                    3.1 Matrix Chain & Catalan Series
+                  </span>
+                  <span class="px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 text-[10px] font-bold">🔥 Guaranteed</span>
                 </div>
+                <div class="text-[11px] text-violet-300 mt-1 font-mono">f(7) = C₆ = 132 | f(8) = C₇ = 429 ⟹ Ω(2ⁿ)</div>
               </div>
-              <div class="pt-2">
-                <div class="math-box">
-                  <span class="font-bold text-emerald-400 block mb-1">📐 Recurrence & Complexity:</span>
-                  <div class="text-white font-bold">DP[i, j] = DP[i-1, j-1] · p<sub>i</sub> + DP[i-1, j] · (1 - p<sub>i</sub>)</div>
-                  <div class="text-slate-300 mt-1">Base Cases: <span class="text-white">DP[0, 0] = 1.0</span>, <span class="text-white">DP[0, j] = 0.0</span> (for j > 0).</div>
-                  <div class="mt-1">Time Complexity: <span class="text-emerald-300 font-bold">O(n · k)</span> &nbsp;|&nbsp; Space Complexity: <span class="text-emerald-300 font-bold">O(k)</span> (rolling 1D array).</div>
-                </div>
-              </div>
-              <div class="pt-2">
-                <div class="bg-cyan-950/20 border border-cyan-800/40 p-3 rounded-lg text-xs text-slate-300">
-                  <span class="font-bold text-cyan-300">📚 Exam Question:</span> Actual Paper 2, Q3(b)(ii) [7 Marks] — Pseudocode, correctness argument, and complexity.
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <!-- TOPIC 3.3 -->
-          <div class="pt-5">
-            <div class="node-box bg-slate-900/90 border border-slate-800 p-4 rounded-xl cursor-pointer hover:border-cyan-400"
-                 onclick="toggleNode('details-topic-3-3', this)">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-2.5">
-                  <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">⭐ High Probability</span>
-                  <h4 class="text-sm font-bold text-white">Topic 3.3: Longest Arithmetic Progression Subsequence (LAPS)</h4>
+              <!-- Topic 3.2 -->
+              <div id="topic-3-2" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-violet-400 p-3 rounded-lg text-xs"
+                   onclick="openDrawer('3-2')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                    3.2 Poisson Binomial Probability DP
+                  </span>
+                  <span class="px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 text-[10px] font-bold">🔥 Guaranteed</span>
                 </div>
-                <span class="toggle-icon px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-xs font-bold border border-slate-700">[-]</span>
+                <div class="text-[11px] text-violet-300 mt-1 font-mono">DP[i, j] = DP[i-1, j-1]·pᵢ + DP[i-1, j]·(1-pᵢ)</div>
               </div>
-            </div>
 
-            <div class="tree-branch" id="details-topic-3-3">
-              <div class="tree-node-connector"></div>
-              <div class="pt-3">
-                <div class="bg-amber-500/10 border-l-4 border-amber-400 p-3 rounded-r-lg text-xs text-amber-200">
-                  <span class="font-bold text-amber-300">💡 Asli Baat:</span>
-                  Array sort karke 2D DP L[i, j] banao. Middle element A[i] fix karo: agar <span class="font-bold text-white">A[k] + A[j] == 2A[i]</span>, toh <span class="font-bold text-emerald-300">L[i, j] = L[k, i] + 1</span>! Time complexity <span class="font-bold text-white">O(n²)</span>.
+              <!-- Topic 3.3 -->
+              <div id="topic-3-3" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-violet-400 p-3 rounded-lg text-xs"
+                   onclick="openDrawer('3-3')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white">3.3 Longest Arithmetic Progression (LAPS)</span>
+                  <span class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-bold">⭐ High Yield</span>
                 </div>
+                <div class="text-[11px] text-slate-400 mt-1 font-mono">A[k] + A[j] == 2A[i] ⟹ L[i, j] = L[k, i] + 1</div>
               </div>
-              <div class="pt-2">
-                <div class="math-box">
-                  <span class="font-bold text-emerald-400 block mb-1">📐 Recurrence & Two-Pointer Invariant:</span>
-                  <div class="text-white">L[i, j] = length of AP ending at A[i], A[j] in sorted array A.</div>
-                  <div class="text-white font-bold mt-1">If A[k] + A[j] == 2A[i]: L[i, j] = L[k, i] + 1 &nbsp;|&nbsp; Time: O(n²) &nbsp;|&nbsp; Space: O(n²)</div>
-                </div>
-              </div>
+
             </div>
           </div>
 
         </div>
-      </div>
 
-      <!-- ========================================== -->
-      <!-- UNIT IV NODE -->
-      <!-- ========================================== -->
-      <div class="pt-6">
-        <div class="node-box bg-slate-900 border border-cyan-800/60 p-4 rounded-xl flex items-center justify-between gap-4 cursor-pointer hover:border-cyan-400"
-             onclick="toggleNode('children-unit4', this)">
-          <div class="flex items-center gap-3">
-            <span class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-300 font-bold flex items-center justify-center text-sm border border-cyan-500/30">IV</span>
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="text-xs font-bold text-cyan-400 uppercase tracking-wide">Unit IV</span>
-                <span class="text-[11px] text-slate-400">(3 Exam Subtopics)</span>
-              </div>
-              <h3 class="text-base font-bold text-white">Greedy Strategy & Backtracking</h3>
-            </div>
-          </div>
-          <span class="toggle-icon px-2 py-0.5 rounded bg-slate-800 text-cyan-400 font-mono text-xs font-bold border border-slate-700">[-]</span>
-        </div>
+        <!-- ============================================== -->
+        <!-- RIGHT COLUMN: UNITS IV, V, VI (Advanced)       -->
+        <!-- ============================================== -->
+        <div class="space-y-8 flex flex-col items-start">
 
-        <div class="tree-branch" id="children-unit4">
-          <div class="tree-node-connector"></div>
-
-          <!-- TOPIC 4.1 -->
-          <div class="pt-5">
-            <div class="node-box bg-slate-900/90 border border-slate-800 p-4 rounded-xl cursor-pointer hover:border-cyan-400"
-                 onclick="toggleNode('details-topic-4-1', this)">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-2.5">
-                  <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30">🔥 Verbatim In Both Papers!</span>
-                  <h4 class="text-sm font-bold text-white">Topic 4.1: Huffman Coding: {a:5, b:7, c:8, d:16, e:18, f:22, g:24}</h4>
+          <!-- UNIT IV NODE -->
+          <div class="w-full max-w-md">
+            <div id="node-unit-4" class="mm-node bg-slate-900 border-2 border-amber-500/60 p-4 rounded-xl flex items-center justify-between gap-3 shadow-lg"
+                 onclick="toggleUnitBranches('unit-4')">
+              <div class="flex items-center gap-3">
+                <span class="w-9 h-9 rounded-lg bg-amber-500/20 text-amber-300 font-black flex items-center justify-center text-sm border border-amber-500/40">IV</span>
+                <div>
+                  <div class="text-[10px] font-bold text-amber-400 uppercase tracking-wide">Unit IV Branch</div>
+                  <h3 class="text-sm font-bold text-white">Greedy & Backtracking</h3>
                 </div>
-                <span class="toggle-icon px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-xs font-bold border border-slate-700">[-]</span>
               </div>
+              <span id="badge-unit-4" class="px-2 py-0.5 rounded bg-slate-800 text-amber-400 text-xs font-mono font-bold border border-slate-700">[-] 3 Topics</span>
             </div>
 
-            <div class="tree-branch" id="details-topic-4-1">
-              <div class="tree-node-connector"></div>
-              <div class="pt-3">
-                <div class="bg-amber-500/10 border-l-4 border-amber-400 p-3 rounded-r-lg text-xs text-amber-200">
-                  <span class="font-bold text-amber-300">💡 Asli Baat:</span>
-                  Dono paper me exact same frequencies aayi thin! Answer rat lo: 100,000 characters ka total size = <span class="font-bold text-white">266,000 bits</span> (<span class="font-bold text-white">33,250 bytes</span>)! Average codeword length = <span class="font-bold text-white">2.66 bits/char</span>!
+            <!-- Unit IV Subtopics -->
+            <div id="branches-unit-4" class="mt-3 space-y-2.5 pl-6 border-l-2 border-amber-500/30 ml-4">
+              
+              <!-- Topic 4.1 -->
+              <div id="topic-4-1" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-amber-400 p-3 rounded-lg text-xs"
+                   onclick="openDrawer('4-1')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                    4.1 Huffman Coding (Verbatim Question!)
+                  </span>
+                  <span class="px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 text-[10px] font-bold">🔥 100% Hit</span>
                 </div>
+                <div class="text-[11px] text-amber-300 mt-1 font-mono">100k chars = 266,000 bits (33,250 B) | L_avg = 2.66</div>
               </div>
-              <div class="pt-2">
-                <div class="math-box">
-                  <span class="font-bold text-emerald-400 block mb-1">📐 Exact Codewords to Write in Exam:</span>
-                  <div>• <span class="text-white font-bold">f (22): 01</span> (2 bits) &nbsp;|&nbsp; <span class="text-white font-bold">g (24): 10</span> (2 bits)</div>
-                  <div>• <span class="text-white font-bold">c (8): 000</span> (3 bits) &nbsp;|&nbsp; <span class="text-white font-bold">d (16): 110</span> (3 bits) &nbsp;|&nbsp; <span class="text-white font-bold">e (18): 111</span> (3 bits)</div>
-                  <div>• <span class="text-white font-bold">a (5): 0010</span> (4 bits) &nbsp;|&nbsp; <span class="text-white font-bold">b (7): 0011</span> (4 bits)</div>
-                  <div class="mt-1 font-bold text-emerald-300">Total Size = 100,000 × 2.66 = 266,000 bits = 33,250 bytes.</div>
+
+              <!-- Topic 4.2 -->
+              <div id="topic-4-2" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-amber-400 p-3 rounded-lg text-xs"
+                   onclick="openDrawer('4-2')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white">4.2 4-Queens & Bounding Functions</span>
+                  <span class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-bold">⭐ High Yield</span>
                 </div>
+                <div class="text-[11px] text-slate-400 mt-1 font-mono">|X[j] - i| ≠ |j - k| ⟹ (2, 4, 1, 3) & (3, 1, 4, 2)</div>
               </div>
-              <div class="pt-2">
-                <div class="bg-cyan-950/20 border border-cyan-800/40 p-3 rounded-lg text-xs text-slate-300">
-                  <span class="font-bold text-cyan-300">📚 Exam Question:</span> Paper 1 Q3(a)(ii) & Paper 2 Q3(a) [5 Marks] — Verbatim identical question!
+
+              <!-- Topic 4.3 -->
+              <div id="topic-4-3" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-amber-400 p-3 rounded-lg text-xs"
+                   onclick="openDrawer('4-3')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white">4.3 Blue Vertices on Tree (Max Indep Set)</span>
+                  <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Greedy Tree</span>
                 </div>
+                <div class="text-[11px] text-slate-400 mt-1 font-mono">No cycles ⟹ Bottom-up leaf selection in O(n)</div>
               </div>
+
             </div>
           </div>
 
-          <!-- TOPIC 4.2 -->
-          <div class="pt-5">
-            <div class="node-box bg-slate-900/90 border border-slate-800 p-4 rounded-xl cursor-pointer hover:border-cyan-400"
-                 onclick="toggleNode('details-topic-4-2', this)">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-2.5">
-                  <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">⭐ High Probability</span>
-                  <h4 class="text-sm font-bold text-white">Topic 4.2: 4-Queens Backtracking & Bounding Functions</h4>
+          <!-- UNIT V NODE -->
+          <div class="w-full max-w-md">
+            <div id="node-unit-5" class="mm-node bg-slate-900 border-2 border-emerald-500/60 p-4 rounded-xl flex items-center justify-between gap-3 shadow-lg"
+                 onclick="toggleUnitBranches('unit-5')">
+              <div class="flex items-center gap-3">
+                <span class="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-300 font-black flex items-center justify-center text-sm border border-emerald-500/40">V</span>
+                <div>
+                  <div class="text-[10px] font-bold text-emerald-400 uppercase tracking-wide">Unit V Branch</div>
+                  <h3 class="text-sm font-bold text-white">Network Flows Optimization</h3>
                 </div>
-                <span class="toggle-icon px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-xs font-bold border border-slate-700">[-]</span>
               </div>
+              <span id="badge-unit-5" class="px-2 py-0.5 rounded bg-slate-800 text-emerald-400 text-xs font-mono font-bold border border-slate-700">[-] 2 Topics</span>
             </div>
 
-            <div class="tree-branch" id="details-topic-4-2">
-              <div class="tree-node-connector"></div>
-              <div class="pt-3">
-                <div class="bg-amber-500/10 border-l-4 border-amber-400 p-3 rounded-r-lg text-xs text-amber-200">
-                  <span class="font-bold text-amber-300">💡 Asli Baat:</span>
-                  Row k par rani ko column i me bithane se pehle check karo: koi pichli rani same column me na ho (X[j] ≠ i) aur same diagonal me na ho (|X[j] - i| ≠ |j - k|). 4-Queens ke do valid solutions hote hain: <span class="font-bold text-white">(2, 4, 1, 3)</span> aur <span class="font-bold text-white">(3, 1, 4, 2)</span>!
+            <!-- Unit V Subtopics -->
+            <div id="branches-unit-5" class="mt-3 space-y-2.5 pl-6 border-l-2 border-emerald-500/30 ml-4">
+              
+              <!-- Topic 5.1 -->
+              <div id="topic-5-1" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-emerald-400 p-3 rounded-lg text-xs"
+                   onclick="openDrawer('5-1')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                    5.1 Max-Flow Min-Cut & Edmonds-Karp
+                  </span>
+                  <span class="px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 text-[10px] font-bold">🔥 Guaranteed</span>
                 </div>
+                <div class="text-[11px] text-emerald-300 mt-1 font-mono">BFS shortest augmenting path ⟹ O(V E²)</div>
               </div>
-              <div class="pt-2">
-                <div class="math-box">
-                  <span class="font-bold text-emerald-400 block mb-1">📐 Bounding Check Condition:</span>
-                  <span class="text-white font-bold">Place(k, i) = True &nbsp;⟺&nbsp; ∀ j &lt; k : (X[j] ≠ i) ∧ (|X[j] - i| ≠ |j - k|)</span>
+
+              <!-- Topic 5.2 -->
+              <div id="topic-5-2" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-emerald-400 p-3 rounded-lg text-xs"
+                   onclick="openDrawer('5-2')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white">5.2 Maximum Bipartite Matching</span>
+                  <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Flow Reduction</span>
                 </div>
+                <div class="text-[11px] text-slate-400 mt-1 font-mono">Supersource s & Supersink t with unit edges</div>
               </div>
-            </div>
-          </div>
 
-        </div>
-      </div>
-
-      <!-- ========================================== -->
-      <!-- UNIT V NODE -->
-      <!-- ========================================== -->
-      <div class="pt-6">
-        <div class="node-box bg-slate-900 border border-cyan-800/60 p-4 rounded-xl flex items-center justify-between gap-4 cursor-pointer hover:border-cyan-400"
-             onclick="toggleNode('children-unit5', this)">
-          <div class="flex items-center gap-3">
-            <span class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-300 font-bold flex items-center justify-center text-sm border border-cyan-500/30">V</span>
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="text-xs font-bold text-cyan-400 uppercase tracking-wide">Unit V</span>
-                <span class="text-[11px] text-slate-400">(2 Exam Subtopics)</span>
-              </div>
-              <h3 class="text-base font-bold text-white">Network Flows Optimization</h3>
-            </div>
-          </div>
-          <span class="toggle-icon px-2 py-0.5 rounded bg-slate-800 text-cyan-400 font-mono text-xs font-bold border border-slate-700">[-]</span>
-        </div>
-
-        <div class="tree-branch" id="children-unit5">
-          <div class="tree-node-connector"></div>
-
-          <!-- TOPIC 5.1 -->
-          <div class="pt-5">
-            <div class="node-box bg-slate-900/90 border border-slate-800 p-4 rounded-xl cursor-pointer hover:border-cyan-400"
-                 onclick="toggleNode('details-topic-5-1', this)">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-2.5">
-                  <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30">🔥 Guaranteed Question</span>
-                  <h4 class="text-sm font-bold text-white">Topic 5.1: Max-Flow Min-Cut Theorem & Edmonds-Karp (O(V E²))</h4>
-                </div>
-                <span class="toggle-icon px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-xs font-bold border border-slate-700">[-]</span>
-              </div>
-            </div>
-
-            <div class="tree-branch" id="details-topic-5-1">
-              <div class="tree-node-connector"></div>
-              <div class="pt-3">
-                <div class="bg-amber-500/10 border-l-4 border-amber-400 p-3 rounded-r-lg text-xs text-amber-200">
-                  <span class="font-bold text-amber-300">💡 Asli Baat:</span>
-                  Graph me s se t tak bhej sake wala maximum flow hamesha minimum capacity cut ke barabar hota hai! Edmonds-Karp BFS se shortest path dhoondhta hai taaki infinite loop na bane; time complexity hoti hai <span class="font-bold text-white">O(V E²)</span>.
-                </div>
-              </div>
-              <div class="pt-2">
-                <div class="math-box">
-                  <span class="font-bold text-emerald-400 block mb-1">📐 Axioms & Min-Cut Partition:</span>
-                  <div>• Capacity Constraint: <span class="text-white">0 ≤ f(u, v) ≤ c(u, v)</span> &nbsp;|&nbsp; Conservation: <span class="text-white">∑ f(u, v) = 0</span> (u ≠ s, t)</div>
-                  <div>• Min-Cut Partition: <span class="text-white font-bold">S = {v ∈ V | path from s to v in G<sub>f</sub>}</span>, <span class="text-white font-bold">T = V \ S</span> ⟹ <span class="text-emerald-300 font-bold">|f| = c(S, T)</span>.</div>
-                </div>
-              </div>
             </div>
           </div>
 
-        </div>
-      </div>
-
-      <!-- ========================================== -->
-      <!-- UNIT VI NODE -->
-      <!-- ========================================== -->
-      <div class="pt-6">
-        <div class="node-box bg-slate-900 border border-cyan-800/60 p-4 rounded-xl flex items-center justify-between gap-4 cursor-pointer hover:border-cyan-400"
-             onclick="toggleNode('children-unit6', this)">
-          <div class="flex items-center gap-3">
-            <span class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-300 font-bold flex items-center justify-center text-sm border border-cyan-500/30">VI</span>
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="text-xs font-bold text-cyan-400 uppercase tracking-wide">Unit VI</span>
-                <span class="text-[11px] text-slate-400">(3 Exam Subtopics)</span>
-              </div>
-              <h3 class="text-base font-bold text-white">NP-Completeness, Approximation & Randomized Algorithms</h3>
-            </div>
-          </div>
-          <span class="toggle-icon px-2 py-0.5 rounded bg-slate-800 text-cyan-400 font-mono text-xs font-bold border border-slate-700">[-]</span>
-        </div>
-
-        <div class="tree-branch" id="children-unit6">
-          <div class="tree-node-connector"></div>
-
-          <!-- TOPIC 6.1 -->
-          <div class="pt-5">
-            <div class="node-box bg-slate-900/90 border border-slate-800 p-4 rounded-xl cursor-pointer hover:border-cyan-400"
-                 onclick="toggleNode('details-topic-6-1', this)">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-2.5">
-                  <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30">🔥 Guaranteed Question</span>
-                  <h4 class="text-sm font-bold text-white">Topic 6.1: Randomized Algorithms: Monte Carlo vs Las Vegas (Popular Element ≥ n/3)</h4>
+          <!-- UNIT VI NODE -->
+          <div class="w-full max-w-md">
+            <div id="node-unit-6" class="mm-node bg-slate-900 border-2 border-rose-500/60 p-4 rounded-xl flex items-center justify-between gap-3 shadow-lg"
+                 onclick="toggleUnitBranches('unit-6')">
+              <div class="flex items-center gap-3">
+                <span class="w-9 h-9 rounded-lg bg-rose-500/20 text-rose-300 font-black flex items-center justify-center text-sm border border-rose-500/40">VI</span>
+                <div>
+                  <div class="text-[10px] font-bold text-rose-400 uppercase tracking-wide">Unit VI Branch</div>
+                  <h3 class="text-sm font-bold text-white">NP-Completeness & Random</h3>
                 </div>
-                <span class="toggle-icon px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-xs font-bold border border-slate-700">[-]</span>
               </div>
+              <span id="badge-unit-6" class="px-2 py-0.5 rounded bg-slate-800 text-rose-400 text-xs font-mono font-bold border border-slate-700">[-] 3 Topics</span>
             </div>
 
-            <div class="tree-branch" id="details-topic-6-1">
-              <div class="tree-node-connector"></div>
-              <div class="pt-3">
-                <div class="bg-amber-500/10 border-l-4 border-amber-400 p-3 rounded-r-lg text-xs text-amber-200">
-                  <span class="font-bold text-amber-300">💡 Asli Baat:</span>
-                  **Monte Carlo**: Time fix rehta hai (deterministic O(n)) par chhota sa error chance hota hai (error ≤ 3⁻¹⁰⁰ ke liye m = 271 samples uthao). **Las Vegas**: Answer 100% sahi hota hai par time random hota hai (average sirf 3 trials lagenge, E[T] = Θ(n))!
+            <!-- Unit VI Subtopics -->
+            <div id="branches-unit-6" class="mt-3 space-y-2.5 pl-6 border-l-2 border-rose-500/30 ml-4">
+              
+              <!-- Topic 6.1 -->
+              <div id="topic-6-1" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-rose-400 p-3 rounded-lg text-xs"
+                   onclick="openDrawer('6-1')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                    6.1 Monte Carlo vs Las Vegas (Popular ≥ n/3)
+                  </span>
+                  <span class="px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 text-[10px] font-bold">🔥 Guaranteed</span>
                 </div>
+                <div class="text-[11px] text-rose-300 mt-1 font-mono">Monte Carlo m=271 (≤ 3⁻¹⁰⁰) | Las Vegas E[T]=Θ(n)</div>
               </div>
-              <div class="pt-2">
-                <div class="math-box">
-                  <span class="font-bold text-emerald-400 block mb-1">📐 Mathematical Derivations:</span>
-                  <div>• Monte Carlo: <span class="text-white">P(fail) ≤ (1 - 1/3)<sup>m</sup> = (2/3)<sup>m</sup> ≤ 3⁻¹⁰⁰</span> &nbsp;⟹&nbsp; <span class="text-white font-bold">m ≥ 100 ln(3) / ln(1.5) ≈ <span class="text-emerald-300">271 trials</span></span>.</div>
-                  <div class="mt-1">• Las Vegas: Geometric distribution with <span class="text-white">p ≥ 1/3</span> &nbsp;⟹&nbsp; <span class="text-white font-bold">E[trials] = 1/p ≤ 3</span> &nbsp;⟹&nbsp; <span class="text-emerald-300 font-bold">E[Time] = Θ(n)</span>. Zero error.</div>
-                </div>
-              </div>
-              <div class="pt-2">
-                <div class="bg-cyan-950/20 border border-cyan-800/40 p-3 rounded-lg text-xs text-slate-300">
-                  <span class="font-bold text-cyan-300">📚 Exam Question:</span> Actual Paper 2, Q5 [8 Marks] — Complete question on Monte Carlo vs Las Vegas for popular element.
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <!-- TOPIC 6.2 -->
-          <div class="pt-5">
-            <div class="node-box bg-slate-900/90 border border-slate-800 p-4 rounded-xl cursor-pointer hover:border-cyan-400"
-                 onclick="toggleNode('details-topic-6-2', this)">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-2.5">
-                  <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">⭐ High Probability</span>
-                  <h4 class="text-sm font-bold text-white">Topic 6.2: Prover-Verifier Definition of NP & 3-SAT to CLIQUE</h4>
+              <!-- Topic 6.2 -->
+              <div id="topic-6-2" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-rose-400 p-3 rounded-lg text-xs"
+                   onclick="openDrawer('6-2')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white">6.2 Prover-Verifier NP & 3-SAT to CLIQUE</span>
+                  <span class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-bold">⭐ High Yield</span>
                 </div>
-                <span class="toggle-icon px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-xs font-bold border border-slate-700">[-]</span>
+                <div class="text-[11px] text-slate-400 mt-1 font-mono">Verifier V(x, w) | 3 vertices per clause gadget</div>
               </div>
-            </div>
 
-            <div class="tree-branch" id="details-topic-6-2">
-              <div class="tree-node-connector"></div>
-              <div class="pt-3">
-                <div class="bg-amber-500/10 border-l-4 border-amber-400 p-3 rounded-r-lg text-xs text-amber-200">
-                  <span class="font-bold text-amber-300">💡 Asli Baat:</span>
-                  **NP** ka matlab hai: agar koi candidate certificate w de de, toh verifier algorithm polynomial time me check kar lega ki solution valid hai. 3-SAT se CLIQUE reduction me har clause ke 3 literals ke 3 nodes banao; non-contradictory nodes ko jodo. Formula satisfiable ⟺ graph me k size ka CLIQUE milega!
+              <!-- Topic 6.3 -->
+              <div id="topic-6-3" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-rose-400 p-3 rounded-lg text-xs"
+                   onclick="openDrawer('6-3')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white">6.3 Planar Point Bisection & Red-Blue Pair</span>
+                  <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Geometry D&C</span>
                 </div>
+                <div class="text-[11px] text-slate-400 mt-1 font-mono">Rotational radial sweep + IVT ⟹ 0 crossings</div>
               </div>
-              <div class="pt-2">
-                <div class="math-box">
-                  <span class="font-bold text-emerald-400 block mb-1">📐 Reduction Construction:</span>
-                  <span class="text-white">Create 3 vertices per clause. Edge between u and v iff they belong to different clauses and literals are non-contradictory (l<sub>u</sub> ≠ ¬l<sub>v</sub>).</span><br>
-                  <span class="text-emerald-300 font-bold mt-1 block">Formula φ ∈ 3-SAT &nbsp;⟺&nbsp; G has a clique of size k.</span>
-                </div>
-              </div>
+
             </div>
           </div>
 
         </div>
+
       </div>
 
     </div>
+  </div>
 
-  </main>
+  <!-- SLIDE-IN DEEP DIVE STUDY DRAWER -->
+  <aside id="detailDrawer" class="drawer-closed fixed top-0 right-0 w-full sm:w-[540px] h-full bg-slate-900 border-l border-slate-800 z-50 shadow-2xl flex flex-col">
+    <!-- Drawer Header -->
+    <div class="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-950/60">
+      <div>
+        <span id="drawerBadge" class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">Topic Details</span>
+        <h2 id="drawerTitle" class="text-base font-black text-white mt-1">Topic Title</h2>
+      </div>
+      <button onclick="closeDrawer()" class="p-2 rounded-lg bg-slate-800 text-slate-400 hover:text-white transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
 
-  <!-- JAVASCRIPT CONTROLS -->
+    <!-- Drawer Content Body -->
+    <div class="flex-1 overflow-y-auto p-5 space-y-4" id="drawerBody">
+      <!-- Dynamic Injection -->
+    </div>
+  </aside>
+
+  <!-- TOPIC DATA DICTIONARY -->
   <script>
-    // Toggle individual node
-    function toggleNode(childrenId, headerElement) {
-      const container = document.getElementById(childrenId);
-      if (!container) return;
-      const isCollapsed = container.classList.contains('collapsed');
-      const icon = headerElement.querySelector('.toggle-icon');
+    const topicData = {
+      '1-1': {
+        title: 'Topic 1.1: Square Root Recurrence & Master Theorem',
+        badge: '🔥 Guaranteed Question (Paper 2 Q1a)',
+        hinglish: 'Recurrence me agar √(n) dikhe toh bilkul mat daro! Domain variable n = 2<sup>m</sup> substitute karo, jisse recurrence seedha binary search ban jata hai: S(m) = S(m/2) + 1. Answer hamesha O(log log n) aayega! Aur Master theorem me n<sup>log_b a</sup> se compare karo.',
+        academic: 'Domain substitution transforms non-polynomial subproblem reductions into linear recurrences. By substituting n = 2<sup>m</sup> (m = log₂ n), T(n) = T(√n) + 1 yields S(m) = S(m/2) + 1 = Θ(log m) = Θ(log log n).',
+        math: [
+          '• Sqrt Recurrence: T(n) = T(√(n)) + 1  ⟹  Let n = 2<sup>m</sup>  ⟹  S(m) = S(m/2) + 1  ⟹  T(n) = O(log log n)',
+          '• Master Theorem Case 1: T(n) = 3T(n/2) + n  ⟹  Watershed n<sup>log₂ 3</sup> ≈ n<sup>1.585</sup>  ⟹  T(n) = Θ(n<sup>log₂ 3</sup>) ≈ O(n<sup>1.585</sup>)'
+        ],
+        table: {
+          trigger: 'Square-root shrinking steps (Jump search / Sqrt decomposition)',
+          paradigm: 'Variable Substitution',
+          state: 'n = 2<sup>m</sup>, S(m) = T(2<sup>m</sup>)',
+          rubric: '1. State substitute n = 2<sup>m</sup><br>2. Derive S(m) = S(m/2) + 1<br>3. Master Theorem on S(m) gives Θ(log m)<br>4. Back-substitute m = log₂ n ⟹ O(log log n)'
+        },
+        clrs: 'CLRS Ch. 4, Section 4.5 & Exercise 4.5-3. Actual Paper 2, Q1(a) [4 Marks].'
+      },
+      '1-2': {
+        title: 'Topic 1.2: Decision Tree Lower Bound for Sorting (Ω(n log n))',
+        badge: '⭐ High Yield (Theory)',
+        hinglish: 'Koi bhi comparison-based sorting n elements ko O(n) me sort nahi kar sakti kyunki n! possible permutations ko distinguish karne ke liye binary tree ki height kam se kam Ω(n log n) honi padegi!',
+        academic: 'In an adversary decision tree for comparison sorting, internal nodes represent comparisons and leaves represent distinct permutations. Since there are n! permutations, 2<sup>h</sup> ≥ n! ⟹ h ≥ log₂(n!) = Ω(n log n).',
+        math: [
+          '• Stirling Lower Bound: h ≥ log₂(n!) = ∑<sub>i=1</sub><sup>n</sup> log₂ i ≥ (n/2) log₂(n/2) = Ω(n log n)'
+        ],
+        table: {
+          trigger: 'Theoretical proof for comparison sort lower bound',
+          paradigm: 'Adversary Decision Tree Argument',
+          state: 'Binary tree of height h with L leaves',
+          rubric: '1. Define decision tree internal nodes and leaves<br>2. Show L ≥ n!<br>3. Relate height: 2<sup>h</sup> ≥ L ≥ n!<br>4. Apply Stirling sum to get Ω(n log n)'
+        },
+        clrs: 'CLRS Ch. 8, Section 8.1 (Theorem 8.1). Draw tree for n=3.'
+      },
+      '1-3': {
+        title: "Topic 1.3: Strassen's Matrix Multiplication",
+        badge: '⭐ High Yield',
+        hinglish: 'Normal matrix multiply 8 multiplications leta hai (O(n³)). Strassen ne algebraic grouping se usse ghata kar 7 multiplications kar diya, jisse complexity O(n<sup>2.81</sup>) ho gayi!',
+        academic: "Computes matrix multiplication of two n x n matrices using 7 recursive block multiplications: T(n) = 7T(n/2) + Θ(n²) = Θ(n<sup>log₂ 7</sup>) ≈ O(n<sup>2.81</sup>).",
+        math: [
+          '• Strassen Recurrence: T(n) = 7T(n/2) + Θ(n²)  ⟹  n<sup>log₂ 7</sup> ≈ n<sup>2.807</sup>  ⟹  T(n) = O(n<sup>2.81</sup>)'
+        ],
+        table: {
+          trigger: 'Fast linear algebra block multiplication',
+          paradigm: 'Divide and Conquer',
+          state: '7 multiplications P₁ through P₇',
+          rubric: '1. State 7 multiplication formulas<br>2. Formulate recurrence T(n) = 7T(n/2) + O(n²)<br>3. Master Theorem Case 1 evaluation<br>4. Final complexity O(n<sup>2.81</sup>)'
+        },
+        clrs: 'CLRS Ch. 4, Section 4.2.'
+      },
+      '2-1': {
+        title: 'Topic 2.1: Median of k Sorted Arrays (Total Size n)',
+        badge: '🔥 Guaranteed Question (Paper 2 Q6a)',
+        hinglish: 'k arrays ka overall median nikaalna hai. Har array ke pehle element ko size-k ke Min-Heap me dalo. Smallest nikalo aur usi array ka next element heap me dalo. n/2 steps me exact median mil jata hai in O(n log k)!',
+        academic: 'Finds the median of the union of k sorted arrays of total size n using a size-k min-heap priority queue. Extracts minimum ⌊n/2⌋ times in O(n log k) time and O(k) auxiliary space.',
+        math: [
+          '• Heap Dimensions: Heap size = k. Total elements = n.',
+          '• Time: O(k + n log k) = O(n log k)  |  Space: O(k)'
+        ],
+        table: {
+          trigger: 'Finding median / k-th statistic from k sorted databases/streams',
+          paradigm: 'Tournament Min-Heap Selection',
+          state: 'Heap H of tuples (val, arr_id, idx) of size k',
+          rubric: '1. Initialize Min-Heap of size k with first elements<br>2. Loop n/2 times: ExtractMin, push next element from same array<br>3. Returned value is exact median<br>4. Time O(n log k), Space O(k)'
+        },
+        clrs: 'CLRS Ch. 6, Exercise 6.5-9. Actual Paper 2, Q6(a) [7 Marks].'
+      },
+      '2-2': {
+        title: 'Topic 2.2: Fast Modular Exponentiation & Josephus Cycle',
+        badge: '⭐ High Yield (Paper 1 Q2a, Q2b)',
+        hinglish: 'a<sup>b</sup> mod n me power ko har step pe aadha karo (O(log b)). Josephus me n = 2<sup>m</sup> + l log circle me hain toh winner hamesha 2l + 1 hota hai (binary MSB ko LSB bana do)!',
+        academic: 'Computes a<sup>b</sup> mod n in O(log b) using recursive squaring. For Josephus with elimination step 2, n = 2<sup>m</sup> + l yields survivor W(n) = 2l + 1.',
+        math: [
+          '• 3<sup>83</sup> mod 17: Fermat Little Theorem ⟹ 3<sup>16</sup> ≡ 1 mod 17 ⟹ 83 = 16(5) + 3 ⟹ 3³ = 27 ≡ 10 mod 17',
+          '• Josephus Survivor: W(2<sup>m</sup> + l) = 2l + 1. For n = 2<sup>m</sup> + 1 ⟹ W = 3. For n = 2<sup>m</sup> - 1 ⟹ W = 2<sup>m</sup> - 3'
+        ],
+        table: {
+          trigger: 'Cyclic elimination game / large power modulo arithmetic',
+          paradigm: 'Divide & Conquer / Binary Bit Rotation',
+          state: 'Power halving / Binary representation n = (1 l₁ l₂ ... l_m)₂',
+          rubric: '1. Recursive halving recurrence<br>2. Base cases b=0 and b=1<br>3. Trace 3<sup>83</sup> mod 17<br>4. Josephus left 1-bit rotate derivation'
+        },
+        clrs: 'CLRS Ch. 31, Section 31.6. Actual Paper 1, Q2 [12 Marks].'
+      },
+      '2-3': {
+        title: 'Topic 2.3: 2D Closest Pair of Points',
+        badge: '⭐ High Yield',
+        hinglish: 'Points ko X-coordinate se sort karo, beech se split karke left aur right ka min distance δ nikalo. Dividing line ke dono taraf δ width ki strip me har point ko sirf 7 points se compare karna hota hai!',
+        academic: 'Finds pair with minimum Euclidean distance in O(n log n). The vertical 2δ strip around the dividing line requires checking at most 7 neighbors in y-sorted order for each point.',
+        math: [
+          '• Strip Invariant: Any δ x δ box can hold at most 4 points without violating δ.',
+          '• Recurrence: T(n) = 2T(n/2) + O(n log n)  ⟹  O(n log n)'
+        ],
+        table: {
+          trigger: 'Collision detection / proximity analysis in 2D coordinates',
+          paradigm: 'Divide and Conquer with Geometric Strip',
+          state: 'Coordinates sorted by X and Y',
+          rubric: '1. Split at median X into left and right<br>2. Find δ = min(δ_L, δ_R)<br>3. Filter points within |x - x_mid| < δ<br>4. Compare each point against next 7 y-sorted neighbors'
+        },
+        clrs: 'CLRS Ch. 33, Section 33.4.'
+      },
+      '3-1': {
+        title: 'Topic 3.1: Matrix Chain & Catalan Series',
+        badge: '🔥 Guaranteed Question (Paper 2 Q1b)',
+        hinglish: 'n matrices ko parenthesize karne ke kitne tareeqe hain? Yeh hamesha Catalan Number C<sub>n-1</sub> hota hai! Values yaad rakho: f(7) = C₆ = 132, aur f(8) = C₇ = 429. Yeh exponential Ω(2ⁿ) grow karta hai!',
+        academic: 'The number of full parenthesizations of n matrices satisfies the Catalan recurrence f(n) = ∑ f(k)f(n-k) with f(1) = 1, giving f(n) = C<sub>n-1</sub> = (1/n)(2n-2 choose n-1) = Ω(2ⁿ).',
+        math: [
+          '• Recurrence: f(n) = ∑<sub>k=1</sub><sup>n-1</sup> f(k) f(n-k)  ⟹  f(n) = C<sub>n-1</sub>',
+          '• Values: f(7) = C₆ = 132  |  f(8) = C₇ = 429',
+          '• Proof of Ω(2ⁿ): f(n) ≥ 2f(n-1) ≥ 2<sup>n-2</sup> = (1/4) 2ⁿ  ⟹  Ω(2ⁿ)'
+        ],
+        table: {
+          trigger: 'Counting syntax trees / order of associative multiplications',
+          paradigm: 'Dynamic Programming / Catalan Convolution',
+          state: 'f(n) parenthesizations of length n',
+          rubric: '1. State convolution recurrence<br>2. Base cases f(1)=1, f(2)=1, f(3)=2<br>3. Evaluate f(7)=132 and f(8)=429<br>4. Prove f(n) = Ω(2ⁿ) by induction'
+        },
+        clrs: 'CLRS Ch. 15, Section 15.2. Actual Paper 2, Q1(b) [6 Marks].'
+      },
+      '3-2': {
+        title: 'Topic 3.2: Poisson Binomial Probability DP (k Heads)',
+        badge: '🔥 Guaranteed Question (Paper 2 Q3b)',
+        hinglish: 'n biased coins me se exactly k heads chahiye. DP recurrence: i-th coin ya toh heads aayega (pᵢ chance, prior j-1 heads) ya tails aayega ((1-pᵢ) chance, prior j heads). Time O(n·k), space O(k)!',
+        academic: 'Computes the probability of exactly k heads from n independent Bernoulli trials with probabilities p₁...pₙ in O(n·k) time and O(k) space using rolling dynamic programming.',
+        math: [
+          '• Recurrence: DP[i, j] = DP[i-1, j-1] · pᵢ + DP[i-1, j] · (1 - pᵢ)',
+          '• Base Cases: DP[0, 0] = 1.0  |  DP[0, j] = 0.0 (j > 0)',
+          '• Complexity: Time O(n · k)  |  Space O(k)'
+        ],
+        table: {
+          trigger: 'System reliability / probability of exactly k redundant server survivals',
+          paradigm: 'Forward Probability DP',
+          state: 'DP[i, j] = probability of j heads in first i coins',
+          rubric: '1. Name paradigm: Forward Probability DP<br>2. State recurrence & base cases<br>3. Procedural pseudocode with 1D array<br>4. Time O(nk), Space O(k)'
+        },
+        clrs: 'Actual Paper 2, Q3(b)(ii) [7 Marks].'
+      },
+      '3-3': {
+        title: 'Topic 3.3: Longest Arithmetic Progression Subsequence (LAPS)',
+        badge: '⭐ High Yield (Paper 2 Q3b)',
+        hinglish: 'Array sort karke 2D DP L[i, j] banao. Middle element A[i] fix karo: agar A[k] + A[j] == 2A[i], toh L[i, j] = L[k, i] + 1! Two pointers se O(n²) time me solve hota hai.',
+        academic: 'Finds longest subsequence forming an arithmetic progression. Sorting plus 2D DP L[i, j] with two-pointer check on A[k] + A[j] == 2A[i] runs in O(n²) time and O(n²) space.',
+        math: [
+          '• Condition: A[k] + A[j] == 2A[i]  ⟹  L[i, j] = L[k, i] + 1',
+          '• Complexity: Time O(n²)  |  Space O(n²)'
+        ],
+        table: {
+          trigger: 'Detecting regular periodic sensor pulses in noisy signal logs',
+          paradigm: '2D DP with Two-Pointer Scan',
+          state: 'L[i, j] = length of AP ending at A[i], A[j]',
+          rubric: '1. Sort array A<br>2. Recurrence: L[i, j] = L[k, i] + 1<br>3. Double loop with pointers k and j around i<br>4. Time O(n²), Space O(n²)'
+        },
+        clrs: 'Actual Paper 2, Q3(b)(i) [7 Marks].'
+      },
+      '4-1': {
+        title: 'Topic 4.1: Huffman Coding (Verbatim Question!)',
+        badge: '🔥 100% Hit (In Both Actual Papers)',
+        hinglish: 'Dono papers me exact same frequencies aayi thin: {a:5, b:7, c:8, d:16, e:18, f:22, g:24}. Answer rat lo: Total size = 266,000 bits (33,250 bytes)! L_avg = 2.66 bits/char.',
+        academic: 'Greedy prefix-tree algorithm using Min-Heap merging. For alphabet {a:5, b:7, c:8, d:16, e:18, f:22, g:24}, average code length is 2.66 bits/char, giving 266,000 bits for 100,000 characters.',
+        math: [
+          '• Codewords: f(22)=01, g(24)=10, c(8)=000, d(16)=110, e(18)=111, a(5)=0010, b(7)=0011',
+          '• L_avg = (22·2 + 24·2 + 8·3 + 16·3 + 18·3 + 5·4 + 7·4) / 100 = 266 / 100 = 2.66 bits/char',
+          '• 100k Size = 100,000 × 2.66 = 266,000 bits = 33,250 bytes'
+        ],
+        table: {
+          trigger: 'Optimal data compression of text stream',
+          paradigm: 'Greedy Priority Queue Merging',
+          state: 'Min-Heap of prefix trees',
+          rubric: '1. Draw merge steps: (5,7)→12, (8,12)→20, (16,18)→34, (22,24)→46, (20,34)→54, (46,54)→100<br>2. Assign 0/1 bits<br>3. Compute L_avg = 2.66<br>4. Total bits = 266,000'
+        },
+        clrs: 'CLRS Ch. 16, Section 16.3. Paper 1 Q3(a) & Paper 2 Q3(a).'
+      },
+      '4-2': {
+        title: 'Topic 4.2: 4-Queens Backtracking & Bounding',
+        badge: '⭐ High Yield (Paper 2 Q2a)',
+        hinglish: 'Row k par rani ko column i me bithane se pehle check karo: same column nahi (X[j] ≠ i) aur same diagonal nahi (|X[j] - i| ≠ |j - k|). Do valid solutions hote hain: (2, 4, 1, 3) aur (3, 1, 4, 2)!',
+        academic: 'Backtracking explores state-space tree depth-first. State vector X[1..4] where X[k] is column for row k. Bounding function prunes invalid states.',
+        math: [
+          '• Bounding Invariant: Place(k, i) ⟺ ∀ j < k : (X[j] ≠ i) ∧ (|X[j] - i| ≠ |j - k|)',
+          '• Solutions for 4-Queens: (2, 4, 1, 3) and (3, 1, 4, 2)'
+        ],
+        table: {
+          trigger: 'Constraint satisfaction placement on NxN grid',
+          paradigm: 'Backtracking State-Space Tree',
+          state: 'Vector X[1..N]',
+          rubric: '1. State representation X[1..n]<br>2. Bounding condition<br>3. Recursive pseudocode with undo backtrack step<br>4. Draw state-space tree for 4-Queens'
+        },
+        clrs: 'Actual Paper 2, Q2(a) [5 Marks].'
+      },
+      '4-3': {
+        title: 'Topic 4.3: Blue Vertices on Tree (Max Independent Set)',
+        badge: '⭐ High Yield (Paper 1 Q1b)',
+        hinglish: 'Tree me cycles nahi hote! Isliye graph coloring jaisa hard problem tree par O(n) me greedy leaf pruning se solve ho jata hai: leaves ko blue karo, parents ko drop karo, repeat!',
+        academic: 'Maximum Weight Independent Set on trees is solvable in O(n) using bottom-up greedy leaf selection or post-order tree dynamic programming with Include[u] and Exclude[u] states.',
+        math: [
+          '• Tree DP: Exclude[u] = ∑ max(Inc[v], Exc[v])  |  Include[u] = 1 + ∑ Exc[v]',
+          '• Complexity: O(n) time and O(n) space'
+        ],
+        table: {
+          trigger: 'Non-adjacent node selection on hierarchical tree networks',
+          paradigm: 'Greedy Leaf Pruning / Tree DP',
+          state: 'Include[u] / Exclude[u]',
+          rubric: '1. State tree has no cycles<br>2. Bottom-up post-order leaf traversal<br>3. Greedily pick leaves, disqualify parent<br>4. Time O(n)'
+        },
+        clrs: 'CLRS Ch. 15, Problem 15-7. Actual Paper 1, Q1(b) [5 Marks].'
+      },
+      '5-1': {
+        title: 'Topic 5.1: Max-Flow Min-Cut Theorem & Edmonds-Karp',
+        badge: '🔥 Guaranteed Question (Syllabus Core)',
+        hinglish: 'Graph me max flow hamesha min-cut capacity ke barabar hota hai! Edmonds-Karp BFS se shortest augmenting path dhoondhta hai taaki infinite loop na bane; time O(V E²) hota hai.',
+        academic: 'Max-Flow Min-Cut Theorem: Maximum flow equals minimum cut capacity. Edmonds-Karp implements Ford-Fulkerson via BFS in O(V E²) time by monotonically increasing shortest path distances.',
+        math: [
+          '• Axioms: Capacity 0 ≤ f(u,v) ≤ c(u,v) | Skew f(u,v) = -f(v,u) | Conservation ∑ f(u,v) = 0',
+          '• Cut Partition: S = {v ∈ V | path from s to v in G_f}, T = V \\ S  ⟹  |f| = c(S, T)',
+          '• Complexity: O(V E²)'
+        ],
+        table: {
+          trigger: 'Network bandwidth maximization / bottleneck pipeline identification',
+          paradigm: 'Augmenting Path Residual Flow',
+          state: 'Residual graph G_f with forward (c - f) and backward (f) edges',
+          rubric: '1. State 3 axioms<br>2. Residual graph definition<br>3. BFS shortest augmenting path pseudocode<br>4. Prove |f| = c(S, T)'
+        },
+        clrs: 'CLRS Ch. 26, Section 26.2.'
+      },
+      '5-2': {
+        title: 'Topic 5.2: Maximum Bipartite Matching Reduction',
+        badge: '⭐ High Yield',
+        hinglish: 'Boys aur Girls ka matching problem network flow me convert karo: Super-source s ko sabhi boys se 1 capacity se jodo, sabhi girls ko Super-sink t se 1 capacity se jodo. Max Flow = Max Matching!',
+        academic: 'Reduces Maximum Bipartite Matching on G=(L U R, E) to Max Flow by adding source s with edges s->L (cap 1) and sink t with edges R->t (cap 1). By integrality theorem, max flow = max matching.',
+        math: [
+          '• Flow Network: V\' = L ∪ R ∪ {s, t}',
+          '• Max Matching Size = Max Flow Value |f|'
+        ],
+        table: {
+          trigger: 'Job-worker assignment / stable pairing without weights',
+          paradigm: 'Network Flow Reduction',
+          state: 'Unit capacity network',
+          rubric: '1. Construct s and t<br>2. Assign unit capacities<br>3. Integrality theorem argument<br>4. Time O(V E)'
+        },
+        clrs: 'CLRS Ch. 26, Section 26.3.'
+      },
+      '6-1': {
+        title: 'Topic 6.1: Randomized: Monte Carlo vs Las Vegas (Popular ≥ n/3)',
+        badge: '🔥 Guaranteed Question (Paper 2 Q5)',
+        hinglish: 'Monte Carlo: Time fix rehta hai (deterministic O(n)) par chhota sa error chance hota hai (error ≤ 3⁻¹⁰⁰ ke liye m = 271 samples lo). Las Vegas: Answer 100% sahi hota hai par time random hota hai (average 3 trials lagenge, E[T]=Θ(n))!',
+        academic: 'Monte Carlo: deterministic time with bounded error probability. Sampling m=271 elements guarantees error ≤ (2/3)<sup>271</sup> ≤ 3⁻¹⁰⁰. Las Vegas: zero error with randomized expected time E[T] ≤ 3·O(n) = Θ(n).',
+        math: [
+          '• Monte Carlo: P(fail) ≤ (1 - 1/3)<sup>m</sup> = (2/3)<sup>m</sup> ≤ 3⁻¹⁰⁰  ⟹  m ≥ 100 ln(3) / ln(1.5) ≈ 271 trials',
+          '• Las Vegas: Geometric distribution p ≥ 1/3  ⟹  E[trials] = 1/p ≤ 3  ⟹  E[Time] = Θ(n)'
+        ],
+        table: {
+          trigger: 'Heavy hitter detection / frequent item in big data streams',
+          paradigm: 'Randomized Sampling',
+          state: 'Uniform random index i ∈ [1..n]',
+          rubric: '1. Monte Carlo: Sample m=271, linear count, return max<br>2. Derive failure bound ≤ 3⁻¹⁰⁰<br>3. Las Vegas: Sample & verify count ≥ n/3<br>4. Expected trials E = 1/p ≤ 3'
+        },
+        clrs: 'Actual Paper 2, Q5 [8 Marks].'
+      },
+      '6-2': {
+        title: 'Topic 6.2: Prover-Verifier NP & 3-SAT to CLIQUE',
+        badge: '⭐ High Yield (Paper 2 Q2b, Paper 1 Q5a)',
+        hinglish: 'NP ka matlab: agar koi certificate w de de, toh polynomial time verifier V(x, w) check kar lega. 3-SAT se CLIQUE me har clause ke 3 literals ke 3 nodes banao; non-contradictory nodes ko jodo. Formula satisfiable ⟺ graph me k size ka CLIQUE milega!',
+        academic: 'NP is the class of decision problems verifiable by polynomial-time algorithm V(x, w) with certificate |w| ≤ p(|x|). Reduction from 3-SAT creates 3-literal clusters per clause with edges between non-negated literals.',
+        math: [
+          '• Verifier: x ∈ L ⟺ ∃ w (|w| ≤ p(|x|)) such that V(x, w) = ACCEPT',
+          '• Reduction: Formula φ with k clauses  ⟹  φ ∈ 3-SAT ⟺ G has clique of size k'
+        ],
+        table: {
+          trigger: 'Intractability proofs / NP-completeness reductions',
+          paradigm: 'Polynomial-Time Many-One Reduction',
+          state: 'Clause gadgets with 3 vertices',
+          rubric: '1. Define NP via Prover-Verifier<br>2. Construct 3 vertices per clause<br>3. Connect non-contradictory literals across clauses<br>4. Prove if-and-only-if equivalence'
+        },
+        clrs: 'CLRS Ch. 34, Section 34.5. Actual Paper 2, Q2(b) & Paper 1, Q5(a).'
+      },
+      '6-3': {
+        title: 'Topic 6.3: Planar Point Bisection & Red-Blue Pair',
+        badge: '⭐ High Yield (Paper 2 Q4, Paper 1 Q4a)',
+        hinglish: 'Plane me n red aur n blue points hain. Kisi extreme red point se radial line ghuma kar sweep karo taaki dono taraf equal red aur blue points bat jayein (Discrete IVT). Phir divide & conquer se bina intersect kiye pair kar do!',
+        academic: 'Partitions n red and n blue points by a line containing k red/blue on one side and n-k-1 on the other via rotational radial sweep and Discrete IVT in O(n log n), enabling crossing-free matching via D&C.',
+        math: [
+          '• Rotational Sweep: Difference D(θ) = R(θ) - B(θ) switches sign ⟹ D(θ*) = 0 by IVT.',
+          '• Matching: Connect bisector pair, recurse on half-planes with 0 crossings.'
+        ],
+        table: {
+          trigger: 'Planar geometric partitioning without segment intersections',
+          paradigm: 'Radial Sweep & Geometric Divide and Conquer',
+          state: 'Angles around extreme point R₀',
+          rubric: '1. Pick extreme point R₀<br>2. Sort points radially by angle in O(n log n)<br>3. Find bisector line with equal balance via IVT<br>4. Recurse independently on both sides'
+        },
+        clrs: 'Actual Paper 2, Q4 [8 Marks] & Paper 1, Q4(a) [5 Marks].'
+      }
+    };
 
-      if (isCollapsed) {
-        container.classList.remove('collapsed');
-        if (icon) icon.textContent = '[-]';
-      } else {
-        container.classList.add('collapsed');
-        if (icon) icon.textContent = '[+]';
+    // Toggle branches for a unit
+    function toggleUnitBranches(unitId) {
+      const branches = document.getElementById('branches-' + unitId);
+      const badge = document.getElementById('badge-' + unitId);
+      if (!branches) return;
+      const isHidden = branches.style.display === 'none';
+      branches.style.display = isHidden ? 'block' : 'none';
+      if (badge) {
+        badge.textContent = isHidden ? '[-] Topics' : '[+] Topics';
       }
     }
 
-    // Expand All
-    document.getElementById('btnExpandAll').addEventListener('click', () => {
-      document.querySelectorAll('.tree-branch').forEach(branch => {
-        branch.classList.remove('collapsed');
-      });
-      document.querySelectorAll('.toggle-icon').forEach(icon => {
-        icon.textContent = '[-]';
-      });
-    });
-
-    // Collapse All
-    document.getElementById('btnCollapseAll').addEventListener('click', () => {
-      document.querySelectorAll('.tree-branch').forEach(branch => {
-        branch.classList.add('collapsed');
-      });
-      document.querySelectorAll('.toggle-icon').forEach(icon => {
-        icon.textContent = '[+]';
+    // Expand All Mind Map
+    document.getElementById('btnExpandAllMM').addEventListener('click', () => {
+      ['unit-1', 'unit-2', 'unit-3', 'unit-4', 'unit-5', 'unit-6'].forEach(u => {
+        const branches = document.getElementById('branches-' + u);
+        const badge = document.getElementById('badge-' + u);
+        if (branches) branches.style.display = 'block';
+        if (badge) badge.textContent = '[-] Topics';
       });
     });
 
-    // Show Units Only
-    document.getElementById('btnUnitsOnly').addEventListener('click', () => {
-      document.getElementById('children-root').classList.remove('collapsed');
-      document.querySelectorAll('[id^="children-unit"]').forEach(unit => {
-        unit.classList.add('collapsed');
+    // Collapse All Mind Map
+    document.getElementById('btnCollapseAllMM').addEventListener('click', () => {
+      ['unit-1', 'unit-2', 'unit-3', 'unit-4', 'unit-5', 'unit-6'].forEach(u => {
+        const branches = document.getElementById('branches-' + u);
+        const badge = document.getElementById('badge-' + u);
+        if (branches) branches.style.display = 'none';
+        if (badge) badge.textContent = '[+] Topics';
       });
-      document.querySelectorAll('[id^="details-topic"]').forEach(topic => {
-        topic.classList.add('collapsed');
-      });
-      document.querySelectorAll('.toggle-icon').forEach(icon => {
-        icon.textContent = '[+]';
-      });
-      const rootIcon = document.querySelector('#children-root')?.previousElementSibling?.querySelector('.toggle-icon');
-      if (rootIcon) rootIcon.textContent = '[-]';
+      closeDrawer();
+    });
+
+    // Reset View
+    document.getElementById('btnResetView').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     // Search filter
-    const searchInput = document.getElementById('flowchartSearch');
-    searchInput.addEventListener('input', (e) => {
+    document.getElementById('mmSearch').addEventListener('input', (e) => {
       const q = e.target.value.toLowerCase().trim();
-      if (!q) return;
-
-      document.querySelectorAll('[id^="details-topic"]').forEach(topicBranch => {
-        const text = topicBranch.textContent.toLowerCase();
-        if (text.includes(q)) {
-          topicBranch.classList.remove('collapsed');
-          let parent = topicBranch.parentElement.closest('.tree-branch');
-          while (parent) {
-            parent.classList.remove('collapsed');
-            parent = parent.parentElement.closest('.tree-branch');
-          }
+      document.querySelectorAll('[id^="topic-"]').forEach(topicEl => {
+        const text = topicEl.textContent.toLowerCase();
+        if (!q || text.includes(q)) {
+          topicEl.style.display = 'block';
+          // auto-expand parent unit
+          const parentBranch = topicEl.closest('[id^="branches-"]');
+          if (parentBranch) parentBranch.style.display = 'block';
+        } else {
+          topicEl.style.display = 'none';
         }
       });
     });
+
+    // Open Slide-In Drawer with Study Blueprint
+    function openDrawer(topicKey) {
+      const data = topicData[topicKey];
+      if (!data) return;
+
+      document.querySelectorAll('.mm-node').forEach(n => n.classList.remove('active-selected'));
+      const activeEl = document.getElementById('topic-' + topicKey);
+      if (activeEl) activeEl.classList.add('active-selected');
+
+      document.getElementById('drawerBadge').textContent = data.badge;
+      document.getElementById('drawerTitle').textContent = data.title;
+
+      let mathHtml = '';
+      data.math.forEach(m => {
+        mathHtml += `<div class="p-2 bg-slate-950/80 rounded border border-slate-800 text-cyan-300 font-mono text-xs leading-relaxed">${m}</div>`;
+      });
+
+      const content = `
+        <!-- Hinglish Intuition -->
+        <div class="p-3.5 bg-amber-500/10 border-l-4 border-amber-400 rounded-r-lg text-xs text-amber-200">
+          <span class="font-bold text-amber-300 block mb-1">💡 Asli Baat (1-Sec Recall):</span>
+          ${data.hinglish}
+        </div>
+
+        <!-- Formal Definition -->
+        <div class="p-3.5 bg-slate-800/80 border border-slate-700/80 rounded-lg text-xs text-slate-300">
+          <span class="font-bold text-cyan-300 block mb-1">🎯 Academic Exam Definition:</span>
+          ${data.academic}
+        </div>
+
+        <!-- Math Formulas -->
+        <div class="space-y-1.5">
+          <span class="font-bold text-emerald-400 text-xs block">📐 Formulas & Invariants (Readable Unicode):</span>
+          ${mathHtml}
+        </div>
+
+        <!-- Case Study Rubric Table -->
+        <div class="p-3.5 bg-slate-950 border border-slate-800 rounded-lg text-xs space-y-2">
+          <span class="font-bold text-cyan-300 block">🛠️ 4-Section Answer Rubric for Exam:</span>
+          <div class="grid grid-cols-2 gap-2 text-[11px] border-b border-slate-800 pb-2">
+            <div><span class="text-slate-400">Trigger:</span> <span class="text-white">${data.table.trigger}</span></div>
+            <div><span class="text-slate-400">Paradigm:</span> <span class="text-indigo-300 font-bold">${data.table.paradigm}</span></div>
+          </div>
+          <div class="text-[11px]">
+            <span class="text-slate-400">State / Variables:</span> <span class="text-amber-300 font-mono">${data.table.state}</span>
+          </div>
+          <div class="text-[11px] text-slate-300 pt-1 leading-relaxed bg-slate-900/60 p-2 rounded border border-slate-800">
+            ${data.table.rubric}
+          </div>
+        </div>
+
+        <!-- CLRS Reference -->
+        <div class="p-3 bg-cyan-950/20 border border-cyan-800/40 rounded-lg text-xs text-slate-300">
+          <span class="font-bold text-cyan-300 block mb-0.5">📚 CLRS & Exam Mapping:</span>
+          ${data.clrs}
+        </div>
+      `;
+
+      document.getElementById('drawerBody').innerHTML = content;
+      document.getElementById('detailDrawer').classList.remove('drawer-closed');
+    }
+
+    function closeDrawer() {
+      document.getElementById('detailDrawer').classList.add('drawer-closed');
+      document.querySelectorAll('.mm-node').forEach(n => n.classList.remove('active-selected'));
+    }
   </script>
 </body>
 </html>
