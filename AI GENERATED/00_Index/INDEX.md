@@ -114,6 +114,8 @@
 ### Mock Papers & Final Exam Review (CS3212)
 | File | Description |
 | :--- | :--- |
+| [DAA_Interactive_Master_Flowchart.md](file:///D:/2026%20EXAM/AI%20GENERATED/DAA/Notes/DAA_Interactive_Master_Flowchart.md) | Master hierarchical exam flowchart, Hinglish 1-sec intuition, CLRS 3rd Ed. problem mapping, and case-study answering tables |
+| [DAA_Interactive_Master_Explorer.html](file:///D:/2026%20EXAM/AI%20GENERATED/DAA/DAA_Interactive_Master_Explorer.html) | Standalone interactive visual dashboard: Unit filters, live keyword search, Hinglish toggle, and blind active-recall quiz mode |
 | [DAA_Actual_Paper_Solutions.md](file:///D:/2026%20EXAM/AI%20GENERATED/DAA/MockPapers/DAA_Actual_Paper_Solutions.md) | Complete step-by-step solutions & marking scheme for the actual VIT Pune ESE DAA Sample Paper (CS 3205/3212) |
 | [DAA_Actual_Paper_2_Solutions.md](file:///D:/2026%20EXAM/AI%20GENERATED/DAA/MockPapers/DAA_Actual_Paper_2_Solutions.md) | Complete step-by-step solutions & marking scheme for the second actual VIT Pune ESE DAA Paper (CS 3205/3212) |
 | [DAA_MockPaper_1.md](file:///D:/2026%20EXAM/AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_1.md) | Full 2-Hour timed mock exam paper (60 Marks, Section A compulsory short [20M], Section B medium [16M], Section C long numericals [24M]) |

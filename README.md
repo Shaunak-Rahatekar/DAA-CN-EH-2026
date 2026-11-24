@@ -48,6 +48,7 @@ AI GENERATED/
 - 🎯 **Exam Pattern Analysis**: [`AI GENERATED/00_Index/EXAM_PATTERN.md`](AI%20GENERATED/00_Index/EXAM_PATTERN.md)
 
 ### Design and Analysis of Algorithms (DAA, CS3212)
+- 🧭 **Interactive Flowchart & Explorer**: [`AI GENERATED/DAA/DAA_Interactive_Master_Explorer.html`](AI%20GENERATED/DAA/DAA_Interactive_Master_Explorer.html) | [Markdown Blueprint](AI%20GENERATED/DAA/Notes/DAA_Interactive_Master_Flowchart.md)
 - ⏱️ **DAA Last-Hour Review**: [`AI GENERATED/DAA/Notes/DAA_LastHour_Checklist.md`](AI%20GENERATED/DAA/Notes/DAA_LastHour_Checklist.md)
 - 📝 **Actual ESE Sample Paper 1 Solutions**: [`AI GENERATED/DAA/MockPapers/DAA_Actual_Paper_Solutions.md`](AI%20GENERATED/DAA/MockPapers/DAA_Actual_Paper_Solutions.md)
 - 📝 **Actual ESE Sample Paper 2 Solutions**: [`AI GENERATED/DAA/MockPapers/DAA_Actual_Paper_2_Solutions.md`](AI%20GENERATED/DAA/MockPapers/DAA_Actual_Paper_2_Solutions.md)
