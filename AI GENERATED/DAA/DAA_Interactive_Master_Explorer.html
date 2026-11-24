@@ -7,10 +7,10 @@
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
     :root {
-      --bg: #090d16;
-      --card-bg: #131c2e;
-      --border: #23324d;
-      --text: #f1f5f9;
+      --bg: #070b14;
+      --card-bg: #0f172a;
+      --border: #1e293b;
+      --text: #f8fafc;
       --muted: #94a3b8;
     }
     body {
@@ -19,29 +19,33 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       overflow-x: hidden;
     }
-    /* Mind Map Canvas Background Grid */
-    .mindmap-canvas {
-      background-image: radial-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px);
-      background-size: 24px 24px;
+
+    /* Mind Map Canvas Grid */
+    .mm-canvas {
+      background-image: 
+        radial-gradient(rgba(56, 189, 248, 0.12) 1.5px, transparent 1.5px),
+        linear-gradient(to right, rgba(30, 41, 59, 0.15) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(30, 41, 59, 0.15) 1px, transparent 1px);
+      background-size: 32px 32px, 96px 96px, 96px 96px;
     }
 
-    /* Mind Map Nodes Styling */
+    /* Mind Map Nodes */
     .mm-node {
       position: relative;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: pointer;
       user-select: none;
     }
     .mm-node:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.3);
+      box-shadow: 0 12px 28px -6px rgba(56, 189, 248, 0.25);
     }
     .mm-node.active-selected {
       outline: 2px solid #38bdf8;
-      box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.55);
     }
 
-    /* Organic SVG Branch Lines */
+    /* Organic Curved Connectors */
     .branch-path {
       fill: none;
       stroke-linecap: round;
@@ -56,18 +60,8 @@
       font-family: 'Cambria Math', 'Times New Roman', serif;
       font-style: italic;
     }
-    .math-card {
-      font-family: 'Cambria Math', 'Times New Roman', serif;
-      background: #0d1526;
-      border: 1px solid #1e293b;
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-size: 15px;
-      line-height: 1.6;
-      color: #38bdf8;
-    }
 
-    /* Smooth Slide Drawer */
+    /* Slide-in Study Sheet */
     #detailDrawer {
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -75,31 +69,31 @@
       transform: translateX(105%);
     }
 
-    /* Custom Scrollbar */
+    /* Scrollbars */
     ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: #090d16; }
-    ::-webkit-scrollbar-thumb { background: #23324d; border-radius: 3px; }
+    ::-webkit-scrollbar-track { background: #070b14; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
   </style>
 </head>
 <body class="min-h-screen relative flex flex-col">
 
-  <!-- TOP APP HEADER -->
-  <header class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-6 py-3.5 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4">
+  <!-- TOP APP CONTROLS HEADER -->
+  <header class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-6 py-3.5 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-4">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider border border-cyan-500/30">Interactive Mind Map</span>
+      <span class="px-2.5 py-1 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider border border-cyan-500/40">Mind Map View</span>
       <div>
         <h1 class="text-lg md:text-xl font-black text-white tracking-tight flex items-center gap-2">
-          DAA Master Mind Map <span class="text-xs font-normal text-slate-400">• CS3212 / CS3205</span>
+          DAA Master Architecture Mind Map <span class="text-xs font-normal text-slate-400">• CS3212 / CS3205</span>
         </h1>
-        <p class="text-[11px] text-slate-400">Click any mind map node to expand/collapse • Click topics to open deep-dive study sheet</p>
+        <p class="text-[11px] text-slate-400">Radial 6-Unit Mind Map • Click any unit to fold/unfold branches • Click any topic to open deep-dive study sheet</p>
       </div>
     </div>
 
     <!-- Controls -->
     <div class="flex flex-wrap items-center gap-2">
       <div class="relative">
-        <input type="text" id="mmSearch" placeholder="Search mind map (e.g. Catalan, Huffman)..." 
+        <input type="text" id="mmSearch" placeholder="Search mind map (e.g. Catalan, Huffman, Sqrt)..." 
                class="bg-slate-800 text-slate-200 text-xs rounded-lg px-3 py-2 pl-8 border border-slate-700 focus:outline-none focus:border-cyan-400 w-52 md:w-64" />
         <svg class="w-4 h-4 text-slate-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
@@ -107,19 +101,19 @@
       </div>
 
       <button id="btnExpandAllMM" class="px-3 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-xs font-bold transition shadow-md shadow-cyan-600/30">
-        Expand All
+        ➕ Expand All
       </button>
       <button id="btnCollapseAllMM" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 rounded-lg text-xs font-bold transition">
-        Collapse to Center
+        ➖ Collapse to Units
       </button>
-      <button id="btnResetView" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 rounded-lg text-xs font-bold transition">
-        Center View
+      <button id="btnCenterView" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 rounded-lg text-xs font-bold transition">
+        🎯 Center View
       </button>
     </div>
   </header>
 
   <!-- REPEATED CONSTANTS EMERGENCY BAR -->
-  <div class="bg-slate-900/80 border-b border-slate-800 px-6 py-2">
+  <div class="bg-slate-900/70 border-b border-slate-800 px-6 py-2">
     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
       <div class="flex items-center gap-2 text-cyan-400 font-bold">
         <span>⚡ Exam Instant Recall:</span>
@@ -135,27 +129,27 @@
   </div>
 
   <!-- INTERACTIVE MIND MAP CANVAS -->
-  <div class="flex-1 mindmap-canvas relative overflow-auto p-8 md:p-14" id="canvasContainer">
+  <div class="flex-1 mm-canvas relative overflow-auto p-8 md:p-14" id="canvasContainer">
     
-    <!-- SVG Connections Layer -->
+    <!-- Dynamic SVG Bezier Curves -->
     <svg id="svgConnectors" class="absolute top-0 left-0 w-full h-full pointer-events-none z-0"></svg>
 
-    <!-- MIND MAP NODES GRID (Bi-Directional Radial Layout) -->
+    <!-- MIND MAP NODES HIERARCHY -->
     <div class="relative z-10 max-w-6xl mx-auto flex flex-col items-center">
 
-      <!-- CENTER HUB NODE -->
+      <!-- CENTRAL HUB NODE -->
       <div id="node-center" class="mm-node bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 p-5 rounded-2xl border-2 border-cyan-400 shadow-2xl shadow-cyan-500/30 text-center w-72 mb-12">
         <div class="inline-block px-2.5 py-0.5 rounded-full bg-black/30 text-cyan-200 text-[10px] font-black uppercase tracking-wider mb-1">Central Mind Map Hub</div>
         <h2 class="text-lg font-black text-white leading-tight">DAA Master Architecture</h2>
         <p class="text-[11px] text-cyan-100 mt-1">CS3212 / CS3205 • 6 Units</p>
-        <div class="mt-2 text-[10px] text-cyan-200/80 bg-black/20 rounded py-0.5 px-2">Click any Unit below to expand branches</div>
+        <div class="mt-2 text-[10px] text-cyan-200/80 bg-black/20 rounded py-0.5 px-2">Click any Unit below to expand/collapse branches</div>
       </div>
 
-      <!-- UNITS CONTAINER (2 Columns: Left Column Units IV-VI, Right Column Units I-III) -->
+      <!-- RADIAL BI-DIRECTIONAL UNITS CONTAINER -->
       <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
 
         <!-- ============================================== -->
-        <!-- LEFT COLUMN: UNITS I, II, III (Core Design)   -->
+        <!-- LEFT COLUMN: UNITS I, II, III (Foundational)   -->
         <!-- ============================================== -->
         <div class="space-y-8 flex flex-col items-end">
 
@@ -167,18 +161,16 @@
                 <span class="w-9 h-9 rounded-lg bg-cyan-500/20 text-cyan-300 font-black flex items-center justify-center text-sm border border-cyan-500/40">I</span>
                 <div>
                   <div class="text-[10px] font-bold text-cyan-400 uppercase tracking-wide">Unit I Branch</div>
-                  <h3 class="text-sm font-bold text-white">Complexity & Recurrences</h3>
+                  <h3 class="text-sm font-bold text-white">Complexity Analysis & Recurrences</h3>
                 </div>
               </div>
-              <span id="badge-unit-1" class="px-2 py-0.5 rounded bg-slate-800 text-cyan-400 text-xs font-mono font-bold border border-slate-700">[-] 3 Topics</span>
+              <span id="badge-unit-1" class="px-2 py-0.5 rounded bg-slate-800 text-cyan-400 text-xs font-mono font-bold border border-slate-700">[-] 4 Topics</span>
             </div>
 
-            <!-- Unit I Subtopics Branches -->
+            <!-- Unit I Subtopics -->
             <div id="branches-unit-1" class="mt-3 space-y-2.5 pl-6 border-l-2 border-cyan-500/30 ml-4">
               
-              <!-- Topic 1.1 -->
-              <div id="topic-1-1" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-cyan-400 p-3 rounded-lg text-xs"
-                   onclick="openDrawer('1-1')">
+              <div id="topic-1-1" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-cyan-400 p-3 rounded-lg text-xs" onclick="openDrawer('1-1')">
                 <div class="flex items-center justify-between">
                   <span class="font-bold text-white flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
@@ -189,9 +181,7 @@
                 <div class="text-[11px] text-cyan-300 mt-1 font-mono">T(n) = T(√n) + 1 ⟹ O(log log n)</div>
               </div>
 
-              <!-- Topic 1.2 -->
-              <div id="topic-1-2" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-cyan-400 p-3 rounded-lg text-xs"
-                   onclick="openDrawer('1-2')">
+              <div id="topic-1-2" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-cyan-400 p-3 rounded-lg text-xs" onclick="openDrawer('1-2')">
                 <div class="flex items-center justify-between">
                   <span class="font-bold text-white">1.2 Sorting Lower Bound & Decision Trees</span>
                   <span class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-bold">⭐ High Yield</span>
@@ -199,14 +189,20 @@
                 <div class="text-[11px] text-slate-400 mt-1 font-mono">h ≥ log₂(n!) = Ω(n log n)</div>
               </div>
 
-              <!-- Topic 1.3 -->
-              <div id="topic-1-3" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-cyan-400 p-3 rounded-lg text-xs"
-                   onclick="openDrawer('1-3')">
+              <div id="topic-1-3" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-cyan-400 p-3 rounded-lg text-xs" onclick="openDrawer('1-3')">
                 <div class="flex items-center justify-between">
                   <span class="font-bold text-white">1.3 Strassen's Matrix Multiplication</span>
                   <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">CLRS Ch. 4</span>
                 </div>
                 <div class="text-[11px] text-slate-400 mt-1 font-mono">T(n) = 7T(n/2) + Θ(n²) ⟹ O(n<sup>2.81</sup>)</div>
+              </div>
+
+              <div id="topic-1-4" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-cyan-400 p-3 rounded-lg text-xs" onclick="openDrawer('1-4')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white">1.4 Loop Invariants & Iterative Analysis</span>
+                  <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Proof Method</span>
+                </div>
+                <div class="text-[11px] text-slate-400 mt-1 font-mono">Initialization ⟹ Maintenance ⟹ Termination</div>
               </div>
 
             </div>
@@ -223,15 +219,13 @@
                   <h3 class="text-sm font-bold text-white">Divide & Conquer & Search</h3>
                 </div>
               </div>
-              <span id="badge-unit-2" class="px-2 py-0.5 rounded bg-slate-800 text-indigo-400 text-xs font-mono font-bold border border-slate-700">[-] 3 Topics</span>
+              <span id="badge-unit-2" class="px-2 py-0.5 rounded bg-slate-800 text-indigo-400 text-xs font-mono font-bold border border-slate-700">[-] 4 Topics</span>
             </div>
 
             <!-- Unit II Subtopics -->
             <div id="branches-unit-2" class="mt-3 space-y-2.5 pl-6 border-l-2 border-indigo-500/30 ml-4">
               
-              <!-- Topic 2.1 -->
-              <div id="topic-2-1" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-indigo-400 p-3 rounded-lg text-xs"
-                   onclick="openDrawer('2-1')">
+              <div id="topic-2-1" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-indigo-400 p-3 rounded-lg text-xs" onclick="openDrawer('2-1')">
                 <div class="flex items-center justify-between">
                   <span class="font-bold text-white flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
@@ -242,9 +236,7 @@
                 <div class="text-[11px] text-indigo-300 mt-1 font-mono">Min-Heap size k ⟹ O(n log k) time, O(k) space</div>
               </div>
 
-              <!-- Topic 2.2 -->
-              <div id="topic-2-2" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-indigo-400 p-3 rounded-lg text-xs"
-                   onclick="openDrawer('2-2')">
+              <div id="topic-2-2" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-indigo-400 p-3 rounded-lg text-xs" onclick="openDrawer('2-2')">
                 <div class="flex items-center justify-between">
                   <span class="font-bold text-white">2.2 Fast Mod Exp & Josephus Invariant</span>
                   <span class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-bold">⭐ High Yield</span>
@@ -252,14 +244,20 @@
                 <div class="text-[11px] text-slate-400 mt-1 font-mono">3<sup>83</sup> mod 17 = 10 | Josephus W = 2l + 1</div>
               </div>
 
-              <!-- Topic 2.3 -->
-              <div id="topic-2-3" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-indigo-400 p-3 rounded-lg text-xs"
-                   onclick="openDrawer('2-3')">
+              <div id="topic-2-3" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-indigo-400 p-3 rounded-lg text-xs" onclick="openDrawer('2-3')">
                 <div class="flex items-center justify-between">
                   <span class="font-bold text-white">2.3 2D Closest Pair of Points</span>
-                  <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Geometry</span>
+                  <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Geometry D&C</span>
                 </div>
                 <div class="text-[11px] text-slate-400 mt-1 font-mono">2δ vertical strip check ≤ 7 points ⟹ O(n log n)</div>
+              </div>
+
+              <div id="topic-2-4" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-indigo-400 p-3 rounded-lg text-xs" onclick="openDrawer('2-4')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white">2.4 Counting Inversions via Merge Sort</span>
+                  <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">CLRS Ch. 2</span>
+                </div>
+                <div class="text-[11px] text-slate-400 mt-1 font-mono">Piggyback on merge step ⟹ O(n log n)</div>
               </div>
 
             </div>
@@ -276,15 +274,13 @@
                   <h3 class="text-sm font-bold text-white">Dynamic Programming</h3>
                 </div>
               </div>
-              <span id="badge-unit-3" class="px-2 py-0.5 rounded bg-slate-800 text-violet-400 text-xs font-mono font-bold border border-slate-700">[-] 3 Topics</span>
+              <span id="badge-unit-3" class="px-2 py-0.5 rounded bg-slate-800 text-violet-400 text-xs font-mono font-bold border border-slate-700">[-] 4 Topics</span>
             </div>
 
             <!-- Unit III Subtopics -->
             <div id="branches-unit-3" class="mt-3 space-y-2.5 pl-6 border-l-2 border-violet-500/30 ml-4">
               
-              <!-- Topic 3.1 -->
-              <div id="topic-3-1" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-violet-400 p-3 rounded-lg text-xs"
-                   onclick="openDrawer('3-1')">
+              <div id="topic-3-1" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-violet-400 p-3 rounded-lg text-xs" onclick="openDrawer('3-1')">
                 <div class="flex items-center justify-between">
                   <span class="font-bold text-white flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
@@ -295,9 +291,7 @@
                 <div class="text-[11px] text-violet-300 mt-1 font-mono">f(7) = C₆ = 132 | f(8) = C₇ = 429 ⟹ Ω(2ⁿ)</div>
               </div>
 
-              <!-- Topic 3.2 -->
-              <div id="topic-3-2" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-violet-400 p-3 rounded-lg text-xs"
-                   onclick="openDrawer('3-2')">
+              <div id="topic-3-2" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-violet-400 p-3 rounded-lg text-xs" onclick="openDrawer('3-2')">
                 <div class="flex items-center justify-between">
                   <span class="font-bold text-white flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
@@ -308,14 +302,20 @@
                 <div class="text-[11px] text-violet-300 mt-1 font-mono">DP[i, j] = DP[i-1, j-1]·pᵢ + DP[i-1, j]·(1-pᵢ)</div>
               </div>
 
-              <!-- Topic 3.3 -->
-              <div id="topic-3-3" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-violet-400 p-3 rounded-lg text-xs"
-                   onclick="openDrawer('3-3')">
+              <div id="topic-3-3" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-violet-400 p-3 rounded-lg text-xs" onclick="openDrawer('3-3')">
                 <div class="flex items-center justify-between">
                   <span class="font-bold text-white">3.3 Longest Arithmetic Progression (LAPS)</span>
                   <span class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-bold">⭐ High Yield</span>
                 </div>
                 <div class="text-[11px] text-slate-400 mt-1 font-mono">A[k] + A[j] == 2A[i] ⟹ L[i, j] = L[k, i] + 1</div>
+              </div>
+
+              <div id="topic-3-4" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-violet-400 p-3 rounded-lg text-xs" onclick="openDrawer('3-4')">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white">3.4 Palindrome Insertions & Paths ≤ k</span>
+                  <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Interval DP</span>
+                </div>
+                <div class="text-[11px] text-slate-400 mt-1 font-mono">Min Insertions = n - LCS(s, s_rev) | Paths ≤ k DP</div>
               </div>
 
             </div>
@@ -324,7 +324,7 @@
         </div>
 
         <!-- ============================================== -->
-        <!-- RIGHT COLUMN: UNITS IV, V, VI (Advanced)       -->
+        <!-- RIGHT COLUMN: UNITS IV, V, VI (Specialized)    -->
         <!-- ============================================== -->
         <div class="space-y-8 flex flex-col items-start">
 
@@ -345,9 +345,7 @@
             <!-- Unit IV Subtopics -->
             <div id="branches-unit-4" class="mt-3 space-y-2.5 pl-6 border-l-2 border-amber-500/30 ml-4">
               
-              <!-- Topic 4.1 -->
-              <div id="topic-4-1" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-amber-400 p-3 rounded-lg text-xs"
-                   onclick="openDrawer('4-1')">
+              <div id="topic-4-1" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-amber-400 p-3 rounded-lg text-xs" onclick="openDrawer('4-1')">
                 <div class="flex items-center justify-between">
                   <span class="font-bold text-white flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
@@ -358,9 +356,7 @@
                 <div class="text-[11px] text-amber-300 mt-1 font-mono">100k chars = 266,000 bits (33,250 B) | L_avg = 2.66</div>
               </div>
 
-              <!-- Topic 4.2 -->
-              <div id="topic-4-2" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-amber-400 p-3 rounded-lg text-xs"
-                   onclick="openDrawer('4-2')">
+              <div id="topic-4-2" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-amber-400 p-3 rounded-lg text-xs" onclick="openDrawer('4-2')">
                 <div class="flex items-center justify-between">
                   <span class="font-bold text-white">4.2 4-Queens & Bounding Functions</span>
                   <span class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-bold">⭐ High Yield</span>
@@ -368,9 +364,7 @@
                 <div class="text-[11px] text-slate-400 mt-1 font-mono">|X[j] - i| ≠ |j - k| ⟹ (2, 4, 1, 3) & (3, 1, 4, 2)</div>
               </div>
 
-              <!-- Topic 4.3 -->
-              <div id="topic-4-3" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-amber-400 p-3 rounded-lg text-xs"
-                   onclick="openDrawer('4-3')">
+              <div id="topic-4-3" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-amber-400 p-3 rounded-lg text-xs" onclick="openDrawer('4-3')">
                 <div class="flex items-center justify-between">
                   <span class="font-bold text-white">4.3 Blue Vertices on Tree (Max Indep Set)</span>
                   <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Greedy Tree</span>
@@ -398,9 +392,7 @@
             <!-- Unit V Subtopics -->
             <div id="branches-unit-5" class="mt-3 space-y-2.5 pl-6 border-l-2 border-emerald-500/30 ml-4">
               
-              <!-- Topic 5.1 -->
-              <div id="topic-5-1" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-emerald-400 p-3 rounded-lg text-xs"
-                   onclick="openDrawer('5-1')">
+              <div id="topic-5-1" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-emerald-400 p-3 rounded-lg text-xs" onclick="openDrawer('5-1')">
                 <div class="flex items-center justify-between">
                   <span class="font-bold text-white flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
@@ -411,9 +403,7 @@
                 <div class="text-[11px] text-emerald-300 mt-1 font-mono">BFS shortest augmenting path ⟹ O(V E²)</div>
               </div>
 
-              <!-- Topic 5.2 -->
-              <div id="topic-5-2" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-emerald-400 p-3 rounded-lg text-xs"
-                   onclick="openDrawer('5-2')">
+              <div id="topic-5-2" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-emerald-400 p-3 rounded-lg text-xs" onclick="openDrawer('5-2')">
                 <div class="flex items-center justify-between">
                   <span class="font-bold text-white">5.2 Maximum Bipartite Matching</span>
                   <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Flow Reduction</span>
@@ -441,9 +431,7 @@
             <!-- Unit VI Subtopics -->
             <div id="branches-unit-6" class="mt-3 space-y-2.5 pl-6 border-l-2 border-rose-500/30 ml-4">
               
-              <!-- Topic 6.1 -->
-              <div id="topic-6-1" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-rose-400 p-3 rounded-lg text-xs"
-                   onclick="openDrawer('6-1')">
+              <div id="topic-6-1" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-rose-400 p-3 rounded-lg text-xs" onclick="openDrawer('6-1')">
                 <div class="flex items-center justify-between">
                   <span class="font-bold text-white flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
@@ -454,9 +442,7 @@
                 <div class="text-[11px] text-rose-300 mt-1 font-mono">Monte Carlo m=271 (≤ 3⁻¹⁰⁰) | Las Vegas E[T]=Θ(n)</div>
               </div>
 
-              <!-- Topic 6.2 -->
-              <div id="topic-6-2" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-rose-400 p-3 rounded-lg text-xs"
-                   onclick="openDrawer('6-2')">
+              <div id="topic-6-2" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-rose-400 p-3 rounded-lg text-xs" onclick="openDrawer('6-2')">
                 <div class="flex items-center justify-between">
                   <span class="font-bold text-white">6.2 Prover-Verifier NP & 3-SAT to CLIQUE</span>
                   <span class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-bold">⭐ High Yield</span>
@@ -464,9 +450,7 @@
                 <div class="text-[11px] text-slate-400 mt-1 font-mono">Verifier V(x, w) | 3 vertices per clause gadget</div>
               </div>
 
-              <!-- Topic 6.3 -->
-              <div id="topic-6-3" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-rose-400 p-3 rounded-lg text-xs"
-                   onclick="openDrawer('6-3')">
+              <div id="topic-6-3" class="mm-node bg-slate-900/90 border border-slate-800 hover:border-rose-400 p-3 rounded-lg text-xs" onclick="openDrawer('6-3')">
                 <div class="flex items-center justify-between">
                   <span class="font-bold text-white">6.3 Planar Point Bisection & Red-Blue Pair</span>
                   <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Geometry D&C</span>
@@ -486,7 +470,6 @@
 
   <!-- SLIDE-IN DEEP DIVE STUDY DRAWER -->
   <aside id="detailDrawer" class="drawer-closed fixed top-0 right-0 w-full sm:w-[540px] h-full bg-slate-900 border-l border-slate-800 z-50 shadow-2xl flex flex-col">
-    <!-- Drawer Header -->
     <div class="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-950/60">
       <div>
         <span id="drawerBadge" class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">Topic Details</span>
@@ -499,13 +482,10 @@
       </button>
     </div>
 
-    <!-- Drawer Content Body -->
-    <div class="flex-1 overflow-y-auto p-5 space-y-4" id="drawerBody">
-      <!-- Dynamic Injection -->
-    </div>
+    <div class="flex-1 overflow-y-auto p-5 space-y-4" id="drawerBody"></div>
   </aside>
 
-  <!-- TOPIC DATA DICTIONARY -->
+  <!-- JAVASCRIPT MIND MAP ENGINE -->
   <script>
     const topicData = {
       '1-1': {
@@ -557,6 +537,22 @@
         },
         clrs: 'CLRS Ch. 4, Section 4.2.'
       },
+      '1-4': {
+        title: 'Topic 1.4: Loop Invariants & Iterative Correctness Proofs',
+        badge: '⭐ Core Methodology',
+        hinglish: 'Loop invariant 3 steps me prove hota hai: Initialization (loop shuru hone se pehle sahi ho), Maintenance (har iteration ke baad sahi rahe), aur Termination (loop khatam hone par final answer sahi de)!',
+        academic: 'A formal induction technique establishing non-recursive algorithm correctness via 3 phases: Initialization (true prior to 1st iteration), Maintenance (true before iteration k implies true before k+1), Termination (loop ends and provides meaningful property).',
+        math: [
+          '• Insertion Sort Invariant: Subarray A[1..i-1] consists of elements originally in A[1..i-1] but in sorted order.'
+        ],
+        table: {
+          trigger: 'Prove algorithm correctness without recursion',
+          paradigm: 'Inductive Loop Invariant',
+          state: 'Loop counter i and array prefix A[1..i]',
+          rubric: '1. State invariant property<br>2. Prove initialization base case<br>3. Prove maintenance inductive step<br>4. Show termination implies correctness'
+        },
+        clrs: 'CLRS Ch. 2, Section 2.1.'
+      },
       '2-1': {
         title: 'Topic 2.1: Median of k Sorted Arrays (Total Size n)',
         badge: '🔥 Guaranteed Question (Paper 2 Q6a)',
@@ -607,6 +603,23 @@
           rubric: '1. Split at median X into left and right<br>2. Find δ = min(δ_L, δ_R)<br>3. Filter points within |x - x_mid| < δ<br>4. Compare each point against next 7 y-sorted neighbors'
         },
         clrs: 'CLRS Ch. 33, Section 33.4.'
+      },
+      '2-4': {
+        title: 'Topic 2.4: Counting Inversions via Merge Sort',
+        badge: '⭐ High Yield',
+        hinglish: 'Inversion ka matlab array me kitne elements ulte order me hain (i < j lekin A[i] > A[j]). Merge sort me jab right half se chhota element pehle uthate hain, toh left half ke bache saare elements usse bade hote hain — count += (mid - i + 1)!',
+        academic: 'Counts pairs with i < j and A[i] > A[j] in O(n log n). During the merge step, if R[j] < L[i], all remaining elements in L form split inversions with R[j].',
+        math: [
+          '• Split Inversion Rule: If R[j] < L[i], count += (length(L) - i + 1)',
+          '• Recurrence: T(n) = 2T(n/2) + O(n)  ⟹  O(n log n)'
+        ],
+        table: {
+          trigger: 'Ranking correlation / collaborative filtering distance',
+          paradigm: 'Divide & Conquer',
+          state: 'Split inversions count during merge',
+          rubric: '1. Recursive split into halves<br>2. Two-pointer merge counting split inversions<br>3. Combine totals<br>4. Time O(n log n)'
+        },
+        clrs: 'CLRS Ch. 2, Problem 2-4.'
       },
       '3-1': {
         title: 'Topic 3.1: Matrix Chain & Catalan Series',
@@ -660,6 +673,23 @@
           rubric: '1. Sort array A<br>2. Recurrence: L[i, j] = L[k, i] + 1<br>3. Double loop with pointers k and j around i<br>4. Time O(n²), Space O(n²)'
         },
         clrs: 'Actual Paper 2, Q3(b)(i) [7 Marks].'
+      },
+      '3-4': {
+        title: 'Topic 3.4: Palindrome Insertions & Paths ≤ k',
+        badge: '⭐ High Yield (Paper 1 Q4b, Paper 2 Q6b)',
+        hinglish: 'String ko palindrome banane ke liye min insertions = Total Length - LCS(s, s_rev). Directed graph me s se t tak paths of length ≤ k nikaalne ke liye: P[m, v] = ∑ P[m-1, u] incoming edges par!',
+        academic: 'Minimum character insertions to form palindrome equals n - LCS(s, reverse(s)) in O(n²). Counting distinct paths of length at most k in DAG runs in O(k(V+E)) via DP.',
+        math: [
+          '• Palindrome: Min Insertions = n - LCS(s, s_reverse)',
+          '• Path Count DP: P[m, v] = ∑<sub>(u,v)∈E</sub> P[m-1, u] with P[0, s] = 1'
+        ],
+        table: {
+          trigger: 'String symmetry restoration / hop-bounded packet routing counts',
+          paradigm: 'Interval DP / Layered Path DP',
+          state: 'DP[i, j] for substrings / P[m, v] for m hops',
+          rubric: '1. Formulate recurrence<br>2. Base cases DP[i, i] = 0 or P[0, s] = 1<br>3. Tabulation pseudocode<br>4. Time & space complexity'
+        },
+        clrs: 'CLRS Ch. 15, Section 15.4. Paper 1 Q4(b) & Paper 2 Q6(b).'
       },
       '4-1': {
         title: 'Topic 4.1: Huffman Coding (Verbatim Question!)',
@@ -801,7 +831,6 @@
       }
     };
 
-    // Toggle branches for a unit
     function toggleUnitBranches(unitId) {
       const branches = document.getElementById('branches-' + unitId);
       const badge = document.getElementById('badge-' + unitId);
@@ -811,9 +840,9 @@
       if (badge) {
         badge.textContent = isHidden ? '[-] Topics' : '[+] Topics';
       }
+      setTimeout(drawMindMapConnectors, 50);
     }
 
-    // Expand All Mind Map
     document.getElementById('btnExpandAllMM').addEventListener('click', () => {
       ['unit-1', 'unit-2', 'unit-3', 'unit-4', 'unit-5', 'unit-6'].forEach(u => {
         const branches = document.getElementById('branches-' + u);
@@ -821,9 +850,9 @@
         if (branches) branches.style.display = 'block';
         if (badge) badge.textContent = '[-] Topics';
       });
+      setTimeout(drawMindMapConnectors, 50);
     });
 
-    // Collapse All Mind Map
     document.getElementById('btnCollapseAllMM').addEventListener('click', () => {
       ['unit-1', 'unit-2', 'unit-3', 'unit-4', 'unit-5', 'unit-6'].forEach(u => {
         const branches = document.getElementById('branches-' + u);
@@ -832,30 +861,28 @@
         if (badge) badge.textContent = '[+] Topics';
       });
       closeDrawer();
+      setTimeout(drawMindMapConnectors, 50);
     });
 
-    // Reset View
-    document.getElementById('btnResetView').addEventListener('click', () => {
+    document.getElementById('btnCenterView').addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Search filter
     document.getElementById('mmSearch').addEventListener('input', (e) => {
       const q = e.target.value.toLowerCase().trim();
       document.querySelectorAll('[id^="topic-"]').forEach(topicEl => {
         const text = topicEl.textContent.toLowerCase();
         if (!q || text.includes(q)) {
           topicEl.style.display = 'block';
-          // auto-expand parent unit
           const parentBranch = topicEl.closest('[id^="branches-"]');
           if (parentBranch) parentBranch.style.display = 'block';
         } else {
           topicEl.style.display = 'none';
         }
       });
+      setTimeout(drawMindMapConnectors, 50);
     });
 
-    // Open Slide-In Drawer with Study Blueprint
     function openDrawer(topicKey) {
       const data = topicData[topicKey];
       if (!data) return;
@@ -873,25 +900,21 @@
       });
 
       const content = `
-        <!-- Hinglish Intuition -->
         <div class="p-3.5 bg-amber-500/10 border-l-4 border-amber-400 rounded-r-lg text-xs text-amber-200">
           <span class="font-bold text-amber-300 block mb-1">💡 Asli Baat (1-Sec Recall):</span>
           ${data.hinglish}
         </div>
 
-        <!-- Formal Definition -->
         <div class="p-3.5 bg-slate-800/80 border border-slate-700/80 rounded-lg text-xs text-slate-300">
           <span class="font-bold text-cyan-300 block mb-1">🎯 Academic Exam Definition:</span>
           ${data.academic}
         </div>
 
-        <!-- Math Formulas -->
         <div class="space-y-1.5">
           <span class="font-bold text-emerald-400 text-xs block">📐 Formulas & Invariants (Readable Unicode):</span>
           ${mathHtml}
         </div>
 
-        <!-- Case Study Rubric Table -->
         <div class="p-3.5 bg-slate-950 border border-slate-800 rounded-lg text-xs space-y-2">
           <span class="font-bold text-cyan-300 block">🛠️ 4-Section Answer Rubric for Exam:</span>
           <div class="grid grid-cols-2 gap-2 text-[11px] border-b border-slate-800 pb-2">
@@ -906,7 +929,6 @@
           </div>
         </div>
 
-        <!-- CLRS Reference -->
         <div class="p-3 bg-cyan-950/20 border border-cyan-800/40 rounded-lg text-xs text-slate-300">
           <span class="font-bold text-cyan-300 block mb-0.5">📚 CLRS & Exam Mapping:</span>
           ${data.clrs}
@@ -921,6 +943,50 @@
       document.getElementById('detailDrawer').classList.add('drawer-closed');
       document.querySelectorAll('.mm-node').forEach(n => n.classList.remove('active-selected'));
     }
+
+    // Dynamic Organic Bezier Curves connecting Center to Units
+    function drawMindMapConnectors() {
+      const svg = document.getElementById('svgConnectors');
+      const canvas = document.getElementById('canvasContainer');
+      const centerNode = document.getElementById('node-center');
+      if (!svg || !canvas || !centerNode) return;
+
+      const canvasRect = canvas.getBoundingClientRect();
+      const centerRect = centerNode.getBoundingClientRect();
+
+      const cx = (centerRect.left + centerRect.right) / 2 - canvasRect.left + canvas.scrollLeft;
+      const cy = (centerRect.top + centerRect.bottom) / 2 - canvasRect.top + canvas.scrollTop;
+
+      let paths = '';
+      const unitColors = {
+        'unit-1': '#06b6d4',
+        'unit-2': '#6366f1',
+        'unit-3': '#8b5cf6',
+        'unit-4': '#f59e0b',
+        'unit-5': '#10b981',
+        'unit-6': '#f43f5e'
+      };
+
+      ['unit-1', 'unit-2', 'unit-3', 'unit-4', 'unit-5', 'unit-6'].forEach(uid => {
+        const uNode = document.getElementById('node-' + uid);
+        if (!uNode) return;
+        const uRect = uNode.getBoundingClientRect();
+        const ux = (uRect.left + uRect.right) / 2 - canvasRect.left + canvas.scrollLeft;
+        const uy = (uRect.top + uRect.bottom) / 2 - canvasRect.top + canvas.scrollTop;
+
+        // Bezier curve
+        const midY = (cy + uy) / 2;
+        const d = `M ${cx} ${cy} C ${cx} ${midY}, ${ux} ${midY}, ${ux} ${uy}`;
+        const color = unitColors[uid] || '#38bdf8';
+        paths += `<path d="${d}" stroke="${color}" stroke-width="2.2" stroke-opacity="0.65" class="branch-path" />`;
+      });
+
+      svg.innerHTML = paths;
+    }
+
+    window.addEventListener('load', drawMindMapConnectors);
+    window.addEventListener('resize', drawMindMapConnectors);
+    document.getElementById('canvasContainer').addEventListener('scroll', drawMindMapConnectors);
   </script>
 </body>
 </html>
