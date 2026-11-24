@@ -115,6 +115,7 @@
 | File | Description |
 | :--- | :--- |
 | [DAA_Actual_Paper_Solutions.md](file:///D:/2026%20EXAM/AI%20GENERATED/DAA/MockPapers/DAA_Actual_Paper_Solutions.md) | Complete step-by-step solutions & marking scheme for the actual VIT Pune ESE DAA Sample Paper (CS 3205/3212) |
+| [DAA_Actual_Paper_2_Solutions.md](file:///D:/2026%20EXAM/AI%20GENERATED/DAA/MockPapers/DAA_Actual_Paper_2_Solutions.md) | Complete step-by-step solutions & marking scheme for the second actual VIT Pune ESE DAA Paper (CS 3205/3212) |
 | [DAA_MockPaper_1.md](file:///D:/2026%20EXAM/AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_1.md) | Full 2-Hour timed mock exam paper (60 Marks, Section A compulsory short [20M], Section B medium [16M], Section C long numericals [24M]) |
 | [DAA_MockPaper_1.pdf](file:///D:/2026%20EXAM/AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_1.pdf) | Printable 2-page examination paper in official university format |
 | [DAA_MockPaper_1_Answers.md](file:///D:/2026%20EXAM/AI%20GENERATED/DAA/MockPapers/DAA_MockPaper_1_Answers.md) | Complete worked solutions, trace tables (LCS, Knapsack), Edmonds-Karp residual steps, and exact marking scheme |
