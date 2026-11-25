@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DAA Master Exam Forecast & Complete Step-by-Step Solutions | VIT Pune CS3205 / CS3212</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 14mm 12mm 14mm 12mm;
+    @bottom-right {
+      content: counter(page);
+    }
+  }
+
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.5;
+    color: #1a202c;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  .page-break {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Header banner */
+  .header-card {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #ffffff;
+    padding: 20px 24px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 6px solid #3b82f6;
+  }
+  .header-title {
+    font-size: 19pt;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin: 0 0 4px 0;
+    color: #f8fafc;
+  }
+  .header-subtitle {
+    font-size: 12pt;
+    font-weight: 600;
+    color: #93c5fd;
+    margin: 0 0 10px 0;
+  }
+  .header-meta {
+    font-size: 9pt;
+    color: #cbd5e1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-top: 1px solid #334155;
+    padding-top: 8px;
+  }
+  .header-meta span strong {
+    color: #38bdf8;
+  }
+
+  /* Unit Header */
+  .unit-banner {
+    background: #1e3a8a;
+    color: #ffffff;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 13pt;
+    font-weight: 700;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid #60a5fa;
+  }
+  .unit-badge {
+    background: #3b82f6;
+    color: #ffffff;
+    font-size: 8.5pt;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  /* Question Card */
+  .question-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    overflow: hidden;
+  }
+  .question-header {
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .q-title {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+  }
+  .q-marks {
+    background: #dbeafe;
+    color: #1e40af;
+    font-weight: 700;
+    font-size: 8.5pt;
+    padding: 2px 8px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+  .q-body {
+    padding: 14px 16px;
+  }
+  .problem-box {
+    background: #f1f5f9;
+    border-left: 4px solid #64748b;
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 12px;
+    font-size: 10pt;
+    color: #1e293b;
+    font-weight: 500;
+  }
+
+  /* Intuition / Hinglish box */
+  .hinglish-box {
+    background: #fefce8;
+    border-left: 4px solid #eab308;
+    padding: 9px 12px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 12px;
+    font-size: 9.5pt;
+    color: #713f12;
+  }
+  .hinglish-box strong {
+    color: #854d0e;
+  }
+
+  /* Section breakdown inside solution */
+  .step-heading {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #1e40af;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Math display */
+  .math-block {
+    background: #fafafa;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 9.5pt;
+    color: #111827;
+    margin: 8px 0;
+    white-space: pre-wrap;
+    line-height: 1.45;
+  }
+
+  .code-block {
+    background: #0f172a;
+    color: #f8fafc;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 9pt;
+    margin: 8px 0;
+    white-space: pre-wrap;
+    line-height: 1.4;
+  }
+
+  /* Pitfall warning */
+  .pitfall-box {
+    background: #fef2f2;
+    border-left: 4px solid #ef4444;
+    padding: 8px 12px;
+    border-radius: 0 6px 6px 0;
+    margin-top: 10px;
+    font-size: 9pt;
+    color: #991b1b;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 9.5pt;
+  }
+  th {
+    background: #f1f5f9;
+    color: #1e293b;
+    font-weight: 700;
+    text-align: left;
+    padding: 7px 10px;
+    border: 1px solid #cbd5e1;
+  }
+  td {
+    padding: 6px 10px;
+    border: 1px solid #e2e8f0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f8fafc;
+  }
+
+  .summary-pill {
+    display: inline-block;
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 9pt;
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER / HEADER -->
+<div class="header-card">
+  <div class="header-title">DAA MASTER EXAM FORECAST & STEP-BY-STEP SOLUTIONS</div>
+  <div class="header-subtitle">Design & Analysis of Algorithms (CS 3205 / CS 3212) — End Semester Examination (ESE)</div>
+  <div class="header-meta">
+    <span><strong>Target Date:</strong> Wednesday, 25 Nov 2026</span>
+    <span><strong>Target Marks:</strong> 60 / 60</span>
+    <span><strong>Coverage:</strong> All 6 Units (Units I – VI)</span>
+    <span><strong>Format:</strong> 4-Section Marking Rubric + Proofs + Trace</span>
+  </div>
+</div>
+
+<!-- EXECUTIVE STRATEGY GUIDE -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">🎯 4-Section Answer Writing Blueprint for Full Marks (VIT Pune Rubric)</div>
+    <div class="q-marks">EXAM STRATEGY</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>VIT Exam Characteristic:</strong> Informal conversational arguments receive <strong>0 marks</strong>. You must structure every answer into the following four distinct sections:
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 25%;">Section</th>
+          <th style="width: 45%;">What to Write</th>
+          <th style="width: 30%;">Examiner Key</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Mathematical Form</strong></td>
+          <td>Formal recurrence, set-theoretic notation, decision tree, or state space vector.</td>
+          <td>Shows rigorous conceptual grounding.</td>
+        </tr>
+        <tr>
+          <td><strong>2. Derivation / Invariant</strong></td>
+          <td>Variable substitution ($n = 2^m$), induction step, Master Theorem case, or exchange argument.</td>
+          <td>Step-by-step algebraic manipulation.</td>
+        </tr>
+        <tr>
+          <td><strong>3. Trace / Example</strong></td>
+          <td>Concrete numerical dry run ($n=8$, tree trace, ASCII matrix, or bit representation).</td>
+          <td>Proves execution correctness.</td>
+        </tr>
+        <tr>
+          <td><strong>4. Asymptotics & Bounds</strong></td>
+          <td>Explicit Big-O, Big-Theta, Big-Omega with time and auxiliary space bounds.</td>
+          <td>Tight upper & lower bounds.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- QUICK FORMULA CHEAT SHEET -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">⚡ Rapid Formula Cheat Sheet (Memorize in 2 Minutes)</div>
+    <div class="q-marks">HIGH YIELD</div>
+  </div>
+  <div class="q-body">
+    <table>
+      <thead>
+        <tr>
+          <th>Topic</th>
+          <th>Standard Form / Recurrence</th>
+          <th>Closed Form / Asymptotic Bound</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Square Root Recurrence</strong></td>
+          <td>$T(n) = T(\sqrt{n}) + 1$</td>
+          <td><strong>$\Theta(\log \log n)$</strong> (Binary search on log scale)</td>
+        </tr>
+        <tr>
+          <td><strong>Log Factor Recurrence</strong></td>
+          <td>$T(n) = 2T(\sqrt{n}) + \log n$</td>
+          <td><strong>$\Theta(\log n \cdot \log \log n)$</strong> (via $m = \log n$)</td>
+        </tr>
+        <tr>
+          <td><strong>Master Theorem Poly Case</strong></td>
+          <td>$T(n) = 3T(n/2) + n$</td>
+          <td><strong>$\Theta(n^{\log_2 3}) pprox \Theta(n^{1.585})$</strong> (Case 1: $1 < 1.585$)</td>
+        </tr>
+        <tr>
+          <td><strong>Decision Tree Sorting</strong></td>
+          <td>Height $h \ge \log_2(n!)$</td>
+          <td><strong>$\Omega(n \log n)$</strong> worst-case comparison lower bound</td>
+        </tr>
+        <tr>
+          <td><strong>Josephus Problem</strong></td>
+          <td>$J(2^m + l) = 2l + 1$</td>
+          <td><strong>$O(1)$</strong> via 1-bit left cyclic binary shift</td>
+        </tr>
+        <tr>
+          <td><strong>Catalan Parenthesization</strong></td>
+          <td>$f(n) = \sum_{k=1}^{n-1} f(k)f(n-k)$</td>
+          <td><strong>$C_{n-1} = rac{1}{n}inom{2n-2}{n-1} = \Omega(2^n)$</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Popular Element MC</strong></td>
+          <td>$(2/3)^m \le 3^{-100}$</td>
+          <td><strong>$m \ge 271$</strong> independent random trials</td>
+        </tr>
+        <tr>
+          <td><strong>Maximal Matching VC</strong></td>
+          <td>$|C| = 2|M|$ with $|M| \le |C^*|$</td>
+          <td><strong>2-Approximation</strong> ($|C| \le 2|C^*|$) in $O(V+E)$</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ========================================== -->
+<!-- UNIT I: ANALYSIS OF ALGORITHMS & RECURRENCES -->
+<!-- ========================================== -->
+<div class="unit-banner">
+  <span>UNIT I: ANALYSIS OF ALGORITHMS & RECURRENCES</span>
+  <span class="unit-badge">10 MARKS ALLOCATION</span>
+</div>
+
+<!-- Q1.1 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q1.1. Recurrence with Square Root: $T(n) = T(\sqrt{n}) + 1$</div>
+    <div class="q-marks">4 MARKS | FORECAST CORE</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> Solve the recurrence $T(n) = T(\sqrt{n}) + 1$ assuming $T(2) = 1$. Give the tightest asymptotic bound using variable substitution and recursion tree.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> Har step pe power aadhi ho rahi hai ($n 	o n^{1/2} 	o n^{1/4} 	o \dots 	o 2$). Log lene par yeh normal binary search ($m 	o m/2$) ban jata hai, jiska solution $\log m = \log(\log n)$ hota hai!
+    </div>
+
+    <div class="step-heading">Step 1: Change of Variables (Substitution)</div>
+    <p>Let $n = 2^m$, which means $m = \log_2 n$. Note that:</p>
+    <div class="math-block">√n = n^(1/2) = (2^m)^(1/2) = 2^(m/2)</div>
+    <p>Now define a new function $S(m) = T(2^m) = T(n)$. Substituting $\sqrt{n} = 2^{m/2}$ into the original recurrence:</p>
+    <div class="math-block">S(m) = S(m/2) + 1</div>
+
+    <div class="step-heading">Step 2: Solve the New Recurrence via Master Theorem</div>
+    <p>For $S(m) = S(m/2) + 1$, we have standard parameters $a = 1, b = 2, f(m) = 1 = m^0$.</p>
+    <div class="math-block">m^(log_b a) = m^(log_2 1) = m^0 = 1 = Θ(f(m))</div>
+    <p>This matches <strong>Case 2 of the Master Theorem</strong> ($f(m) = \Theta(m^{\log_b a} \log^k m)$ with $k=0$):</p>
+    <div class="math-block">S(m) = Θ(log_2 m)</div>
+
+    <div class="step-heading">Step 3: Back-Substitution to Original Variable $n$</div>
+    <p>Substitute back $m = \log_2 n$:</p>
+    <div class="math-block">T(n) = S(log_2 n) = Θ(log_2(log_2 n)) = O(log log n)</div>
+
+    <div class="step-heading">Step 4: Recursion Tree Verification</div>
+    <p>At depth $k$, the argument size is $n^{1/2^k}$. The recursion terminates when $n^{1/2^k} \le 2$:</p>
+    <div class="math-block">1/2^k · log_2 n = log_2 2 = 1  ==>  2^k = log_2 n  ==>  k = log_2(log_2 n)</div>
+    <p>Since each level contributes $O(1)$ work, total work = $\sum_{i=0}^k 1 = k + 1 = \mathbf{\Theta(\log \log n)}$.</p>
+
+    <div class="pitfall-box">
+      <strong>⚠️ Exam Pitfall:</strong> Never leave the answer as $\Theta(\log m)$. You must explicitly substitute back $m = \log_2 n$ to get $\Theta(\log \log n)$.
+    </div>
+  </div>
+</div>
+
+<!-- Q1.2 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q1.2. Polynomial Master Theorem: $T(n) = 3T(n/2) + n$</div>
+    <div class="q-marks">3 MARKS | FORECAST CORE</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> Solve the recurrence $T(n) = 3T(n/2) + n$ using the Master Theorem. State the exact case and formal condition with $\epsilon$.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> Subproblems ka count $a=3$ hai aur size divide ho raha hai $b=2$ se. Watershed exponent $n^{\log_2 3} pprox n^{1.585}$ root work $n^1$ se bada hai, isliye subproblems dominate karenge (Case 1)!
+    </div>
+
+    <div class="step-heading">Step 1: Identify Master Theorem Parameters</div>
+    <p>In standard recurrence $T(n) = a T(n/b) + f(n)$:</p>
+    <div class="math-block">a = 3,  b = 2,  f(n) = n</div>
+
+    <div class="step-heading">Step 2: Compute Watershed Critical Exponent</div>
+    <div class="math-block">n^(log_b a) = n^(log_2 3) ≈ n^1.58496</div>
+
+    <div class="step-heading">Step 3: Compare $f(n)$ with $n^{\log_b a}$</div>
+    <p>Compare $f(n) = n^1$ with $n^{\log_2 3} pprox n^{1.585}$:</p>
+    <div class="math-block">Choose ε = log_2 3 - 1 ≈ 0.585 > 0
+Then f(n) = n^1 = O(n^(log_2 3 - ε)) = O(n^(1.585 - 0.585)) = O(n)</div>
+    <p>This strictly satisfies <strong>Case 1 of the Master Theorem</strong>.</p>
+
+    <div class="step-heading">Step 4: Formal Conclusion</div>
+    <div class="math-block">T(n) = Θ(n^(log_b a)) = Θ(n^(log_2 3)) ≈ O(n^1.585)</div>
+    <p><strong>Examiner Note:</strong> Writing both $\Theta(n^{\log_2 3})$ and $O(n^{1.585})$ ensures full marks.</p>
+  </div>
+</div>
+
+<!-- Q1.3 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q1.3. Recurrence with Log Factor: $T(n) = 2T(\sqrt{n}) + \log n$</div>
+    <div class="q-marks">4 MARKS | PREDICTABLE PATTERN</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> Determine the asymptotic behavior of $T(n) = 2T(\sqrt{n}) + \log n$.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> Square root recurrence mein $\log n$ term add hua hai. Change of variables $n = 2^m$ lagane par equation $S(m) = 2S(m/2) + m$ ban jati hai (Merge Sort wali!), jiska solution $m \log m$ hota hai!
+    </div>
+
+    <div class="step-heading">Step 1: Transformation via $n = 2^m$</div>
+    <p>Let $n = 2^m \implies m = \log_2 n$. Then $\sqrt{n} = 2^{m/2}$ and $\log n = m$.</p>
+    <p>Let $S(m) = T(2^m)$. Substituting gives:</p>
+    <div class="math-block">S(m) = 2 S(m/2) + m</div>
+
+    <div class="step-heading">Step 2: Solve $S(m)$ via Master Theorem</div>
+    <p>Parameters: $a = 2, b = 2, f(m) = m$.</p>
+    <div class="math-block">m^(log_b a) = m^(log_2 2) = m^1 = Θ(f(m))</div>
+    <p>This matches <strong>Case 2 of the Master Theorem</strong> ($k=0$):</p>
+    <div class="math-block">S(m) = Θ(m log m)</div>
+
+    <div class="step-heading">Step 3: Back-Substitution</div>
+    <div class="math-block">T(n) = S(log_2 n) = Θ((log_2 n) · log_2(log_2 n)) = Θ(log n · log log n)</div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- Q1.4 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q1.4. Comparison-Based Sorting Lower Bound via Decision Tree Model</div>
+    <div class="q-marks">5 MARKS | HIGH PROBABILITY PROOF</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> Prove formally using the Decision Tree model that any comparison-based sorting algorithm requires $\Omega(n \log n)$ comparisons in the worst case.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> $n$ numbers ko sort karne ke total $n!$ possible outcomes (leaves) hote hain. Har comparison binary decision (2 branches) deta hai. To height $h$ wale tree mein $2^h \ge n!$ hona compulsory hai, jisse $h \ge \Omega(n \log n)$ aayega!
+    </div>
+
+    <div class="step-heading">Step 1: Decision Tree Abstraction</div>
+    <p>In any comparison-based sort, algorithms make 2-way branch decisions of the form $A[i] \le A[j]$:</p>
+    <ul>
+      <li>Each internal node represents a comparison between two elements $A[i] : A[j]$.</li>
+      <li>Each edge represents the outcome of the comparison ($\le$ or $>$).</li>
+      <li>Each leaf node represents a distinct permutation of the original elements (the sorted output).</li>
+    </ul>
+
+    <div class="step-heading">Step 2: Number of Leaves Bound</div>
+    <p>For an array of $n$ distinct elements, there are $n!$ possible input orderings. The sorting algorithm must be able to produce every single one of these $n!$ permutations. Hence:</p>
+    <div class="math-block">Number of leaves L ≥ n!</div>
+
+    <div class="step-heading">Step 3: Height vs Leaves Relationship</div>
+    <p>A binary tree of height $h$ has at most $2^h$ leaves. Therefore:</p>
+    <div class="math-block">2^h ≥ L ≥ n!  ==>  h ≥ log_2(n!)</div>
+    <p>The height $h$ of the decision tree represents the longest path from root to leaf, which is the <strong>worst-case number of comparisons</strong>.</p>
+
+    <div class="step-heading">Step 4: Bounding $\log_2(n!)$ Algebraically</div>
+    <div class="math-block">log_2(n!) = sum_{i=1}^n log_2 i
+          ≥ sum_{i=ceil(n/2)}^n log_2 i
+          ≥ sum_{i=ceil(n/2)}^n log_2(n/2)
+          = (n/2) · (log_2 n - log_2 2)
+          = (n/2) · (log_2 n - 1)
+          = (n/2) log_2 n - (n/2)
+          = Ω(n log n)</div>
+
+    <div class="step-heading">Conclusion</div>
+    <p>Since $h \ge rac{n}{2} \log_2 n - rac{n}{2}$, we have <strong>$h = \Omega(n \log n)$</strong>. Thus, no comparison-based sort can run faster than $\Omega(n \log n)$ in the worst case.</p>
+  </div>
+</div>
+
+<!-- Q1.5 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q1.5. Asymptotic Limit Comparisons: $n^{\log n}$ vs $2^n$ and $2^{\sqrt{\log n}}$ vs $\log n$</div>
+    <div class="q-marks">5 MARKS | RECURRING VIT CORE</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> Determine whether $f(n) = o(g(n))$, $\Theta(g(n))$, or $\Omega(g(n))$ with rigorous mathematical limit justification for:
+      <br>(i) $f(n) = n^{\log_2 n}$ and $g(n) = 2^n$
+      <br>(ii) $f(n) = 2^{\sqrt{\log_2 n}}$ and $g(n) = \log_2 n$
+    </div>
+
+    <div class="step-heading">Part (i): $f(n) = n^{\log_2 n}$ vs $g(n) = 2^n$</div>
+    <p>Take base-2 logarithm of both functions:</p>
+    <div class="math-block">log_2 f(n) = log_2(n^(log_2 n)) = (log_2 n) · (log_2 n) = (log_2 n)^2
+log_2 g(n) = log_2(2^n) = n</div>
+    <p>Evaluate the ratio of logarithms as $n 	o \infty$ using L'Hôpital's Rule:</p>
+    <div class="math-block">lim_{n -> inf} ((log_2 n)^2 / n)
+Applying L'Hopital (d/dn):
+= lim_{n -> inf} (2 log_2 n · (1 / (n ln 2))) / 1 = lim_{n -> inf} (2 log_2 n) / (n ln 2)
+Applying L'Hopital second time:
+= lim_{n -> inf} (2 / (n (ln 2)^2)) / 1 = 0</div>
+    <p>Since $\lim_{n 	o \infty} rac{\log_2 f(n)}{\log_2 g(n)} = 0$, it follows that $\lim_{n 	o \infty} rac{f(n)}{g(n)} = 0$.</p>
+    <p><strong>Result:</strong> <span class="summary-pill">$f(n) = o(g(n))$</span> (Little-oh).</p>
+
+    <div class="step-heading">Part (ii): $f(n) = 2^{\sqrt{\log_2 n}}$ vs $g(n) = \log_2 n$</div>
+    <p>Let $k = \log_2 n$. Then $g(n) = k$ and $f(n) = 2^{\sqrt{k}}$.</p>
+    <p>Take logarithm of both with respect to variable $k$:</p>
+    <div class="math-block">log_2 f(n) = sqrt(k)
+log_2 g(n) = log_2 k</div>
+    <p>As $k 	o \infty$, polynomial powers $\sqrt{k} = k^{0.5}$ strictly dominate logarithmic powers $\log_2 k$:</p>
+    <div class="math-block">lim_{k -> inf} (sqrt(k) / log_2 k) = lim_{k -> inf} (0.5 k^(-0.5) / (1 / (k ln 2))) = lim_{k -> inf} 0.5 ln 2 · sqrt(k) = inf</div>
+    <p>Therefore $2^{\sqrt{k}}$ grows strictly faster than $k$.</p>
+    <p><strong>Result:</strong> <span class="summary-pill">$f(n) = \omega(g(n))$</span> (or $g(n) = o(f(n))$).</p>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- =================================================== -->
+<!-- UNIT II: DIVIDE & CONQUER, NUMBER THEORY & RANDOMIZED -->
+<!-- =================================================== -->
+<div class="unit-banner">
+  <span>UNIT II: DIVIDE & CONQUER, NUMBER THEORETIC & RANDOMIZED</span>
+  <span class="unit-badge">12 MARKS ALLOCATION</span>
+</div>
+
+<!-- Q2.1 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q2.1. Median of $k$ Sorted Arrays (Total Size $n$) in $O(k \log(n/k) \log(	ext{Range}))$</div>
+    <div class="q-marks">6 MARKS | TOP FORECAST QUESTION</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> Given $k$ sorted arrays $A_1, A_2, \dots, A_k$ of total size $n$, design an efficient algorithm to find the overall median. Prove its time complexity is $O(k \log(n/k) \log(	ext{Range}))$.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> Direct merge karoge heap se to $O(n \log k)$ lagega jo slow hai jab $n$ bohot bada ho! Better approach: Answer (value) par Binary Search lagao. Range $[\min, \max]$ mein mid value guess karo aur har array mein binary search (`std::upper_bound`) se count karo kitne elements $\le 	ext{mid}$ hain!
+    </div>
+
+    <div class="step-heading">Step 1: Algorithmic Insight (Value Binary Search)</div>
+    <p>Let $L = \min_{i} A_i[0]$ and $R = \max_{i} A_i[	ext{last}]$. The overall median is the element at position $\lfloor (n+1)/2 floor$ in the merged sorted order. We perform binary search over the value range $[L, R]$.</p>
+
+    <div class="step-heading">Step 2: Formal Algorithm</div>
+    <div class="code-block">Algorithm MedianOfKSortedArrays(A[1..k], n):
+    low = min(A[i][0] for i in 1..k)
+    high = max(A[i][-1] for i in 1..k)
+    target = floor((n + 1) / 2)
+
+    while low <= high:
+        mid = low + floor((high - low) / 2)
+        count = 0
+        for i from 1 to k:
+            count += CountLessEqual(A[i], mid)  // Binary search in O(log(n/k))
+
+        if count < target:
+            low = mid + 1
+        else:
+            ans = mid
+            high = mid - 1
+
+    return ans</div>
+
+    <div class="step-heading">Step 3: Complexity Analysis</div>
+    <ul>
+      <li><strong>Counting Subroutine:</strong> In each array of average size $m = n/k$, binary search takes $O(\log(n/k))$ time.</li>
+      <li><strong>Total work per iteration:</strong> Across all $k$ arrays, counting takes $k 	imes O(\log(n/k)) = O(k \log(n/k))$.</li>
+      <li><strong>Number of iterations:</strong> Binary search on range $[L, R]$ requires $\log_2(R - L) = O(\log(	ext{Range}))$ iterations.</li>
+      <li><strong>Total Time Complexity:</strong> $\mathbf{O(k \log(n/k) \log(	ext{Range}))}$.</li>
+      <li><strong>Auxiliary Space:</strong> $O(1)$ (no auxiliary arrays or heaps needed).</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Q2.2 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q2.2. Median of Two Sorted Arrays of Equal Size $n$ in $O(\log n)$</div>
+    <div class="q-marks">5 MARKS | CLRS EX. 9.3-8 CORE</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> Given two sorted arrays $X[0..n-1]$ and $Y[0..n-1]$, each of size $n$, find the median of the combined $2n$ elements in $O(\log n)$ time using Divide and Conquer.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> Dono arrays ke medians $m_1$ aur $m_2$ compare karo. Agar $m_1 < m_2$, to global median kabhi $X$ ke left half ya $Y$ ke right half mein nahi ho sakta. Un dono halves ko discard karo aur bache hue pe recurse karo!
+    </div>
+
+    <div class="step-heading">Step 1: Recurrence & Discard Logic</div>
+    <p>Let $m_1 = 	ext{median}(X)$ and $m_2 = 	ext{median}(Y)$.</p>
+    <ul>
+      <li><strong>Case 1: $m_1 == m_2$</strong>: The global median is exactly $m_1$ (return immediately).</li>
+      <li><strong>Case 2: $m_1 < m_2$</strong>: The global median must lie in $X[\lfloor n/2 floor .. n-1]$ or $Y[0 .. \lfloor n/2 floor]$. Discard $X[0 .. \lfloor n/2 floor - 1]$ and $Y[\lfloor n/2 floor + 1 .. n-1]$.</li>
+      <li><strong>Case 3: $m_1 > m_2$</strong>: Symmetric discard: search in $X[0 .. \lfloor n/2 floor]$ and $Y[\lfloor n/2 floor .. n-1]$.</li>
+    </ul>
+
+    <div class="step-heading">Step 2: Base Cases</div>
+    <ul>
+      <li>If $n = 1$: return $(X[0] + Y[0]) / 2$.</li>
+      <li>If $n = 2$: return $(\max(X[0], Y[0]) + \min(X[1], Y[1])) / 2$.</li>
+    </ul>
+
+    <div class="step-heading">Step 3: Complexity Recurrence</div>
+    <div class="math-block">T(n) = T(n/2) + O(1)  ==>  T(n) = O(log n)</div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- Q2.3 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q2.3. Digital Root of $4444^{4444} \pmod 9$</div>
+    <div class="q-marks">6 MARKS | ACTUAL PAPER REPEATING PATTERN</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> If $A = 4444^{4444}$, $B$ is the sum of digits of $A$, $C$ is the sum of digits of $B$, and $D$ is the sum of digits of $C$, compute the exact value of $D$.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> Digital root ka golden rule: Kisi bhi number ka digital root $N \pmod 9$ ke barabar hota hai. Pehle $4444^{4444} \pmod 9$ nikaalo. Modulo 9 mein powers cycle karti hain. Phir upper bound lagao ki $D \le 12$, isliye $D$ uniquely 7 hi ho sakta hai!
+    </div>
+
+    <div class="step-heading">Step 1: Digital Root Property Modulo 9</div>
+    <p>For any integer $N$, $N \equiv S(N) \pmod 9$ where $S(N)$ is the sum of decimal digits. Therefore:</p>
+    <div class="math-block">A = 4444^4444 === B === C === D (mod 9)</div>
+
+    <div class="step-heading">Step 2: Base Reduction Modulo 9</div>
+    <div class="math-block">4444 = 4 + 4 + 4 + 4 = 16 === 7 (mod 9)
+==> 4444^4444 === 7^4444 (mod 9)</div>
+
+    <div class="step-heading">Step 3: Exponent Modular Cycle</div>
+    <p>Compute successive powers of $7 \pmod 9$:</p>
+    <div class="math-block">7^1 = 7 === 7 (mod 9)
+7^2 = 49 === 4 (mod 9)
+7^3 = 7 · 4 = 28 === 1 (mod 9)   <-- Cycle length (order) = 3</div>
+    <p>Reduce the exponent $4444$ modulo 3:</p>
+    <div class="math-block">4444 = 3 · 1481 + 1 === 1 (mod 3)</div>
+    <p>Therefore:</p>
+    <div class="math-block">4444^4444 === 7^4444 === 7^1 === 7 (mod 9)
+==> D === 7 (mod 9)</div>
+
+    <div class="step-heading">Step 4: Strict Upper Bound on $D$</div>
+    <ul>
+      <li>$A = 4444^{4444} < 10000^{4444} = (10^4)^{4444} = 10^{17776}$. Thus $A$ has at most 17,776 digits.</li>
+      <li>$B = S(A) \le 17,776 	imes 9 = 159,984$.</li>
+      <li>Among all integers $\le 159,984$, the maximum digit sum occurs at $99,999$ (sum $= 45$) or $149,999$ (sum $= 37$). Hence $C = S(B) \le 45$.</li>
+      <li>Among integers $\le 45$, the maximum digit sum occurs at $39$ ($3 + 9 = 12$). Hence $D = S(C) \le 12$.</li>
+    </ul>
+
+    <div class="step-heading">Step 5: Unique Determination</div>
+    <p>We know $D \equiv 7 \pmod 9$ and $1 \le D \le 12$. The only integer in this range is <strong>$D = 7$</strong>.</p>
+  </div>
+</div>
+
+<!-- Q2.4 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q2.4. Popular Element ($\ge n/3$): Monte Carlo vs Las Vegas Derivation</div>
+    <div class="q-marks">6 MARKS | HIGH PROBABILITY PROBABILITY</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> An array of size $n$ contains an element that occurs at least $n/3$ times.
+      <br>(a) Design a Monte Carlo algorithm that samples $m$ elements. Prove the minimum number of samples $m$ required so that the probability of error is at most $3^{-100}$.
+      <br>(b) Design a Las Vegas algorithm and prove its expected running time is $O(n)$.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> Monte Carlo mein fixed $m$ samples lete hain, error probability miss hone ki $\le (2/3)^m$ hoti hai. $(2/3)^m \le 3^{-100}$ ko solve karke exact $m \ge 271$ aata hai! Las Vegas mein check karte hain frequency, expected attempts $\le 3$ hoti hain to $E[T] = O(n)$!
+    </div>
+
+    <div class="step-heading">Part (a): Monte Carlo Derivation</div>
+    <p>1. In each random pick, the probability of choosing the popular element is $p \ge rac{n/3}{n} = rac{1}{3}$.</p>
+    <p>2. The probability of missing the popular element in a single trial is $q = 1 - p \le rac{2}{3}$.</p>
+    <p>3. In $m$ independent samples with replacement, the probability that ALL $m$ samples miss is:</p>
+    <div class="math-block">P(failure) = (2/3)^m</div>
+    <p>4. We require $P(	ext{failure}) \le 3^{-100}$:</p>
+    <div class="math-block">(2/3)^m ≤ 3^(-100)
+Taking natural logarithms on both sides:
+m · ln(2/3) ≤ -100 · ln 3
+m · (ln 2 - ln 3) ≤ -100 · ln 3
+m · (ln 3 - ln 2) ≥ 100 · ln 3
+m · ln(1.5) ≥ 100 · ln 3
+m ≥ (100 · ln 3) / ln(1.5)</div>
+    <p>5. Numerical evaluation:</p>
+    <div class="math-block">ln 3 ≈ 1.098612  ==>  100 · ln 3 ≈ 109.8612
+ln(1.5) ≈ 0.405465
+m ≥ 109.8612 / 0.405465 ≈ 270.95</div>
+    <p>Hence, the minimum integer sample size is <strong>$m \ge 271$</strong>.</p>
+
+    <div class="step-heading">Part (b): Las Vegas Algorithm & Expected Time</div>
+    <p>1. Pick a random index $i \in [1..n]$ uniformly.</p>
+    <p>2. Count the frequency of $A[i]$ by scanning the array in $O(n)$ time.</p>
+    <p>3. If frequency $\ge n/3$, return $A[i]$ (always correct). Else repeat.</p>
+    <p>4. Probability of success per trial $p \ge 1/3$. The number of trials $X$ follows a Geometric Distribution with parameter $p$:</p>
+    <div class="math-block">E[X] = 1 / p ≤ 1 / (1/3) = 3 trials
+E[Total Time] = E[X] · O(n) ≤ 3 · O(n) = O(n)</div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- Q2.5 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q2.5. Josephus Problem: Recurrence, Closed Form & 1-Bit Cyclic Shift</div>
+    <div class="q-marks">6 MARKS | ACTUAL PAPER VERBATIM</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> $n$ people numbered $1$ to $n$ stand in a circle. Starting at person 1, every second person is eliminated until one person remains. Derive the recurrence relations for $J(2n)$ and $J(2n+1)$, prove the closed-form $J(2^m + l) = 2l + 1$, and explain the binary 1-bit cyclic shift property. Trace for $n = 41$.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> Number ko $n = 2^m + l$ form mein likho. Power of 2 ($2^m$) ke aage jitne log $l$ bache hain, unka double $+ 1$ ($2l + 1$) survivor hota hai! Binary mein sirf leading bit ko utha kar end mein chipka do!
+    </div>
+
+    <div class="step-heading">Step 1: Recurrence Derivation</div>
+    <ul>
+      <li><strong>Even $2n$:</strong> In the first round, all even numbers $2, 4, 6, \dots, 2n$ are eliminated. The remaining odd numbers are $1, 3, 5, \dots, 2n-1$. A person at position $k$ in the new circle corresponds to $2k - 1$ in the original circle. Thus:
+        <div class="math-block">J(2n) = 2J(n) - 1</div>
+      </li>
+      <li><strong>Odd $2n+1$:</strong> After eliminating $2, 4, \dots, 2n$, person 1 is eliminated next! The remaining people are $3, 5, 7, \dots, 2n+1$. A person at position $k$ in the new circle corresponds to $2k + 1$ in the original circle. Thus:
+        <div class="math-block">J(2n+1) = 2J(n) + 1</div>
+      </li>
+    </ul>
+
+    <div class="step-heading">Step 2: Closed Form Proof by Induction</div>
+    <p>Represent $n = 2^m + l$ where $2^m$ is the largest power of $2 \le n$, and $0 \le l < 2^m$.</p>
+    <div class="math-block">J(2^m + l) = 2l + 1</div>
+    <p><strong>Base Case:</strong> For $m=1, l=0$ ($n=2$): $J(2) = 2(0) + 1 = 1$, which holds.</p>
+    <p><strong>Inductive Step:</strong></p>
+    <ul>
+      <li>If $l$ is even, $n = 2^m + l = 2(2^{m-1} + l/2)$. By even recurrence:
+        $J(n) = 2J(2^{m-1} + l/2) - 1 = 2(2(l/2) + 1) - 1 = 2l + 1$.</li>
+      <li>If $l$ is odd, $n = 2(2^{m-1} + (l-1)/2) + 1$. By odd recurrence:
+        $J(n) = 2J(2^{m-1} + (l-1)/2) + 1 = 2(2((l-1)/2) + 1) + 1 = 2l + 1$.</li>
+    </ul>
+
+    <div class="step-heading">Step 3: Binary Cyclic Shift Representation</div>
+    <p>If $n$ is written in binary: $n = 2^m + l = (1 \, b_{m-1} \, b_{m-2} \, \dots \, b_0)_2$.</p>
+    <p>Notice that $l = (b_{m-1} \, b_{m-2} \, \dots \, b_0)_2$. Multiplying $l$ by 2 shifts bits left, and adding 1 appends 1 as LSB:</p>
+    <div class="math-block">2l + 1 = (b_{m-1} \, b_{m-2} \, ... \, b_0 \, 1)_2</div>
+    <p>This is precisely a <strong>one-bit cyclic left shift</strong> of $n$!</p>
+
+    <div class="step-heading">Step 4: Trace for $n = 41$ (Historical Josephus Instance)</div>
+    <div class="math-block">41 = 32 + 9  ==>  2^5 = 32,  l = 9
+J(41) = 2(9) + 1 = 19
+Binary Verification:
+41 = 101001_2
+Cyclic left shift: 010011_2 = 16 + 2 + 1 = 19!</div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ========================================== -->
+<!-- UNIT III: DYNAMIC PROGRAMMING -->
+<!-- ========================================== -->
+<div class="unit-banner">
+  <span>UNIT III: DYNAMIC PROGRAMMING</span>
+  <span class="unit-badge">10 MARKS ALLOCATION</span>
+</div>
+
+<!-- Q3.1 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q3.1. Catalan Recurrence: Matrix Chain Parenthesization & $\Omega(2^n)$ Proof</div>
+    <div class="q-marks">5 MARKS | HIGH FREQUENCY EXAM CORE</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> Let $f(n)$ be the number of ways to parenthesize a sequence of $n$ matrices.
+      <br>(a) Derive the recurrence relation for $f(n)$ and state its base cases.
+      <br>(b) Calculate the exact numerical values of $f(1), f(2), \dots, f(8)$.
+      <br>(c) Formally prove by induction that $f(n) = \Omega(2^n)$.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> $n$ matrices ko parenthesize karne ke liye last multiplication kisi split point $k$ ($1 \le k \le n-1$) par hoga. Left half mein $k$ matrices aur right mein $n-k$ matrices hongi. Isse Catalan recurrence $f(n) = \sum f(k)f(n-k)$ banti hai!
+    </div>
+
+    <div class="step-heading">Part (a): Recurrence Derivation</div>
+    <p>To parenthesize $A_1 	imes A_2 	imes \dots 	imes A_n$, the final matrix multiplication splits the sequence into two subchains: $(A_1 \dots A_k) 	imes (A_{k+1} \dots A_n)$ for some split $k \in \{1, 2, \dots, n-1\}$.</p>
+    <div class="math-block">f(n) = sum_{k=1}^{n-1} f(k) · f(n-k)   for n ≥ 2, with base case f(1) = 1</div>
+
+    <div class="step-heading">Part (b): Exact Numerical Values ($n=1$ to $8$)</div>
+    <table>
+      <thead>
+        <tr>
+          <th>$n$</th>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+          <th>6</th>
+          <th>7</th>
+          <th>8</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Catalan $C_{n-1}$</strong></td>
+          <td>$C_0 = \mathbf{1}$</td>
+          <td>$C_1 = \mathbf{1}$</td>
+          <td>$C_2 = \mathbf{2}$</td>
+          <td>$C_3 = \mathbf{5}$</td>
+          <td>$C_4 = \mathbf{14}$</td>
+          <td>$C_5 = \mathbf{42}$</td>
+          <td>$C_6 = \mathbf{132}$</td>
+          <td>$C_7 = \mathbf{429}$</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="step-heading">Part (c): Proof that $f(n) = \Omega(2^n)$</div>
+    <p><strong>Claim:</strong> $f(n) \ge 2^{n-2}$ for all $n \ge 2$.</p>
+    <p><strong>Base Case:</strong> For $n=2$, $f(2) = 1 \ge 2^{2-2} = 2^0 = 1$. Holds.</p>
+    <p><strong>Inductive Hypothesis:</strong> Assume $f(i) \ge 2^{i-2}$ holds for all $2 \le i \le n-1$.</p>
+    <p><strong>Inductive Step:</strong> Consider the sum for $f(n)$:</p>
+    <div class="math-block">f(n) = sum_{k=1}^{n-1} f(k) · f(n-k)</div>
+    <p>Keep only the two extreme terms $k=1$ and $k=n-1$:</p>
+    <div class="math-block">f(n) ≥ f(1) · f(n-1) + f(n-1) · f(1) = 2 · f(1) · f(n-1)</div>
+    <p>Since $f(1) = 1$ and by inductive hypothesis $f(n-1) \ge 2^{(n-1)-2} = 2^{n-3}$:</p>
+    <div class="math-block">f(n) ≥ 2 · 1 · 2^(n-3) = 2^(n-2)</div>
+    <p>Therefore $f(n) \ge 2^{n-2} = rac{1}{4} \cdot 2^n = \mathbf{\Omega(2^n)}$. (Exact closed form is $\Theta(4^n / n^{3/2})$).</p>
+  </div>
+</div>
+
+<!-- Q3.2 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q3.2. Poisson Binomial DP: Exactly $k$ Heads from $n$ Biased Coins</div>
+    <div class="q-marks">5 MARKS | FORECAST DIVERSIFIED DP</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> Given $n$ biased coins with known success probabilities $p_1, p_2, \dots, p_n$, compute the exact probability of getting exactly $k$ heads ($0 \le k \le n$) in $O(nk)$ time and $O(k)$ space.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> Normal binomial coefficient tabhi lagta hai jab coins fair ya identical hon. Yahan har coin ki probability $p_i$ alag hai! Isliye DP state $DP[i][j]$ = pehle $i$ coins mein $j$ heads aane ki probability. Coin $i$ ya to Head aayega ($p_i$) ya Tail ($1-p_i$)!
+    </div>
+
+    <div class="step-heading">Step 1: State Definition & Recurrence</div>
+    <p>Let $DP[i][j]$ be the probability of getting exactly $j$ heads using the first $i$ coins ($1 \le i \le n, 0 \le j \le k$).</p>
+    <div class="math-block">DP[i][j] = DP[i-1][j] · (1 - p_i)  +  DP[i-1][j-1] · p_i</div>
+
+    <div class="step-heading">Step 2: Base Cases & Constraints</div>
+    <ul>
+      <li>$DP[0][0] = 1.0$ (0 coins produce 0 heads with probability 1).</li>
+      <li>$DP[0][j] = 0.0$ for all $j > 0$.</li>
+      <li>For $j = 0$: $DP[i][0] = DP[i-1][0] 	imes (1 - p_i) = \prod_{m=1}^i (1 - p_m)$.</li>
+    </ul>
+
+    <div class="step-heading">Step 3: Space-Optimized $O(k)$ Implementation</div>
+    <div class="code-block">double ProbabilityKHeads(vector<double>& p, int n, int k):
+    vector<double> dp(k + 1, 0.0);
+    dp[0] = 1.0;
+
+    for (int i = 1; i <= n; i++):
+        for (int j = min(i, k); j >= 1; j--):
+            dp[j] = dp[j] * (1.0 - p[i-1]) + dp[j-1] * p[i-1];
+        dp[0] = dp[0] * (1.0 - p[i-1]);
+
+    return dp[k];</div>
+    <p><strong>Complexity:</strong> Time $O(nk)$, Auxiliary Space $O(k)$ (reverse iteration prevents overwriting).</p>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- Q3.3 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q3.3. Longest Arithmetic Progression Subsequence (LAPS) in $O(n^2)$</div>
+    <div class="q-marks">5 MARKS | TOP FORECAST ADVANCED DP</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> Given a sorted array $A[0..n-1]$ of distinct integers, design an $O(n^2)$ dynamic programming algorithm to find the length of the Longest Arithmetic Progression Subsequence (LAPS).
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> Kisi bhi Arithmetic Progression ka common difference fix karne ke liye 2 elements chahiye hote hain! Isliye DP state $DP[i][j]$ ko manenge "AP ending at $A[i]$ and $A[j]$". Middle element $i$ par 2-pointer chala kar $O(n^2)$ mein solve karte hain!
+    </div>
+
+    <div class="step-heading">Step 1: DP State Formulation</div>
+    <p>Let $DP[i][j]$ be the length of the longest arithmetic progression whose last two elements are $A[i]$ and $A[j]$ (with $i < j$).</p>
+    <p>For any pair $(A[i], A[j])$, we search for an element $A[k]$ ($k < i$) such that:</p>
+    <div class="math-block">A[j] - A[i] = A[i] - A[k]  <===>  A[k] + A[j] = 2 · A[i]</div>
+
+    <div class="step-heading">Step 2: DP Transition</div>
+    <div class="math-block">DP[i][j] = DP[k][i] + 1    (if such k exists)
+DP[i][j] = 2               (base: any two elements form AP of length 2)</div>
+
+    <div class="step-heading">Step 3: Two-Pointer $O(n^2)$ Algorithm</div>
+    <div class="code-block">int LongestAP(vector<int>& A, int n):
+    if (n <= 2) return n;
+    vector<vector<int>> dp(n, vector<int>(n, 2));
+    int max_len = 2;
+
+    for (int i = 1; i < n - 1; i++):
+        int k = i - 1, j = i + 1;
+        while (k >= 0 && j < n):
+            int sum = A[k] + A[j];
+            if (sum == 2 * A[i]):
+                dp[i][j] = dp[k][i] + 1;
+                max_len = max(max_len, dp[i][j]);
+                k--; j++;
+            else if (sum < 2 * A[i]):
+                j++;  // need larger element
+            else:
+                k--;  // need smaller element
+
+    return max_len;</div>
+    <p><strong>Complexity:</strong> For each fixed $i$, pointers $k$ and $j$ make at most $n$ total moves. Total time = $\sum_{i=1}^{n-2} O(n) = \mathbf{O(n^2)}$. Space = $O(n^2)$.</p>
+  </div>
+</div>
+
+<!-- Q3.4 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q3.4. Maximum Weight Independent Set on Trees (Tree DP)</div>
+    <div class="q-marks">5 MARKS | ACTUAL PAPER REPEATING PATTERN</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> Given a tree $T = (V, E)$ where each vertex $u$ has weight $w(u) \ge 0$, find an independent set of maximum total weight in $O(V)$ time.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> Kisi bhi node $u$ ke paas 2 options hain: ya to $u$ ko select karo ya exclude karo. Agar $u$ ko include kiya to uske saare children EXCLUDE hone chahiye! Agar $u$ ko exclude kiya to children include ya exclude kuch bhi ho sakte hain!
+    </div>
+
+    <div class="step-heading">Step 1: State Definition</div>
+    <p>Root the tree arbitrarily at node $r$. For each node $u$:</p>
+    <ul>
+      <li>$DP[u][1]$: Maximum weight independent set in subtree at $u$, <strong>including $u$</strong>.</li>
+      <li>$DP[u][0]$: Maximum weight independent set in subtree at $u$, <strong>excluding $u$</strong>.</li>
+    </ul>
+
+    <div class="step-heading">Step 2: Recurrence Relations</div>
+    <div class="math-block">DP[u][1] = w(u) + sum_{v in children(u)} DP[v][0]
+DP[u][0] = sum_{v in children(u)} max(DP[v][0], DP[v][1])</div>
+
+    <div class="step-heading">Step 3: Algorithm & Linear Time Complexity</div>
+    <p>Perform a single <strong>Post-Order Traversal (DFS)</strong> from root $r$. Compute $DP[v][0]$ and $DP[v][1]$ for all children before evaluating parent $u$. Final answer is $\max(DP[r][0], DP[r][1])$.</p>
+    <p>Since every edge is traversed twice and every vertex is processed once, Time = $\mathbf{O(V)}$ and Space = $O(V)$.</p>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ========================================== -->
+<!-- UNIT IV: GREEDY ALGORITHMS & BACKTRACKING -->
+<!-- ========================================== -->
+<div class="unit-banner">
+  <span>UNIT IV: GREEDY ALGORITHMS & BACKTRACKING</span>
+  <span class="unit-badge">10 MARKS ALLOCATION</span>
+</div>
+
+<!-- Q4.1 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q4.1. Huffman Coding: Tree Construction, Codes & Total Bits for 100k Chars</div>
+    <div class="q-marks">5 MARKS | ACTUAL PAPER VERBATIM</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> Construct an optimal Huffman tree for alphabet $\{a:5, b:7, c:8, d:16, e:18, f:22, g:24\}$. Compute codewords, show prefix property, and calculate total bits needed to encode 100,000 characters.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> Greedy step: Hamesha sabse choti 2 frequencies ko merge karo aur sum ko wapas heap mein daalo. Aakhiri mein code lengths se expected length nikalo: $2.66 	ext{ bits/char} \implies 266,000 	ext{ bits} = 33,250 	ext{ Bytes}$!
+    </div>
+
+    <div class="step-heading">Step 1: Step-by-Step Priority Queue Merges</div>
+    <ol>
+      <li>Merge $(a:5, b:7) 	o N_1:12$. Remaining: $\{c:8, N_1:12, d:16, e:18, f:22, g:24\}$</li>
+      <li>Merge $(c:8, N_1:12) 	o N_2:20$. Remaining: $\{d:16, e:18, N_2:20, f:22, g:24\}$</li>
+      <li>Merge $(d:16, e:18) 	o N_3:34$. Remaining: $\{N_2:20, f:22, g:24, N_3:34\}$</li>
+      <li>Merge $(N_2:20, f:22) 	o N_4:42$. Remaining: $\{g:24, N_3:34, N_4:42\}$</li>
+      <li>Merge $(g:24, N_3:34) 	o N_5:58$. Remaining: $\{N_4:42, N_5:58\}$</li>
+      <li>Merge $(N_4:42, N_5:58) 	o 	ext{Root}:100$.</li>
+    </ol>
+
+    <div class="step-heading">Step 2: Huffman Tree Diagram & Codewords Table</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Character</th>
+          <th>Frequency ($f_i$)</th>
+          <th>Codeword</th>
+          <th>Length ($l_i$)</th>
+          <th>Total Bits ($f_i 	imes l_i$)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>a</strong></td><td>5%</td><td>0 0 1 0</td><td>4</td><td>20</td></tr>
+        <tr><td><strong>b</strong></td><td>7%</td><td>0 0 1 1</td><td>4</td><td>28</td></tr>
+        <tr><td><strong>c</strong></td><td>8%</td><td>0 0 0</td><td>3</td><td>24</td></tr>
+        <tr><td><strong>d</strong></td><td>16%</td><td>1 1 0</td><td>3</td><td>48</td></tr>
+        <tr><td><strong>e</strong></td><td>18%</td><td>1 1 1</td><td>3</td><td>54</td></tr>
+        <tr><td><strong>f</strong></td><td>22%</td><td>0 1</td><td>2</td><td>44</td></tr>
+        <tr><td><strong>g</strong></td><td>24%</td><td>1 0</td><td>2</td><td>48</td></tr>
+        <tr><td colspan="4"><strong>Total Weighted Sum per 100 characters:</strong></td><td><strong>266 bits</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div class="step-heading">Step 3: Total Bits & Bytes for 100,000 Characters</div>
+    <div class="math-block">Average Bits per Character = 266 / 100 = 2.66 bits/char
+Total Bits for 100,000 characters = 100,000 · 2.66 = 266,000 bits
+Total Storage in Bytes = 266,000 / 8 = 33,250 Bytes</div>
+    <p><strong>Fixed-Length Baseline:</strong> $\lceil \log_2 7 ceil = 3$ bits/char $\implies 300,000 	ext{ bits} = 37,500 	ext{ Bytes}$. Huffman saves <strong>$4,250 	ext{ Bytes}$ ($11.33\%$)</strong>.</p>
+  </div>
+</div>
+
+<!-- Q4.2 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q4.2. 4-Queens Backtracking: Bounding Functions & State-Space Tree</div>
+    <div class="q-marks">5 MARKS | FORECAST CORE BACKTRACKING</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> Explain the N-Queens backtracking framework using vector representation $x[1..n]$. State the exact mathematical bounding function for row, column, and diagonal clashes. Trace the 4-Queens problem to its first valid solution.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> Har row $k$ mein 1 queen rakhni hai. Column clash check: $x[i] == x[k]$. Diagonal clash check: $|x[i] - x[k]| == |i - k|$ (slope $\pm 1$). 4-Queens ka first valid solution $[2, 4, 1, 3]$ hota hai!
+    </div>
+
+    <div class="step-heading">Step 1: State Space Representation</div>
+    <p>Let $x[k]$ denote the column index of the queen placed in row $k$ ($1 \le k \le n$).</p>
+    <div class="math-block">Solution Vector: X = [x_1, x_2, ..., x_n] where x_k in {1, 2, ..., n}</div>
+
+    <div class="step-heading">Step 2: Mathematical Bounding Function</div>
+    <p>A placement $x[k]$ in row $k$ is valid if and only if for all previous rows $i < k$:</p>
+    <div class="math-block">1. Column Conflict:   x[i] != x[k]
+2. Diagonal Conflict: |x[i] - x[k]| != |i - k|</div>
+
+    <div class="step-heading">Step 3: 4-Queens Search Space Trace</div>
+    <ul>
+      <li><strong>Branch 1 ($x_1 = 1$):</strong>
+        <ul>
+          <li>Row 2: $x_2=1$ (col clash), $x_2=2$ (diag clash $|2-1|=|2-1|$). Try $x_2=3$.</li>
+          <li>Row 3 with $[1, 3]$: $x_3=1$ (col), $x_3=2$ (diag with 1 and 3), $x_3=3$ (col), $x_3=4$ (diag with 3). <strong>DEAD END</strong>. Backtrack to Row 2.</li>
+          <li>Row 2: Try $x_2=4$.</li>
+          <li>Row 3 with $[1, 4]$: Try $x_3=2$ (valid!).</li>
+          <li>Row 4 with $[1, 4, 2]$: $x_4=1$ (col), $x_4=2$ (diag), $x_4=3$ (diag with 2), $x_4=4$ (col). <strong>DEAD END</strong>. Backtrack to root.</li>
+        </ul>
+      </li>
+      <li><strong>Branch 2 ($x_1 = 2$):</strong>
+        <ul>
+          <li>Row 2: $x_2=4$ (valid!).</li>
+          <li>Row 3 with $[2, 4]$: $x_3=1$ (valid!).</li>
+          <li>Row 4 with $[2, 4, 1]$: $x_4=3$ (valid! check: $|2-3| 
+e 3, |4-3| 
+e 2, |1-3| 
+e 1$).</li>
+          <li><strong>SUCCESS! Solution Found:</strong> <span class="summary-pill">$X = [2, 4, 1, 3]$</span>.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- Q4.3 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q4.3. Cut Property of Minimum Spanning Trees (MST)</div>
+    <div class="q-marks">5 MARKS | RIGOROUS PROOF CORE</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> State and formally prove the Cut Property of Minimum Spanning Trees. Use the exchange argument by contradiction.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> Cut $(S, V \setminus S)$ ko cross karne wali sabse choti edge $e$ hamesha MST mein hogi. Agar assume karein ki nahi hai, to $e$ ko add karne par ek cycle banegi jismein ek aur cross edge $e'$ hogi. $e'$ ko hata kar $e$ daalne se strictly kam weight ka tree ban jayega, jo contradiction hai!
+    </div>
+
+    <div class="step-heading">Step 1: Formal Statement</div>
+    <p>Let $G = (V, E, w)$ be a connected, undirected graph with real edge weights. Let $(S, V \setminus S)$ be any cut of $G$. If an edge $e = (u, v)$ is the strictly lightest edge crossing $(S, V \setminus S)$, then $e$ belongs to every Minimum Spanning Tree of $G$.</p>
+
+    <div class="step-heading">Step 2: Proof by Exchange Argument</div>
+    <ol>
+      <li>Suppose for contradiction that $T$ is an MST of $G$ and $e = (u, v) 
+otin T$.</li>
+      <li>Since $T$ is a spanning tree, adding $e$ to $T$ creates a unique cycle $C$.</li>
+      <li>Because $u \in S$ and $v \in V \setminus S$, the cycle $C$ starts in $S$ and ends in $V \setminus S$, so it must cross the cut $(S, V \setminus S)$ at least once more via another edge $e' = (u', v') 
+e e$.</li>
+      <li>Consider the new subgraph $T' = T \cup \{e\} \setminus \{e'\}$.</li>
+      <li>$T'$ remains connected and contains $|V|-1$ edges with no cycles; therefore $T'$ is a valid spanning tree.</li>
+      <li>Compute the weight of $T'$:
+        <div class="math-block">w(T') = w(T) + w(e) - w(e')</div>
+      </li>
+      <li>Since $e$ is the strictly minimum weight edge crossing the cut, $w(e) < w(e')$, which implies:
+        <div class="math-block">w(T') < w(T)</div>
+      </li>
+      <li>This contradicts the optimality of $T$ as a Minimum Spanning Tree!</li>
+      <li>Hence, our initial assumption was false, and $e \in T$. $lacksquare$</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- UNIT V: NETWORK FLOW & REDUCTIONS -->
+<!-- ========================================== -->
+<div class="unit-banner">
+  <span>UNIT V: NETWORK FLOW & REDUCTIONS</span>
+  <span class="unit-badge">10 MARKS ALLOCATION</span>
+</div>
+
+<!-- Q5.1 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q5.1. Max-Flow Min-Cut Theorem: Formal Statement & Rigorous Proof</div>
+    <div class="q-marks">6 MARKS | RECURRING THEORETICAL PILLAR</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> State the Max-Flow Min-Cut Theorem. Prove that the value of any feasible flow is bounded by the capacity of any cut, and prove that max flow equals min cut when no augmenting path remains in the residual network $G_f$.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> Kisi bhi pipe network mein flow source se sink tak jata hai. Har cut $(S, T)$ ek bottleneck hai. Jab Ford-Fulkerson rukta hai to residual graph mein $s$ se reachable nodes ka set $S^*$ banta hai. Is cut par har forward edge full hoti hai aur har backward edge zero, isliye $|f| = c(S^*, T^*)$!
+    </div>
+
+    <div class="step-heading">Step 1: Definitions & Cut Capacity</div>
+    <p>An $(S, T)$-cut partitions $V$ such that $s \in S$ and $t \in T$. The capacity of the cut is:</p>
+    <div class="math-block">c(S, T) = sum_{u in S, v in T} c(u, v)</div>
+
+    <div class="step-heading">Step 2: Lemma — Net Flow Across Cut Equals Total Flow</div>
+    <p>By flow conservation at all vertices $u \in S \setminus \{s\}$:</p>
+    <div class="math-block">|f| = f(S, T) = sum_{u in S, v in T} f(u, v) - sum_{u in T, v in S} f(u, v)</div>
+    <p>Since $f(u, v) \le c(u, v)$ and $f(v, u) \ge 0$, we immediately obtain <strong>Weak Duality</strong>:</p>
+    <div class="math-block">|f| ≤ sum_{u in S, v in T} c(u, v) = c(S, T)   (Flow <= Capacity of ANY Cut)</div>
+
+    <div class="step-heading">Step 3: Equality at Maximum Flow (Strong Duality)</div>
+    <p>Let $f^*$ be a flow such that the residual graph $G_{f^*}$ contains <strong>no augmenting path</strong> from $s$ to $t$.</p>
+    <p>Define $S^* = \{v \in V \mid 	ext{there exists a path from } s 	ext{ to } v 	ext{ in } G_{f^*}\}$ and $T^* = V \setminus S^*$.</p>
+    <ul>
+      <li>$s \in S^*$ (trivially reachable from itself).</li>
+      <li>$t \in T^*$ (otherwise an augmenting path exists from $s$ to $t$, contradicting termination).</li>
+    </ul>
+    <p>For any edge $(u, v)$ with $u \in S^*$ and $v \in T^*$:</p>
+    <ul>
+      <li>We must have $c_f(u, v) = 0$, otherwise $v$ would be reachable from $u$, putting $v \in S^*$.</li>
+      <li>Since $c_f(u, v) = c(u, v) - f^*(u, v) = 0 \implies \mathbf{f^*(u, v) = c(u, v)}$ (all forward edges saturated).</li>
+      <li>For any edge $(v, u)$ with $v \in T^*$ and $u \in S^*$, $c_f(v, u) = f^*(v, u) = 0 \implies \mathbf{f^*(v, u) = 0}$.</li>
+    </ul>
+    <p>Substitute these into the net flow equation:</p>
+    <div class="math-block">|f*| = f(S*, T*) = sum_{u in S*, v in T*} c(u, v) - 0 = c(S*, T*)</div>
+    <p>Since $|f| \le c(S, T)$ for all cuts and $|f^*| = c(S^*, T^*)$, the flow $f^*$ is maximal and $(S^*, T^*)$ is the minimum cut! $lacksquare$</p>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- Q5.2 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q5.2. Maximum Bipartite Matching via Max-Flow Reduction</div>
+    <div class="q-marks">5 MARKS | STANDARD REDUCTION CORE</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> Given a bipartite graph $G = (L \cup R, E)$, formally reduce the Maximum Bipartite Matching problem to Maximum Flow. Prove correctness using the Integrality Theorem.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> Bipartite graph mein $s$ aur $t$ add karo. $s 	o L$ edges capacity 1 ki banao, $L 	o R$ capacity 1 ki, aur $R 	o t$ capacity 1 ki. Integrality theorem guarantee karta hai ki flow integer (0 ya 1) aayega, jisse unit flow edges directly valid maximum matching ban jayengi!
+    </div>
+
+    <div class="step-heading">Step 1: Network Construction</div>
+    <ol>
+      <li>Construct flow network $G' = (V', E', c)$ where $V' = L \cup R \cup \{s, t\}$.</li>
+      <li>Add directed edge $(s, u)$ for every $u \in L$ with capacity $c(s, u) = 1$.</li>
+      <li>Add directed edge $(u, v)$ for every undirected edge $\{u, v\} \in E$ ($u \in L, v \in R$) with capacity $c(u, v) = 1$.</li>
+      <li>Add directed edge $(v, t)$ for every $v \in R$ with capacity $c(v, t) = 1$.</li>
+    </ol>
+
+    <div class="step-heading">Step 2: Correctness Proof via Integrality Theorem</div>
+    <ul>
+      <li><strong>Integrality Theorem:</strong> Since all capacities are integral (all 1s), Ford-Fulkerson outputs an integral maximum flow $f^*$ where $f^*(e) \in \{0, 1\}$.</li>
+      <li><strong>Valid Matching:</strong> Let $M = \{(u, v) \in E \mid f^*(u, v) = 1\}$.
+        <ul>
+          <li>Each $u \in L$ has only one incoming edge from $s$ with capacity 1 $\implies$ at most one outgoing edge from $u$ carries flow $\implies$ $u$ is matched at most once.</li>
+          <li>Each $v \in R$ has only one outgoing edge to $t$ with capacity 1 $\implies$ at most one incoming edge into $v$ carries flow $\implies$ $v$ is matched at most once.</li>
+          <li>Hence $M$ is a valid matching of size $|M| = |f^*|$.</li>
+        </ul>
+      </li>
+      <li><strong>Maximality:</strong> Any matching of size $k$ can be turned into a valid flow of value $k$. Thus max flow $\iff$ max matching.</li>
+    </ul>
+    <p><strong>Complexity:</strong> $O(V' \cdot E') = \mathbf{O(V E)}$ using Ford-Fulkerson.</p>
+  </div>
+</div>
+
+<!-- ==================================================== -->
+<!-- UNIT VI: NP-COMPLETENESS & APPROXIMATION ALGORITHMS -->
+<!-- ==================================================== -->
+<div class="unit-banner">
+  <span>UNIT VI: NP-COMPLETENESS & APPROXIMATION ALGORITHMS</span>
+  <span class="unit-badge">10 MARKS ALLOCATION</span>
+</div>
+
+<!-- Q6.1 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q6.1. Formal Definitions of P, NP, NP-Complete & Polynomial-Time Verifier</div>
+    <div class="q-marks">5 MARKS | HIGH PROBABILITY FOUNDATIONAL</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> Formally define the complexity classes P, NP, NP-Hard, and NP-Complete using the certificate and polynomial-time verifier framework. Provide certificate definitions for 3-SAT and Vertex Cover.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> P = solve in poly-time. NP = verify in poly-time. Agar koi YES instance ka proof (certificate $c$) de, to polynomial time verifier $V(x, c)$ check kar sake ki solution valid hai!
+    </div>
+
+    <div class="step-heading">Formal Definitions</div>
+    <ul>
+      <li><strong>Class P:</strong> The class of decision problems $L \subseteq \{0, 1\}^*$ decidable in polynomial time by a deterministic Turing machine: $	ext{P} = igcup_{k \ge 1} 	ext{TIME}(n^k)$.</li>
+      <li><strong>Class NP:</strong> A language $L \in 	ext{NP}$ iff there exists a deterministic polynomial-time verifier algorithm $V(x, c)$ and a polynomial $p(n)$ such that:
+        <div class="math-block">x in L  <===>  exists certificate c with |c| ≤ p(|x|) such that V(x, c) = ACCEPT</div>
+      </li>
+      <li><strong>Polynomial-Time Reduction ($A \le_p B$):</strong> There exists a polynomial-time computable function $f$ such that for all inputs $x$: $x \in A \iff f(x) \in B$.</li>
+      <li><strong>NP-Hard:</strong> A problem $B$ is NP-Hard if for every language $A \in 	ext{NP}$, $A \le_p B$.</li>
+      <li><strong>NP-Complete:</strong> A problem $B$ is NP-Complete iff $B \in 	ext{NP}$ and $B \in 	ext{NP-Hard}$.</li>
+    </ul>
+
+    <div class="step-heading">Concrete Certificates & Verifiers</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Problem</th>
+          <th>Certificate $c$</th>
+          <th>Verification Algorithm $V(x, c)$ & Runtime</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>3-SAT</strong></td>
+          <td>A truth assignment to $n$ Boolean variables.</td>
+          <td>Substitute variables into each clause. Check if all $m$ clauses evaluate to TRUE in $O(n + m)$ time.</td>
+        </tr>
+        <tr>
+          <td><strong>Vertex Cover</strong></td>
+          <td>A subset of vertices $S \subseteq V$ with $|S| \le k$.</td>
+          <td>Verify $|S| \le k$ and check that for every edge $(u, v) \in E$, at least one of $u \in S$ or $v \in S$. Takes $O(V + E)$ time.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- Q6.2 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q6.2. 3-SAT to CLIQUE / Vertex Cover Reduction Proof</div>
+    <div class="q-marks">5 MARKS | ACTUAL PAPER REPEATING PATTERN</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> Prove that CLIQUE is NP-Complete by showing a polynomial-time reduction from 3-SAT.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> 3-SAT formula mein $k$ clauses hain. Har clause ke 3 literals ke liye 3 vertices banao (gadgets). Edges unhi do vertices ke beech lagao jo ALAG clauses mein hon aur aapas mein CONFLICT na karte hon ($x$ and $
+eg x$ na hon). 3-SAT satisfiable tabhi hoga jab graph mein size $k$ ka CLIQUE hoga!
+    </div>
+
+    <div class="step-heading">Step 1: Gadget Construction</div>
+    <p>Given 3-SAT formula $\phi = C_1 \wedge C_2 \wedge \dots \wedge C_k$ with clauses $C_r = (l_{r1} ee l_{r2} ee l_{r3})$:</p>
+    <ul>
+      <li>Construct graph $G = (V, E)$ where for each clause $C_r$, create 3 vertices representing its literals. Total $|V| = 3k$.</li>
+      <li>Add an undirected edge between vertex $u$ in $C_r$ and vertex $v$ in $C_s$ ($r 
+e s$) <strong>if and only if</strong> $u$ and $v$ are from different clauses and are NOT negations of each other ($u 
+e 
+eg v$).</li>
+    </ul>
+
+    <div class="step-heading">Step 2: Correctness Proof in Both Directions</div>
+    <ul>
+      <li><strong>($\implies$ Direction):</strong> Suppose $\phi$ is satisfiable. In a satisfying assignment, pick one literal that evaluates to TRUE in each clause $C_1, \dots, C_k$. This gives a set $S$ of $k$ vertices. Since all $k$ literals are TRUE, no two can be negations of each other ($u 
+e 
+eg v$), and all are from different clauses. By construction, there is an edge between every pair of vertices in $S$. Thus $S$ forms a <strong>clique of size $k$</strong>.</li>
+      <li><strong>($\impliedby$ Direction):</strong> Suppose $G$ contains a clique $S$ of size $k$. Since no edges exist between vertices in the same clause, $S$ must contain exactly one vertex from each of the $k$ clauses. Furthermore, since edges only connect non-conflicting literals, no two vertices in $S$ represent $x$ and $
+eg x$. Assign TRUE to all literals in $S$ (and arbitrary truth values to remaining variables). Every clause now has at least one TRUE literal. Thus $\phi$ is satisfiable!</li>
+    </ul>
+    <p>Since construction takes $O(k^2)$ time, 3-SAT $\le_p$ CLIQUE. $lacksquare$</p>
+  </div>
+</div>
+
+<!-- Q6.3 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q6.3. Vertex Cover 2-Approximation Algorithm via Maximal Matching</div>
+    <div class="q-marks">5 MARKS | FORECAST APPROXIMATION CORE</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> Describe the maximal matching-based 2-approximation algorithm for the Minimum Vertex Cover problem. Formally prove that the approximation ratio is at most 2. Show a tight example.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> Koi bhi edge $(u, v)$ pakdo, DONO vertices ko cover set $C$ mein daal do, aur unse jude saare edges delete kar do. Yeh edges ek matching $M$ banate hain. Har optimal cover $C^*$ ko is matching ke har edge se kam se kam 1 vertex lena padega ($|C^*| \ge |M|$). Humne dono endpoints liye to $|C| = 2|M| \le 2|C^*|$!
+    </div>
+
+    <div class="step-heading">Step 1: Algorithm Description</div>
+    <div class="code-block">Algorithm ApproxVertexCover(G = (V, E)):
+    C = empty_set
+    E_prime = E
+    while E_prime is not empty:
+        pick an arbitrary edge (u, v) in E_prime
+        C = C union {u, v}
+        remove from E_prime all edges incident to u or v
+    return C</div>
+
+    <div class="step-heading">Step 2: Formal Proof of Approximation Ratio $\le 2$</div>
+    <ol>
+      <li>Let $M$ be the set of edges selected in the while-loop. By definition of the algorithm, whenever an edge $(u, v)$ is chosen, all incident edges are removed. Hence, no two edges in $M$ share a common endpoint. Thus $M$ is a <strong>valid matching</strong>.</li>
+      <li>Any valid vertex cover $C^*$ must cover every edge in $M$. Since all edges in $M$ are vertex-disjoint, no single vertex can cover more than one edge in $M$. Therefore:
+        <div class="math-block">|C*| ≥ |M|</div>
+      </li>
+      <li>For each edge in $M$, our algorithm adds both endpoints to $C$. Therefore:
+        <div class="math-block">|C| = 2 |M|</div>
+      </li>
+      <li>Combining these inequalities:
+        <div class="math-block">|C| = 2 |M| ≤ 2 |C*|</div>
+      </li>
+    </ol>
+    <p>Hence the algorithm achieves an <strong>approximation ratio of 2</strong> and runs in linear time $O(V + E)$.</p>
+
+    <div class="step-heading">Step 3: Tight Example</div>
+    <p>A graph consisting of disjoint edges $K_2$ (e.g., $E = \{(v_1, v_2), (v_3, v_4)\}$). An optimal cover picks 1 vertex per edge ($|C^*| = 2$), while the algorithm picks both endpoints ($|C| = 4$). The ratio is exactly $rac{4}{2} = 2$.</p>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- Q6.4 -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">Q6.4. Planar Red & Blue Points: Non-Crossing Segment Matching Proof</div>
+    <div class="q-marks">5 MARKS | ACTUAL PAPER GEOMETRIC PROOF</div>
+  </div>
+  <div class="q-body">
+    <div class="problem-box">
+      <strong>Problem:</strong> Given $n$ red points and $n$ blue points in general position in the 2D plane (no three points collinear), prove that there exists a one-to-one matching between red and blue points such that the straight line segments connecting matched pairs do not intersect each other.
+    </div>
+    <div class="hinglish-box">
+      <strong>💡 Asli Baat:</strong> Finite matchings ($n!$) mein se wo matching $M^*$ choose karo jismein segments ki total Euclidean length MINIMUM ho! Agar assume karein ki 2 segments aapas mein cross kar rahe hain, to triangle inequality se endpoints swap karne par total length aur choti ho jayegi, jo contradiction hai!
+    </div>
+
+    <div class="step-heading">Step 1: Set of Possible Bijections</div>
+    <p>Let $R = \{r_1, r_2, \dots, r_n\}$ be the red points and $B = \{b_1, b_2, \dots, b_n\}$ be the blue points. There are $n!$ possible bijective matchings $\pi: R 	o B$.</p>
+    <p>For any matching $\pi$, define its total Euclidean length as:</p>
+    <div class="math-block">L(pi) = sum_{i=1}^n ||r_i - b_{pi(i)}||</div>
+
+    <div class="step-heading">Step 2: Existence of Minimal Length Matching</div>
+    <p>Since the number of permutations $n!$ is finite and positive, there must exist at least one matching $\pi^*$ that achieves the <strong>global minimum total length</strong> $L(\pi^*)$.</p>
+
+    <div class="step-heading">Step 3: Proof by Contradiction via Triangle Inequality</div>
+    <ol>
+      <li>Suppose for contradiction that under $\pi^*$, two line segments intersect. Without loss of generality, let $(r_1, b_1)$ and $(r_2, b_2)$ cross at point $X$.</li>
+      <li>In $	riangle r_1 X b_2$, by the strict Triangle Inequality (points in general position):
+        <div class="math-block">||r_1 - b_2|| < ||r_1 - X|| + ||X - b_2||</div>
+      </li>
+      <li>In $	riangle r_2 X b_1$, by the strict Triangle Inequality:
+        <div class="math-block">||r_2 - b_1|| < ||r_2 - X|| + ||X - b_1||</div>
+      </li>
+      <li>Adding these two strict inequalities together:
+        <div class="math-block">||r_1 - b_2|| + ||r_2 - b_1|| < (||r_1 - X|| + ||X - b_1||) + (||r_2 - X|| + ||X - b_2||)
+                            = ||r_1 - b_1|| + ||r_2 - b_2||</div>
+      </li>
+      <li>Now consider an alternative matching $\pi'$ that uncrosses these two segments by pairing $(r_1, b_2)$ and $(r_2, b_1)$, keeping all other pairs unchanged.</li>
+      <li>The total length of $\pi'$ is:
+        <div class="math-block">L(pi') = L(pi*) - (||r_1 - b_1|| + ||r_2 - b_2||) + (||r_1 - b_2|| + ||r_2 - b_1||) < L(pi*)</div>
+      </li>
+      <li>This contradicts the assumption that $\pi^*$ was the minimum length matching!</li>
+    </ol>
+    <p>Therefore, the minimum length matching $\pi^*$ cannot contain any intersecting segments. $lacksquare$</p>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- EMERGENCY 5-MINUTE LAST MINUTE REVISION -->
+<!-- ========================================== -->
+<div class="question-card avoid-break">
+  <div class="question-header">
+    <div class="q-title">⚡ 5-Minute Pre-Exam Checklist (Read Right Before Entering Exam Hall)</div>
+    <div class="q-marks">FINAL REVISION</div>
+  </div>
+  <div class="q-body">
+    <table>
+      <thead>
+        <tr>
+          <th>Question Pattern</th>
+          <th>Immediate Formula / Trick</th>
+          <th>What Examiner Looks For</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>$T(n) = T(\sqrt{n}) + 1$</strong></td>
+          <td>$n = 2^m \implies S(m) = S(m/2) + 1 \implies \Theta(\log m)$</td>
+          <td>Substitute back $m = \log n \implies \mathbf{O(\log \log n)}$.</td>
+        </tr>
+        <tr>
+          <td><strong>$T(n) = 3T(n/2) + n$</strong></td>
+          <td>Watershed $n^{\log_2 3} pprox n^{1.585} > n^1$</td>
+          <td>State <strong>Master Theorem Case 1</strong> with $\epsilon pprox 0.585$.</td>
+        </tr>
+        <tr>
+          <td><strong>$4444^{4444} \pmod 9$</strong></td>
+          <td>$4444 \equiv 7 \pmod 9$, cycle $7^1=7, 7^2=4, 7^3=1 \implies$ period 3</td>
+          <td>$4444 \equiv 1 \pmod 3 \implies \mathbf{7}$. Bound $D \le 12 \implies \mathbf{D = 7}$.</td>
+        </tr>
+        <tr>
+          <td><strong>Popular Element MC</strong></td>
+          <td>$(2/3)^m \le 3^{-100} \implies m \ge rac{100 \ln 3}{\ln 1.5}$</td>
+          <td>Exact number of trials: $\mathbf{m \ge 271}$.</td>
+        </tr>
+        <tr>
+          <td><strong>Josephus $n=41$</strong></td>
+          <td>$n = 2^m + l = 32 + 9 \implies 2l + 1 = 2(9) + 1 = \mathbf{19}$</td>
+          <td>Binary 1-bit cyclic left shift: $101001_2 	o 010011_2 = \mathbf{19}$.</td>
+        </tr>
+        <tr>
+          <td><strong>Catalan $f(7), f(8)$</strong></td>
+          <td>$C_6 = \mathbf{132}$, $C_7 = \mathbf{429}$; $f(n) \ge 2f(n-1) \implies \mathbf{\Omega(2^n)}$</td>
+          <td>Induction step keeping terms $k=1$ and $k=n-1$.</td>
+        </tr>
+        <tr>
+          <td><strong>Huffman (100k chars)</strong></td>
+          <td>Merge lowest frequencies first; lengths: 4, 4, 3, 3, 3, 2, 2</td>
+          <td>$2.66 	ext{ bits/char} \implies \mathbf{266,000 	ext{ bits}} = \mathbf{33,250 	ext{ Bytes}}$.</td>
+        </tr>
+        <tr>
+          <td><strong>Max-Flow Min-Cut</strong></td>
+          <td>$S^* = \{v \in V \mid s ightsquigarrow v 	ext{ in } G_{f^*}\}$, $T^* = V \setminus S^*$</td>
+          <td>Proof that $f^*(u, v) = c(u, v)$ and $f^*(v, u) = 0$ across cut.</td>
+        </tr>
+        <tr>
+          <td><strong>3-SAT to CLIQUE</strong></td>
+          <td>$k$ clauses $\implies 3k$ vertices; edges between non-conflicting literals</td>
+          <td>Formal two-way proof: $\phi$ satisfiable $\iff$ clique of size $k$.</td>
+        </tr>
+        <tr>
+          <td><strong>Vertex Cover 2-Approx</strong></td>
+          <td>Maximal matching $M$; take BOTH endpoints $C = 2|M|$</td>
+          <td>$|C^*| \ge |M|$ because edges in $M$ disjoint $\implies |C| \le 2|C^*|$.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>

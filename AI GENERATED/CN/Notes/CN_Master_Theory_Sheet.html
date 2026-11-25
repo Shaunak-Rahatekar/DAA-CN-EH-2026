@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Computer Networks (CS3213) Master Theory & Architecture Sheet | VIT Pune</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 12mm 12mm 12mm 12mm;
+    @bottom-right {
+      content: counter(page);
+    }
+  }
+
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 9.2pt;
+    line-height: 1.45;
+    color: #1e293b;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 12px;
+  }
+
+  .page-break {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  /* Header banner */
+  .header-banner {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #4338ca 100%);
+    color: #ffffff;
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    border-left: 6px solid #6366f1;
+  }
+  .header-title {
+    font-size: 16pt;
+    font-weight: 800;
+    margin: 0 0 4px 0;
+    letter-spacing: -0.3px;
+    color: #f8fafc;
+  }
+  .header-subtitle {
+    font-size: 11pt;
+    font-weight: 600;
+    color: #c7d2fe;
+    margin: 0 0 8px 0;
+  }
+  .header-meta {
+    font-size: 8.5pt;
+    color: #cbd5e1;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: rgba(255, 255, 255, 0.18);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 8pt;
+  }
+
+  /* Unit Header */
+  .unit-header {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 11.5pt;
+    font-weight: 700;
+    margin: 18px 0 12px 0;
+    border-left: 5px solid #6366f1;
+    letter-spacing: -0.2px;
+  }
+
+  /* Topic Card */
+  .topic-card {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  .topic-title {
+    font-size: 10.5pt;
+    font-weight: 800;
+    color: #0f172a;
+    border-bottom: 1.5px solid #e2e8f0;
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .unit-tag {
+    background: #e0e7ff;
+    color: #3730a3;
+    font-size: 7.5pt;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+
+  .question-box {
+    background: #f8fafc;
+    border-left: 3px solid #6366f1;
+    padding: 6px 10px;
+    font-style: italic;
+    color: #1e293b;
+    margin: 6px 0 8px 0;
+    font-size: 9pt;
+  }
+
+  .rubric-box {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    border-left: 4px solid #059669;
+    color: #065f46;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 8.5pt;
+    margin-top: 8px;
+  }
+
+  /* Table styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6px 0 10px 0;
+    font-size: 8.5pt;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 4px 7px;
+    text-align: left;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  tr:nth-child(even) td {
+    background: #f8fafc;
+  }
+
+  /* Code / Diagram block */
+  pre {
+    font-family: Consolas, monospace;
+    font-size: 8pt;
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 6px 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 6px 0;
+    line-height: 1.35;
+  }
+
+  ul, ol {
+    margin: 3px 0 6px 18px;
+    padding: 0;
+  }
+  li {
+    margin-bottom: 2px;
+  }
+  code {
+    font-family: Consolas, monospace;
+    background: #f1f5f9;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-size: 8.8pt;
+    color: #0f172a;
+  }
+</style>
+</head>
+<body>
+
+<div class="header-banner">
+  <div class="header-title">COMPUTER NETWORKS (CS3213 / IT2266 / CS3025)</div>
+  <div class="header-subtitle">Master Theory, Architecture & Analytical Question Sheet</div>
+  <div class="header-meta">
+    <span><b>Target</b>: ESE Written Examination</span>
+    <span><b>Scope</b>: Units 1 to 6 Complete (30 Core Topics)</span>
+    <span><b>Curated for</b>: Vishwakarma Institute of Technology (VIT Pune)</span>
+    <span class="badge">Model Answers & Marking Schemes</span>
+  </div>
+</div>
+
+<div># Computer Networks (CS3213 / IT2266 / CS3025)</div>
+<div># Master Theory, Architecture & Analytical Question Sheet</div>
+<div>> <b>Scope</b>: All 6 Units of the Computer Networks Syllabus (VIT Pune / SPPU pattern).</div>
+<div>> <b>Structure</b>: Unit-wise and Topic-wise Master Theory Guide covering the 30 core exam topics.</div>
+<div>> <b>For Every Topic</b>:</div>
+<div>> - <b>Exact Exam Question Statement</b> (verbatim from past VIT papers including Nov 2024 and May 2019)</div>
+<div>> - <b>Core Concept & Working Principle</b></div>
+<div>> - <b>Architecture / Protocol Stack / Packet Format / State Diagrams</b></div>
+<div>> - <b>In-Depth Analytical Comparison & Technical Justification</b></div>
+<div>> - <b>Examiner Marking Rubric & Key Points Evaluators Look For</b></div>
+<div>> <b>Formatting</b>: 100% clean, human-readable universal ASCII formatting with zero unreadable symbols.</div>
+<div class="unit-header">UNIT 1: FUNDAMENTALS & PHYSICAL LAYER</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 1: OSI 7-Layer Reference Model vs TCP/IP 4-Layer Architecture</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Explain the OSI Model with a neat diagram. State the functionality, representative protocols, and standards of each layer. Compare it with the TCP/IP Model and explain why the OSI model failed commercially. [Nov 2024 IT2266 Q1b, 4M / May 2019 CS3025 Q6a, 4M]</div>
+<div><b>1. Architectural Stacks Diagram:</b></div>
+<pre>
+       OSI 7-LAYER MODEL                      TCP/IP 4-LAYER MODEL
+  +--------------------------+             +--------------------------+
+  | 7. Application Layer     |             |                          |
+  +--------------------------+             |  Application Layer       |
+  | 6. Presentation Layer    | ----------&gt; |  (HTTP, DNS, SMTP, DHCP) |
+  +--------------------------+             |                          |
+  | 5. Session Layer         |             +--------------------------+
+  +--------------------------+             |  Transport Layer         |
+  | 4. Transport Layer       | ----------&gt; |  (TCP, UDP, SCTP, QUIC)  |
+  +--------------------------+             +--------------------------+
+  | 3. Network Layer         | ----------&gt; |  Internet / Network Layer|
+  |                          |             |  (IPv4, IPv6, ICMP, ARP) |
+  +--------------------------+             +--------------------------+
+  | 2. Data Link Layer       | ----------&gt; |  Network Access /        |
+  +--------------------------+             |  Link Layer              |
+  | 1. Physical Layer        | ----------&gt; |  (Ethernet, Wi-Fi, PPP)  |
+  +--------------------------+             +--------------------------+
+</pre>
+<div><b>2. Detailed Layer Breakdown:</b></div>
+<div style="margin:3px 0;">* <b>Application Layer (Layer 7)</b>: Directly interfaces with application software. Provides user-level network services. Protocols: HTTP (web), DNS (name resolution), SMTP (mail), DHCP (auto IP), FTP (files).</div>
+<div style="margin:3px 0;">* <b>Presentation Layer (Layer 6)</b>: Responsible for syntax, data representation, character translation (ASCII/EBCDIC), compression, and encryption/decryption (TLS/SSL).</div>
+<div style="margin:3px 0;">* <b>Session Layer (Layer 5)</b>: Manages dialog control, session checkpointing, synchronization tokens, and connection establishment/teardown between communicating processes. Protocols: NetBIOS, RPC.</div>
+<div style="margin:3px 0;">* <b>Transport Layer (Layer 4)</b>: True end-to-end process-to-process communication. Manages port addressing, segmentation, reassembly, reliable delivery, and flow/congestion control. Protocols: TCP (connection-oriented, reliable), UDP (connectionless, best-effort).</div>
+<div style="margin:3px 0;">* <b>Network Layer (Layer 3)</b>: Host-to-host routing and logical addressing across heterogeneous networks. Formulates routing tables, handles packet forwarding, fragmentation, and IP addressing. Protocols: IPv4, IPv6, ICMP, OSPF, BGP.</div>
+<div style="margin:3px 0;">* <b>Data Link Layer (Layer 2)</b>: Node-to-node hop-by-hop framing, physical MAC addressing, error detection (CRC), flow control, and medium access arbitration. Protocols: Ethernet (IEEE 802.3), Wi-Fi (802.11), PPP, HDLC.</div>
+<div style="margin:3px 0;">* <b>Physical Layer (Layer 1)</b>: Transmits raw unstructured bitstreams over copper, fiber, or air. Specifies mechanical, electrical, and functional interface standards (voltage levels, pinouts, timing, bit duration). Standards: RS-232, 1000Base-T, DSL.</div>
+<div><b>3. Why the OSI Model Failed Commercially ("The 4 Bads"):</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Bad Timing</b>: When OSI standards were being drafted, TCP/IP was already implemented, deployed on ARPANET, and widely adopted by universities and UNIX vendors.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Bad Technology</b>: The 7 layers are unbalanced. Session and Presentation layers are very thin and rarely need dedicated layers, while Data Link and Network are overburdened. Redundant features appear in multiple layers (flow/error control in Layers 2 and 4).</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Bad Implementations</b>: Early OSI protocol stacks were bloated, slow, and resource-heavy, while TCP/IP code in BSD UNIX was lightweight, robust, and free.</div>
+<div style="margin:2px 0 2px 10px;">4. <b>Bad Politics</b>: OSI was viewed as a bureaucratic top-down government/telecom committee standard, whereas TCP/IP was an agile, grassroots, running-code-first engineering triumph.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Neat diagram showing all 7 layers mapped to 4 layers: 1.5 Marks.</li>
+<li>Functionality and representative protocols per layer: 1.5 Marks.</li>
+<li>Analytical reason for OSI commercial failure: 1.0 Mark.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 2: Connecting Devices Across Layers</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Differentiate between Hub, Layer-2 Switch, and Router. Explain how they segment collision domains and broadcast domains in enterprise networks. [May 2019 CS3025 Q1a, 2M / Practice Pattern]</div>
+<div><b>1. Connecting Devices Comparison Matrix:</b></div>
+<table>
+<tr><th>Feature</th><th>Hub</th><th>Layer-2 Switch</th><th>Router</th></tr>
+<tr><td><b>Operating Layer</b></td><td>Layer 1 (Physical)</td><td>Layer 2 (Data Link)</td><td>Layer 3 (Network)</td></tr>
+<tr><td><b>Addressing Used</b></td><td>None (Raw electrical bits)</td><td>48-bit Physical MAC Addresses</td><td>32-bit Logical IP Addresses</td></tr>
+<tr><td><b>Forwarding Method</b></td><td>Electrical repeater / broadcast to all ports</td><td>Hardware MAC table lookup (CAM table)</td><td>Software/FIB IP routing table lookup</td></tr>
+<tr><td><b>Collision Domains</b></td><td><b>1 Single Collision Domain</b> across all ports</td><td><b>Each port is its own separate Collision Domain</b></td><td><b>Each interface is its own separate Collision Domain</b></td></tr>
+<tr><td><b>Broadcast Domains</b></td><td><b>1 Single Broadcast Domain</b></td><td><b>1 Single Broadcast Domain</b> (all ports share broadcast)</td><td><b>Each interface is its own separate Broadcast Domain</b></td></tr>
+<tr><td><b>Transmission Mode</b></td><td>Half-Duplex strictly (collisions can occur)</td><td>Full-Duplex dedicated link per port</td><td>Full-Duplex point-to-point / routed</td></tr>
+<tr><td><b>Traffic Filtering</b></td><td>Cannot filter frames</td><td>Filters selectively based on destination MAC</td><td>Filters based on IP, subnet, ACLs, and QoS</td></tr>
+</table>
+<div><b>2. Physical Intuition:</b></div>
+<div style="margin:3px 0;">* <b>Collision Domain</b>: A network segment where packets can physically collide with one another if transmitted simultaneously. A Switch breaks collision domains because it buffers incoming frames in internal ASIC memory and forwards them directly to the destination port, eliminating shared wire contention.</div>
+<div style="margin:3px 0;">* <b>Broadcast Domain</b>: A network segment where a broadcast frame (e.g. <code>FF:FF:FF:FF:FF:FF</code> in ARP) is received by all hosts. A Switch forwards broadcasts out all active ports. Only a <b>Router</b> terminates broadcast domains, preventing broadcast storms from flooding enterprise wide-area links.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Layers and addressing identification: 0.5 Mark.</li>
+<li>Clear distinction of collision domain behavior: 0.75 Mark.</li>
+<li>Clear distinction of broadcast domain behavior: 0.75 Mark.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 3: Line Encoding Techniques & Waveform Analysis</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Differentiate between NRZ, Manchester, Differential Manchester, and AMI line encodings. Draw the waveforms for the bit sequence <code>1 0 1 1 0 0 1 0</code>. Explain why Manchester encoding has self-clocking capability. [May 2019 CS3025 Q1b, 2M / Practice Pattern]</div>
+<div><b>1. Technical Definitions & Comparison:</b></div>
+<div style="margin:3px 0;">* <b>NRZ-L (Non-Return-to-Zero Level)</b>: <code>0 = High Voltage</code>, <code>1 = Low Voltage</code>. Suffers from DC baseline wander and loss of clock synchronization during long runs of consecutive 0s or 1s.</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Manchester (IEEE 802.3 Standard)</b>:</div>
+<div style="margin-left:14px;">- Transition occurs in the <b>exact middle</b> of every single bit interval.</div>
+<table>
+</table>
+<div style="margin-left:14px;">- <i>Advantage</i>: Guarantees a voltage transition in every bit, allowing receiver clock circuits to lock onto the phase (100% self-clocking).</div>
+<div style="margin-left:14px;">- <i>Disadvantage</i>: Requires double the bandwidth (baud rate = 2x data rate, 50% modulation efficiency).</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Differential Manchester (IEEE 802.5 Token Ring)</b>:</div>
+<div style="margin-left:14px;">- Transition occurs in the middle of every bit interval (used purely for clocking).</div>
+<div style="margin-left:14px;">- Bit <code>0</code> = Presence of a transition at the <i>start</i> of the bit interval.</div>
+<div style="margin-left:14px;">- Bit <code>1</code> = Absence of a transition at the <i>start</i> of the bit interval.</div>
+<div style="margin-left:14px;">- Inversion at boundary indicates <code>0</code>; continuity indicates <code>1</code>.</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>AMI (Alternate Mark Inversion)</b>:</div>
+<div style="margin-left:14px;">- Bit <code>0</code> = Zero voltage (neutral).</div>
+<div style="margin-left:14px;">- Bit <code>1</code> = Alternating positive (<code>+V</code>) and negative (<code>-V</code>) voltages.</div>
+<div style="margin-left:14px;">- Eliminates DC baseline wander because positive and negative pulses cancel out over time.</div>
+<div><b>2. Waveform Trace for <code>1 0 1 1 0 0 1 0</code>:</b></div>
+<pre>
+Bit Stream:       1       0       1       1       0       0       1       0
+Clock:         |---|___|---|___|---|___|---|___|---|___|---|___|---|___|---|___|
+
+Manchester:    |---|_  |  _|---|---|_  |---|_  |  _|---|  _|---|---|_  |  _|---|
+Transition:     H-to-L  L-to-H  H-to-L  H-to-L  L-to-H  L-to-H  H-to-L  L-to-H
+
+Diff. Man:     |---|_  |---|___|  _|---|---|_  |---|___|  _|---|  _|---|---|___|
+Start trans?     No     Yes(0)   No(1)   No(1)  Yes(0)  Yes(0)   No(1)  Yes(0)
+
+AMI:           |+++|   |       |---|   |+++|   |       |       |---|   |       |
+Voltage:        +V        0      -V      +V       0       0      -V       0
+</pre>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Rule statement for Manchester & Differential Manchester: 1.0 Mark.</li>
+<li>Correct waveform drawing with mid-bit boundary dashed lines: 1.0 Mark.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 4: Software-Defined Networking (SDN) Architecture</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Explain Software-Defined Networking (SDN). How does SDN decouple the Control Plane from the Data Plane, and what advantages does it offer over traditional routing? [May 2019 CS3025 Q6a, 2M / Practice Pattern]</div>
+<div><b>1. Architectural Decoupling Diagram:</b></div>
+<pre>
+      TRADITIONAL ROUTER                     SOFTWARE-DEFINED NETWORKING (SDN)
+  +------------------------+             +-----------------------------------------+
+  |     CONTROL PLANE      |             |         SDN APPLICATION TIER            |
+  |  (Routing Algorithm,   |             |  (Load Balancing, Firewall, Monitoring) |
+  |   OSPF/BGP Protocol)   |             +-----------------------------------------+
+  +-----------+------------+                                  | (Northbound API / REST)
+              |                          +-----------------------------------------+
+  +-----------v------------+             |      SDN CONTROLLER (Control Plane)     |
+  |       DATA PLANE       |             |  (Centralized Network OS, Routing Graph)|
+  |   (Fast Hardware ASIC  |             +-----------------------------------------+
+  |   Forwarding Engine)   |                                  | (Southbound API / OpenFlow)
+  +------------------------+             +--------------------+--------------------+
+   (Both planes tightly bound            |                    |                    |
+     inside proprietary box)        +----v----+          +----v----+          +----v----+
+                                    | Switch1 |          | Switch2 |          | Switch3 |
+                                    +---------+          +---------+          +---------+
+                                    (Pure Fast Data Forwarding Engines - Flow Tables)
+</pre>
+<div><b>2. Key Technical Concepts:</b></div>
+<div style="margin:3px 0;">* <b>Control Plane</b>: The intelligence of the network. Responsible for computing routing tables, evaluating topology graphs (Dijkstra/Bellman-Ford), and applying routing policies.</div>
+<div style="margin:3px 0;">* <b>Data Plane</b>: The packet-forwarding engine. Examines incoming frame headers, performs rapid ternary CAM table matches, and directs packets to outgoing switch interfaces.</div>
+<div style="margin:3px 0;">* <b>Traditional Networking Limitations</b>: Every router contains both planes locally in a single proprietary closed appliance (Cisco, Juniper). Upgrading protocols requires manual box-by-box CLI reconfiguration, making dynamic traffic re-routing sluggish and error-prone.</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>The SDN Breakthrough</b>:</div>
+<div>  1. Centralizes network state into a programmable software controller (e.g. OpenDaylight, ONOS).</div>
+<div>  2. Uses open standardized protocols (<b>OpenFlow</b>) to inject flow rules directly into simple, cost-effective hardware switches.</div>
+<div>  3. Enables dynamic traffic engineering, global network visibility, automated security policies, and rapid protocol experimentation without purchasing new hardware.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Diagram showing Application, Controller, and Data planes: 1.0 Mark.</li>
+<li>Explanation of Control vs Data plane separation: 1.0 Mark.</li>
+</ul></div>
+</div>
+<div class="unit-header">UNIT 2: DATA LINK LAYER & FRAMING / ERROR CONTROL</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 5: Framing Techniques: Bit Stuffing vs Byte Stuffing</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Why is framing needed in the Data Link Layer? Compare Bit Stuffing and Byte Stuffing with examples. How does bit stuffing prevent frame flag collision? [Nov 2024 IT2266 Q2a / Practice Pattern]</div>
+<div><b>1. Need for Framing:</b></div>
+<div>The physical layer delivers a continuous, raw stream of unstructured bits without natural delimiters. The Data Link Layer must break this raw bitstream into discrete, manageable units called <b>Frames</b> so the receiver can detect the start and end of packets, compute checksums, and detect lost data.</div>
+<div><b>2. Framing Methods:</b></div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Byte Stuffing (Character-Oriented Framing)</b>:</div>
+<div style="margin-left:14px;">- Frames are bounded by a special delimiter flag byte, typically <code>FLAG = 0x7E</code>.</div>
+<div style="margin-left:14px;">- If the flag byte pattern appears naturally inside user data, the sender inserts an Escape byte (<code>ESC = 0x1B</code>) immediately before it.</div>
+<div style="margin-left:14px;">- If an <code>ESC</code> byte appears in data, it is prefixed with another <code>ESC</code> byte (<code>ESC ESC</code>).</div>
+<div style="margin-left:14px;">- The receiver strips the first <code>ESC</code> and treats the following byte as pure payload.</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Bit Stuffing (Bit-Oriented Framing - HDLC / PPP)</b>:</div>
+<div style="margin-left:14px;">- Frames begin and end with the unique 8-bit flag pattern: <b><code>01111110</code></b> (<code>0x7E</code>, zero followed by six consecutive 1s and a zero).</div>
+<div style="margin-left:14px;">- <b>The Golden Rule</b>: Whenever the sender's transmission hardware detects <b>five consecutive 1s (<code>11111</code>)</b> in the payload bitstream, it automatically stuffs a single <code>0</code> immediately after the 5th <code>1</code>, regardless of what the next bit is!</div>
+<div style="margin-left:14px;">- <b>Receiver Action</b>: Whenever the receiver detects five consecutive 1s followed by a <code>0</code>, it strips the <code>0</code> bit automatically. If the five 1s are followed by <code>10</code>, it recognizes the end-of-frame flag <code>01111110</code>.</div>
+<div><b>3. Bit Stuffing Worked Example:</b></div>
+<div>• Input Payload: <code>0 1 1 1 1 1 1 0 1 1 1 1 1 1 0</code></div>
+<div>• Stuffed Output:</div>
+<div style="margin-left:14px;">- First five 1s: <code>0 1 1 1 1 1</code> --> insert <code>[0]</code> --> <code>0 1 1 1 1 1 [0] 1 0</code></div>
+<div style="margin-left:14px;">- Next five 1s: <code>1 1 1 1 1</code> --> insert <code>[0]</code> --> <code>1 1 1 1 1 [0] 1 0</code></div>
+<div style="margin-left:14px;">- Transmitted: <code>0 1 1 1 1 1 [0] 1 0 1 1 1 1 1 [0] 1 0</code></div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Reason for framing: 0.5 Mark.</li>
+<li>Explanation of Bit stuffing 5-ones rule: 1.0 Mark.</li>
+<li>Correctly worked bit stuffing trace: 0.5 Mark.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 6: Sliding Window Protocols: Stop-and-Wait vs GBN vs Selective Repeat</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Critically compare Stop-and-Wait, Go-Back-N, and Selective Repeat ARQ protocols in terms of sender/receiver window sizes, buffer requirements, out-of-order frame handling, retransmission strategy, and bandwidth utilization. [May 2019 CS3025 Q1a, 9M]</div>
+<div><b>Comprehensive Comparison Matrix:</b></div>
+<table>
+<tr><th>Feature</th><th>Stop-and-Wait ARQ</th><th>Go-Back-N (GBN) ARQ</th><th>Selective Repeat (SR) ARQ</th></tr>
+<tr><td><b>Sender Window (W_s)</b></td><td>Strictly <b>1</b></td><td><b><code>2^k - 1</code></b> (for k-bit sequence numbers)</td><td><b><code>2^(k - 1)</code></b></td></tr>
+<tr><td><b>Receiver Window (W_r)</b></td><td>Strictly <b>1</b></td><td>Strictly <b>1</b></td><td><b><code>2^(k - 1)</code></b> (Equals sender window!)</td></tr>
+<tr><td><b>Out-of-Order Handling</b></td><td>Impossible (only 1 frame in flight)</td><td><b>Discards</b> out-of-order frames silently!</td><td><b>Buffers</b> out-of-order frames in memory</td></tr>
+<tr><td><b>Retransmission Trigger</b></td><td>Timeout of single frame</td><td>Timeout of lost frame retransmits <b>N frames</b> (entire window!)</td><td>Timeout retransmits <b>ONLY the lost frame</b></td></tr>
+<tr><td><b>Acknowledgment Type</b></td><td>Individual ACK</td><td><b>Cumulative ACK</b> (ACK n confirms all frames <= n)</td><td><b>Independent / Selective ACK</b> (SACK confirms specific frame)</td></tr>
+<tr><td><b>Receiver Buffer Size</b></td><td>1 frame buffer</td><td>1 frame buffer</td><td><code>W_r = 2^(k - 1)</code> frames buffer</td></tr>
+<tr><td><b>Channel Efficiency (eta)</b></td><td><code>1 / (1 + 2a)</code></td><td><code>min(1.0, W_s / (1 + 2a))</code></td><td><code>min(1.0, W_s / (1 + 2a))</code></td></tr>
+<tr><td><b>Link Utilization on Noisy Channel</b></td><td>Poor</td><td>Extremely poor if error rate is high (retransmits redundant valid frames)</td><td><b>Optimal</b> (zero redundant retransmissions)</td></tr>
+<tr><td><b>Implementation Complexity</b></td><td>Trivial</td><td>Moderate</td><td>High (requires sorting buffers and individual timers per frame)</td></tr>
+</table>
+<div><b>Physical Justification of Window Sizes:</b></div>
+<div>• In <b>GBN</b>, <code>W_s = 2^k - 1</code>. If <code>W_s = 2^k</code>, and an ACK is lost, the receiver cannot distinguish between a retransmitted old frame and a brand new frame with the same wrapped sequence number.</div>
+<div>• In <b>SR</b>, <code>W_s + W_r <= 2^k</code>. Since <code>W_s = W_r</code>, we have <code>2 * W_s <= 2^k ==> W_s = 2^(k - 1)</code>. If <code>W_s > 2^(k - 1)</code>, the new receiver window overlaps with the old sender window, causing duplicate packet corruption.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Complete comparative table covering window sizes, buffers, and ACKs: 4.0 Marks.</li>
+<li>Mathematical derivation of why <code>W_s <= 2^k - 1</code> in GBN and <code>W_s <= 2^(k-1)</code> in SR: 3.0 Marks.</li>
+<li>Channel utilization equations: 2.0 Marks.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 7: Data Link Protocols: HDLC vs PPP</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Why is PPP (Point-to-Point Protocol) much more popular and widely deployed than HDLC (High-Level Data Link Control)? [May 2019 CS3025 Q2d, 3M]</div>
+<div><b>Core Analytical Reasons:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Multi-Protocol Encapsulation</b>: HDLC was designed primarily to support a single network-layer protocol (IBM SNA or raw IP). PPP incorporates the <b>Network Control Protocol (NCP)</b> family, allowing concurrent multiplexing of multiple network-layer protocols (IPv4, IPv6, AppleTalk, IPX) over the exact same physical link.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Built-in Security & Authentication</b>: HDLC has zero native authentication capabilities. PPP includes native support for <b>PAP (Password Authentication Protocol)</b> and the cryptographically secure challenge-handshake protocol <b>CHAP (Challenge Handshake Authentication Protocol)</b>.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Dynamic IP Address Assignment</b>: PPP includes <b>IPCP (Internet Protocol Control Protocol - RFC 1332)</b>, which automatically negotiates and assigns IP addresses, subnet masks, and DNS servers to dial-up or broadband clients without static manual configuration.</div>
+<div style="margin:2px 0 2px 10px;">4. <b>Byte-Oriented vs Bit-Oriented</b>: PPP uses byte-oriented byte stuffing, which runs cleanly and efficiently on standard computer CPU memory architectures, whereas HDLC's bit stuffing requires dedicated hardware shift registers.</div>
+<div style="margin:2px 0 2px 10px;">5. <b>Open Standard vs Vendor Lock-In</b>: HDLC implementations by vendors (e.g. Cisco HDLC) added proprietary header fields, making Cisco HDLC completely incompatible with non-Cisco routers. PPP is an open, standardized IETF RFC (RFC 1661) guaranteed to interoperate across all manufacturers.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Stating multi-protocol NCP support: 1.0 Mark.</li>
+<li>Authentication (PAP/CHAP) and IPCP configuration: 1.0 Mark.</li>
+<li>Interoperability vs proprietary HDLC lock-in: 1.0 Mark.</li>
+</ul></div>
+</div>
+<div class="unit-header">UNIT 3: MEDIUM ACCESS CONTROL (MAC) SUBLAYER</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 8: Random Access Protocols: ALOHA vs CSMA Evolution</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Trace the evolution of random access protocols from Pure ALOHA to Slotted ALOHA and CSMA methods (1-Persistent, Non-Persistent, and p-Persistent). Show why CSMA achieves superior throughput. [May 2019 CS3025 Q1d, 4M]</div>
+<div><b>1. Protocol Evolution Timeline:</b></div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Pure ALOHA (1970)</b>:</div>
+<div style="margin-left:14px;">- Philosophy: "Transmit whenever you have data."</div>
+<div style="margin-left:14px;">- Vulnerable Period: <code>2 * T_frame</code>. A frame collides if another station transmits within one frame time before or after its start.</div>
+<div style="margin-left:14px;">- Maximum efficiency: <code>S_max = 1 / (2e) approx. 18.4%</code>.</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Slotted ALOHA (1972)</b>:</div>
+<div style="margin-left:14px;">- Philosophy: "Divide time into discrete slots of duration <code>T_frame</code>. Transmit only at slot boundaries."</div>
+<div style="margin-left:14px;">- Vulnerable Period: <code>1 * T_frame</code> (halved!).</div>
+<div style="margin-left:14px;">- Maximum efficiency: <code>S_max = 1 / e approx. 36.8%</code> (Double Pure ALOHA!).</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>CSMA ("Carrier Sense Multiple Access - Listen Before Talk")</b>:</div>
+<div style="margin-left:14px;">- The Fatal Flaw of ALOHA: Stations inject frames blindly without checking whether another station is already transmitting.</div>
+<div style="margin-left:14px;">- The CSMA Breakthrough: Stations sample the physical medium voltage/energy before transmitting. If a carrier is detected, transmission is deferred.</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>CSMA Persistence Modes</b>:</div>
+<div>  1. <b>1-Persistent CSMA</b>: Senses channel. If busy, listens continuously; transmits immediately with probability 1 as soon as channel becomes idle. Efficiency <code>approx. 53%</code>. (Suffers collisions when two waiting stations both fire immediately upon idle).</div>
+<div>  2. <b>Non-Persistent CSMA</b>: Senses channel. If busy, does NOT listen continuously; waits a random back-off time before sensing again. Eliminates synchronized bursts. Efficiency <code>approx. 85%</code>!</div>
+<div>  3. <b>p-Persistent CSMA (Used in slotted channels & Wi-Fi)</b>: Senses channel. When idle, transmits with probability <code>p</code>, and defers to next slot with probability <code>(1 - p)</code>. Optimizes trade-off between idle channel slots and collisions.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Vulnerable period derivation for Pure vs Slotted ALOHA: 1.5 Marks.</li>
+<li>Explanation of Carrier Sensing mechanism: 1.0 Mark.</li>
+<li>Contrast between 1-persistent, non-persistent, and p-persistent: 1.5 Marks.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 9: CSMA/CD: Operation & Minimum Frame Size Justification</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Explain the operation of CSMA/CD. Why is the minimum frame size of a 10Base5 Ethernet Network strictly 64 bytes? What happens if a station transmits a frame smaller than 64 bytes? [May 2019 CS3025 Q1c, 5M / Nov 2024 IT2266 Q3b, 6M]</div>
+<div><b>1. Step-by-Step CSMA/CD Operation:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Carrier Sense</b>: Station listens to channel before transmission.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Transmit while Listening</b>: If idle, station begins transmitting data bits while <i>continuously monitoring</i> channel voltage levels.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Collision Detection</b>: If another station transmits simultaneously, the two signals interfere, doubling the voltage amplitude on the bus. The transceiver detects this threshold surge.</div>
+<div style="margin:2px 0 2px 10px;">4. <b>Jam Signal</b>: The station immediately aborts transmission and broadcasts a <b>32-to-48 bit Jamming Signal</b> to ensure all other stations recognize the collision.</div>
+<div style="margin:2px 0 2px 10px;">5. <b>Back-Off Execution</b>: Station executes the <b>Binary Exponential Back-Off (BEB)</b> algorithm, waits for <code>K * 51.2 us</code>, and re-senses the channel.</div>
+<div><b>2. Physical Derivation of 64-Byte Minimum Frame:</b></div>
+<div style="margin:3px 0;">* <b>Governing Physical Law</b>: The sender must still be actively transmitting bits when the collision signal from the farthest node on the cable travels all the way back to the sender:</div>
+<div>  <code>T_trans >= 2 <i> T_prop ==> L_min / Bandwidth >= 2 </i> (Distance / Velocity)</code></div>
+<div>  <code>L_min >= 2 <i> T_prop </i> Bandwidth</code></div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Numerical Proof for 10Base5 Ethernet</b>:</div>
+<div style="margin-left:14px;">- Max network span with 4 repeaters = <code>2500 meters</code>.</div>
+<div style="margin-left:14px;">- Velocity of signal in copper cable <code>v approx. 2 x 10^8 m/s</code>.</div>
+<div style="margin-left:14px;">- One-way propagation delay: <code>T_prop = 2500 / (2 x 10^8) = 12.5 us</code>.</div>
+<div style="margin-left:14px;">- Accounting for repeater delays, IEEE 802.3 defines maximum round-trip time: <code>2 * T_prop = 51.2 us</code>.</div>
+<div style="margin-left:14px;">- Transmission Bandwidth: <code>B = 10 Mbps = 10^7 bps</code>.</div>
+<div style="margin-left:14px;">- Minimum Frame Size:</div>
+<div>    <code>L_min = 51.2 us <i> 10 Mbps = 51.2 x 10^(-6) </i> 10^7 = 512 bits = 64 Bytes</code>.</div>
+<div><b>3. What Happens if Frame Size < 64 Bytes?</b></div>
+<div>If a station sends a tiny frame (e.g. 20 Bytes), <code>T_trans</code> finishes before the collision signal arrives from the distant node. The sender assumes the frame was delivered successfully, purges it from its transmit buffer, and fails to invoke back-off or retransmission! The frame is completely lost without upper layers being notified.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>CSMA/CD operational steps and Jam signal: 2.0 Marks.</li>
+<li>Mathematical derivation of <code>T_trans >= 2 * T_prop</code>: 2.0 Marks.</li>
+<li>Consequence of frames smaller than 64 bytes: 1.0 Mark.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 10: CSMA/CA & Wireless Hidden Terminal Solutions</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> How is the CSMA/CA protocol used to avoid collisions in wireless transmission media? Explain the Hidden Terminal and Exposed Terminal problems and how RTS/CTS exchange resolves them. [May 2019 CS3025 Q2a, 8M]</div>
+<div><b>1. Why CSMA/CD Fails in Wireless (Air):</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Signal Attenuation</b>: In RF wireless channels, signal strength drops exponentially with distance (<code>1/d^2</code> to <code>1/d^4</code>). A transmitting antenna produces a local signal thousands of times stronger than any incoming distant signal. A station's own transmitter completely drowns out collision noise, making collision detection during transmission physically impossible.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Hidden Terminal Problem</b>: Station A and Station C can both communicate with central Access Point B, but A and C are out of radio range of each other. When A transmits to B, C cannot sense A's carrier, assumes the air is idle, and transmits to B simultaneously, causing a severe collision at B!</div>
+<div><b>2. The Hidden Terminal Scenario Diagram:</b></div>
+<pre>
+     [Station A] -------------&gt; [AP Node B] &lt;------------- [Station C]
+    (Can reach B)              (In range of             (Can reach B)
+                                 both A & C)
+          \                                                 /
+           \============= A and C cannot hear each other ==/
+                                (HIDDEN TERMINALS)
+</pre>
+<div><b>3. CSMA/CA Resolution via RTS/CTS Handshake:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Carrier Sensing & DIFS</b>: Station A senses medium. When idle for <code>DIFS</code> duration, it sends a tiny <b>RTS (Request to Send)</b> frame containing the requested duration of data transmission.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>CTS Broadcast</b>: AP Node B replies with a <b>CTS (Clear to Send)</b> frame echoing the duration.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Virtual Carrier Sensing via NAV</b>:</div>
+<div>   - Because Station C is in range of Node B, C overhears Node B's CTS frame!</div>
+<div>   - Station C reads the duration field and sets its internal timer called the <b>NAV (Network Allocation Vector)</b>.</div>
+<div>   - Station C suspends all transmission attempts until the NAV timer counts down to zero, even though its local physical carrier sensing suggests the air is silent!</div>
+<div style="margin:2px 0 2px 10px;">4. <b>Data & SIFS ACK</b>: Station A transmits its full data frame unhindered, and Node B confirms reception with an ACK frame after a tiny <code>SIFS</code> (Short Interframe Space).</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Reasons why CSMA/CD fails in wireless: 2.0 Marks.</li>
+<li>Hidden terminal diagram and explanation: 2.5 Marks.</li>
+<li>RTS/CTS frame sequence and NAV virtual carrier sensing: 3.5 Marks.</li>
+</ul></div>
+</div>
+<div class="unit-header">UNIT 4: NETWORK LAYER & ROUTING PROTOCOLS</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 11: IPv4 Header Architecture & Field Breakdown</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Draw the IPv4 Header format. Explain the purpose of each field and explain how IPv4 supports heterogeneous networks through MTU fragmentation. [May 2019 CS3025 Q4b, 8M]</div>
+<div><b>1. IPv4 Header Diagram (32-Bit Word Format):</b></div>
+<pre>
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|Version|  IHL  |Type of Service|          Total Length         |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|         Identification        |Flags|     Fragment Offset     |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|  Time to Live |    Protocol   |        Header Checksum        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                       Source IP Address                       |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                    Destination IP Address                     |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                    Options (0 to 40 Bytes)                    |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</pre>
+<div><b>2. Key Fields Functionality:</b></div>
+<div style="margin:3px 0;">* <b>Version (4 bits)</b>: Specifies IP protocol version (binary <code>0100</code> = IPv4).</div>
+<div style="margin:3px 0;"><i> <b>IHL (Internet Header Length, 4 bits)</b>: Specifies header length in <b>4-byte words</b>. Minimum value = 5 (<code>5 </i> 4 = 20 Bytes</code>); maximum value = 15 (<code>15 * 4 = 60 Bytes</code>).</div>
+<div style="margin:3px 0;">* <b>Type of Service / DSCP & ECN (8 bits)</b>: Quality of service flags, priority, delay/throughput preferences, and Explicit Congestion Notification.</div>
+<div style="margin:3px 0;">* <b>Total Length (16 bits)</b>: Total size of datagram (header + data) in bytes. Maximum possible = <code>65,535 Bytes</code>.</div>
+<div style="margin:3px 0;">* <b>Identification (16 bits)</b>: Unique sequence number assigned by sender to identify all fragments belonging to the same original datagram.</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Flags (3 bits)</b>:</div>
+<div style="margin-left:14px;">- Bit 0: Reserved (must be 0).</div>
+<div style="margin-left:14px;">- Bit 1: <b>DF (Don't Fragment)</b>. If 1, routers cannot fragment packet; if packet exceeds MTU, router drops packet and returns ICMP Type 3 Code 4.</div>
+<div style="margin-left:14px;">- Bit 2: <b>MF (More Fragments)</b>. Set to 1 for all fragments except the last fragment (MF = 0).</div>
+<div style="margin:3px 0;">* <b>Fragment Offset (13 bits)</b>: Specifies position of fragment's data relative to start of original unfragmented payload, measured strictly in <b>8-byte units</b>.</div>
+<div style="margin:3px 0;">* <b>TTL (Time to Live, 8 bits)</b>: Hop count limit. Decremented by 1 at every router hop. Prevents packets from circulating indefinitely during routing loops. When TTL drops to 0, router drops packet and sends ICMP Type 11 (Time Exceeded) back to sender (basis for <code>traceroute</code>).</div>
+<div style="margin:3px 0;">* <b>Protocol (8 bits)</b>: Demultiplexes payload to Transport Layer: <code>1 = ICMP</code>, <code>6 = TCP</code>, <code>17 = UDP</code>, <code>89 = OSPF</code>.</div>
+<div style="margin:3px 0;">* <b>Header Checksum (16 bits)</b>: 16-bit one's complement checksum protecting the header only (recomputed at every hop because TTL decrements).</div>
+<div style="margin:3px 0;">* <b>Source & Destination IP Addresses (32 bits each)</b>: End-to-end logical source and destination addresses.</div>
+<div><b>3. How Header Accommodates Heterogeneous Networks:</b></div>
+<div>Different physical link-layer technologies enforce different Maximum Transmission Units (MTUs) (e.g. Ethernet = 1500B, PPPoE = 1492B, FDDI = 4352B). Through the <b>Identification, Flags, and Fragment Offset</b> fields, intermediate IPv4 routers can transparently slice large datagrams into smaller fragments tailored to downstream MTUs, allowing arbitrary heterogeneous networks to interoperate seamlessly.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Neat 32-bit layout diagram: 2.0 Marks.</li>
+<li>Explanation of fields (especially IHL, TTL, Protocol, Offset): 4.0 Marks.</li>
+<li>Explanation of heterogeneous MTU fragmentation: 2.0 Marks.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 12: IPv4 vs IPv6 Architectural Comparison</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Compare IPv4 and IPv6 protocol architectures. Why does IPv6 eliminate header checksums and router-level fragmentation? [Practice Pattern]</div>
+<div><b>Detailed Architectural Comparison Table:</b></div>
+<table>
+<tr><th>Feature</th><th>IPv4</th><th>IPv6</th></tr>
+<tr><td><b>Address Length</b></td><td>32 bits (4.29 billion addresses, exhausted)</td><td><b>128 bits</b> ($3.4 \times 10^{38}$ addresses, infinite)</td></tr>
+<tr><td><b>Address Notation</b></td><td>Dotted-decimal: <code>192.168.1.1</code></td><td>Hexadecimal colon: <code>2001:0db8:85a3::8a2e:0370:7334</code></td></tr>
+<tr><td><b>Base Header Size</b></td><td>Variable: <b>20 to 60 Bytes</b> (depends on IHL/Options)</td><td><b>Fixed 40 Bytes</b> (8 streamlined fields)</td></tr>
+<tr><td><b>Header Checksum</b></td><td><b>Present</b> (recalculated at every hop)</td><td><b>ELIMINATED</b> (relies on L2 CRC and L4 TCP/UDP checksums)</td></tr>
+<tr><td><b>Router Fragmentation</b></td><td><b>Supported</b> (intermediate routers fragment)</td><td><b>PROHIBITED</b> (Source-only fragmentation via PMTUD)</td></tr>
+<tr><td><b>Options Handling</b></td><td>Embedded inside variable base header</td><td>Daisy-chained <b>Extension Headers</b> via <code>Next Header</code> field</td></tr>
+<tr><td><b>Address Resolution</b></td><td>Uses <b>ARP</b> (broadcast-heavy)</td><td>Replaced by <b>ICMPv6 Neighbor Discovery (NDP)</b> (multicast)</td></tr>
+<tr><td><b>Host Auto-Configuration</b></td><td>Manual static or stateful <b>DHCP</b></td><td>Supports stateless auto-configuration (<b>SLAAC</b>)</td></tr>
+<tr><td><b>Broadcast Support</b></td><td>Native Broadcast (<code>255.255.255.255</code>)</td><td><b>ELIMINATED</b> (replaced by targeted Multicast & Anycast)</td></tr>
+</table>
+<div><b>Engineering Justifications for IPv6 Innovations:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Elimination of Header Checksum</b>: In modern fiber/copper links, Layer 2 (Ethernet CRC-32) and Layer 4 (TCP/UDP checksum) already provide robust integrity checks. Recomputing checksums at every intermediate router was a severe CPU bottleneck that prevented routers from achieving line-speed forwarding. Removing it enables blazing-fast hardware routing.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Elimination of Router Fragmentation</b>: Slicing packets in software at intermediate routers consumed massive router memory and caused packet buffer bloat. IPv6 forces hosts to use <b>Path MTU Discovery (PMTUD)</b>: sender transmits packets of increasing size and listens for ICMPv6 "Packet Too Big" messages to determine the optimal MTU upfront.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Comparison table with at least 5 key parameters: 2.5 Marks.</li>
+<li>Justification for removing header checksum: 1.5 Marks.</li>
+<li>Justification for eliminating router fragmentation: 1.0 Mark.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 13: Address Resolution Protocol (ARP) Operation</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Give the packet format of ARP protocol. How does ARP support address resolution within an Intranet? What is Gratuitous ARP and ARP Spoofing? [May 2019 CS3025 Q3c, 5M]</div>
+<div><b>1. ARP Packet Structure:</b></div>
+<pre>
++--------------------------------+--------------------------------+
+|  Hardware Type (Ethernet = 1)  |   Protocol Type (IPv4 = 0800)  |
++--------------------------------+--------------------------------+
+| HLEN (MAC = 6) | PLEN (IP = 4) |    Operation (1=Req, 2=Reply)  |
++--------------------------------+--------------------------------+
+|                 Sender Hardware Address (MAC, Bytes 0-3)        |
++--------------------------------+--------------------------------+
+| Sender MAC (Bytes 4-5)         | Sender Protocol Address (IP 0-1|
++--------------------------------+--------------------------------+
+| Sender IP (Bytes 2-3)          | Target Hardware Address (MAC)  |
++--------------------------------+--------------------------------+
+| Target MAC (Bytes 2-5)                                          |
++--------------------------------+--------------------------------+
+|                 Target Protocol Address (IP, Bytes 0-3)         |
++--------------------------------+--------------------------------+
+</pre>
+<div><b>2. Address Resolution Mechanism:</b></div>
+<div>• When Host A (<code>192.168.1.10</code>) wants to deliver a packet to Host B (<code>192.168.1.20</code>) on the same subnet, it checks its local in-memory <b>ARP Cache</b>.</div>
+<div>• On cache miss, Host A broadcasts an <b>ARP Request</b>:</div>
+<div style="margin-left:14px;">- Ethernet Frame Dest: <code>FF:FF:FF:FF:FF:FF</code> (Broadcast).</div>
+<div style="margin-left:14px;">- Message: <i>"Who has IP 192.168.1.20? Tell 192.168.1.10."</i></div>
+<div>• Every station receives the broadcast. All stations inspect the target IP and drop the packet, except Host B.</div>
+<div>• Host B sends back a unicast <b>ARP Reply</b> directly to Host A's MAC address:</div>
+<div style="margin-left:14px;">- Message: <i>"I have 192.168.1.20; my MAC is 00:1A:2B:3C:4D:5E."</i></div>
+<div>• Host A caches the IP-to-MAC mapping and encapsulates the IP datagram into an Ethernet frame.</div>
+<div><b>3. Gratuitous ARP & ARP Spoofing:</b></div>
+<div style="margin:3px 0;"><i> <b>Gratuitous ARP</b>: A host broadcasts an ARP request for its </i>own* IP address upon bootup. Purposes: (1) Detects duplicate IP address conflicts on the subnet; (2) Updates neighbor switches' CAM tables after NIC replacement.</div>
+<div style="margin:3px 0;">* <b>ARP Spoofing / Poisoning</b>: ARP is stateless and has zero authentication. An attacker broadcasts forged ARP replies linking the Default Gateway's IP to the attacker's MAC address. All subnet hosts redirect their external Internet traffic through the attacker's machine, enabling Man-in-the-Middle (MITM) eavesdropping. Mitigation: <b>Dynamic ARP Inspection (DAI)</b> on switches.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>ARP packet fields diagram: 1.5 Marks.</li>
+<li>Step-by-step resolution flow (Broadcast Request, Unicast Reply): 2.0 Marks.</li>
+<li>Gratuitous ARP and ARP spoofing explanation: 1.5 Marks.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 14: Distance Vector Routing & Count-to-Infinity Problem</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Explain the working of Distance Vector Routing. Describe the Count-to-Infinity problem with a diagram and explain how Split Horizon and Poison Reverse resolve it. Why is RIP limited to 15 hops? [May 2019 CS3025 Q6b, 5M / Nov 2024 IT2266 Q4a]</div>
+<div><b>1. Working Mechanism:</b></div>
+<div>Distance Vector (Bellman-Ford) routing operates on the distributed principle: <i>"Tell your neighbors about the entire world."</i> Each router maintains a routing table containing destination, cost, and next-hop. Periodically (every 30s in RIP), every router broadcasts its entire routing table to its immediate physical neighbors only.</div>
+<div><b>2. The Count-to-Infinity Problem:</b></div>
+<pre>
+     [Node A] &lt;----(1)----&gt; [Node B] &lt;----(1)----&gt; [Node C]
+</pre>
+<div style="margin:2px 0 2px 10px;">1. Initially, link costs are: <code>A-B = 1</code>, <code>B-C = 1</code>. Router B reaches A with cost 1; Router C reaches A via B with cost 2.</div>
+<div style="margin:2px 0 2px 10px;">2. Suppose the physical link <code>A-B</code> breaks.</div>
+<div style="margin:2px 0 2px 10px;">3. Router B immediately knows A is unreachable (<code>cost = infinity</code>).</div>
+<div style="margin:2px 0 2px 10px;">4. However, before B can propagate this, Router C advertises its vector claiming: <i>"I can reach A with cost 2."</i></div>
+<div style="margin:2px 0 2px 10px;">5. Router B receives this outdated rumor, mistakenly assumes an alternate path to A exists through C, and updates: <code>Dist(A) = 2 + 1 = 3 via C</code>.</div>
+<div style="margin:2px 0 2px 10px;">6. On the next cycle, C hears B has cost 3, so C updates: <code>Dist(A) = 3 + 1 = 4 via B</code>.</div>
+<div style="margin:2px 0 2px 10px;">7. The two routers bounce packets back and forth, slowly incrementing the metric (<code>5, 6, 7...</code>) in a routing loop until it counts to infinity!</div>
+<div><b>3. Solutions:</b></div>
+<div style="margin:3px 0;">* <b>Split Horizon</b>: A router must <b>never advertise a route back out the same physical interface</b> through which it learned that route! (C learned about A from B, so C will never advertise A to B).</div>
+<div style="margin:3px 0;"><i> <b>Poison Reverse</b>: An aggressive enhancement to Split Horizon. Instead of omitting the route, C advertises the route back to B with an explicit metric of <b>Infinity (<code>16</code>)</b>: </i>"I can reach A via you, so for you, my cost to A is infinity."* This immediately breaks the two-node loop.</div>
+<div style="margin:3px 0;">* <b>Why RIP is Restricted to 15 Hops</b>: To ensure that if a loop does occur, the Count-to-Infinity process terminates in reasonable time. A metric of <b>16 denotes infinity (unreachable)</b>, limiting RIP strictly to small autonomous local networks.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Distance Vector basic update rule: 1.0 Mark.</li>
+<li>Clear step-by-step diagram of Count-to-Infinity: 2.0 Marks.</li>
+<li>Split Horizon & Poison Reverse mechanisms: 1.5 Marks.</li>
+<li>Reason for 15-hop limit in RIP: 0.5 Mark.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 15: Link State Routing (Dijkstra SPF) & OSPF Architecture</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Explain Link State Routing. How does OSPF establish routing tables using Dijkstra's Shortest Path First algorithm? Differentiate between Distance Vector and Link State protocols. [May 2019 CS3025 Q5b, 8M]</div>
+<div><b>1. Working Principle of Link State Routing:</b></div>
+<div>Link State routing operates on the complementary principle: <i>"Tell the entire world about your immediate neighbors."</i></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Neighbor Discovery</b>: Routers exchange <code>HELLO</code> packets to detect active neighbors.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Link State Packet (LSP) Generation</b>: Each router constructs a compact LSP containing its ID, directly attached neighbors, and current link costs.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Reliable Flooding</b>: Routers flood LSPs to all routers in the autonomous system using reliable flooding.</div>
+<div style="margin:2px 0 2px 10px;">4. <b>LSDB Synchronization</b>: Every router compiles an identical graph of the entire network topology called the <b>Link State Database (LSDB)</b>.</div>
+<div style="margin:2px 0 2px 10px;">5. <b>Dijkstra SPF Execution</b>: Each router independently executes Dijkstra's Shortest Path First algorithm using itself as the root to compute a loop-free Shortest Path Tree and formulate its IP forwarding table.</div>
+<div><b>2. OSPF Hierarchical Architecture:</b></div>
+<div>To scale across massive enterprise networks, OSPF divides the autonomous system into <b>Areas</b>:</div>
+<div style="margin:3px 0;">* <b>Backbone Area (Area 0)</b>: The core transit area connecting all other areas.</div>
+<div style="margin:3px 0;">* <b>Internal Routers</b>: All interfaces belong to a single non-backbone area.</div>
+<div style="margin:3px 0;">* <b>Area Border Routers (ABRs)</b>: Routers attached to both Area 0 and a non-backbone area; aggregate and summarize topology information.</div>
+<div style="margin:3px 0;">* <b>Autonomous System Boundary Routers (ASBRs)</b>: Routers that exchange routing information with external networks (e.g. BGP).</div>
+<div><b>3. Distance Vector vs Link State Comparison:</b></div>
+<table>
+<tr><th>Parameter</th><th>Distance Vector (RIP)</th><th>Link State (OSPF)</th></tr>
+<tr><td><b>Topology View</b></td><td>Blind (knows only neighbor rumors)</td><td>Complete global map (identical LSDB)</td></tr>
+<tr><td><b>Routing Algorithm</b></td><td>Bellman-Ford</td><td>Dijkstra Shortest Path First (SPF)</td></tr>
+<tr><td><b>Exchange Scope</b></td><td>Entire table sent to immediate neighbors only</td><td>Small LSPs flooded to all routers</td></tr>
+<tr><td><b>Convergence Speed</b></td><td>Very slow (suffers Count-to-Infinity)</td><td>Extremely fast (converges in seconds)</td></tr>
+<tr><td><b>Loop Vulnerability</b></td><td>High (routing loops can form)</td><td>Loop-free (Dijkstra tree has no cycles)</td></tr>
+<tr><td><b>Resource Usage</b></td><td>Low CPU and memory</td><td>High memory (LSDB) and CPU (SPF recalculation)</td></tr>
+<tr><td><b>Metric Used</b></td><td>Hop count strictly (max 15)</td><td>Cost based on bandwidth: <code>10^8 / Bandwidth</code></td></tr>
+</table>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>5 steps of Link State operation: 2.5 Marks.</li>
+<li>OSPF hierarchical areas (Area 0, ABR, ASBR): 2.5 Marks.</li>
+<li>Comparison table with at least 4 parameters: 3.0 Marks.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 16: Traffic Shaping: Leaky Bucket vs Token Bucket</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Explain traffic shaping techniques. Compare Leaky Bucket and Token Bucket algorithms. How does a token bucket accommodate bursty traffic while maintaining an average rate? [May 2019 / Practice Pattern]</div>
+<div><b>1. Concepts & Diagrams:</b></div>
+<pre>
+       LEAKY BUCKET ALGORITHM                   TOKEN BUCKET ALGORITHM
+    +--------------------------+             +--------------------------+
+    |   Bursty Packet Input    |             |  Token Generator (Rate r)|
+    +--------------------------+             +--------------------------+
+                 |                                         |
+          +------v------+                           +------v------+
+          | \          / |                          | \  Tokens  / | (Capacity b)
+          |  \ Buffer /  |                          |  \________/  |
+          |   \______/   |                          +------+-------+
+          +------+-------+                                 |
+                 | (Fixed Leak Hole)                +------v------+
+          +------v------+                           | Bursty Data | Token matches
+          | Strict Constant                         | Packet Queue| packet size
+          | Smooth Rate R |                         +------+-------+
+          +-------------+                                  |
+                                                    +------v------+
+                                                    | Controlled  |
+                                                    | Bursts Out  |
+                                                    +-------------+
+</pre>
+<div><b>2. Detailed Comparison:</b></div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Leaky Bucket</b>:</div>
+<div style="margin-left:14px;">- Treats packets like water entering a bucket with a fixed hole at the bottom.</div>
+<div style="margin-left:14px;">- Regardless of how bursty the incoming traffic is, the output rate is strictly <b>constant and uniform</b>.</div>
+<div style="margin-left:14px;">- If incoming bursts exceed the bucket capacity, excess packets overflow and are discarded.</div>
+<div style="margin-left:14px;">- <i>Drawback</i>: Completely suppresses bursts even when the downstream network has ample idle capacity. Unsuitable for bursty web/file traffic.</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Token Bucket</b>:</div>
+<div style="margin-left:14px;">- The bucket holds <b>tokens</b> generated at a constant rate <code>r</code> tokens/sec up to capacity <code>b</code>.</div>
+<div style="margin-left:14px;">- When a packet arrives, it consumes tokens proportional to its byte length and transmits immediately.</div>
+<div style="margin-left:14px;">- If the bucket is full of tokens, a burst of accumulated packets can transmit at the maximum physical link rate <code>M</code> for a duration of <code>S = b / (M - r)</code>.</div>
+<div style="margin-left:14px;">- When tokens are exhausted, traffic is throttled to the average arrival rate <code>r</code>.</div>
+<div style="margin-left:14px;">- <i>Advantage</i>: Perfectly accommodates bursty applications without dropping packets while enforcing a strict long-term average bandwidth limit.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Clean diagrams of Leaky vs Token Bucket: 2.0 Marks.</li>
+<li>Explanation of burst handling and average rate enforcement: 2.0 Marks.</li>
+<li>Mathematical formula for burst duration <code>S = b / (M - r)</code>: 1.0 Mark.</li>
+</ul></div>
+</div>
+<div class="unit-header">UNIT 5: TRANSPORT LAYER & CONGESTION CONTROL</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 17: TCP vs UDP Protocol Architectures</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Compare TCP and UDP in detail. Explain the scenarios where UDP is preferred over TCP despite having no flow or error control. [Nov 2024 IT2266 Q5a, Q5b, 4M / May 2019 CS3025 Q4d, 3M]</div>
+<div><b>1. Comparative Analysis Matrix:</b></div>
+<table>
+<tr><th>Feature</th><th>TCP (Transmission Control Protocol)</th><th>UDP (User Datagram Protocol)</th></tr>
+<tr><td><b>Connection Model</b></td><td>Connection-oriented (requires 3-way handshake)</td><td>Connectionless (sends immediately with 0 setup)</td></tr>
+<tr><td><b>Reliability</b></td><td>100% reliable (acknowledgments, retransmissions)</td><td>Best-effort (no ACKs, packets can drop/duplicate)</td></tr>
+<tr><td><b>Data Stream Format</b></td><td>Continuous, unstructured <b>Byte Stream</b></td><td>Discrete, independent <b>Datagram Messages</b></td></tr>
+<tr><td><b>Ordering</b></td><td>In-order guaranteed (sequence numbers reorder)</td><td>No ordering (packets can arrive out-of-order)</td></tr>
+<tr><td><b>Flow & Congestion</b></td><td>Full sliding window flow control + AIMD congestion</td><td><b>None</b> (injects packets as fast as app generates)</td></tr>
+<tr><td><b>Header Overhead</b></td><td><b>20 to 60 Bytes</b> (complex flags and options)</td><td>Fixed <b>8 Bytes</b> strictly (minimal overhead)</td></tr>
+<tr><td><b>Communication</b></td><td>Strictly Point-to-Point Unicast (1 sender, 1 receiver)</td><td>Supports Unicast, Multicast, and Broadcast</td></tr>
+<tr><td><b>Speed & Latency</b></td><td>Higher latency (handshake RTTs + retransmissions)</td><td>Extremely fast and low latency</td></tr>
+</table>
+<div><b>2. Why UDP is Preferred in Modern Applications:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Real-Time Multimedia Streaming (VoIP, Video Conferences, Online Games)</b>: Human ears and eyes tolerate 1-2% packet loss without noticeable disruption. However, TCP's retransmission delays cause audio freezing, stutter, and intolerable lag. Dropping a lost audio packet is far better than playing it 500 ms late!</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Simple Request-Response Protocols (DNS, DHCP, NTP)</b>: The transaction takes a single request and a single response. Performing a 3-way TCP handshake (3 packets) to send a 50-byte DNS query wastes bandwidth and introduces unnecessary RTT latency.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Broadcasting & Discovery</b>: Routing protocols (RIP), address configuration (DHCP), and LAN discovery require broadcasting to <code>255.255.255.255</code>, which TCP cannot do.</div>
+<div style="margin:2px 0 2px 10px;">4. <b>Custom Reliability in User-Space (QUIC / HTTP/3)</b>: QUIC runs over UDP Port 443, implementing modern encryption (TLS 1.3) and independent multiplexed streams without TCP Head-of-Line blocking.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Comparison table with at least 5 key parameters: 2.0 Marks.</li>
+<li>Justification of why UDP is chosen for real-time and DNS/DHCP: 2.0 Marks.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 18: TCP 3-Way Handshake & The Delayed Duplicate FIN Mystery</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Illustrate the TCP 3-Way Handshake with a neat sequence ladder diagram. Why is a 2-way handshake insufficient? Suppose a FIN packet from an old closed connection is delayed and delivered to a new connection on the same socket pair; will TCP terminate the new connection? Justify. [May 2019 CS3025 Q4a, 8M / Nov 2024 IT2266 Q4b-OR, 4M]</div>
+<div><b>1. TCP 3-Way Handshake Sequence Diagram:</b></div>
+<pre>
+  Client Host                                          Server Host
+       |                                                    |
+       |  1. [SYN] Seq = x                                  |
+       |---------------------------------------------------&gt;| (Allocates TCB memory,
+       |                                                    |  sets state to SYN_RCVD)
+       |  2. [SYN + ACK] Seq = y, Ack = x + 1               |
+       |&lt;---------------------------------------------------|
+       |                                                    |
+       |  3. [ACK] Seq = x + 1, Ack = y + 1                 |
+       |---------------------------------------------------&gt;|
+ (ESTABLISHED)                                        (ESTABLISHED)
+       |                                                    |
+       |============= Bidirectional Byte Stream ===========&gt;|
+</pre>
+<div><b>2. Why a 2-Way Handshake Fails:</b></div>
+<div>In a 2-way handshake, the connection would be established as soon as the server sends segment 2.</div>
+<div>• <i>The Zombie Connection Disaster</i>: Suppose Client A sends a <code>SYN</code> that gets delayed inside congested network routers. Client A times out, abandons the request, and closes. Hours later, the delayed duplicate <code>SYN</code> finally arrives at Server B. Under a 2-way handshake, Server B replies with <code>SYN+ACK</code> and immediately enters <code>ESTABLISHED</code>, allocating memory and socket buffers for a client that has long ceased to exist! This creates a <b>half-open zombie connection</b> that ties up server resources indefinitely.</div>
+<div>• In a 3-way handshake, Server B must wait for Client A's final ACK. When Client A receives an unexpected <code>SYN+ACK</code>, it rejects it with a <code>RST</code> (Reset) packet, terminating the zombie session.</div>
+<div><b>3. The Delayed Duplicate FIN Puzzle (Nov 2024 Exam Question):</b></div>
+<div style="margin:3px 0;">* <b>The Question</b>: If a duplicate <code>FIN</code> from connection 1 is delayed in the network and arrives after connection 2 is established between the same two hosts on the same port pair, will TCP terminate the new connection?</div>
+<div style="margin:3px 0;">* <b>The Answer</b>: <b>NO, TCP WILL NOT TERMINATE THE NEW CONNECTION!</b></div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Technical Justification</b>:</div>
+<div>  1. <b>Clock-Driven Initial Sequence Numbers (ISNs)</b>: TCP endpoints do not start connections at sequence number 0. Modern TCP implementations (RFC 6528) use a 4-microsecond clock-driven PRNG generator. The delayed duplicate <code>FIN</code> carries a sequence number belonging to the <i>old</i> connection's sequence space, which falls completely outside the valid receive window (<code>rcv_wnd</code>) of the new connection. TCP silently discards out-of-window control segments.</div>
+<div>  2. <b>TIME_WAIT State Protection ($2 \times \text{MSL}$)</b>: The actively closing endpoint of the first connection is quarantined in the <code>TIME_WAIT</code> state for $2 \times \text{Maximum Segment Lifetime}$ (typically 120 seconds) before the port tuple can be reused. This guarantees that all delayed wandering duplicate segments die inside network router buffers before a new connection can open.</div>
+<div>  3. <b>Ephemeral Port Allocation</b>: The OS binds a new, different ephemeral port number for the second connection, making the 4-tuple mismatch entirely.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Clean 3-way handshake diagram with Seq/Ack numbers: 2.0 Marks.</li>
+<li>Explanation of why 2-way handshake creates half-open zombie sessions: 2.0 Marks.</li>
+<li>Delayed FIN analysis (ISN window check + TIME_WAIT): 4.0 Marks.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 19: Silly Window Syndrome (SWS): Nagle's & Clark's Solutions</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> What is Silly Window Syndrome? How does it degrade network performance? Explain Nagle's Algorithm at the sender and Clark's Solution at the receiver. [Practice Pattern]</div>
+<div><b>1. The Problem Statement:</b></div>
+<div>Silly Window Syndrome is a serious performance degradation in TCP where data is transmitted in tiny, micro-sized chunks (e.g. 1 byte of payload) wrapped in full 40-byte TCP/IP headers.</div>
+<div style="margin:3px 0;">* <b>Sender-Driven SWS</b>: An application generates data 1 byte at a time (e.g. keystrokes in Telnet). If TCP sends each byte immediately, network efficiency drops to:</div>
+<div>  <code>Efficiency = 1 Byte / (20B IP + 20B TCP + 1B Data) = 1 / 41 = 2.44%</code>!</div>
+<div>  Over 97.5% of network bandwidth is consumed by pure protocol overhead!</div>
+<div style="margin:3px 0;">* <b>Receiver-Driven SWS</b>: A slow receiver reads data 1 byte at a time from its buffer. As soon as 1 byte is freed, it advertises <code>rwnd = 1</code> to the sender, tempting the sender to immediately transmit another 1-byte segment.</div>
+<div><b>2. The Solutions:</b></div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Nagle's Algorithm (Sender-Side Solution)</b>:</div>
+<div style="margin-left:14px;">- If the application generates data in small chunks:</div>
+<div>    1. Send the first small chunk immediately.</div>
+<div>    2. Buffer all subsequent application bytes until <b>either</b>:</div>
+<div>       - The accumulated data fills a full <b>MSS (Maximum Segment Size)</b>, OR</div>
+<div>       - The sender receives an ACK for the previously transmitted segment.</div>
+<div style="margin-left:14px;">- Automatically adapts: on fast links with low RTT, ACKs return quickly and data flows smoothly; on congested slow links, data accumulates into large, efficient full-MSS packets.</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Clark's Solution (Receiver-Side Solution)</b>:</div>
+<div style="margin-left:14px;">- Prevents the receiver from advertising small window increments.</div>
+<div style="margin-left:14px;">- The receiver is forced to advertise <code>rwnd = 0</code> (window closed) until its internal receive buffer has freed up at least:</div>
+<div>    <code>Free Buffer >= min(MSS, Total Buffer Size / 2)</code>.</div>
+<div style="margin-left:14px;">- Once this threshold is crossed, the receiver sends a window update advertising a large, respectable window.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Definition and 2.44% efficiency calculation: 1.5 Marks.</li>
+<li>Nagle's algorithm rule (MSS or previous ACK): 1.5 Marks.</li>
+<li>Clark's solution rule (min of MSS or half buffer): 1.0 Mark.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 20: TCP Congestion Control State Machine: Tahoe vs Reno</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Explain TCP Congestion Control using AIMD (Additive Increase Multiplicative Decrease). Trace the states: Slow Start, Congestion Avoidance, Fast Retransmit, and Fast Recovery. Contrast TCP Tahoe and TCP Reno. [Nov 2024 / Practice Pattern]</div>
+<div><b>1. AIMD State Machine Diagram:</b></div>
+<pre>
+     cwnd (MSS)
+         |                                  Timeout (Drops to 1)
+      16 |                  +-----+          /
+         |                 /       \        /
+      12 |                /         \      /
+         |               /           +----+ (Reno Fast Recovery to ssthresh=8)
+       8 |       +------+  ssthresh=8 \
+         |      / (Slow Start)         \
+       4 |     /                        \
+       1 +----+                          +----+
+         +----------------------------------------&gt; Time (RTTs)
+</pre>
+<div><b>2. State-by-State Breakdown:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Slow Start</b>:</div>
+<div>   - Initial state: <code>cwnd = 1 MSS</code>.</div>
+<div>   - For every ACK received, <code>cwnd</code> increases by <code>1 MSS</code> (doubles every RTT: $1 \to 2 \to 4 \to 8$).</div>
+<div>   - Continues exponential growth until <code>cwnd >= ssthresh</code> (slow-start threshold).</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Congestion Avoidance</b>:</div>
+<div>   - Entered when <code>cwnd >= ssthresh</code>.</div>
+<div>   - Growth switches from exponential to conservative <b>linear growth</b>: <code>cwnd</code> increases by <code>1 MSS</code> per RTT (Additive Increase).</div>
+<div>   - Probes for available bandwidth safely without inducing packet loss.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Loss Event via Timeout (Severe Congestion)</b>:</div>
+<div>   - When a retransmission timer expires:</div>
+<div>     - <code>ssthresh = max(cwnd / 2, 2 MSS)</code>.</div>
+<div>     - Reset <code>cwnd = 1 MSS</code>.</div>
+<div>     - Enter <b>Slow Start</b> immediately (applies to both Tahoe and Reno).</div>
+<div style="margin:2px 0 2px 10px;">4. <b>Loss Event via 3 Duplicate ACKs (Mild Congestion / Isolated Drop)</b>:</div>
+<div>   - When 3 duplicate ACKs arrive, the sender knows packets are still flowing through the network (triggering Fast Retransmit of the missing packet).</div>
+<div>   - <b>TCP Tahoe Behavior</b>: Drops <code>cwnd = 1 MSS</code> and reverts to Slow Start (wastefully penalizing throughput).</div>
+<div>   - <b>TCP Reno Behavior (Fast Recovery)</b>:</div>
+<div>     - <code>ssthresh = cwnd / 2</code>.</div>
+<div>     - Sets <b><code>cwnd = ssthresh</code></b> (or <code>ssthresh + 3 MSS</code>).</div>
+<div>     - Stays directly in <b>Congestion Avoidance</b> without dropping to 1! This prevents throughput collapse on isolated packet drops.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Explanation of Slow Start and Congestion Avoidance: 2.0 Marks.</li>
+<li>Mathematical rules for Timeout vs 3 Duplicate ACKs: 1.5 Marks.</li>
+<li>Precise distinction between Tahoe (drops to 1) and Reno (Fast Recovery): 1.5 Marks.</li>
+</ul></div>
+</div>
+<div class="unit-header">UNIT 6: APPLICATION LAYER & EMERGING PROTOCOLS</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 21: Domain Name System (DNS) Architecture & Resolution</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Explain the hierarchical architecture of DNS. Illustrate how <code>www.vit.edu</code> is resolved into an IP address using recursive and iterative queries. Describe A, AAAA, CNAME, and MX resource records. [Nov 2024 IT2266 Q6a, 4M / May 2019 CS3025 Q4c, 5M]</div>
+<div><b>1. Hierarchical Tree Architecture:</b></div>
+<pre>
+                           [Root DNS Servers "."]
+                                     |
+               +---------------------+---------------------+
+               |                     |                     |
+          [.com TLD]            [.edu TLD]            [.org TLD]
+               |                     |                     |
+         [google.com]           [vit.edu]             [ieee.org]
+                                     |
+                               [www.vit.edu]
+</pre>
+<div><b>2. Step-by-Step Resolution of <code>www.vit.edu</code>:</b></div>
+<div style="margin:2px 0 2px 10px;">1. Client checks local browser cache, OS resolver cache, and <code>hosts</code> file.</div>
+<div style="margin:2px 0 2px 10px;">2. Client issues a <b>Recursive Query</b> to the campus Local DNS Server (LDNS). (In recursive query, the burden of finding the answer is entirely placed on the queried server).</div>
+<div style="margin:2px 0 2px 10px;">3. LDNS issues an <b>Iterative Query</b> to one of the 13 global Root DNS Servers (<code>.</code>). Root server returns a referral NS record pointing to the <b><code>.edu</code> Top-Level Domain (TLD) Name Servers</b>.</div>
+<div style="margin:2px 0 2px 10px;">4. LDNS queries the <code>.edu</code> TLD Server. The TLD server returns a referral pointing to the <b>Authoritative DNS Server for <code>vit.edu</code></b>.</div>
+<div style="margin:2px 0 2px 10px;">5. LDNS queries the Authoritative Name Server for <code>vit.edu</code>.</div>
+<div style="margin:2px 0 2px 10px;">6. The Authoritative Server returns the <b><code>A</code> Record</b>: <code>www.vit.edu -> 103.14.120.5</code> with a Time-to-Live (TTL) value.</div>
+<div style="margin:2px 0 2px 10px;">7. LDNS caches the record in memory and returns the IP address to the client.</div>
+<div><b>3. Resource Record (RR) Types:</b></div>
+<div style="margin:3px 0;">* <b><code>A</code> Record</b>: Maps a canonical hostname to a 32-bit <b>IPv4 address</b> (e.g. <code>vit.edu -> 103.14.120.5</code>).</div>
+<div style="margin:3px 0;">* <b><code>AAAA</code> ("Quad-A") Record</b>: Maps a hostname to a 128-bit <b>IPv6 address</b>.</div>
+<div style="margin:3px 0;">* <b><code>CNAME</code> (Canonical Name)</b>: Alias pointing one domain name to another domain name (e.g. <code>web.vit.edu CNAME www.vit.edu</code>).</div>
+<div style="margin:3px 0;">* <b><code>MX</code> (Mail Exchanger)</b>: Specifies the mail server responsible for receiving emails for the domain along with a priority integer.</div>
+<div style="margin:3px 0;">* <b><code>PTR</code> (Pointer Record)</b>: Used in reverse DNS lookups to map an IP address back to its hostname.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Hierarchical tree diagram: 1.0 Mark.</li>
+<li>Step-by-step resolution flow with recursive vs iterative distinction: 2.0 Marks.</li>
+<li>Explanation of A, AAAA, CNAME, and MX records: 1.0 Mark.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 22: HTTP Evolution: HTTP/1.0 vs HTTP/1.1 vs HTTP/2 vs HTTP/3 (QUIC)</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Trace the evolution of HTTP from HTTP/1.0 to HTTP/3. Explain persistent connections, pipelining, multiplexing, and how HTTP/3 over QUIC solves Head-of-Line blocking. [Nov 2024 IT2266 Q6b, 3M / Practice Pattern]</div>
+<div><b>Evolutionary Comparison Matrix:</b></div>
+<table>
+<tr><th>Feature</th><th>HTTP/1.0</th><th>HTTP/1.1</th><th>HTTP/2</th><th>HTTP/3</th></tr>
+<tr><td><b>Transport Layer</b></td><td>TCP Port 80</td><td>TCP Port 80</td><td>TCP Port 443</td><td><b>QUIC over UDP Port 443</b></td></tr>
+<tr><td><b>Connection Model</b></td><td><b>Non-Persistent</b>: 1 TCP connection per object</td><td><b>Persistent</b>: Single long-lived connection</td><td><b>Persistent</b>: Single long-lived connection</td><td><b>Connectionless UDP</b>: 0-RTT/1-RTT setup</td></tr>
+<tr><td><b>Handshake Latency</b></td><td>$2 \times \text{RTT}$ per object</td><td>$2 \times \text{RTT}$ initially, $1 \times \text{RTT}$ subsequent</td><td>$2 \times \text{RTT}$ initially</td><td><b>0-RTT to 1-RTT</b> (built-in TLS 1.3)</td></tr>
+<tr><td><b>Framing Format</b></td><td>Plain Text ASCII</td><td>Plain Text ASCII</td><td><b>Binary Framing Layer</b></td><td><b>Binary Framing over QUIC</b></td></tr>
+<tr><td><b>Multiplexing</b></td><td>None</td><td>Pipelining (rarely deployed)</td><td><b>True Stream Multiplexing</b></td><td><b>Independent Non-Blocking Streams</b></td></tr>
+<tr><td><b>Head-of-Line (HoL) Blocking</b></td><td>Severe at TCP layer</td><td>Severe at HTTP layer (serial responses)</td><td>Eliminated at HTTP layer; <b>Stuck at TCP layer</b></td><td><b>COMPLETELY ELIMINATED</b> across all layers</td></tr>
+<tr><td><b>Header Compression</b></td><td>None</td><td>None</td><td><b>HPACK</b></td><td><b>QPACK</b></td></tr>
+<tr><td><b>Connection Migration</b></td><td>Drops on IP switch</td><td>Drops on IP switch</td><td>Drops on IP switch</td><td><b>Seamless</b> (tracked by 64-bit Connection ID)</td></tr>
+</table>
+<div><b>Understanding Head-of-Line (HoL) Blocking:</b></div>
+<div>• In <b>HTTP/1.1</b>, responses had to be delivered in the strict serial order of their requests. If request 1 took a long time, requests 2 and 3 were blocked behind it.</div>
+<div>• In <b>HTTP/2</b>, application streams are multiplexed into binary frames over a single TCP socket. However, because TCP enforces strict byte-stream ordering, if a single IP packet carrying frames for Stream 1 is dropped in the network, TCP halts delivery of <i>all</i> other streams until the lost packet is retransmitted! This is <b>Transport-Layer HoL Blocking</b>.</div>
+<div>• In <b>HTTP/3 (QUIC)</b>, each stream is independent. If a packet in Stream 1 is lost, only Stream 1 pauses; Streams 2, 3, and 4 continue rendering without delay!</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Evolution steps (HTTP/1.0 to 1.1 persistence, HTTP/2 multiplexing, HTTP/3 QUIC): 2.0 Marks.</li>
+<li>Explanation of Head-of-Line blocking resolution: 1.0 Mark.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 23: Dynamic Host Configuration Protocol (DHCP) & DORA Process</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> How does DHCP automatically assign an IP address to a client laptop? Explain the 4-step DORA process with packet directions and port numbers. [Nov 2024 IT2266 Q5c, 4M / May 2019 CS3025 Q5c, 5M]</div>
+<div><b>1. The 4-Step DORA Protocol Sequence:</b></div>
+<pre>
+     Client (Port 68)                                   DHCP Server (Port 67)
+           |                                                      |
+           |  1. DHCP DISCOVER (Broadcast)                        |
+           |  Src: 0.0.0.0:68  Dest: 255.255.255.255:67           |
+           |-----------------------------------------------------&gt;|
+           |                                                      |
+           |  2. DHCP OFFER (Unicast / Broadcast)                 |
+           |  Offered IP, Mask, Gateway, DNS, Lease Duration      |
+           |&lt;-----------------------------------------------------|
+           |                                                      |
+           |  3. DHCP REQUEST (Broadcast)                         |
+           |  Src: 0.0.0.0:68  Dest: 255.255.255.255:67           |
+           |  "I accept Server 1's offer!"                        |
+           |-----------------------------------------------------&gt;|
+           |                                                      |
+           |  4. DHCP ACK (Unicast / Broadcast)                   |
+           |  Lease confirmed & committed to database             |
+           |&lt;-----------------------------------------------------|
+</pre>
+<div><b>2. Detailed Step Descriptions:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>D - DHCP DISCOVER</b>: Client boots up with no IP address (<code>0.0.0.0</code>). It broadcasts a packet to <code>255.255.255.255</code> on UDP Port 67 containing its physical MAC address and a random transaction ID (<code>xid</code>) to discover available DHCP servers.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>O - DHCP OFFER</b>: All listening DHCP servers reserve an unallocated IP from their address pool and reply with an offer packet containing: Offered IP, Subnet Mask, Default Gateway, DNS Servers, and Lease Time (e.g. 8 hours).</div>
+<div style="margin:2px 0 2px 10px;">3. <b>R - DHCP REQUEST</b>: Client chooses one offer (typically the first received) and <b>broadcasts</b> an acceptance packet. Why broadcast? Because broadcasting informs the chosen server that its offer was accepted, while simultaneously informing other servers to release their reserved offers back to their available pools!</div>
+<div style="margin:2px 0 2px 10px;">4. <b>A - DHCP ACK</b>: The selected server commits the binding to its lease database and returns a DHCP ACK packet. The client configures its network interface.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Sequence diagram showing DORA with UDP ports (67/68): 2.0 Marks.</li>
+<li>Step-by-step explanation of each phase: 1.5 Marks.</li>
+<li>Explanation of why DHCPREQUEST is broadcast: 0.5 Mark.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 24: Electronic Mail Architecture: SMTP, POP3, IMAP & MIME</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Explain the electronic mail architecture. Differentiate between message transfer protocols (SMTP) and message access protocols (POP3 vs IMAP). Why is MIME essential for modern email? [May 2019 CS3025 Q5a, 8M]</div>
+<div><b>1. Email System Architecture:</b></div>
+<pre>
+ [Sender MUA] --(SMTP:25/587)--&gt; [Sender MTA Server]
+                                          |
+                              (SMTP:25 Server-to-Server)
+                                          v
+ [Receiver MUA] &lt;--(POP3:110 / IMAP:143)-- [Receiver MTA / MDA Server]
+</pre>
+<div style="margin:3px 0;">* <b>MUA (Mail User Agent)</b>: Client software (Outlook, Thunderbird, Apple Mail).</div>
+<div style="margin:3px 0;">* <b>MTA (Mail Transfer Agent)</b>: Server software (Postfix, Sendmail, Exchange).</div>
+<div><b>2. SMTP vs POP3 vs IMAP:</b></div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>SMTP (Simple Mail Transfer Protocol - Port 25 / 587)</b>:</div>
+<div style="margin-left:14px;">- A <b>Push Protocol</b>. Used to upload mail from client to server, and relay mail between intermediate mail servers across the Internet.</div>
+<div style="margin-left:14px;">- Plain-text ASCII protocol; terminates connection upon delivery.</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>POP3 (Post Office Protocol v3 - Port 110 / 995)</b>:</div>
+<div style="margin-left:14px;">- A simple <b>Pull Protocol</b>. Downloads all incoming emails from server to client hard drive and (by default) deletes them from the server mailbox.</div>
+<div style="margin-left:14px;">- <i>Limitation</i>: No synchronization across multiple devices (phone, laptop).</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>IMAP (Internet Message Access Protocol - Port 143 / 993)</b>:</div>
+<div style="margin-left:14px;">- An advanced <b>Pull & Sync Protocol</b>. Keeps all emails and folder hierarchies stored permanently on the central server.</div>
+<div style="margin-left:14px;">- Allows searching, flagging, and previewing headers before downloading bodies. Changes made on a phone sync instantly to a laptop.</div>
+<div><b>3. Why MIME is Essential:</b></div>
+<div>• Traditional SMTP (RFC 821) was strictly designed for <b>7-bit printable US-ASCII text</b>.</div>
+<div>• If a user attempts to send binary files (images, audio, PDFs, Word docs) or non-English characters (Hindi, Chinese, UTF-8), the high bit (8th bit) is stripped by legacy SMTP servers, completely corrupting the file!</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>MIME (Multipurpose Internet Mail Extensions - RFC 2045)</b> solves this by defining headers:</div>
+<div style="margin-left:14px;">- <code>MIME-Version: 1.0</code></div>
+<div style="margin-left:14px;">- <code>Content-Type: image/jpeg</code> (specifies media type)</div>
+<div style="margin-left:14px;">- <code>Content-Transfer-Encoding: base64</code> (encodes arbitrary 8-bit binary bytes into safe 7-bit ASCII characters).</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Email architecture diagram (MUA, MTA, MDA): 2.0 Marks.</li>
+<li>Distinction between Push (SMTP) and Pull (POP3 vs IMAP): 3.0 Marks.</li>
+<li>Explanation of MIME 7-bit limitation and Base64 solution: 3.0 Marks.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 25: File Transfer Protocol (FTP): Dual Connection Architecture</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Explain the dual-connection architecture of FTP. Differentiate between Active Mode and Passive Mode (<code>PASV</code>). Why do client firewalls block Active FTP? [Practice Pattern]</div>
+<div><b>1. Dual-Connection Architecture:</b></div>
+<div>FTP does not mix control commands and data payloads on the same TCP socket. It establishes <b>two separate connections</b>:</div>
+<div style="margin:2px 0 2px 10px;">1. <b>Control Connection (Port 21)</b>: Remains open throughout the entire FTP session. Transmits user authentication, navigation commands (<code>USER</code>, <code>PASS</code>, <code>CWD</code>, <code>QUIT</code>), and 3-digit server response codes.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Data Connection (Port 20 or dynamic)</b>: Created on-demand for every individual directory listing (<code>LIST</code>) or file transfer (<code>RETR</code>, <code>STOR</code>), and closes immediately once the file is transferred.</div>
+<div><b>2. Active vs Passive Mode:</b></div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Active Mode (Standard)</b>:</div>
+<div>  1. Client connects from ephemeral port <code>N</code> to Server Port 21 (Control).</div>
+<div>  2. Client sends <code>PORT IP,P</code> command telling server: <i>"Connect to my port P for data."</i></div>
+<div>  3. <b>The Trap</b>: The <b>Server initiates the data connection from its Port 20 to Client Port P</b>!</div>
+<div>  4. <i>Why Client Firewalls Block It</i>: To the client's home/corporate firewall, an unrequested incoming TCP connection from the Internet into port <code>P</code> looks like a malicious port scan / attack. The firewall drops the packet, and file transfer fails!</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Passive Mode (<code>PASV</code>)</b>:</div>
+<div>  1. Client sends <code>PASV</code> command over Port 21.</div>
+<div>  2. Server opens an unreserved high ephemeral port (e.g. 50000) and replies: <i>"Connect to my port 50000."</i></div>
+<div>  3. The <b>Client initiates both connections</b> (Control to 21, Data to 50000).</div>
+<div>  4. Since all connections originate outbound from client to server, client firewalls allow them smoothly.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Explanation of Port 21 (Control) vs Port 20 (Data): 2.0 Marks.</li>
+<li>Contrast of Active vs Passive connection initiation: 2.0 Marks.</li>
+<li>Explanation of client firewall blockage in Active Mode: 1.0 Mark.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 26: Sliding Window Protocol: Implementation Logic & Complete Pseudocode</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div>> Write pseudo code to implement Sliding window protocol in detail, test code with example. [Nov 2024 IT2266 Q2b, 6M]</div>
+<div><b>1. Architectural Design & Window Management:</b></div>
+<div>Sliding window protocols achieve pipelined data transmission by allowing the sender to transmit up to N frames without waiting for individual acknowledgments.</div>
+<div>• <code>base</code>: Sequence number of the oldest unacknowledged frame.</div>
+<div>• <code>next_seq_num</code>: Next available sequence number to be assigned to an outgoing frame.</div>
+<div>• <code>N</code>: Sender window size (Ws).</div>
+<div>• Sliding Condition: When an acknowledgment for <code>base</code> arrives, <code>base</code> advances forward (<code>base = ack_num + 1</code>), allowing new frames to be transmitted.</div>
+<div><b>2. Sender Pseudocode (Go-Back-N / Sliding Window):</b></div>
+<pre>
+// SENDER GLOBAL VARIABLES
+int base = 0;
+int next_seq_num = 0;
+int N = 4; // Window size
+Frame window_buffer[MAX_SEQ];
+
+void Sender_Init() {
+    base = 0;
+    next_seq_num = 0;
+}
+
+// EVENT 1: Application layer passes packet to send
+void From_Network_Layer(Packet packet) {
+    if (next_seq_num &lt; base + N) {
+        window_buffer[next_seq_num] = make_frame(next_seq_num, packet);
+        send_to_physical_layer(window_buffer[next_seq_num]);
+        if (base == next_seq_num) {
+            start_timer(); // Start timer for the oldest unACKed frame
+        }
+        next_seq_num++;
+    } else {
+        refuse_data(packet); // Window is full, buffer or block
+    }
+}
+
+// EVENT 2: Valid ACK arrives from receiver
+void From_Physical_Layer(Frame ack_frame) {
+    if (is_valid_ack(ack_frame) && ack_frame.ack_no &gt;= base) {
+        base = ack_frame.ack_no + 1; // Slide the window forward
+        if (base == next_seq_num) {
+            stop_timer(); // All transmitted frames acknowledged
+        } else {
+            restart_timer(); // Restart timer for newly oldest unACKed frame
+        }
+    }
+}
+
+// EVENT 3: Timeout occurs
+void Timeout_Handler() {
+    start_timer();
+    // Retransmit all unacknowledged frames currently in window
+    for (int i = base; i &lt; next_seq_num; i++) {
+        send_to_physical_layer(window_buffer[i]);
+    }
+}
+</pre>
+<div><b>3. Receiver Pseudocode (Cumulative ACK):</b></div>
+<pre>
+// RECEIVER GLOBAL VARIABLES
+int expected_seq_num = 0;
+
+void Receiver_Init() {
+    expected_seq_num = 0;
+}
+
+void Receiver_From_Physical_Layer(Frame received_frame) {
+    if (is_checksum_valid(received_frame) && received_frame.seq_no == expected_seq_num) {
+        deliver_to_network_layer(received_frame.packet);
+        send_ack(expected_seq_num); // Send ACK for received in-order frame
+        expected_seq_num++;
+    } else {
+        // Discard out-of-order frame and re-send ACK for last correctly received frame
+        send_ack(expected_seq_num - 1);
+    }
+}
+</pre>
+<div><b>4. Test Walkthrough Example (N = 4):</b></div>
+<div style="margin:2px 0 2px 10px;">1. Sender transmits frames: F0, F1, F2, F3 (base = 0, next_seq_num = 4). Window full.</div>
+<div style="margin:2px 0 2px 10px;">2. Receiver gets F0, delivers to network layer, sends ACK 0.</div>
+<div style="margin:2px 0 2px 10px;">3. Sender receives ACK 0 ==> base = 1. Window slides to [1, 2, 3, 4]. Sender transmits F4.</div>
+<div style="margin:2px 0 2px 10px;">4. Frame F1 is lost in transit!</div>
+<div style="margin:2px 0 2px 10px;">5. Receiver gets F2 (out-of-order) ==> Discards F2, re-sends ACK 0.</div>
+<div style="margin:2px 0 2px 10px;">6. Sender timer for F1 expires ==> Sender retransmits F1, F2, F3, F4.</div>
+<div style="margin:2px 0 2px 10px;">7. Receiver accepts F1, sends ACK 1, accepts F2, sends ACK 2, etc.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Clean sender pseudocode with state variables (base, next_seq_num, N): 2.5 Marks.</li>
+<li>Clean receiver pseudocode with in-order check & cumulative ACK: 1.5 Marks.</li>
+<li>Clear step-by-step test example showing frame transmission, loss, and retransmission: 2.0 Marks.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 27: Tunneling in Internetworking & IPv4/IPv6 Transition</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> What is tunneling? Why is it important in internetworking? Explain with reference to IPv6 transition and VPNs. [May 2019 CS3025 Q3d, 3M]</div>
+<div><b>1. Concept & Principle of Tunneling:</b></div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Tunneling</b> is a technique where a packet belonging to one network protocol (the passenger or payload protocol) is encapsulated inside the payload field of another network protocol's packet (the transport or delivery protocol).</div>
+<div>• It allows two incompatible or isolated networks to communicate across an intermediate transit network that does not support the passenger protocol.</div>
+<div><b>2. Architectural Diagram (IPv6 over IPv4 Tunnel):</b></div>
+<pre>
+  [IPv6 Host A]                                               [IPv6 Host B]
+       |                                                            ^
+       v                                                            |
+  +---------+                                                  +---------+
+  | Router1 | ====[ Tunnel through IPv4 Intermediate Network ]===&gt;| Router2 |
+  +---------+                                                  +---------+
+  Encapsulates                                                 Decapsulates
+  IPv6 in IPv4                                                 IPv4 packet
+
+  PACKET IN TRANSIT ACROSS IPv4 INTERNET:
+  +------------------+------------------+-----------------------------+
+  | IPv4 Header      | IPv6 Header      | Transport & Application     |
+  | (Proto = 41)     | (Orig Src & Dst) | Payload (TCP / Data)        |
+  +------------------+------------------+-----------------------------+
+  |&lt;-- Added by R1 -&gt;|&lt;---------------- Original Packet -------------&gt;|
+</pre>
+<div><b>3. Why Tunneling is Essential in Internetworking:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>IPv4-to-IPv6 Transition (RFC 4213)</b>: The global Internet could not upgrade to IPv6 overnight. Tunneling enables isolated IPv6 islands to communicate across legacy IPv4 ISP backbones by wrapping IPv6 datagrams inside standard IPv4 headers (IPv4 Protocol field = 41).</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Virtual Private Networks (VPNs - IPsec / GRE)</b>: Enables secure private intranet communication over the public untrusted Internet by encrypting the original IP packet and encapsulating it in a new public IP header.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Multiprotocol Encapsulation</b>: Allows non-routable protocols or incompatible network layers (e.g. AppleTalk, IPX, or MPLS) to traverse standard IP backbones.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Precise definition of tunneling (packet encapsulation across incompatible transit): 1.0 Mark.</li>
+<li>Architectural packet layout diagram: 1.0 Mark.</li>
+<li>Clear explanation of IPv6 transition and VPN applications: 1.0 Mark.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 28: Border Gateway Protocol (BGP) & Path-Vector Inter-Domain Routing</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> How does BGP protocol route traffic across the Internet? Why is Path Vector routing preferred over Distance Vector or Link State for Inter-AS routing? [May 2019 CS3025 Q5d, 3M]</div>
+<div><b>1. Inter-Domain Routing & Autonomous Systems (AS):</b></div>
+<div>• The global Internet is partitioned into thousands of independently administered domains called <b>Autonomous Systems (AS)</b> (e.g., AS15169 for Google, AS7018 for AT&T).</div>
+<div>• Interior Gateway Protocols (IGPs like RIP or OSPF) route packets inside an AS based on shortest physical metrics (hop count or delay).</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>BGP (Border Gateway Protocol - RFC 4271)</b> is the standard <b>Exterior Gateway Protocol (EGP)</b> that connects different Autonomous Systems together.</div>
+<div><b>2. Path-Vector Routing Mechanism:</b></div>
+<div>• Instead of advertising scalar distance costs (like RIP: '10 hops'), a BGP speaker advertises the <b>exact sequence of Autonomous Systems (AS-Path)</b> traversed to reach a target prefix.</div>
+<div>• <i>Example Advertisement for Network 192.0.2.0/24</i>:</div>
+<table>
+</table>
+<div><b>3. Why Path Vector is Essential for Inter-AS Routing:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Guaranteed Loop Prevention</b>: When an AS receives a BGP update, it inspects the AS-Path list. If its own AS number is already present in the list, it <b>immediately discards the route</b>. This eliminates the Count-to-Infinity problem instantly!</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Policy-Based Routing (Commercial Agreements)</b>: Inter-domain routing is driven by business contracts and peering policies, not shortest physical paths. BGP allows ASes to enforce rules such as: <i>'Never route traffic from Competitor X across our network'</i> or <i>'Prefer free peering link over paid transit link'</i>.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Scalability</b>: Avoids flooding full link-state databases across millions of global routers.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Definition of BGP as inter-AS exterior protocol: 1.0 Mark.</li>
+<li>Explanation of Path-Vector mechanism (AS-Path attribute): 1.0 Mark.</li>
+<li>Loop prevention and policy-based routing justification: 1.0 Mark.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 29: Mobile IP Architecture: Home Agent, Foreign Agent & Triangle Routing</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> Illustrate the roles of foreign agent and home agent in the routing for mobile host. Explain the complete packet forwarding sequence and triangle routing problem. [May 2019 CS3025 Q6a, 9M]</div>
+<div><b>1. Core Entities in Mobile IP (RFC 5944):</b></div>
+<div style="margin:3px 0;">* <b>Mobile Node (MN)</b>: The roaming host (e.g., laptop/smartphone) that changes its point of attachment from its home network to a foreign network.</div>
+<div style="margin:3px 0;">* <b>Home Address (HoA)</b>: Permanent IP address assigned to MN on its home network (DNS records always point to this address).</div>
+<div style="margin:3px 0;">* <b>Home Agent (HA)</b>: A router on the home network that maintains current location directory of MN and intercepts packets when MN is roaming.</div>
+<div style="margin:3px 0;">* <b>Foreign Agent (FA)</b>: A router on the visited foreign network that assists the roaming MN and assigns it a temporary address.</div>
+<div style="margin:3px 0;">* <b>Care-of Address (CoA)</b>: A temporary IP address identifying the MN's current physical attachment point in the foreign network.</div>
+<div style="margin:3px 0;">* <b>Correspondent Node (CN)</b>: Any standard Internet host communicating with the MN.</div>
+<div><b>2. Architectural Flow Diagram:</b></div>
+<pre>
+                          [Correspondent Node (CN)]
+                                /           ^
+              (1) Normal IP    /             \  (4) Direct Reverse
+                 Packet to    /               \     Traffic
+                  Home IP    /                 \    (Standard IP)
+                            v                                       [Home Agent (HA)]                                        |                                        (2) IP-in-IP Encapsulated                              Tunnel to CoA                                            |                                                    v                                            [Foreign Agent (FA)]                                            |                                              (3) Decapsulate & Deliver                                         v                                                 [Mobile Node (MN)] --------------------+
+</pre>
+<div><b>3. Step-by-Step Operation:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Agent Discovery</b>: When MN roams into a foreign subnet, FA broadcasts periodic Agent Advertisements. MN detects it is away from home and acquires a Care-of Address (CoA).</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Registration</b>: MN sends a Registration Request to FA, which forwards it to HA. HA records: <code>MN Home IP <--> Current CoA</code>. HA replies with Registration Reply.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Packet Interception & Tunneling (Forward Direction)</b>:</div>
+<div>   - CN sends a standard packet addressed to MN's Home Address (<code>Dest = HoA</code>).</div>
+<div>   - The packet arrives at MN's home subnet. HA uses Proxy ARP to intercept the packet.</div>
+<div>   - HA encapsulates the original packet inside an outer IP packet (<code>Dest = CoA</code>) and tunnels it to FA.</div>
+<div style="margin:2px 0 2px 10px;">4. <b>Decapsulation & Delivery</b>: FA strips the outer IP header, extracts original packet, and delivers it to MN over the local wireless link.</div>
+<div style="margin:2px 0 2px 10px;">5. <b>Reverse Traffic</b>: When MN sends packets back to CN, it transmits them directly with <code>Src = HoA, Dest = CN</code> via standard IP routing.</div>
+<div><b>4. The Triangle Routing Problem & Solution:</b></div>
+<div>• <i>The Problem</i>: Packets from CN must travel all the way to HA first, and then double-back to FA, creating a highly inefficient triangular path (high latency, unnecessary WAN bandwidth consumption).</div>
+<div>• <i>Solution (Route Optimization)</i>: HA sends a Binding Update to CN containing MN's CoA. CN caches this binding and tunnels subsequent packets directly to CoA, bypassing HA entirely!</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Clear definition of all 5 entities (MN, HoA, HA, FA, CoA): 2.5 Marks.</li>
+<li>Complete step-by-step communication flow with diagram: 3.5 Marks.</li>
+<li>Triangle routing explanation and route optimization solution: 3.0 Marks.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 30: Crash Recovery at the Transport Layer in the Internet</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div class="question-box"><b>Exam Question:</b> How crash recovery is done at the transport layer in the Internet? Analyze the client-server crash scenarios and explain why application-layer assistance is required. [May 2019 CS3025 Q6c, 4M]</div>
+<div><b>1. The Fundamental Problem of Host Crashes:</b></div>
+<div>• When a host (client or server) crashes during an active TCP connection, its internal volatile memory (RAM) is erased, including all TCP Transmission Control Blocks (TCB), socket tables, sequence numbers, and unwritten socket buffers.</div>
+<div>• When the crashed machine reboots, it receives packets from the peer for an unknown connection and sends a <code>RST</code> (Reset) segment, abruptly terminating the connection.</div>
+<div><b>2. Analysis of Server Crash Scenarios:</b></div>
+<div>Consider a client sending a request that modifies a database (e.g., banking transaction) to a server. The server must perform two steps:</div>
+<div style="margin:2px 0 2px 10px;">1. <b>A</b>: Send transport ACK back to client.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>W</b>: Write transaction to permanent disk / database.</div>
+<div>Depending on implementation order, two strategies exist:</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Strategy 1: Send ACK first, then Write (Strategy AW)</b></div>
+<div style="margin-left:14px;">- Server receives segment, sends ACK, and then crashes <i>before</i> executing the write.</div>
+<div style="margin-left:14px;">- Client receives ACK, assumes the transaction succeeded!</div>
+<div style="margin-left:14px;">- <i>Result</i>: <b>Unrecoverable data loss</b> (client thinks write happened, but server has no record).</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Strategy 2: Write first, then send ACK (Strategy WA)</b></div>
+<div style="margin-left:14px;">- Server writes transaction to disk, and crashes <i>before</i> sending ACK.</div>
+<div style="margin-left:14px;">- Client's timer expires without receiving ACK. Client assumes write failed and retransmits!</div>
+<div style="margin-left:14px;">- Server reboots, receives retransmission, and executes write a second time!</div>
+<div style="margin-left:14px;">- <i>Result</i>: <b>Duplicate execution</b> (user account debited twice!).</div>
+<div><b>3. Why Transport Layer Cannot Solve Crash Recovery Alone:</b></div>
+<div>• Under the <b>End-to-End Argument</b> and the theoretical limits of distributed consensus (Two Generals Problem), no zero-loss, zero-duplicate recovery is possible purely within the transport layer.</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>The Internet Solution</b>:</div>
+<div>  1. Transport layer only provides crash detection (connection reset via <code>RST</code> or keepalive timeout).</div>
+<div>  2. Recovery is delegated to the <b>Application Layer</b>:</div>
+<div>     - <b>Idempotent Operations</b>: Request designs where duplicate executions have identical side effects (<code>PUT</code> instead of <code>POST</code>).</div>
+<div>     - <b>Transaction IDs & Write-Ahead Logs (WAL)</b>: Client assigns unique 64-bit UUID to each operation; server checks log before applying updates.</div>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Explanation of TCB loss and RST generation upon reboot: 1.0 Mark.</li>
+<li>Detailed breakdown of AW vs WA crash failure modes: 1.5 Marks.</li>
+<li>Justification of End-to-End argument and application-layer idempotent solutions: 1.5 Marks.</li>
+</ul></div>
+</div>
+<div class="topic-card avoid-break">
+<div class="topic-title"><span>TOPIC 31: Transport Protocol Selection & Socket Inter-Process Communication Pseudocode</span><span class="unit-tag">Core Theory</span></div>
+<div class="question-box"><b>Exam Question:</b> </div>
+<div>> (a) Choose the correct transport layer protocol to transfer a character array from host A to host B and write pseudo code for host A to host B interprocess file transfer. [Nov 2024 IT2266 Q5a, 4M]</div>
+<div>> (b) Choose the correct transport layer protocol to transfer an Audio file / real-time audio stream from host A to host B and write pseudo code for interprocess transfer. [Nov 2024 IT2266 Q5b, 4M]</div>
+<div><b>1. Protocol Selection Justification:</b></div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Character Array / File Transfer</b>:</div>
+<div style="margin-left:14px;">- <b>Choice: TCP (Transmission Control Protocol)</b></div>
+<div style="margin-left:14px;">- <i>Justification</i>: Text and character arrays represent programmatic data or source code where <b>even a single bit flip or lost character completely invalidates the payload</b>. TCP provides 100% reliable, byte-stream, ordered delivery with error checksums, flow control, and automatic retransmission.</div>
+<div style="font-weight:700; color:#1e293b; margin-top:4px;"><b>Audio File / Real-Time Streaming</b>:</div>
+<div style="margin-left:14px;">- <b>Choice: UDP (User Datagram Protocol) with RTP / RTSP</b></div>
+<div style="margin-left:14px;">- <i>Justification</i>: Real-time audio streaming is strictly delay-sensitive and jitter-intolerant. A delayed retransmitted audio packet arriving 200 ms late is completely useless and causes annoying audio stutter/glitches. Human hearing easily tolerates a 1-2% random packet loss, but cannot tolerate TCP's Head-of-Line blocking stalls.</div>
+<div><b>2. TCP Socket Pseudocode for Character Array Transfer (Host A Sender -> Host B Receiver):</b></div>
+<pre>
+// ==================== HOST A: SENDER (CLIENT) ====================
+int main() {
+    int sockfd = socket(AF_INET, SOCK_STREAM, 0); // TCP Socket
+    struct sockaddr_in serv_addr;
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_port = htons(8080);
+    inet_pton(AF_INET, "192.168.1.10", &serv_addr.sin_addr);
+
+    // Establish 3-way handshake connection
+    connect(sockfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr));
+
+    char text_data[] = "VIT_PUNE_COMPUTER_NETWORKS_EXAM_2026";
+    int bytes_to_send = strlen(text_data);
+
+    // Send character array reliably
+    send(sockfd, text_data, bytes_to_send, 0);
+
+    close(sockfd); // Graceful 4-way FIN teardown
+    return 0;
+}
+
+// ==================== HOST B: RECEIVER (SERVER) ====================
+int main() {
+    int server_fd = socket(AF_INET, SOCK_STREAM, 0);
+    struct sockaddr_in address;
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = INADDR_ANY;
+    address.sin_port = htons(8080);
+
+    bind(server_fd, (struct sockaddr*)&address, sizeof(address));
+    listen(server_fd, 5); // Listen with queue size 5
+
+    int client_sock = accept(server_fd, NULL, NULL); // Accept incoming connection
+    char buffer[1024];
+    int bytes_received = recv(client_sock, buffer, sizeof(buffer) - 1, 0);
+    buffer[bytes_received] = '\0';
+
+    printf("Received Character Array: %s\n", buffer);
+
+    close(client_sock);
+    close(server_fd);
+    return 0;
+}
+</pre>
+<div><b>3. UDP Socket Pseudocode for Audio Stream Transfer (Host A Sender -> Host B Receiver):</b></div>
+<pre>
+// ==================== HOST A: AUDIO SENDER ====================
+int main() {
+    int sockfd = socket(AF_INET, SOCK_DGRAM, 0); // UDP Datagram Socket
+    struct sockaddr_in dest_addr;
+    dest_addr.sin_family = AF_INET;
+    dest_addr.sin_port = htons(5004); // Standard RTP audio port
+    inet_pton(AF_INET, "192.168.1.20", &dest_addr.sin_addr);
+
+    FILE *audio_fp = fopen("audio_sample.raw", "rb");
+    char audio_chunk[512]; // Small 20ms audio frames
+
+    while (!feof(audio_fp)) {
+        int bytes = fread(audio_chunk, 1, sizeof(audio_chunk), audio_fp);
+        // Connectionless transmission: no handshake, no retransmission overhead
+        sendto(sockfd, audio_chunk, bytes, 0,
+               (struct sockaddr*)&dest_addr, sizeof(dest_addr));
+        usleep(20000); // 20 ms pacing for smooth real-time stream
+    }
+    fclose(audio_fp);
+    close(sockfd);
+    return 0;
+}
+
+// ==================== HOST B: AUDIO RECEIVER ====================
+int main() {
+    int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+    struct sockaddr_in recv_addr;
+    recv_addr.sin_family = AF_INET;
+    recv_addr.sin_addr.s_addr = INADDR_ANY;
+    recv_addr.sin_port = htons(5004);
+
+    bind(sockfd, (struct sockaddr*)&recv_addr, sizeof(recv_addr));
+
+    char audio_buffer[512];
+    while (1) {
+        int bytes = recvfrom(sockfd, audio_buffer, sizeof(audio_buffer), 0, NULL, NULL);
+        if (bytes &lt;= 0) break;
+        play_audio_to_speakers(audio_buffer, bytes); // Direct playback, zero wait
+    }
+    close(sockfd);
+    return 0;
+}
+</pre>
+<div class="rubric-box"><b>Examiner Marking Rubric:</b><ul>
+<li>Accurate justification of TCP vs UDP selection: 2.0 Marks.</li>
+<li>TCP client-server pseudocode (socket, bind, listen, accept, connect, send, recv): 3.0 Marks.</li>
+<li>UDP audio pseudocode (socket, sendto, recvfrom, real-time pacing): 3.0 Marks.</li>
+</ul></div>
+</div>
+
+</body>
+</html>

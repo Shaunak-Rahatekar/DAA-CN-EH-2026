@@ -1,31 +1,31 @@
 Question,Answer
-"What are the 5 components of a data communication system?","Message Sender Receiver Transmission Medium and Protocol."
-"What is the difference between DTE and DCE?","DTE (Data Terminal Equipment) is the end-user device generating digital data (e.g. PC); DCE (Data Circuit-terminating Equipment) interfaces with the transmission line (e.g. modem)."
-"What is Simplex transmission mode?","Communication that is strictly unidirectional (one-way only). Example: Keyboard to CPU or television broadcasting."
-"What is Half-Duplex transmission mode?","Communication that is bidirectional but only in one direction at a time. Example: Walkie-talkie or traditional CSMA/CD Ethernet."
-"What is Full-Duplex transmission mode?","Communication that is simultaneously bidirectional in both directions at the same time. Example: Modern telephone call or switched Ethernet."
-"What is the difference between Serial and Parallel transmission?","Serial sends bits sequentially over one line (standard in LAN/WAN); Parallel sends multiple bits simultaneously over parallel lines (fast but suffers from clock skew over long distance)."
-"How does Asynchronous transmission delineate characters?","By framing each byte with a Start bit (binary 0) and one or two Stop bits (binary 1)."
-"What is the formula for the number of duplex links in a full mesh topology with n nodes?","Number of links = n * (n - 1) / 2."
-"How many I/O ports are required per device in a full mesh network with n nodes?","n - 1 I/O ports per device."
-"What is the main vulnerability of a Star topology?","The central Hub or Switch is a single point of failure; if it fails the entire network collapses."
-"What is the function of terminators at the ends of a Bus topology?","To absorb electrical signals at the ends of the backbone cable and prevent signal reflection which causes packet collisions."
-"What is a Physical (MAC) Address?","A 48-bit (6-byte) hexadecimal hardware address operating at the Data Link Layer burned into the NIC ROM (e.g. 00:1A:2B:3C:4D:5E)."
-"What is a Logical (IP) Address?","A 32-bit (IPv4) or 128-bit (IPv6) hierarchical address operating at the Network Layer used for global host-to-host routing."
-"What is a Port Address?","A 16-bit integer (0 to 65535) operating at the Transport Layer used to identify a specific application or process on a host."
-"What is a Socket Address?","The combination of an IP Address and a Port Number (e.g. 192.168.1.1:80)."
-"What is the difference between a collision domain and a broadcast domain?","A collision domain is a network segment where frames can collide on shared media; a broadcast domain is the set of all devices reached by a layer-2 broadcast frame."
-"How many collision domains and broadcast domains does a Hub have?","A Hub has exactly 1 Collision Domain and 1 Broadcast Domain across all its ports."
-"How many collision domains and broadcast domains does a Layer-2 Switch have?","A Switch creates a separate Collision Domain per port (N collision domains) and exactly 1 Broadcast Domain."
-"How many collision domains and broadcast domains does a Router have?","A Router creates a separate Collision Domain per port (N collision domains) and a separate Broadcast Domain per port (N broadcast domains)."
-"List the 7 layers of the OSI reference model from bottom to top.","1. Physical 2. Data Link 3. Network 4. Transport 5. Session 6. Presentation 7. Application."
-"What is the PDU (Protocol Data Unit) at each of the lower 4 OSI layers?","Physical: Bits; Data Link: Frame; Network: Packet; Transport: Segment (TCP) or Datagram (UDP)."
-"What are the primary functions of the OSI Presentation Layer?","Data translation (character encoding), data compression, and data encryption/decryption (SSL/TLS)."
-"What are the primary functions of the OSI Session Layer?","Dialog control (half/full duplex), synchronization checkpoints, and session recovery."
-"How does the TCP/IP model group the OSI layers?","Application combines OSI layers 5 6 7; Transport matches layer 4; Internet matches layer 3; Network Access combines layers 1 and 2."
-"What is a DC component in line encoding and why is it undesirable?","A constant non-zero average voltage; it cannot pass through AC-coupled transformers or capacitors and causes baseline wander."
-"How does Polar NRZ-I encode bits?","Binary 1 causes an inversion (transition) of the signal at the start of the bit interval; binary 0 causes no transition."
-"How does Bipolar AMI achieve zero DC component?","Binary 0 is represented by 0V; binary 1s alternate between positive (+V) and negative (-V) voltages which cancel out."
-"What is the Manchester encoding rule in IEEE 802.3 Ethernet?","Binary 0 has a High-to-Low transition at mid-bit; Binary 1 has a Low-to-High transition at mid-bit."
-"What is the major bandwidth drawback of Manchester encoding?","Baud rate is twice the bit rate (Baud = 2 * Bit Rate), requiring double the channel bandwidth compared to NRZ."
-"What is Software-Defined Networking (SDN)?","An architecture that decouples the Control Plane (centralized controller routing decisions) from the Data Plane (forwarding switches via OpenFlow)."
+What are the 5 components of a data communication system?,Message Sender Receiver Transmission Medium and Protocol.
+What is the difference between DTE and DCE?,DTE (Data Terminal Equipment) is the end-user device generating digital data (e.g. PC); DCE (Data Circuit-terminating Equipment) interfaces with the transmission line (e.g. modem).
+What is Simplex transmission mode?,Communication that is strictly unidirectional (one-way only). Example: Keyboard to CPU or television broadcasting.
+What is Half-Duplex transmission mode?,Communication that is bidirectional but only in one direction at a time. Example: Walkie-talkie or traditional CSMA/CD Ethernet.
+What is Full-Duplex transmission mode?,Communication that is simultaneously bidirectional in both directions at the same time. Example: Modern telephone call or switched Ethernet.
+What is the difference between Serial and Parallel transmission?,Serial sends bits sequentially over one line (standard in LAN/WAN); Parallel sends multiple bits simultaneously over parallel lines (fast but suffers from clock skew over long distance).
+How does Asynchronous transmission delineate characters?,By framing each byte with a Start bit (binary 0) and one or two Stop bits (binary 1).
+What is the formula for the number of duplex links in a full mesh topology with n nodes?,Number of links = n * (n - 1) / 2.
+How many I/O ports are required per device in a full mesh network with n nodes?,n - 1 I/O ports per device.
+What is the main vulnerability of a Star topology?,The central Hub or Switch is a single point of failure; if it fails the entire network collapses.
+What is the function of terminators at the ends of a Bus topology?,To absorb electrical signals at the ends of the backbone cable and prevent signal reflection which causes packet collisions.
+What is a Physical (MAC) Address?,A 48-bit (6-byte) hexadecimal hardware address operating at the Data Link Layer burned into the NIC ROM (e.g. 00:1A:2B:3C:4D:5E).
+What is a Logical (IP) Address?,A 32-bit (IPv4) or 128-bit (IPv6) hierarchical address operating at the Network Layer used for global host-to-host routing.
+What is a Port Address?,A 16-bit integer (0 to 65535) operating at the Transport Layer used to identify a specific application or process on a host.
+What is a Socket Address?,The combination of an IP Address and a Port Number (e.g. 192.168.1.1:80).
+What is the difference between a collision domain and a broadcast domain?,A collision domain is a network segment where frames can collide on shared media; a broadcast domain is the set of all devices reached by a layer-2 broadcast frame.
+How many collision domains and broadcast domains does a Hub have?,A Hub has exactly 1 Collision Domain and 1 Broadcast Domain across all its ports.
+How many collision domains and broadcast domains does a Layer-2 Switch have?,A Switch creates a separate Collision Domain per port (N collision domains) and exactly 1 Broadcast Domain.
+How many collision domains and broadcast domains does a Router have?,A Router creates a separate Collision Domain per port (N collision domains) and a separate Broadcast Domain per port (N broadcast domains).
+List the 7 layers of the OSI reference model from bottom to top.,1. Physical 2. Data Link 3. Network 4. Transport 5. Session 6. Presentation 7. Application.
+What is the PDU (Protocol Data Unit) at each of the lower 4 OSI layers?,Physical: Bits; Data Link: Frame; Network: Packet; Transport: Segment (TCP) or Datagram (UDP).
+What are the primary functions of the OSI Presentation Layer?,"Data translation (character encoding), data compression, and data encryption/decryption (SSL/TLS)."
+What are the primary functions of the OSI Session Layer?,"Dialog control (half/full duplex), synchronization checkpoints, and session recovery."
+How does the TCP/IP model group the OSI layers?,Application combines OSI layers 5 6 7; Transport matches layer 4; Internet matches layer 3; Network Access combines layers 1 and 2.
+What is a DC component in line encoding and why is it undesirable?,A constant non-zero average voltage; it cannot pass through AC-coupled transformers or capacitors and causes baseline wander.
+How does Polar NRZ-I encode bits?,Binary 1 causes an inversion (transition) of the signal at the start of the bit interval; binary 0 causes no transition.
+How does Bipolar AMI achieve zero DC component?,Binary 0 is represented by 0V; binary 1s alternate between positive (+V) and negative (-V) voltages which cancel out.
+What is the Manchester encoding rule in IEEE 802.3 Ethernet?,Binary 0 has a High-to-Low transition at mid-bit; Binary 1 has a Low-to-High transition at mid-bit.
+What is the major bandwidth drawback of Manchester encoding?,"Baud rate is twice the bit rate (Baud = 2 * Bit Rate), requiring double the channel bandwidth compared to NRZ."
+What is Software-Defined Networking (SDN)?,An architecture that decouples the Control Plane (centralized controller routing decisions) from the Data Plane (forwarding switches via OpenFlow).
