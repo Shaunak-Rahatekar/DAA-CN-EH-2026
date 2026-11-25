@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Computer Networks (CS3213) Master Formula & Numerical Sheet | VIT Pune</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 12mm 12mm 12mm 12mm;
+    @bottom-right {
+      content: counter(page);
+    }
+  }
+
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 9.5pt;
+    line-height: 1.45;
+    color: #1e293b;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 12px;
+  }
+
+  .page-break {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  /* Header banner */
+  .header-banner {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #1d4ed8 100%);
+    color: #ffffff;
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    border-left: 6px solid #3b82f6;
+  }
+  .header-title {
+    font-size: 16pt;
+    font-weight: 800;
+    margin: 0 0 4px 0;
+    letter-spacing: -0.3px;
+    color: #f8fafc;
+  }
+  .header-subtitle {
+    font-size: 11pt;
+    font-weight: 600;
+    color: #93c5fd;
+    margin: 0 0 8px 0;
+  }
+  .header-meta {
+    font-size: 8.5pt;
+    color: #cbd5e1;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 8pt;
+  }
+
+  /* Section Title */
+  .part-header {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 12.5pt;
+    font-weight: 700;
+    margin: 18px 0 12px 0;
+    border-left: 5px solid #3b82f6;
+    letter-spacing: -0.2px;
+  }
+
+  .unit-header {
+    background: #f1f5f9;
+    color: #0f172a;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 11pt;
+    font-weight: 700;
+    margin: 14px 0 8px 0;
+    border-left: 4px solid #0284c7;
+    border-bottom: 1px solid #cbd5e1;
+  }
+
+  .topic-header {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #0369a1;
+    margin: 8px 0 4px 0;
+  }
+
+  /* Formula block */
+  .formula-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #2563eb;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin: 6px 0 10px 0;
+  }
+
+  .formula-code {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: #1e3a8a;
+    background: #eff6ff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 3px 0;
+    border: 1px solid #bfdbfe;
+  }
+
+  /* Problem Card */
+  .problem-card {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  .problem-title {
+    font-size: 10.5pt;
+    font-weight: 800;
+    color: #0f172a;
+    border-bottom: 1.5px solid #e2e8f0;
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .unit-tag {
+    background: #dbeafe;
+    color: #1e40af;
+    font-size: 7.5pt;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+
+  .statement-box {
+    background: #f8fafc;
+    border-left: 3px solid #64748b;
+    padding: 6px 10px;
+    font-style: italic;
+    color: #334155;
+    margin: 6px 0 8px 0;
+    font-size: 9pt;
+  }
+
+  .solution-step {
+    margin: 4px 0;
+    font-size: 9pt;
+  }
+
+  .result-box {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    border-left: 4px solid #059669;
+    color: #065f46;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    margin: 4px 0;
+    display: inline-block;
+  }
+
+  .trap-box {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 3px solid #d97706;
+    color: #92400e;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 8.5pt;
+    margin-top: 6px;
+  }
+
+  /* Table styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6px 0 10px 0;
+    font-size: 8.5pt;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 4px 7px;
+    text-align: left;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  tr:nth-child(even) td {
+    background: #f8fafc;
+  }
+
+  /* Code block */
+  pre {
+    font-family: Consolas, monospace;
+    font-size: 8pt;
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 6px 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 4px 0;
+    line-height: 1.35;
+  }
+
+  ul, ol {
+    margin: 3px 0 6px 18px;
+    padding: 0;
+  }
+  li {
+    margin-bottom: 2px;
+  }
+  code {
+    font-family: Consolas, monospace;
+    background: #f1f5f9;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-size: 9pt;
+    color: #0f172a;
+  }
+</style>
+</head>
+<body>
+
+<div class="header-banner">
+  <div class="header-title">COMPUTER NETWORKS (CS3213 / IT2266 / CS3025)</div>
+  <div class="header-subtitle">Master Formula Reference & High-Yield Exam Numerical Problem Bank</div>
+  <div class="header-meta">
+    <span><b>Target</b>: ESE Written Examination</span>
+    <span><b>Coverage</b>: All 6 Units Complete</span>
+    <span><b>Curated for</b>: Vishwakarma Institute of Technology (VIT Pune)</span>
+    <span class="badge">22 Solved Master Problems</span>
+  </div>
+</div>
+
+<div># Computer Networks (CS3213 / IT2266 / CS3025)</div>
+<div># Complete Master Formula & High-Yield Numerical Problem Sheet</div>
+<div>> <b>Scope</b>: All 6 Units of the Computer Networks Syllabus (VIT Pune / SPPU pattern).</div>
+<div>> <b>Structure</b>:</div>
+<div>> 1. <b>Part 1</b>: Unit-wise and Topic-wise Master Formula Quick Reference with exact units and variable definitions.</div>
+<div>> 2. <b>Part 2</b>: Complete Worked Numerical Bank -- providing a high-level exam-grade problem, step-by-step substitution, engineering intuition, and common examiner traps for every single formula.</div>
+<div>> <b>Formatting</b>: 100% clean, human-readable universal formatting with no unreadable symbols.</div>
+<div class="part-header">PART 1: MASTER FORMULA QUICK REFERENCE (UNITS 1 TO 6)</div>
+<div class="unit-header">UNIT 1: FUNDAMENTALS & PHYSICAL LAYER</div>
+<div class="topic-header">1.1 Delay Components in Packet-Switched Networks</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Transmission Delay (T_trans)</b>:</div>
+<div class="solution-step">  <code>T_trans = L / B</code></div>
+<div style="margin-left:14px;">- <code>L</code> = Packet / Frame length (in bits)</div>
+<div style="margin-left:14px;">- <code>B</code> = Channel Bandwidth / Data Transmission Rate (in bits per second, bps)</div>
+<div style="margin-left:14px;">- Unit of <code>T_trans</code>: seconds (s) or milliseconds (ms).</div>
+<div style="margin-left:14px;">- <i>Physical Meaning</i>: Time required to push all bits of the frame onto the physical wire.</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Propagation Delay (T_prop)</b>:</div>
+<div class="solution-step">  <code>T_prop = d / v</code></div>
+<div style="margin-left:14px;">- <code>d</code> = Distance between sender and receiver (in meters, m)</div>
+<div style="margin-left:14px;">- <code>v</code> = Propagation speed in transmission medium (in meters/sec, m/s; typically <code>2 x 10^8 m/s</code> in copper/fiber, <code>3 x 10^8 m/s</code> in free space / vacuum)</div>
+<div style="margin-left:14px;">- Unit of <code>T_prop</code>: seconds (s) or milliseconds (ms).</div>
+<div style="margin-left:14px;">- <i>Physical Meaning</i>: Time taken for the first bit to travel from sender to receiver.</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Total End-to-End Latency</b>:</div>
+<div class="solution-step">  <code>Total Delay = T_trans + T_prop + T_proc + T_queue</code></div>
+<div style="margin-left:14px;">- <code>T_proc</code> = Node processing delay (header parsing, checksum verification, routing table lookup)</div>
+<div style="margin-left:14px;">- <code>T_queue</code> = Queuing delay at intermediate router buffers waiting for transmission.</div>
+<div class="topic-header">1.2 Bandwidth-Delay Product (BDP)</div>
+<div class="formula-code">BDP = Bandwidth x RTT = B x (2 * T_prop)</div>
+<div class="solution-step">- <code>B</code> = Link capacity (bps)</div>
+<div class="solution-step">- <code>RTT</code> = Round Trip Time (seconds)</div>
+<div>- Unit of BDP: bits or bytes (<code>BDP / 8</code>).</div>
+<div>- <i>Physical Meaning</i>: The volume of data bits that can be "in flight" inside the transmission pipe at any given instant. Represents the optimal sliding window size to keep the link 100% saturated.</div>
+<div class="topic-header">1.3 Channel Capacities (Nyquist & Shannon Theorems)</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Nyquist Bit Rate (For Ideal Noiseless Channels)</b>:</div>
+<div class="solution-step">  <code>C_Nyquist = 2 <i> B </i> log2(M)</code></div>
+<div style="margin-left:14px;">- <code>B</code> = Bandwidth of the channel (in Hertz, Hz)</div>
+<div style="margin-left:14px;">- <code>M</code> = Number of discrete signal levels (voltage levels); <code>M = 2^k</code> where <code>k</code> = bits per signal element.</div>
+<div style="margin-left:14px;">- Unit: bits per second (bps).</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Shannon Capacity (For Real Noisy Channels)</b>:</div>
+<div class="solution-step">  <code>C_Shannon = B * log2(1 + SNR)</code></div>
+<div style="margin-left:14px;">- <code>B</code> = Channel Bandwidth (Hz)</div>
+<div style="margin-left:14px;">- <code>SNR</code> = Signal-to-Noise Power Ratio (linear ratio: <code>Power_signal / Power_noise</code>, dimensionless)</div>
+<div style="margin-left:14px;">- <code>SNR_dB = 10 * log10(SNR)</code> ==> <code>SNR = 10^(SNR_dB / 10)</code></div>
+<div style="margin-left:14px;">- Unit: bits per second (bps).</div>
+<div style="margin-left:14px;">- <i>Note</i>: <code>C_Shannon</code> represents the absolute theoretical upper bound on error-free information rate.</div>
+<div class="unit-header">UNIT 2: DATA LINK LAYER & ERROR CONTROL</div>
+<div class="topic-header">2.1 Cyclic Redundancy Check (CRC) Polynomial Division</div>
+<div class="solution-step">* <b>Generator Polynomial</b>: <code>G(x)</code> of degree <code>r</code> has <code>(r + 1)</code> bits.</div>
+<div class="solution-step">* <b>Message Bits</b>: <code>M</code> of length <code>k</code> bits.</div>
+<div class="solution-step"><i> <b>Appended Message</b>: Append <code>r</code> zeros to <code>M</code> ==> <code>M' = M </i> 2^r</code> (length <code>k + r</code> bits).</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Modulo-2 Division (XOR Subtraction)</b>:</div>
+<div class="solution-step">  <code>Remainder (FCS) = (M * 2^r) mod_2 G(x)</code></div>
+<div style="margin-left:14px;">- <code>FCS</code> length = strictly <code>r</code> bits.</div>
+<div class="solution-step"><i> <b>Transmitted Codeword</b>: <code>T = M </i> 2^r + FCS</code> (length <code>k + r</code> bits).</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Receiver Verification</b>:</div>
+<div>  <code>T mod_2 G(x) == 0</code> ==> Frame accepted as error-free.</div>
+<div>  <code>T mod_2 G(x) != 0</code> ==> Error detected; frame rejected.</div>
+<div class="topic-header">2.2 Hamming Error-Correcting Code</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Parity Bits Inequality (Hamming Rule)</b>:</div>
+<div>  <code>2^r >= m + r + 1</code></div>
+<div style="margin-left:14px;">- <code>m</code> = Number of original data bits</div>
+<div style="margin-left:14px;">- <code>r</code> = Number of redundant parity check bits</div>
+<div style="margin-left:14px;">- Total codeword length <code>n = m + r</code>.</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Parity Bit Positions</b>:</div>
+<div style="margin-left:14px;">- Parity bits are placed strictly at bit indices that are powers of 2:</div>
+<div>    <code>P_1 at Position 1 (2^0)</code>, <code>P_2 at Position 2 (2^1)</code>, <code>P_4 at Position 4 (2^2)</code>, <code>P_8 at Position 8 (2^3)</code>, etc.</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Syndrome Calculation (Even Parity)</b>:</div>
+<div class="solution-step">  <code>Syndrome S = C_r ... C_2 C_1 in binary</code></div>
+<div style="margin-left:14px;">- If <code>S == 0</code>: No error in received codeword.</div>
+<div style="margin-left:14px;">- If <code>S != 0</code>: Single-bit error is located precisely at bit index <code>S</code>. Invert bit at index <code>S</code> to correct.</div>
+<div class="topic-header">2.3 Flow Control & Sliding Window ARQ Protocols</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Dimensionless Propagation Parameter (a)</b>:</div>
+<div class="solution-step">  <code>a = T_prop / T_trans = (d / v) / (L / B)</code></div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Stop-and-Wait ARQ Efficiency (Utilization eta)</b>:</div>
+<div class="solution-step">  <code>eta = T_trans / (T_trans + 2 * T_prop + T_proc + T_ack)</code></div>
+<div>  If <code>T_proc</code> and <code>T_ack</code> are negligible:</div>
+<div class="solution-step">  <code>eta = 1 / (1 + 2a)</code></div>
+<div class="solution-step">  <code>Throughput = eta * Bandwidth = B / (1 + 2a)</code></div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Optimal Window Size for 100% Channel Utilization</b>:</div>
+<div class="solution-step">  <code>W_optimal = 1 + 2a</code></div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Go-Back-N (GBN) ARQ</b>:</div>
+<div style="margin-left:14px;">- Sender Window Size: <code>W_s = 2^k - 1</code> (where <code>k</code> = bits in Sequence Number field)</div>
+<div style="margin-left:14px;">- Receiver Window Size: <code>W_r = 1</code></div>
+<div style="margin-left:14px;">- Channel Efficiency:</div>
+<div class="solution-step">    <code>eta = min(1.0, W_s / (1 + 2a))</code></div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Selective Repeat (SR) ARQ</b>:</div>
+<div style="margin-left:14px;">- Sender Window Size: <code>W_s = 2^(k - 1)</code></div>
+<div style="margin-left:14px;">- Receiver Window Size: <code>W_r = 2^(k - 1)</code></div>
+<div style="margin-left:14px;">- Channel Efficiency:</div>
+<div class="solution-step">    <code>eta = min(1.0, W_s / (1 + 2a))</code></div>
+<div class="unit-header">UNIT 3: MEDIUM ACCESS CONTROL (MAC) SUBLAYER</div>
+<div class="topic-header">3.1 ALOHA Protocols Throughput</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Pure ALOHA</b>:</div>
+<div style="margin-left:14px;">- Vulnerable Period: <code>2 * T_frame</code></div>
+<div style="margin-left:14px;">- Throughput Equation: <code>S = G * e^(-2G)</code></div>
+<div style="margin-left:14px;">- Maximum Throughput: <code>S_max = 1 / (2e) approx. 0.184 = 18.4%</code> at offered traffic load <code>G = 0.5</code>.</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Slotted ALOHA</b>:</div>
+<div style="margin-left:14px;">- Vulnerable Period: <code>1 * T_frame</code></div>
+<div style="margin-left:14px;">- Throughput Equation: <code>S = G * e^(-G)</code></div>
+<div style="margin-left:14px;">- Maximum Throughput: <code>S_max = 1 / e approx. 0.368 = 36.8%</code> at offered traffic load <code>G = 1.0</code> (Double Pure ALOHA!).</div>
+<div class="topic-header">3.2 CSMA/CD (Ethernet IEEE 802.3)</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Collision Detection Condition</b>:</div>
+<div>  <code>T_trans >= 2 * T_prop</code></div>
+<div>  <code>L_min / B >= 2 * (d / v)</code></div>
+<div class="solution-step">  <code>L_min = 2 <i> T_prop </i> Bandwidth</code></div>
+<div style="margin-left:14px;">- Standard Ethernet (10 Mbps, 2.5 km bus, <code>T_prop = 25.6 us</code>):</div>
+<div class="solution-step">    <code>L_min = 2 <i> (25.6 us) </i> 10 Mbps = 51.2 us * 10 Mbps = 512 bits = 64 Bytes</code>.</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Network Diameter (D_max) Inverse Law</b>:</div>
+<div>  <code>D_max <= (L_min <i> v) / (2 </i> B) proportional to (1 / B)</code></div>
+<div style="margin-left:14px;">- As network bandwidth <code>B</code> increases, maximum allowable network diameter <code>D_max</code> shrinks inversely.</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Binary Exponential Back-Off (BEB) Algorithm</b>:</div>
+<div style="margin-left:14px;">- After <code>i</code>-th collision, station waits:</div>
+<div class="solution-step">    <code>Wait Time = K * Slot_Time</code></div>
+<div class="solution-step">    where <code>Slot_Time = 51.2 us</code> (for 10 Mbps Ethernet).</div>
+<div style="margin-left:14px;">- <code>K</code> is an integer chosen randomly from:</div>
+<div class="solution-step">    <code>K in [0, 2^k - 1]  where  k = min(i, 10)</code></div>
+<div style="margin-left:14px;">- Maximum attempts = 16 (abort and declare link failure after 16 collisions).</div>
+<div class="unit-header">UNIT 4: NETWORK LAYER & ADDRESSING</div>
+<div class="topic-header">4.1 IPv4 Header Calculations</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Header Length (IHL)</b>:</div>
+<div class="solution-step">  <code>Header Bytes = IHL * 4</code></div>
+<div style="margin-left:14px;">- Minimum IHL = 5 (<code>5 * 4 = 20 Bytes</code> with no options).</div>
+<div style="margin-left:14px;">- Maximum IHL = 15 (<code>15 * 4 = 60 Bytes</code> with 40 Bytes of options).</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Payload Length</b>:</div>
+<div class="solution-step">  <code>Payload Data Bytes = Total Length - (IHL * 4)</code></div>
+<div class="topic-header">4.2 IPv4 Datagram Fragmentation</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Maximum Fragment Payload Size</b>:</div>
+<div class="solution-step">  <code>Max Payload per Fragment = floor((MTU - Header_Size) / 8) * 8</code></div>
+<div>  <i>(Must strictly be a multiple of 8 bytes!)</i></div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Fragment Offset</b>:</div>
+<div class="solution-step">  <code>Fragment Offset Field Value = (Starting Byte Position of Data) / 8</code></div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>More Fragments Flag (MF)</b>:</div>
+<div style="margin-left:14px;">- <code>MF = 1</code> for all intermediate fragments.</div>
+<div style="margin-left:14px;">- <code>MF = 0</code> for the last fragment.</div>
+<div class="topic-header">4.3 Subnetting & CIDR Address Math</div>
+<div>• For prefix <code>/n</code>:</div>
+<div style="margin-left:14px;">- Host bits: <code>h = 32 - n</code></div>
+<div style="margin-left:14px;">- Subnet bits borrowed: <code>s = n - Default_Class_Prefix</code></div>
+<div style="margin-left:14px;">- Total IP Addresses in block: <code>2^h</code></div>
+<div style="margin-left:14px;">- <b>Usable Host Addresses</b>: <code>2^h - 2</code> (subtracting Network ID where host bits=0, and Directed Broadcast where host bits=1).</div>
+<div style="margin-left:14px;">- Subnet Mask: First <code>n</code> bits are 1s, remaining <code>32 - n</code> bits are 0s.</div>
+<div style="margin-left:14px;">- Block size (step size in relevant octet): <code>256 - Mask_Octet = 2^h</code>.</div>
+<div class="topic-header">4.4 Distance Vector (Bellman-Ford) Update Formula</div>
+<div class="formula-code">D_x(y) = min_{v in neighbors(x)} { c(x, v) + D_v(y) }</div>
+<div class="solution-step">- <code>c(x, v)</code> = direct cost of link from node <code>x</code> to neighbor <code>v</code>.</div>
+<div class="solution-step">- <code>D_v(y)</code> = distance from neighbor <code>v</code> to destination <code>y</code> (from <code>v</code>'s vector).</div>
+<div class="topic-header">4.5 Traffic Shaping (Token Bucket Algorithm)</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Maximum Burst Duration (S)</b>:</div>
+<div class="solution-step">  <code>S = b / (M - r)</code></div>
+<div style="margin-left:14px;">- <code>b</code> = Token bucket capacity (in bits or bytes)</div>
+<div style="margin-left:14px;">- <code>M</code> = Maximum peak transmission rate (bps)</div>
+<div style="margin-left:14px;">- <code>r</code> = Token arrival / replenishment rate (bps)</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Total Burst Data Volume (V)</b>:</div>
+<div class="solution-step">  <code>V = S <i> M = (b </i> M) / (M - r)</code></div>
+<div class="unit-header">UNIT 5: TRANSPORT LAYER & CONGESTION CONTROL</div>
+<div class="topic-header">5.1 TCP Retransmission Timeout (RTO) - Jacobson's Algorithm</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Smoothed RTT (SRTT)</b>:</div>
+<div class="solution-step">  <code>SRTT_new = (1 - alpha) <i> SRTT_old + alpha </i> RTT_measured</code>  <i>(typically alpha = 0.125 = 1/8)</i></div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>RTT Variation (RTTVAR)</b>:</div>
+<table>
+<tr><th>SRTT_new - RTT_measured</th></tr>
+</table>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Timeout Formula</b>:</div>
+<div class="solution-step">  <code>RTO = SRTT_new + 4 * RTTVAR_new</code></div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Karn's Algorithm</b>:</div>
+<div style="margin-left:14px;">- Never update RTO calculation on retransmitted packets.</div>
+<div style="margin-left:14px;">- On timeout, double RTO: <code>RTO_new = 2 * RTO_old</code> (Exponential Timer Backoff).</div>
+<div class="topic-header">5.2 TCP Window & Throughput</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Usable Send Window</b>:</div>
+<div class="solution-step">  <code>Usable Window = min(cwnd, rwnd) - (LastByteSent - LastByteAcked)</code></div>
+<div style="margin-left:14px;">- <code>cwnd</code> = Congestion Window maintained by sender.</div>
+<div style="margin-left:14px;">- <code>rwnd</code> = Advertised Receive Window sent by receiver.</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>TCP Average Throughput (Mathis Formula)</b>:</div>
+<div>  <code>Throughput <= (1.22 <i> MSS) / (RTT </i> sqrt(p))</code></div>
+<div class="solution-step">  where <code>p</code> = packet loss probability.</div>
+<div class="unit-header">UNIT 6: APPLICATION LAYER</div>
+<div class="topic-header">6.1 Base64 MIME Encoding Expansion</div>
+<div class="solution-step">* <b>Conversion</b>: 3 binary bytes (24 bits) are mapped to 4 printable ASCII characters (6 bits each, values 0-63).</div>
+<div class="solution-step">* <b>Encoding Overhead</b>: <code>+33.33%</code></div>
+<div class="solution-step">  <code>Encoded Size in Bytes = ceil(Raw_Bytes / 3) * 4</code></div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Padding Rules</b>:</div>
+<div style="margin-left:14px;">- If <code>Raw_Bytes mod 3 == 1</code>: 2 bytes of padding <code>==</code>.</div>
+<div style="margin-left:14px;">- If <code>Raw_Bytes mod 3 == 2</code>: 1 byte of padding <code>=</code>.</div>
+<div class="topic-header">6.2 HTTP Transfer Latencies</div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Non-Persistent HTTP (HTTP/1.0)</b>:</div>
+<div class="solution-step">  <code>Total Time = Sum_{i=1}^N (2 * RTT + T_trans,i)</code></div>
+<div style="font-weight:700; color:#0f172a; margin-top:5px;"><b>Persistent HTTP with Pipelining (HTTP/1.1)</b>:</div>
+<div class="solution-step">  <code>Total Time = 2 * RTT + Sum_{i=1}^N T_trans,i</code></div>
+<div class="page-break"></div>
+<div class="part-header">PART 2: COMPLETE WORKED NUMERICAL BANK</div>
+<div class="topic-header">(One High-Level Exam Problem Per Formula with Step-by-Step Solutions)</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 1: Transmission Delay vs Propagation Delay</span><span class="unit-tag">Unit 1</span></div>
+<div class="statement-box"></div>
+<div class="statement-box">A 100 Megabyte file is to be transmitted from a host in Pune to a host in Tokyo across a 10,000 km optical fiber link with a transmission bandwidth of 100 Mbps. The propagation speed of light in optical fiber is <code>2 x 10^8 m/s</code>.</div>
+<div>> 1. Calculate the Transmission Delay (<code>T_trans</code>).</div>
+<div>> 2. Calculate the one-way Propagation Delay (<code>T_prop</code>).</div>
+<div>> 3. Which delay dominates, and what does this imply for interactive real-time applications?</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Given Data:</b></div>
+<div class="solution-step">   - File Size <code>L = 100 MB = 100 x 10^6 Bytes = 800 x 10^6 bits</code> (Decimal networking standard)</div>
+<div class="solution-step">   - Bandwidth <code>B = 100 Mbps = 100 x 10^6 bps = 10^8 bps</code></div>
+<div class="solution-step">   - Distance <code>d = 10,000 km = 10^7 meters</code></div>
+<div class="solution-step">   - Propagation speed <code>v = 2 x 10^8 m/s</code></div>
+<div style="margin:2px 0 2px 10px;">2. <b>Transmission Delay:</b></div>
+<div class="solution-step">   <code>T_trans = L / B = (800 x 10^6 bits) / (100 x 10^6 bps) = 8.0 seconds</code>.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Propagation Delay:</b></div>
+<div class="solution-step">   <code>T_prop = d / v = (10^7 m) / (2 x 10^8 m/s) = 0.05 seconds = 50 ms</code>.</div>
+<div style="margin:2px 0 2px 10px;">4. <b>Dominance & Analysis:</b></div>
+<div>   - Here, <code>T_trans (8000 ms) >> T_prop (50 ms)</code>. Transmission delay dominates bulk file transfer by a factor of 160:1!</div>
+<div class="solution-step">   - For interactive real-time applications (e.g. VoIP or gaming), packets are very small (e.g. 100 Bytes ==> <code>T_trans = 8 us</code>), making <code>T_prop (50 ms)</code> the absolute dominating bottleneck that cannot be reduced by purchasing more bandwidth.</div>
+<div class="trap-box"><b>Examiner Trap</b>: Forgetting to multiply Megabytes by 8 to convert to bits before dividing by Mbps!</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 2: Bandwidth-Delay Product (BDP) & Optimal Window</span><span class="unit-tag">Unit 1 & 2</span></div>
+<div class="statement-box"></div>
+<div class="statement-box">A satellite communication channel operates at a data rate of 50 Mbps with a round-trip propagation time (RTT) of 480 ms.</div>
+<div>> 1. Calculate the Bandwidth-Delay Product (BDP) in bits and in Megabytes.</div>
+<div>> 2. If standard TCP without window scaling has a maximum advertised window (<code>rwnd</code>) of 65,535 Bytes, calculate the maximum link utilization that this TCP connection can achieve.</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Given Data:</b></div>
+<div class="solution-step">   - <code>B = 50 Mbps = 50 x 10^6 bps</code></div>
+<div class="solution-step">   - <code>RTT = 480 ms = 0.48 seconds</code></div>
+<div style="margin:2px 0 2px 10px;">2. <b>Bandwidth-Delay Product:</b></div>
+<div class="solution-step">   <code>BDP = B x RTT = (50 x 10^6 bps) x (0.48 s) = 24,000,000 bits = 24 Mbits</code>.</div>
+<div class="solution-step">   In Bytes: <code>BDP = 24,000,000 / 8 = 3,000,000 Bytes = 3 Megabytes (3 MB)</code>.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Maximum Utilization without Window Scale Option:</b></div>
+<div class="solution-step">   - Max window allowed by unscaled 16-bit TCP window field: <code>W_max = 65,535 Bytes</code>.</div>
+<div>   - Max Throughput achievable:</div>
+<div class="solution-step">     <code>Throughput = W_max / RTT = (65,535 x 8 bits) / 0.48 s = 524,280 / 0.48 = 1,092,250 bps = 1.092 Mbps</code>.</div>
+<div>   - Link Utilization:</div>
+<div class="solution-step">     <code>eta = (1.092 Mbps / 50 Mbps) x 100% = 2.18%</code>!</div>
+<div style="margin:2px 0 2px 10px;">4. <b>Engineering Insight:</b></div>
+<div>   - Over 97.8% of the expensive satellite link is wasted! This proves why <b>RFC 1323 TCP Window Scale Option</b> (which allows windows up to 1 GB) is mandatory for Long Fat Networks (LFNs).</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 3: Shannon vs Nyquist Capacity</span><span class="unit-tag">Unit 1</span></div>
+<div class="statement-box"></div>
+<div class="statement-box">A standard telephone channel has a bandwidth of 3 kHz and a Signal-to-Noise Ratio (SNR) of 30 dB.</div>
+<div>> 1. Calculate the theoretical maximum Shannon Channel Capacity.</div>
+<div>> 2. If we wish to transmit data at this Shannon capacity over a noiseless channel of the same 3 kHz bandwidth, how many discrete signal levels (<code>M</code>) are required according to Nyquist's theorem?</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Convert SNR from dB to Linear Ratio:</b></div>
+<div class="solution-step">   <code>SNR_dB = 10 * log10(SNR) = 30 dB</code></div>
+<div class="solution-step">   <code>log10(SNR) = 3 ==> SNR = 10^3 = 1000</code>.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Shannon Capacity:</b></div>
+<div class="solution-step">   <code>C_Shannon = B <i> log2(1 + SNR) = 3000 </i> log2(1 + 1000) = 3000 * log2(1001)</code>.</div>
+<div class="solution-step">   Since <code>2^10 = 1024</code>, <code>log2(1001) approx. 9.9672</code>.</div>
+<div class="solution-step">   <code>C_Shannon = 3000 * 9.9672 = 29,901.6 bps approx. 30 kbps</code> (the famous 28.8k / 33.6k dial-up modem limit!).</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Nyquist Equivalent Signal Levels:</b></div>
+<div class="solution-step">   Set <code>C_Nyquist = C_Shannon</code>:</div>
+<div class="solution-step">   <code>2 <i> B </i> log2(M) = 29,902</code></div>
+<div class="solution-step">   <code>2 <i> 3000 </i> log2(M) = 29,902 ==> 6000 * log2(M) = 29,902</code></div>
+<div class="solution-step">   <code>log2(M) = 29,902 / 6000 = 4.9837</code></div>
+<div class="solution-step">   <code>M = 2^4.9837 approx. 31.64</code></div>
+<div class="solution-step">   Round up to next power of 2: <b>M = 32 discrete voltage levels</b> (5 bits per baud).</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 4: Cyclic Redundancy Check (CRC-4) Modulo-2 Division</span><span class="unit-tag">Unit 2</span></div>
+<div><i>(From May 2019 VIT ESE Q1b)</i></div>
+<div class="statement-box"></div>
+<div class="statement-box">A bit string <code>1101011011</code> is to be transmitted using CRC error detection with the generator polynomial <code>G(x) = x^4 + x + 1</code>.</div>
+<div>> 1. Find the transmitted codeword frame <code>T</code>.</div>
+<div>> 2. Show that the receiver detects no error if the frame arrives uncorrupted.</div>
+<div>> 3. Show that an error in the 4th bit from the left is detected by the receiver.</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Representations:</b></div>
+<div class="solution-step">   - <code>M = 1101011011</code> (10 bits)</div>
+<div class="solution-step">   - <code>G(x) = 1<i>x^4 + 0</i>x^3 + 0<i>x^2 + 1</i>x^1 + 1*x^0 ==> 10011</code> (5 bits, degree <code>r = 4</code>).</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Sender Modulo-2 Division:</b></div>
+<div class="solution-step">   - Append <code>r = 4</code> zeros: <code>M' = 11010110110000</code> (14 bits).</div>
+<div>   - Divide by <code>10011</code> using XOR subtraction (no carries/borrows):</div>
+<pre>
+              1100100101  (Quotient)
+      ------------------
+10011 ) 11010110110000
+        10011
+        -----
+         10011
+         10011
+         -----
+          000010110
+              10011
+              -----
+               010100
+                10011
+                -----
+                 01110  &lt;-- Remainder FCS (4 bits)
+</pre>
+<div class="solution-step">   - Remainder <code>FCS = 1110</code>.</div>
+<div class="solution-step">   - Transmitted Codeword <code>T = 11010110111110</code> (14 bits).</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Receiver Verification (No Error):</b></div>
+<div>   - Divide <code>11010110111110</code> by <code>10011</code>.</div>
+<div>   - Remainder evaluates to strictly <code>0000</code>. Frame accepted!</div>
+<div style="margin:2px 0 2px 10px;">4. <b>Error Detection (4th bit inverted: <code>1101...</code> --> <code>1100...</code>):</b></div>
+<div class="solution-step">   - Corrupted Frame <code>T' = 11000110111110</code>.</div>
+<div>   - Divide <code>T'</code> by <code>10011</code>:</div>
+<div>     Remainder evaluates to <code>0110 != 0000</code>. Non-zero remainder flags error; frame discarded.</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 5: Hamming Code Error Correction (12-Bit Syndrome Test)</span><span class="unit-tag">Unit 2</span></div>
+<div><i>(From Nov 2024 VIT ESE Q2b-OR)</i></div>
+<div class="statement-box"></div>
+<div class="statement-box">A receiver receives the 12-bit codeword <code>011100101110</code>. Assuming even parity Hamming code was used, test if the codeword is correct. If incorrect, determine the bit position in error, the corrected codeword, and extract the original data bits.</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Codeword Layout (Positions 1 to 12 from left to right):</b></div>
+<table>
+<tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th></tr>
+<tr><td><b>Role</b></td><td>P1</td><td>P2</td><td>D1</td><td>P4</td><td>D2</td><td>D3</td><td>D4</td><td>P8</td><td>D5</td><td>D6</td><td>D7</td><td>D8</td></tr>
+<tr><td><b>Received Bit</b></td><td><b>0</b></td><td><b>1</b></td><td><b>1</b></td><td><b>1</b></td><td><b>0</b></td><td><b>0</b></td><td><b>1</b></td><td><b>0</b></td><td><b>1</b></td><td><b>1</b></td><td><b>1</b></td><td><b>0</b></td></tr>
+</table>
+<div style="margin:2px 0 2px 10px;">2. <b>Calculate Parity Check Bits (Even Parity ==> XOR sum should equal 0):</b></div>
+<div>   - <code>C_1</code> (checks bits with binary position ending in 1: 1, 3, 5, 7, 9, 11):</div>
+<div class="solution-step">     <code>C_1 = b_1 XOR b_3 XOR b_5 XOR b_7 XOR b_9 XOR b_11</code></div>
+<div class="solution-step">     <code>C_1 = 0 XOR 1 XOR 0 XOR 1 XOR 1 XOR 1 = 0</code> (Even number of 1s ==> No error in bit 0).</div>
+<div class="solution-step">   - <code>C_2</code> (checks bits with 2nd bit = 1: 2, 3, 6, 7, 10, 11):</div>
+<div class="solution-step">     <code>C_2 = b_2 XOR b_3 XOR b_6 XOR b_7 XOR b_10 XOR b_11</code></div>
+<div class="solution-step">     <code>C_2 = 1 XOR 1 XOR 0 XOR 1 XOR 1 XOR 1 = 1</code> (Odd number of 1s ==> <b>Error detected!</b>).</div>
+<div class="solution-step">   - <code>C_4</code> (checks bits with 3rd bit = 1: 4, 5, 6, 7, 12):</div>
+<div class="solution-step">     <code>C_4 = b_4 XOR b_5 XOR b_6 XOR b_7 XOR b_12</code></div>
+<div class="solution-step">     <code>C_4 = 1 XOR 0 XOR 0 XOR 1 XOR 0 = 0</code> (Even number of 1s ==> No error in bit 2).</div>
+<div class="solution-step">   - <code>C_8</code> (checks bits with 4th bit = 1: 8, 9, 10, 11, 12):</div>
+<div class="solution-step">     <code>C_8 = b_8 XOR b_9 XOR b_10 XOR b_11 XOR b_12</code></div>
+<div class="solution-step">     <code>C_8 = 0 XOR 1 XOR 1 XOR 1 XOR 0 = 1</code> (Odd number of 1s ==> <b>Error detected!</b>).</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Syndrome Evaluation:</b></div>
+<div class="solution-step">   <code>Syndrome S = C_8 C_4 C_2 C_1 = 1010 in binary = 8 + 0 + 2 + 0 = 10</code>.</div>
+<div>   - <b>Conclusion</b>: Single-bit error is located at <b>Position 10</b>!</div>
+<div style="margin:2px 0 2px 10px;">4. <b>Correction:</b></div>
+<div>   - Received bit at position 10 was <code>1</code>. Invert to <code>0</code>.</div>
+<div>   - <b>Corrected Codeword</b>: <code>0 1 1 1 0 0 1 0 1 0 1 0</code>.</div>
+<div style="margin:2px 0 2px 10px;">5. <b>Extract Original Data Bits (Positions 3, 5, 6, 7, 9, 10, 11, 12):</b></div>
+<div class="solution-step">   - <code>D_1 (Pos 3) = 1</code></div>
+<div class="solution-step">   - <code>D_2 (Pos 5) = 0</code></div>
+<div class="solution-step">   - <code>D_3 (Pos 6) = 0</code></div>
+<div class="solution-step">   - <code>D_4 (Pos 7) = 1</code></div>
+<div class="solution-step">   - <code>D_5 (Pos 9) = 1</code></div>
+<div class="solution-step">   - <code>D_6 (Pos 10) = 0</code> (Corrected!)</div>
+<div class="solution-step">   - <code>D_7 (Pos 11) = 1</code></div>
+<div class="solution-step">   - <code>D_8 (Pos 12) = 0</code></div>
+<div class="solution-step">   - <b>Original Data = <code>10011010</code> (Hex: <code>0x9A</code>)</b>.</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 6: Stop-and-Wait Frame Size Determination</span><span class="unit-tag">Unit 2</span></div>
+<div><i>(From Nov 2024 VIT ESE Q1a)</i></div>
+<div class="statement-box"></div>
+<div class="statement-box">In a network using Stop-and-Wait protocol, the link bandwidth is 4 Kbps and one-way propagation delay is 20 ms. If the required channel utilization / efficiency is 50%, find the required frame size in bytes.</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Given:</b></div>
+<div class="solution-step">   - <code>B = 4 Kbps = 4000 bps</code></div>
+<div class="solution-step">   - <code>T_prop = 20 ms = 0.020 s</code></div>
+<div class="solution-step">   - <code>Efficiency (eta) = 50% = 0.5</code></div>
+<div style="margin:2px 0 2px 10px;">2. <b>Efficiency Equation:</b></div>
+<div class="solution-step">   <code>eta = 1 / (1 + 2a) = 0.5</code></div>
+<div class="solution-step">   <code>1 + 2a = 1 / 0.5 = 2 ==> 2a = 1 ==> a = 0.5</code>.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Find Transmission Time:</b></div>
+<div class="solution-step">   <code>a = T_prop / T_trans ==> T_trans = T_prop / a = 20 ms / 0.5 = 40 ms = 0.040 s</code>.</div>
+<div style="margin:2px 0 2px 10px;">4. <b>Find Frame Size (L):</b></div>
+<div class="solution-step">   <code>T_trans = L / B ==> L = T_trans <i> B = 0.040 s </i> 4000 bps = 160 bits</code>.</div>
+<div class="solution-step">   <code>L in Bytes = 160 / 8 = 20 Bytes</code>.</div>
+<div class="trap-box"><b>Result</b>: Required frame size is strictly <b>20 Bytes (160 bits)</b>.</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 7: Satellite Link Stop-and-Wait Efficiency with Overhead</span><span class="unit-tag">Unit 2</span></div>
+<div><i>(From Nov 2024 VIT ESE Q1c)</i></div>
+<div class="statement-box"></div>
+<div class="statement-box">A satellite transmission line connecting two ground stations uses Stop-and-Wait protocol with the following parameters:</div>
+<div class="solution-step">> - Data Transmission Rate = 64 kbps</div>
+<div class="solution-step">> - Frame Size = 2048 Bytes</div>
+<div class="solution-step">> - One-way Propagation Delay = 180 ms</div>
+<div class="solution-step">> - Acknowledgement Size = 10 Bytes</div>
+<div class="solution-step">> - Processing Delay of one station = 25 ms</div>
+<div>> Calculate: (1) Total cycle time, (2) Channel utilization, (3) Effective throughput.</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Calculations of Individual Delays:</b></div>
+<div class="solution-step">   - Data frame transmission: <code>T_t,frame = (2048 * 8 bits) / 64,000 bps = 16,384 / 64,000 = 0.256 s = 256 ms</code>.</div>
+<div class="solution-step">   - Propagation delay: <code>T_prop = 180 ms</code>.</div>
+<div class="solution-step">   - Receiver processing delay: <code>T_proc,rx = 25 ms</code>.</div>
+<div class="solution-step">   - ACK frame transmission: <code>T_t,ack = (10 * 8 bits) / 64,000 bps = 80 / 64,000 = 0.00125 s = 1.25 ms</code>.</div>
+<div class="solution-step">   - Return propagation delay: <code>T_prop = 180 ms</code>.</div>
+<div class="solution-step">   - Sender processing delay: <code>T_proc,tx = 25 ms</code>.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Total Round-Trip Cycle Time:</b></div>
+<div class="solution-step">   <code>T_total = 256 + 180 + 25 + 1.25 + 180 + 25 = 667.25 ms = 0.66725 s</code>.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Channel Efficiency (eta):</b></div>
+<div class="solution-step">   <code>eta = T_t,frame / T_total = 256 ms / 667.25 ms = 0.38366 approx. 38.37%</code>.</div>
+<div style="margin:2px 0 2px 10px;">4. <b>Effective Throughput:</b></div>
+<div class="solution-step">   <code>Throughput = eta <i> Bandwidth = 0.3837 </i> 64 kbps = 24.56 kbps</code>.</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 8: Sliding Window Window Sizes (GBN vs SR)</span><span class="unit-tag">Unit 2</span></div>
+<div><i>(From Nov 2024 VIT ESE Q2a)</i></div>
+<div class="statement-box"></div>
+<div class="statement-box">For a communications link, transmission time <code>T_trans = 1 ms</code> and propagation delay <code>T_prop = 99.5 ms</code>. A 7-bit sequence number header field (<code>N = 7</code>) is predefined.</div>
+<div>> 1. Find the optimal sender window size for 100% efficiency.</div>
+<div>> 2. With the predefined 7-bit header, find the sender window size and efficiency for Go-Back-N (GBN).</div>
+<div>> 3. With the predefined 7-bit header, find the sender window size and efficiency for Selective Repeat (SR).</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Calculate Parameter a & Optimal Window:</b></div>
+<div class="solution-step">   <code>a = T_prop / T_trans = 99.5 ms / 1 ms = 99.5</code>.</div>
+<div class="solution-step">   <code>W_optimal = 1 + 2a = 1 + 2(99.5) = 1 + 199 = 200 frames</code>.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Go-Back-N (GBN) Analysis with N = 7 bits:</b></div>
+<div class="solution-step">   - Max GBN Sender Window: <code>W_s = 2^N - 1 = 2^7 - 1 = 128 - 1 = 127 frames</code>.</div>
+<div>   - Channel Efficiency:</div>
+<div class="solution-step">     <code>eta_GBN = W_s / (1 + 2a) = 127 / 200 = 0.635 = 63.5%</code>.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Selective Repeat (SR) Analysis with N = 7 bits:</b></div>
+<div class="solution-step">   - Max SR Sender Window: <code>W_s = 2^(N - 1) = 2^(7 - 1) = 2^6 = 64 frames</code>.</div>
+<div>   - Channel Efficiency:</div>
+<div class="solution-step">     <code>eta_SR = W_s / (1 + 2a) = 64 / 200 = 0.320 = 32.0%</code>.</div>
+<div style="margin:2px 0 2px 10px;">4. <b>Bits Required for 100% Saturation (<code>W = 200</code>):</b></div>
+<div class="solution-step">   - For GBN: <code>2^k - 1 >= 200 ==> 2^k >= 201 ==> k = 8 bits</code> (<code>2^8 = 256</code>).</div>
+<div class="solution-step">   - For SR: <code>2^(k - 1) >= 200 ==> 2^k >= 400 ==> k = 9 bits</code> (<code>2^9 = 512</code>).</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 9: Pure vs Slotted ALOHA Maximum Throughput</span><span class="unit-tag">Unit 3</span></div>
+<div class="statement-box"></div>
+<div class="statement-box">A shared wireless channel has a bandwidth of 56 kbps. Stations transmit fixed-size frames of 1000 bits.</div>
+<div>> 1. Find the frame transmission time (<code>T_frame</code>).</div>
+<div>> 2. What is the maximum throughput in frames/sec and bps under Pure ALOHA?</div>
+<div>> 3. What is the maximum throughput under Slotted ALOHA?</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Frame Transmission Time:</b></div>
+<div class="solution-step">   <code>T_frame = L / B = 1000 bits / 56,000 bps = 0.017857 seconds = 17.86 ms</code>.</div>
+<div class="solution-step">   Raw link frame capacity: <code>1 / T_frame = 56,000 / 1000 = 56 frames/second</code>.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Pure ALOHA Maximums:</b></div>
+<div class="solution-step">   - Max Efficiency <code>S_max = 1 / (2e) = 0.184 = 18.4%</code> (at <code>G = 0.5</code>).</div>
+<div class="solution-step">   - Max Throughput in frames/sec: <code>56 * 0.184 = 10.3 frames/sec</code>.</div>
+<div class="solution-step">   - Max Throughput in bps: <code>0.184 * 56,000 bps = 10,304 bps = 10.3 kbps</code>.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Slotted ALOHA Maximums:</b></div>
+<div class="solution-step">   - Max Efficiency <code>S_max = 1 / e = 0.368 = 36.8%</code> (at <code>G = 1.0</code>).</div>
+<div class="solution-step">   - Max Throughput in frames/sec: <code>56 * 0.368 = 20.6 frames/sec</code>.</div>
+<div class="solution-step">   - Max Throughput in bps: <code>0.368 * 56,000 bps = 20,608 bps = 20.6 kbps</code>.</div>
+<div class="trap-box"><b>Key Takeaway</b>: Slotted ALOHA halves the vulnerable period from <code>2 <i> T_frame</code> to <code>1 </i> T_frame</code>, exactly doubling maximum throughput!</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 10: CSMA/CD Minimum Frame Length & Network Diameter</span><span class="unit-tag">Unit 3</span></div>
+<div><i>(From May 2019 VIT ESE Q1c & Q2c)</i></div>
+<div class="statement-box"></div>
+<div class="statement-box">A 1 Gbps Gigabit Ethernet network operates with a minimum frame size of 512 bits. The propagation velocity in the cable is <code>2 x 10^8 m/s</code>.</div>
+<div>> 1. Calculate the maximum allowable cable length (network diameter) for collision detection to function correctly.</div>
+<div>> 2. Explain why Gigabit Ethernet required either Carrier Extension or switched full-duplex operation.</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Governing Law:</b></div>
+<div>   <code>T_trans >= 2 <i> T_prop ==> L_min / B >= 2 </i> (d_max / v)</code></div>
+<div>   <code>d_max <= (L_min <i> v) / (2 </i> B)</code></div>
+<div style="margin:2px 0 2px 10px;">2. <b>Calculate d_max:</b></div>
+<div class="solution-step">   <code>L_min = 512 bits</code></div>
+<div class="solution-step">   <code>B = 1 Gbps = 10^9 bps</code></div>
+<div class="solution-step">   <code>v = 2 x 10^8 m/s</code></div>
+<div class="solution-step">   <code>d_max = (512 <i> 2 x 10^8) / (2 </i> 10^9) = (1024 x 10^8) / (2 x 10^9) = 1024 / 20 = 51.2 meters</code>.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Engineering Justification:</b></div>
+<div>   - At 1 Gbps, a 512-bit frame limits the network diameter to merely <b>51.2 meters</b>, which is too short even to wire a single floor of an office building!</div>
+<div class="solution-step">   - To increase network span to 200 meters without changing the 64-byte minimum frame seen by IP, the IEEE 802.3z standard introduced <b>Carrier Extension</b> (padding slots to 512 Bytes = 4096 bits) and <b>Frame Bursting</b>, and ultimately replaced shared hubs with full-duplex Ethernet switches (eliminating collisions entirely).</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 11: Binary Exponential Back-Off (BEB) Probabilities</span><span class="unit-tag">Unit 3</span></div>
+<div><i>(From Nov 2024 VIT ESE Q3b)</i></div>
+<div class="statement-box"></div>
+<div class="statement-box">Two stations A and B on a 10 Mbps CSMA/CD network attempt transmission and collide.</div>
+<div>> 1. What is the probability that they collide a second consecutive time?</div>
+<div>> 2. What is the probability that they collide on the third consecutive attempt?</div>
+<div>> 3. What is the maximum back-off time station A could wait after the 12th collision?</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>First Collision (i = 1):</b></div>
+<div class="solution-step">   <code>k = min(1, 10) = 1 ==> K in [0, 2^1 - 1] = {0, 1}</code> (2 choices).</div>
+<div class="solution-step">   Total combinations for <code>(K_A, K_B) = 2 x 2 = 4</code>.</div>
+<div>   Collision occurs if <code>K_A == K_B</code>: <code>{(0,0), (1,1)}</code> (2 outcomes).</div>
+<div class="solution-step">   <code>Probability of 2nd collision = 2 / 4 = 1/2 = 50%</code>.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Second Collision (i = 2):</b></div>
+<div class="solution-step">   <code>k = min(2, 10) = 2 ==> K in [0, 2^2 - 1] = {0, 1, 2, 3}</code> (4 choices).</div>
+<div class="solution-step">   Total combinations = <code>4 x 4 = 16</code>.</div>
+<div>   Collision occurs if <code>K_A == K_B</code>: 4 outcomes.</div>
+<div class="solution-step">   <code>Probability of 3rd collision = 4 / 16 = 1/4 = 25%</code>.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>12th Collision (i = 12):</b></div>
+<div class="solution-step">   <code>k = min(12, 10) = 10</code> (Truncated at 10!).</div>
+<div class="solution-step">   Max <code>K = 2^10 - 1 = 1023</code>.</div>
+<div class="solution-step">   <code>Slot_Time = 51.2 us</code>.</div>
+<div class="solution-step">   <code>Max Wait Time = 1023 * 51.2 us = 52,377.6 us approx. 52.38 ms</code>.</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 12: IPv4 MTU Datagram Fragmentation</span><span class="unit-tag">Unit 4</span></div>
+<div class="statement-box"></div>
+<div class="statement-box">An IPv4 datagram with a 20-byte header and 3980 bytes of data (Total Length = 4000 Bytes, Identification = <code>0xABCD</code>, <code>DF = 0</code>, <code>MF = 0</code>) arrives at a router whose outgoing link has an MTU of 1500 Bytes.</div>
+<div>> Show the fragmentation table listing: Fragment Number, Total Length, Data Length, Flag MF, and Fragment Offset for all fragments.</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Determine Maximum Data per Fragment:</b></div>
+<div class="solution-step">   - Link MTU = 1500 Bytes.</div>
+<div class="solution-step">   - Header = 20 Bytes.</div>
+<div class="solution-step">   - Space for data = <code>1500 - 20 = 1480 Bytes</code>.</div>
+<div class="solution-step">   - Verify multiple of 8: <code>1480 / 8 = 185</code> (exact integer multiple!).</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Divide Data (3980 Bytes):</b></div>
+<div class="solution-step">   - Fragment 1: Takes <code>1480 Bytes</code> (Bytes 0 to 1479). Remaining data = <code>3980 - 1480 = 2500 Bytes</code>.</div>
+<div class="solution-step">   - Fragment 2: Takes <code>1480 Bytes</code> (Bytes 1480 to 2959). Remaining data = <code>2500 - 1480 = 1020 Bytes</code>.</div>
+<div>   - Fragment 3: Takes remaining <code>1020 Bytes</code> (Bytes 2960 to 3979).</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Construct Fragmentation Table:</b></div>
+<table>
+<tr><th>Frag #</th><th>Total Length</th><th>Header</th><th>Data Payload</th><th>Flag DF</th><th>Flag MF</th><th>Fragment Offset</th></tr>
+<tr><td><b>1</b></td><td><b>1500 B</b></td><td>20 B</td><td>1480 B</td><td>0</td><td><b>1</b></td><td><code>0 / 8 =</code> <b>0</b></td></tr>
+<tr><td><b>2</b></td><td><b>1500 B</b></td><td>20 B</td><td>1480 B</td><td>0</td><td><b>1</b></td><td><code>1480 / 8 =</code> <b>185</b></td></tr>
+<tr><td><b>3</b></td><td><b>1040 B</b></td><td>20 B</td><td>1020 B</td><td>0</td><td><b>0</b></td><td><code>2960 / 8 =</code> <b>370</b></td></tr>
+</table>
+<div class="trap-box"><b>Verification</b>: Total original data = <code>1480 + 1480 + 1020 = 3980 Bytes</code>. All offsets strictly in units of 8 bytes.</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 13: Class C Subnetting with Host 1 Addresses</span><span class="unit-tag">Unit 4</span></div>
+<div><i>(From Nov 2024 VIT ESE Q3a)</i></div>
+<div class="statement-box"></div>
+<div>> Subnet the Class C network <code>195.1.1.0</code> so that you have at least 10 subnets, each supporting up to 12 hosts.</div>
+<div>> 1. Determine the subnet mask and CIDR prefix.</div>
+<div>> 2. Determine the block size (step size).</div>
+<div>> 3. State the IP address assigned to Host 1 on Subnet 0, Subnet 1, Subnet 2, Subnet 3, and Subnet 10.</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Bit Budget Analysis:</b></div>
+<div>   - Class C has 8 host bits available in the 4th octet (<code>/24</code>).</div>
+<div class="solution-step">   - Need >= 10 subnets: <code>2^s >= 10 ==> s = 4 subnet bits</code> (<code>2^4 = 16 subnets</code>).</div>
+<div class="solution-step">   - Need >= 12 hosts/subnet: <code>2^h - 2 >= 12 ==> 2^h >= 14 ==> h = 4 host bits</code> (<code>2^4 - 2 = 14 usable hosts</code>).</div>
+<div class="solution-step">   - Check: <code>s + h = 4 + 4 = 8 bits</code>. Matches 8 bits perfectly!</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Prefix & Mask:</b></div>
+<div class="solution-step">   - New prefix: <code>24 + 4 = /28</code>.</div>
+<div class="solution-step">   - Subnet Mask: <code>11111111.11111111.11111111.11110000 = 255.255.255.240</code>.</div>
+<div class="solution-step">   - Block Size = <code>2^h = 2^4 = 16</code>.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Subnetting Table & Host 1 Calculation (<code>Host 1 = Net ID + 1</code>):</b></div>
+<table>
+<tr><th>Subnet #</th><th>Network ID (Net ID)</th><th>Host 1 IP Address</th><th>Usable Range</th><th>Directed Broadcast</th></tr>
+<tr><td><b>Subnet 0</b></td><td><code>195.1.1.0/28</code></td><td><b><code>195.1.1.1</code></b></td><td><code>.1</code> to <code>.14</code></td><td><code>195.1.1.15</code></td></tr>
+<tr><td><b>Subnet 1</b></td><td><code>195.1.1.16/28</code></td><td><b><code>195.1.1.17</code></b></td><td><code>.17</code> to <code>.30</code></td><td><code>195.1.1.31</code></td></tr>
+<tr><td><b>Subnet 2</b></td><td><code>195.1.1.32/28</code></td><td><b><code>195.1.1.33</code></b></td><td><code>.33</code> to <code>.46</code></td><td><code>195.1.1.47</code></td></tr>
+<tr><td><b>Subnet 3</b></td><td><code>195.1.1.48/28</code></td><td><b><code>195.1.1.49</code></b></td><td><code>.49</code> to <code>.62</code></td><td><code>195.1.1.63</code></td></tr>
+<tr><td><b>Subnet 10</b></td><td><code>195.1.1.160/28</code></td><td><b><code>195.1.1.161</code></b></td><td><code>.161</code> to <code>.174</code></td><td><code>195.1.1.175</code></td></tr>
+</table>
+<div class="solution-step"><i>(Formula for Subnet k: <code>Net ID = 195.1.1.(16 </i> k)</code>, <code>Host 1 = 195.1.1.(16 <i> k + 1)</code>)</i>.</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 14: CIDR Block Analysis</span><span class="unit-tag">Unit 4</span></div>
+<div><i>(From May 2019 VIT ESE Q3b)</i></div>
+<div class="statement-box"></div>
+<div class="statement-box">An organization is assigned the CIDR address block <code>167.199.130.83/25</code>. Find:</div>
+<div>> 1. The subnet netmask.</div>
+<div>> 2. The total IP block size.</div>
+<div>> 3. The first IP address (Network ID).</div>
+<div>> 4. The last IP address (Directed Broadcast Address).</div>
+<div>> 5. The usable host IP range.</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Subnet Mask:</b></div>
+<div>   - Prefix <code>/25</code> has 25 leading ones:</div>
+<div class="solution-step">     <code>11111111.11111111.11111111.10000000 = 255.255.255.128</code>.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Block Size:</b></div>
+<div class="solution-step">   - Host bits: <code>h = 32 - 25 = 7 bits</code>.</div>
+<div class="solution-step">   - Total IP addresses = <code>2^h = 2^7 = 128 addresses</code>.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>First IP Address (Network ID):</b></div>
+<div>   - 4th octet value is <code>83</code>.</div>
+<div>   - Block boundaries with block size 128 in 4th octet: <code>0, 128</code>.</div>
+<div>   - Since <code>0 <= 83 < 128</code>, the base network address is:</div>
+<div class="solution-step">     <b>First IP = <code>167.199.130.0</code></b>.</div>
+<div style="margin:2px 0 2px 10px;">4. <b>Last IP Address (Directed Broadcast):</b></div>
+<div class="solution-step">   - Last IP = <code>Base + Block Size - 1 = 0 + 128 - 1 = 127</code>.</div>
+<div class="solution-step">   - <b>Last IP = <code>167.199.130.127</code></b>.</div>
+<div style="margin:2px 0 2px 10px;">5. <b>Usable Host Range:</b></div>
+<div class="solution-step">   - First usable = <code>Net ID + 1 = 167.199.130.1</code>.</div>
+<div class="solution-step">   - Last usable = <code>Broadcast - 1 = 167.199.130.126</code>.</div>
+<div class="solution-step">   - Total usable hosts = <code>128 - 2 = 126 hosts</code>.</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 15: Distance Vector Routing Table Update</span><span class="unit-tag">Unit 4</span></div>
+<div><i>(From May 2019 VIT ESE Q3a)</i></div>
+<div class="statement-box"></div>
+<div class="statement-box">In a subnet using Distance Vector Routing, router C has three neighbors: B, D, and E. The measured link delays from C to these neighbors are:</div>
+<div class="solution-step">> - Delay to B = 6</div>
+<div class="solution-step">> - Delay to D = 3</div>
+<div class="solution-step">> - Delay to E = 5</div>
+<div>> The incoming vectors received at C are:</div>
+<div>> - From B: <code>(5, 0, 8, 12, 6, 2)</code> for destinations <code>(A, B, C, D, E, F)</code></div>
+<div>> - From D: <code>(16, 12, 6, 0, 9, 10)</code></div>
+<div>> - From E: <code>(7, 6, 3, 9, 0, 4)</code></div>
+<div>> Calculate C's new routing table.</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Bellman-Ford Formula for destination X:</b></div>
+<div class="solution-step">   <code>D_C(X) = min[ c(C, B) + D_B(X),  c(C, D) + D_D(X),  c(C, E) + D_E(X) ]</code></div>
+<div style="margin:2px 0 2px 10px;">2. <b>Evaluations for Each Destination:</b></div>
+<div class="solution-step">   - <b>To A</b>: <code>min(6 + 5,  3 + 16,  5 + 7) = min(11, 19, 12) = 11</code> (via line B).</div>
+<div class="solution-step">   - <b>To B</b>: <code>min(6 + 0,  3 + 12,  5 + 6) = min(6, 15, 11) = 6</code> (via line B).</div>
+<div>   - <b>To C</b>: Distance to self is strictly <code>0</code>.</div>
+<div class="solution-step">   - <b>To D</b>: <code>min(6 + 12,  3 + 0,  5 + 9) = min(18, 3, 14) = 3</code> (via line D).</div>
+<div class="solution-step">   - <b>To E</b>: <code>min(6 + 6,  3 + 9,  5 + 0) = min(12, 12, 5) = 5</code> (via line E).</div>
+<div class="solution-step">   - <b>To F</b>: <code>min(6 + 2,  3 + 10,  5 + 4) = min(8, 13, 9) = 8</code> (via line B).</div>
+<div style="margin:2px 0 2px 10px;">3. <b>C's New Routing Table:</b></div>
+<table>
+<tr><th>Destination</th><th>Minimum Delay Cost</th><th>Next Hop / Outgoing Line</th></tr>
+<tr><td><b>A</b></td><td><b>11</b></td><td><b>B</b></td></tr>
+<tr><td><b>B</b></td><td><b>6</b></td><td><b>B</b></td></tr>
+<tr><td><b>C</b></td><td><b>0</b></td><td><b>-</b></td></tr>
+<tr><td><b>D</b></td><td><b>3</b></td><td><b>D</b></td></tr>
+<tr><td><b>E</b></td><td><b>5</b></td><td><b>E</b></td></tr>
+<tr><td><b>F</b></td><td><b>8</b></td><td><b>B</b></td></tr>
+</table>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 16: Negative Weight Cycle Detection</span><span class="unit-tag">Unit 4</span></div>
+<div><i>(From Nov 2024 VIT ESE Q4b)</i></div>
+<div class="statement-box"></div>
+<div class="statement-box">Given a directed graph with edges: <code>0 --1 (weight +1)</code>, <code>1 --2 (weight +3)</code>, <code>2 --3 (weight +2)</code>, and <code>3 --1 (weight -6)</code>.</div>
+<div>> 1. Determine whether a negative weight cycle exists.</div>
+<div>> 2. Explain how the Bellman-Ford algorithm mathematically detects this condition.</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Direct Cycle Sum:</b></div>
+<div>   - Cycle is formed by vertices <code>1 --> 2 --> 3 --> 1</code>.</div>
+<div>   - Sum of weights:</div>
+<div class="solution-step">     <code>Weight_cycle = w(1, 2) + w(2, 3) + w(3, 1) = (+3) + (+2) + (-6) = 5 - 6 = -1</code>.</div>
+<div class="solution-step">   - Since <code>Weight_cycle = -1 < 0</code>, <b>YES, A NEGATIVE WEIGHT CYCLE EXISTS</b>.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Bellman-Ford Detection Mechanism:</b></div>
+<div>   - In a graph with <code>V</code> vertices without negative cycles, every shortest simple path has at most <code>V - 1</code> edges.</div>
+<div>   - Bellman-Ford relaxes all edges <code>V - 1</code> times.</div>
+<div>   - On the <code>V</code>-th relaxation step, if <code>dist[v] > dist[u] + w(u, v)</code> holds true for any edge <code>(u, v)</code>, it proves that traversing the cycle further reduces the path cost toward negative infinity (<code>-infinity</code>). The algorithm flags <code>Negative Weight Cycle Detected</code> and aborts.</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 17: Token Bucket Traffic Shaping Burst Duration</span><span class="unit-tag">Unit 4</span></div>
+<div class="statement-box"></div>
+<div class="statement-box">A computer network uses a token bucket to shape traffic. The token bucket capacity is <code>b = 2 Megabytes</code>. Tokens arrive at a rate of <code>r = 10 MB/sec</code>. The network link has a maximum transmission capacity of <code>M = 50 MB/sec</code>.</div>
+<div>> 1. Calculate the maximum burst duration (<code>S</code>) during which the computer can transmit at the peak rate of 50 MB/sec.</div>
+<div>> 2. Calculate the total data volume transmitted during this burst.</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Given Data:</b></div>
+<div class="solution-step">   - Bucket capacity <code>b = 2 MB</code></div>
+<div class="solution-step">   - Token arrival rate <code>r = 10 MB/s</code></div>
+<div class="solution-step">   - Peak rate <code>M = 50 MB/s</code></div>
+<div style="margin:2px 0 2px 10px;">2. <b>Burst Duration Formula:</b></div>
+<div>   During a burst of duration <code>S</code>, total tokens consumed equals initial tokens plus tokens arriving:</div>
+<div class="solution-step">   <code>Consumed = S * M</code></div>
+<div class="solution-step">   <code>Available = b + S * r</code></div>
+<div class="solution-step">   <code>S <i> M = b + S </i> r ==> S * (M - r) = b ==> S = b / (M - r)</code>.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Calculate S:</b></div>
+<div class="solution-step">   <code>S = (2 MB) / (50 MB/s - 10 MB/s) = 2 / 40 = 0.05 seconds = 50 ms</code>.</div>
+<div style="margin:2px 0 2px 10px;">4. <b>Total Data Volume Transmitted:</b></div>
+<div class="solution-step">   <code>Volume V = S <i> M = 0.05 s </i> 50 MB/s = 2.5 Megabytes (2.5 MB)</code>.</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 18: TCP Jacobson's RTO Calculation</span><span class="unit-tag">Unit 5</span></div>
+<div class="statement-box"></div>
+<div class="statement-box">An established TCP connection has an estimated <code>SRTT = 100 ms</code> and <code>RTTVAR = 20 ms</code>.</div>
+<div>> 1. What is the current Retransmission Timeout (RTO)?</div>
+<div class="solution-step">> 2. A new acknowledgment arrives with a measured round-trip time <code>RTT_m = 140 ms</code>. Using standard Jacobson parameters (<code>alpha = 0.125</code>, <code>beta = 0.25</code>), calculate the updated <code>SRTT</code>, <code>RTTVAR</code>, and new <code>RTO</code>.</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Current RTO:</b></div>
+<div class="solution-step">   <code>RTO_initial = SRTT + 4 <i> RTTVAR = 100 + 4 </i> (20) = 100 + 80 = 180 ms</code>.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Update with New Measurement <code>RTT_m = 140 ms</code>:</b></div>
+<div>   - <b>Update SRTT</b>:</div>
+<div class="solution-step">     <code>SRTT_new = (1 - alpha) <i> SRTT_old + alpha </i> RTT_m</code></div>
+<div class="solution-step">     <code>SRTT_new = (1 - 0.125) <i> 100 + 0.125 </i> 140 = 0.875 * 100 + 17.5 = 87.5 + 17.5 = 105 ms</code>.</div>
+<div>   - <b>Update RTTVAR</b>:</div>
+<table>
+<tr><th>SRTT_old - RTT_m</th></tr>
+<tr><td>100 - 140</td></tr>
+</table>
+<div class="solution-step">     <code>RTTVAR_new = (1 - 0.25) <i> 20 + 0.25 </i> (40) = 0.75 * 20 + 10 = 15 + 10 = 25 ms</code>.</div>
+<div>   - <b>Calculate New RTO</b>:</div>
+<div class="solution-step">     <code>RTO_new = SRTT_new + 4 <i> RTTVAR_new = 105 + 4 </i> (25) = 105 + 100 = 205 ms</code>.</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 19: TCP AIMD Congestion Window Trace</span><span class="unit-tag">Unit 5</span></div>
+<div class="statement-box"></div>
+<div class="statement-box">A TCP Reno sender has an <code>MSS = 1 KB</code>. The initial <code>ssthresh</code> is set to <code>16 KB</code>. The sender starts in Slow Start with <code>cwnd = 1 KB</code>.</div>
+<div>> Trace the value of <code>cwnd</code> across transmission rounds (RTTs) up to Round 10, assuming a packet loss due to <b>triple duplicate ACKs</b> occurs during Round 7.</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Trace Table:</b></div>
+<table>
+<tr><th>Round (RTT)</th><th>State</th><th>cwnd at Start</th><th>Action Taken</th></tr>
+<tr><td><b>1</b></td><td>Slow Start</td><td><b>1 KB</b></td><td>cwnd doubles (receives 1 ACK)</td></tr>
+<tr><td><b>2</b></td><td>Slow Start</td><td><b>2 KB</b></td><td>cwnd doubles</td></tr>
+<tr><td><b>3</b></td><td>Slow Start</td><td><b>4 KB</b></td><td>cwnd doubles</td></tr>
+<tr><td><b>4</b></td><td>Slow Start</td><td><b>8 KB</b></td><td>cwnd doubles</td></tr>
+<tr><td><b>5</b></td><td>Slow Start</td><td><b>16 KB</b></td><td>Reaches <code>ssthresh (16 KB)</code>! Switches to Congestion Avoidance</td></tr>
+<tr><td><b>6</b></td><td>Congestion Avoidance</td><td><b>17 KB</b></td><td>cwnd grows linearly (+1 KB)</td></tr>
+<tr><td><b>7</b></td><td>Congestion Avoidance</td><td><b>18 KB</b></td><td><b>3 Dup ACKs Detected!</b> Loss event</td></tr>
+<tr><td><b>8</b></td><td>Fast Recovery (Reno)</td><td><b>9 KB</b></td><td><code>ssthresh = cwnd/2 = 9 KB</code>; <code>cwnd = ssthresh = 9 KB</code></td></tr>
+<tr><td><b>9</b></td><td>Congestion Avoidance</td><td><b>10 KB</b></td><td>cwnd grows linearly (+1 KB)</td></tr>
+<tr><td><b>10</b></td><td>Congestion Avoidance</td><td><b>11 KB</b></td><td>cwnd grows linearly (+1 KB)</td></tr>
+</table>
+<div class="trap-box"><b>Contrast with TCP Tahoe</b>: In TCP Tahoe, Round 8 would drop <code>cwnd = 1 KB</code> and restart Slow Start. TCP Reno stays in Congestion Avoidance at <code>9 KB</code>!</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 20: Base64 MIME Encoding Expansion</span><span class="unit-tag">Unit 6</span></div>
+<div class="statement-box"></div>
+<div class="statement-box">An email attachment is an image of exact size 150,000 Bytes.</div>
+<div>> 1. Calculate the size of the image after Base64 encoding for MIME transmission.</div>
+<div>> 2. How many padding characters are appended?</div>
+<div>> 3. If an email server has a 20 MB message size limit, what is the maximum raw attachment size that can be safely sent?</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Calculate Encoded Size:</b></div>
+<div>   - Base64 maps 3 raw bytes to 4 ASCII characters:</div>
+<div class="solution-step">     <code>Encoded Size = ceil(150,000 / 3) <i> 4 = 50,000 </i> 4 = 200,000 Bytes</code>.</div>
+<div class="solution-step">   - Size overhead = <code>200,000 - 150,000 = +50,000 Bytes (+33.33%)</code>.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Padding Characters:</b></div>
+<div class="solution-step">   - <code>150,000 mod 3 = 0</code>.</div>
+<div>   - Since the byte count is an exact multiple of 3, <b>0 padding characters</b> (<code>=</code>) are needed!</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Max Raw Attachment for 20 MB Limit:</b></div>
+<div class="solution-step">   <code>Max Encoded = 20 MB = 20 x 10^6 Bytes</code>.</div>
+<div class="solution-step">   <code>Max Raw = (3 / 4) * 20 MB = 15 Megabytes (15 MB)</code>.</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 21: Non-Persistent vs Persistent HTTP Download Latency</span><span class="unit-tag">Unit 6</span></div>
+<div class="statement-box"></div>
+<div class="statement-box">A web browser requests an HTML base page that references 9 embedded images stored on the same server. The one-way propagation delay between client and server is <code>RTT / 2 = 15 ms</code> (<code>RTT = 30 ms</code>). The transmission time of the HTML page is 10 ms, and each image requires 5 ms transmission time.</div>
+<div>> 1. Calculate the total elapsed time using Non-Persistent HTTP (HTTP/1.0, serial).</div>
+<div>> 2. Calculate the total elapsed time using Persistent HTTP with Pipelining (HTTP/1.1).</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Non-Persistent HTTP (HTTP/1.0):</b></div>
+<div>   - Each object requires a separate TCP connection:</div>
+<div class="solution-step">     <code>Time per object = 1 RTT (TCP handshake) + 1 RTT (HTTP request/response) + T_trans = 2 * RTT + T_trans</code>.</div>
+<div class="solution-step">   - HTML base object: <code>2 * (30 ms) + 10 ms = 60 + 10 = 70 ms</code>.</div>
+<div class="solution-step">   - 9 Images: <code>9 <i> [2 </i> (30 ms) + 5 ms] = 9 * (65 ms) = 585 ms</code>.</div>
+<div class="solution-step">   - <code>Total Time = 70 ms + 585 ms = 655 ms</code>.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Persistent HTTP with Pipelining (HTTP/1.1):</b></div>
+<div class="solution-step">   - Single TCP connection opened for base HTML: <code>2 * RTT + T_trans,HTML = 60 + 10 = 70 ms</code>.</div>
+<div>   - Once HTML is parsed, client pipelines all 9 image requests together over the existing open connection:</div>
+<div class="solution-step">     <code>Time for all images = 1 RTT + Sum of transmission times = 30 ms + (9 * 5 ms) = 30 + 45 = 75 ms</code>.</div>
+<div class="solution-step">   - <code>Total Time = 70 ms + 75 ms = 145 ms</code>.</div>
+<div class="trap-box"><b>Conclusion</b>: Persistent HTTP with Pipelining is <b>4.5 times faster</b> (<code>145 ms vs 655 ms</code>)!</div>
+</div>
+<div class="problem-card avoid-break">
+<div class="problem-title"><span>PROBLEM 22: DHCP Lease Renewal Timers</span><span class="unit-tag">Unit 6</span></div>
+<div class="statement-box"></div>
+<div class="statement-box">A laptop connects to the VIT campus Wi-Fi network at 9:00:00 AM and is assigned an IP address by a DHCP server with a lease duration of 8 hours (28,800 seconds).</div>
+<div>> State the exact wall-clock time and protocol action for:</div>
+<div>> 1. Timer T1 (Renewal Timer)</div>
+<div>> 2. Timer T2 (Rebinding Timer)</div>
+<div>> 3. Lease Expiration</div>
+<div><b>Step-by-Step Solution:</b></div>
+<div style="margin:2px 0 2px 10px;">1. <b>Timer T1 (50% of lease):</b></div>
+<div class="solution-step">   - <code>Duration = 0.50 * 8 hours = 4 hours</code>.</div>
+<div>   - <b>Time: 1:00:00 PM</b>.</div>
+<div>   - <b>Action</b>: Client sends a unicast <code>DHCPREQUEST</code> packet directly to the original DHCP server to extend the lease. If acknowledged (<code>DHCPACK</code>), timers reset.</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Timer T2 (87.5% of lease):</b></div>
+<div class="solution-step">   - <code>Duration = 0.875 * 8 hours = 7 hours</code>.</div>
+<div>   - <b>Time: 4:00:00 PM</b>.</div>
+<div>   - <b>Action</b>: If original server did not reply to T1, client broadcasts a <code>DHCPREQUEST</code> to <b>any</b> active DHCP server on the local subnet to renew the IP.</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Lease Expiration (100% of lease):</b></div>
+<div class="solution-step">   - <code>Duration = 8 hours</code>.</div>
+<div>   - <b>Time: 5:00:00 PM</b>.</div>
+<div>   - <b>Action</b>: Lease expires. Client must immediately cease using the IP address, unbind the network adapter, and restart the full 4-step DORA process (<code>DHCPDISCOVER</code>).</div>
+<div>## Summary Checklist of 10 Critical Exam Pitfalls:</div>
+<div style="margin:2px 0 2px 10px;">1. <b>BDP Unit Trap</b>: <code>BDP</code> is in bits (<code>Bandwidth * RTT</code>). Divide by 8 to get Bytes!</div>
+<div style="margin:2px 0 2px 10px;">2. <b>Subnetting Host Count Trap</b>: Always subtract 2 for usable hosts (<code>2^h - 2</code>).</div>
+<div style="margin:2px 0 2px 10px;">3. <b>Fragment Offset Unit Trap</b>: Always divide byte offset by 8 (<code>Offset = Byte Position / 8</code>).</div>
+<div style="margin:2px 0 2px 10px;">4. <b>Hamming Code Index Trap</b>: Parity bits are placed strictly at bit indices 1, 2, 4, 8... (not 0, 1, 2...).</div>
+<div style="margin:2px 0 2px 10px;">5. <b>CRC Zero Padding Trap</b>: The number of zeros appended is equal to the <b>degree</b> <code>r</code> of <code>G(x)</code>, which is <code>(Number of bits in G) - 1</code>.</div>
+<div>6. <b>CSMA/CD Factor of 2 Trap</b>: The transmission time must be at least twice the one-way propagation delay (<code>T_trans >= 2 * T_prop</code>), because the collision signal must travel all the way back.</div>
+<div>7. <b>Pure vs Slotted ALOHA Factor Trap</b>: Pure ALOHA has <code>e^(-2G)</code> and max <code>18.4%</code>; Slotted ALOHA has <code>e^(-G)</code> and max <code>36.8%</code>.</div>
+<div class="solution-step">8. <b>TCP Tahoe vs Reno Fast Recovery Trap</b>: On 3 duplicate ACKs, TCP Reno does NOT drop <code>cwnd = 1</code>. It sets <code>cwnd = ssthresh</code> and stays in Congestion Avoidance.</div>
+<div>9. <b>Base64 Overhead Trap</b>: Base64 increases file size by <code>+33.33%</code> (not 25%).</div>
+<div>10. <b>Active vs Passive FTP Trap</b>: In Active FTP, the server initiates the data connection from Port 20 to the client's high-numbered port.</div>
+</div>
+
+</body>
+</html>
