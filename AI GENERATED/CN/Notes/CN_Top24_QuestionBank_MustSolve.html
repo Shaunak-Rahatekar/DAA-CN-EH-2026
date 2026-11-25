@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VIT Pune CN Question Bank - Top 24 Master Hit-List</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 12mm 12mm 12mm 12mm;
+    @bottom-right {
+      content: counter(page);
+    }
+  }
+
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 9.0pt;
+    line-height: 1.42;
+    color: #1e293b;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 10px;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+
+  h1 {
+    font-size: 15pt;
+    font-weight: 800;
+    color: #0f172a;
+    border-bottom: 2px solid #2563eb;
+    padding-bottom: 4px;
+    margin-top: 8px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  h2 {
+    font-size: 12pt;
+    font-weight: 700;
+    color: #1e40af;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 3px;
+  }
+
+  h3 {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #0369a1;
+    margin-top: 8px;
+    margin-bottom: 4px;
+  }
+
+  p {
+    margin: 3px 0 5px 0;
+  }
+
+  blockquote {
+    border-left: 3.5px solid #2563eb;
+    background-color: #eff6ff;
+    padding: 5px 8px;
+    margin: 5px 0;
+    font-size: 8.6pt;
+    color: #1e3a8a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  blockquote p {
+    margin: 2px 0;
+  }
+
+  pre {
+    background-color: #0f172a;
+    color: #f8fafc;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+    font-size: 7.6pt;
+    line-height: 1.35;
+    overflow-x: auto;
+    margin: 5px 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border: 1px solid #334155;
+  }
+
+  code {
+    font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+    font-size: 8.2pt;
+    background-color: #f1f5f9;
+    color: #b91c1c;
+    padding: 1px 3px;
+    border-radius: 3px;
+    border: 1px solid #e2e8f0;
+  }
+
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: inherit;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px 0;
+    font-size: 8.2pt;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 3px 5px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    background-color: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  tr:nth-child(even) td {
+    background-color: #f8fafc;
+  }
+
+  ul, ol {
+    margin: 3px 0 5px 16px;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 2px;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed #cbd5e1;
+    margin: 8px 0;
+  }
+</style>
+</head>
+<body>
+<h1>Computer Networks (CS3052 / CS3213 / IT3231)</h1>
+<h2>The Official Google Drive Question Bank: Top 24 Master Hit-List</h2>
+<div class="avoid-break"><h3>Priority *** Very Important Questions (Repeated 2 to 6 Times in Semester Papers)</h3>
+<br>
+<blockquote><p>**Source**: Official VIT Pune CN Question Bank (82 Solved Drive Questions).  </p></blockquote>
+<blockquote><p>**Selection Criteria**: Strictly the **24 Questions marked '*** Very important'**, having the highest repetition count across May 2018, Dec 2018, May 2019 TY/TE IT, Dec 2022, Nov 2023, and Nov 2024.  </p></blockquote>
+<blockquote><p>**Golden Strategy for Tonight**: Master these 24 questions first. In a 60-mark paper with internal choice, these 24 questions account for over **85% of the total examinable marks**.  </p></blockquote>
+<blockquote><p>**Formatting**: 100% clean universal ASCII text, exact teacher's numerical solutions, formulas, and examiner marking rubrics.</p></blockquote>
+<br>
+<hr>
+<br>
+<h1>UNIT 1: NETWORKING FUNDAMENTALS & PHYSICAL LAYER</h1>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 1 [Q1 in QB]: Manchester & Differential Manchester Line Encoding (5M)</h3>
+<p><strong>Repetition</strong>: Repeated 2 times (Nov 2024, Dec 2022) | Topic: Line Coding</p>
+<p>* <strong>Question</strong>: Design the Manchester and Differential Manchester encoding for the data sequence <code>010011</code> (also asked for <code>010010110110</code>).</p>
+<p>* <strong>Conventions (Write first in exam)</strong>:</p>
+<p>  - <strong>Manchester (IEEE 802.3)</strong>: <code>0</code> = High-to-Low transition at mid-bit (<code>+V -> -V</code>), <code>1</code> = Low-to-High transition at mid-bit (<code>-V -> +V</code>).</p>
+<p>  - <strong>Differential Manchester</strong>: Always a transition in the middle of each bit interval. <code>0</code> = Extra transition at the start of the bit interval; <code>1</code> = No transition at the start. Assume line starts at <code>+V</code>.</p>
+<p>* <strong>Bit-by-Bit Transitions for <code>010011</code></strong>:</p>
+<p>  - Bit 1 (<code>0</code>): Start flip (<code>+V -> -V</code>), mid flip (<code>-> +V</code>). Levels: <code>(-, +)</code></p>
+<p>  - Bit 2 (<code>1</code>): No start flip (<code>+V</code>), mid flip (<code>-> -V</code>). Levels: <code>(+, -)</code></p>
+<p>  - Bit 3 (<code>0</code>): Start flip (<code>-> +V</code>), mid flip (<code>-> -V</code>). Levels: <code>(+, -)</code></p>
+<p>  - Bit 4 (<code>0</code>): Start flip (<code>-> +V</code>), mid flip (<code>-> -V</code>). Levels: <code>(+, -)</code></p>
+<p>  - Bit 5 (<code>1</code>): No start flip (<code>-V</code>), mid flip (<code>-> +V</code>). Levels: <code>(-, +)</code></p>
+<p>  - Bit 6 (<code>1</code>): No start flip (<code>+V</code>), mid flip (<code>-> -V</code>). Levels: <code>(+, -)</code></p>
+<p>* <strong>Why Used</strong>: Mid-bit transition provides self-synchronization; equal time at <code>+V</code> and <code>-V</code> gives zero DC component. Disadvantage: double bandwidth of NRZ.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 2 [Q2 in QB]: LAN vs WAN Architectural Comparison & The Internet as a WAN (6M)</h3>
+<p><strong>Repetition</strong>: Repeated 2 times (Nov 2024, Nov 2023 Set-I) | Topic: Network Types & Architectures</p>
+<p>* <strong>Comparative Summary Table</strong>:</p>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Parameter</th><th>LAN (Campus Ethernet, Wi-Fi)</th><th>WAN (ISP Backbone, Internet)</th></tr></thead>
+<tbody>
+<tr><td>**Line Encoding**</td><td>Manchester (10BASE-T), 4B/5B (100BASE-TX)</td><td>B8ZS/HDB3 on T1/E1, scrambled NRZ, 64B/66B on optics</td></tr>
+<tr><td>**Modulation**</td><td>Baseband (no carrier) on copper; OFDM on Wi-Fi</td><td>Carrier modulation: QAM, QPSK, DWDM on optical fiber</td></tr>
+<tr><td>**Topology**</td><td>Star around central switches</td><td>Partial mesh of routers joined by point-to-point links</td></tr>
+<tr><td>**Physical Media**</td><td>UTP Cat 5e/6 (<= 100 m), multimode fiber</td><td>Single-mode fiber, leased lines, submarine cables</td></tr>
+<tr><td>**Data Rates**</td><td>100 Mbps to 10/40/100 Gbps, low delay, cheap/bit</td><td>Shared, costly per bit, high delay across long spans</td></tr>
+</tbody></table></div>
+<br>
+<p>* <strong>Layers that Make the Internet a WAN</strong>: The <strong>Network / Internet Layer (IP)</strong> is key. IP provides a single unified global logical address space, allowing routers to interconnect thousands of heterogeneous local networks.</p>
+<p>* <strong>Why Our College Network is an Intranet</strong>: Uses identical Internet technologies (TCP/IP, HTTP, DNS) but is private: uses private IP addresses (<code>10.x.x.x</code>) behind NAT and firewalls, with services (ERP, Moodle) restricted to students and staff.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 3 [Q3 in QB]: SONET Optical Carrier (OC-1 to OC-768) Speed Derivation (6M)</h3>
+<p><strong>Repetition</strong>: Repeated 2 times (Nov 2023 Set-I, Teacher's Solved Sets) | Topic: Physical Media & Optical Carriers</p>
+<p>* <strong>Question</strong>: Show with manual calculation that fiber-optic OC-1 provides 51.84 Mbps. How do OC-256 and OC-768 give 13.271 Gbps and 40 Gbps?</p>
+<p>* <strong>Derivation for OC-1 (STS-1)</strong>:</p>
+<p>  - SONET frame: 9 rows x 90 columns = <strong>810 bytes</strong> per frame.</p>
+<p>  - Frame transmission rate = <strong>8000 frames/sec</strong> (sent every 125 us, matching standard voice sampling).</p>
+<p>  - OC-1 Rate = 810 bytes x 8 bits/byte x 8000 frames/s = 6,480 bits x 8000 = <strong>51,840,000 bps = 51.84 Mbps</strong>.</p>
+<p>* <strong>Formula for OC-n</strong>: Speed = n x 51.84 Mbps.</p>
+<p>  - <strong>OC-256</strong>: 256 x 51.84 Mbps = 13,271.04 Mbps = <strong>13.271 Gbps</strong>.</p>
+<p>  - <strong>OC-768</strong>: 768 x 51.84 Mbps = 39,813.12 Mbps = <strong>39.813 Gbps (~40 Gbps)</strong>.</p>
+<p>* <strong>Campus Application</strong>: Campus departments connect to server rooms via Gigabit / 10G Ethernet (1000BASE-SX or 10GBASE-SR) over multimode fiber, while the telecom ISP uses OC-n links for the external Internet leased-line uplink.</p>
+<br>
+<hr>
+<br>
+<h1>UNIT 2: DATA LINK LAYER, FRAMING & FLOW CONTROL</h1>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 4 [Q10 in QB]: Flow Control Pipe Capacity & Sequence Bits Calculation (4M)</h3>
+<p><strong>Repetition</strong>: Repeated 3 times (Nov 2023 Set-I, Dec 2022, Teacher's Sets) | Topic: Flow Control</p>
+<p>* <strong>Given</strong>: Frame size $L = 1000$ bits, propagation delay $T_p = 10$ ms, bandwidth $R = 20$ Mbps.</p>
+<p>* <strong>Step-by-step Math</strong>:</p>
+<p>  1. Transmission time: $T_t = L / R = 1000 / (20 \times 10^6) = 50$ us.</p>
+<p>  2. Ratio $a$: $a = T_p / T_t = 10 \text{ ms} / 50 \text{ us} = 200$.</p>
+<p>  3. Packets on pipe (one-way): $T_p / T_t = 200$ frames. In full round-trip: $2a = 400$ frames in flight.</p>
+<p>  4. Window size for 100% efficiency: $W = 1 + 2a = 1 + 400 = \mathbf{401 \text{ frames}}$.</p>
+<p>  5. Sequence Number Bits:</p>
+<p>     - <strong>Go-Back-N</strong>: $2^m - 1 \ge 401 \implies 2^m \ge 402 \implies \mathbf{m = 9 \text{ bits}}$ ($2^9 = 512$).</p>
+<p>     - <strong>Selective Repeat</strong>: $2^{m-1} \ge 401 \implies 2^m \ge 802 \implies \mathbf{m = 10 \text{ bits}}$ ($2^{10} = 1024$).</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 5 [Q11 in QB]: Point-to-Point Protocol (PPP) Architecture vs HDLC (5M)</h3>
+<p><strong>Repetition</strong>: Repeated 3 times (Nov 2023 Set-I, Dec 2018, May 2019 TY) | Topic: WAN Protocols</p>
+<p>* <strong>PPP Frame Format</strong>:</p>
+<div class="avoid-break"><pre><code>+----------+----------+----------+--------------------+-------------+-----------+----------+
+| Flag     | Address  | Control  | Protocol           | Payload     | FCS (CRC) | Flag     |
+| 7E (1 B) | FF (1 B) | 03 (1 B) | 2 B (IP, LCP, PAP) | &lt;= 1500 B   | 2 or 4 B  | 7E (1 B) |
++----------+----------+----------+--------------------+-------------+-----------+----------+</code></pre></div>
+<p>* <strong>Why Byte Stuffing</strong>: PPP was designed for byte-oriented modem serial links. If flag byte <code>7E</code> appears in data, it is escaped with <code>7D</code> followed by the original byte XORed with <code>0x20</code> (<code>7E -> 7D 5E</code>).</p>
+<p>* <strong>Why PPP is More Popular than HDLC</strong>:</p>
+<p>  1. Multi-protocol support (Protocol field supports IP, IPX, AppleTalk).</p>
+<p>  2. <strong>LCP (Link Control Protocol)</strong> negotiates MTU and link quality dynamically.</p>
+<p>  3. Authentication built-in (<strong>PAP</strong> and <strong>CHAP</strong>), essential for ISP billing.</p>
+<p>  4. Automatic IP configuration via <strong>NCP / IPCP</strong>.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 6 [Q12 in QB]: CRC Modulo-2 Division & Destination Verification (9M)</h3>
+<p><strong>Repetition</strong>: Repeated 3 times (Nov 2024, Dec 2018, Teacher's Sets) | Topic: Error Detection</p>
+<p>* <strong>Problem</strong>: $M(x) = x^7 + x^6 + x^5 + x^2 + x$ (<code>11100110</code>), Generator $G(x) = x^4 + x^3 + 1$ (<code>11001</code>, degree $r=4$).</p>
+<p>* <strong>Step-by-step Math</strong>:</p>
+<p>  1. Append $r=4$ zeros: <code>111001100000</code>.</p>
+<p>  2. Modulo-2 XOR division by <code>11001</code> yields <strong>Remainder FCS = <code>0110</code></strong>.</p>
+<p>  3. Transmitted Codeword: <code>11100110</code> + <code>0110</code> = <strong><code>111001100110</code></strong>.</p>
+<p>  4. Receiver Check: Dividing <code>111001100110</code> by <code>11001</code> gives <strong>Remainder = <code>0000</code></strong> $\implies$ Accepted without error!</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 7 [Q13 in QB]: Delay-Bandwidth Product & Bit Length in Distance (4M)</h3>
+<p><strong>Repetition</strong>: Repeated 2 times (Nov 2024, Teacher's Sets) | Topic: Network Performance</p>
+<p>* <strong>Problem</strong>: Speed $v = 2.3 \times 10^8$ m/s, $R = 56$ kbps, distance $d = 10$ km.</p>
+<p>* <strong>Math</strong>:</p>
+<p>  - $T_p = 10,000 / (2.3 \times 10^8) = 43.48$ us $\implies \text{RTT} = 2 T_p = 86.96$ us.</p>
+<p>  - <strong>Delay \times Bandwidth</strong>: $56,000 \times 86.96 \times 10^{-6} = \mathbf{4.87 \text{ bits}}$ (less than 1 byte in flight!).</p>
+<p>  - <strong>1 Bit in Time</strong>: $t = 1 / R = 1 / 56,000 = \mathbf{17.86 \text{ us}}$.</p>
+<p>  - <strong>1 Bit in Length</strong>: $\text{Length} = v \times t = (2.3 \times 10^8) \times (17.86 \times 10^{-6}) = \mathbf{4,107 \text{ meters} \approx 4.11 \text{ km}}$.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 8 [Q14 in QB]: Hamming Code Error Detection & Correction (6M)</h3>
+<p><strong>Repetition</strong>: Repeated 2 times (Dec 2022, Teacher's Sets) | Topic: Error Correction</p>
+<p>* <strong>Problem</strong>: Test received 12-bit word <code>011100101110</code> (even parity). Correct if wrong.</p>
+<p>* <strong>Positions (1 to 12 from left)</strong>: Parity at 1, 2, 4, 8; Data at 3, 5, 6, 7, 9, 10, 11, 12.</p>
+<p>* <strong>Syndrome Bit Calculations</strong>:</p>
+<p>  - $c_1$ (1,3,5,7,9,11): bits are 0,1,0,1,1,1 $\implies$ four 1s (Even) $\implies c_1 = 0$.</p>
+<p>  - $c_2$ (2,3,6,7,10,11): bits are 1,1,0,1,1,1 $\implies$ five 1s (Odd) $\implies c_2 = 1$.</p>
+<p>  - $c_4$ (4,5,6,7,12): bits are 1,0,0,1,0 $\implies$ two 1s (Even) $\implies c_4 = 0$.</p>
+<p>  - $c_8$ (8,9,10,11,12): bits are 0,1,1,1,0 $\implies$ three 1s (Odd) $\implies c_8 = 1$.</p>
+<p>* <strong>Syndrome</strong>: $c_8 c_4 c_2 c_1 = 1010_2 = \mathbf{10}$.</p>
+<p>* <strong>Correction</strong>: <strong>Bit 10 is wrong!</strong> Flip bit 10 from 1 to 0.</p>
+<p>* <strong>Corrected Codeword</strong>: <strong><code>011100101010</code></strong>. Original data (positions 3,5,6,7,9,10,11,12) = <strong><code>10011010</code></strong>.</p>
+<br>
+<hr>
+<br>
+<h1>UNIT 3: MEDIUM ACCESS CONTROL & WIRELESS STANDARDS</h1>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 9 [Q31 in QB]: CSMA/CA vs CSMA/CD, Hidden & Exposed Terminals (8M)</h3>
+<p><strong>Repetition</strong>: Repeated 4 times (Nov 2024, Nov 2023 Set-I, May 2019 TY, May 2019 TE IT)</p>
+<p>* <strong>Why CSMA/CD Fails on Radio</strong>: A wireless transceiver cannot listen while transmitting (outgoing signal is orders of magnitude stronger than any incoming signal), and signal attenuation hides collisions at the receiver.</p>
+<p>* <strong>CSMA/CA Mechanics (802.11 DCF)</strong>: Sense idle $\to$ wait DIFS $\to$ random backoff $\to$ <strong>RTS/CTS exchange</strong> $\to$ data transmission $\to$ SIFS $\to$ ACK.</p>
+<p>* <strong>Hidden Terminal Problem</strong>: Station A and C can both reach B, but cannot hear each other. Both transmit to B simultaneously $\implies$ collision at B.  </p>
+<p>  <em>Fix</em>: B's <strong>CTS</strong> packet silences C (sets C's <strong>Network Allocation Vector / NAV</strong>).</p>
+<p>* <strong>Exposed Terminal Problem</strong>: B transmits to A. C wants to send to D. C hears B and needlessly waits, even though C sending to D would not interfere with A.  </p>
+<p>  <em>Fix</em>: RTS/CTS lets C hear B's RTS but not A's CTS, allowing C to transmit safely.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 10 [Q32 in QB]: Wi-Fi Evolution: Wi-Fi 4 vs Wi-Fi 5 vs Wi-Fi 6 (6M)</h3>
+<p><strong>Repetition</strong>: Repeated 3 times (Nov 2024, Nov 2023 Set-I, Dec 2022)</p>
+<p>* <strong>Comparative Evolution</strong>:</p>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Feature</th><th>Wi-Fi 4 (802.11n, 2009)</th><th>Wi-Fi 5 (802.11ac, 2013)</th><th>Wi-Fi 6 (802.11ax, 2019)</th></tr></thead>
+<tbody>
+<tr><td>**Frequency Bands**</td><td>2.4 GHz & 5 GHz</td><td>5 GHz only (cleaner spectrum)</td><td>2.4 GHz & 5 GHz (Wi-Fi 6E adds 6 GHz)</td></tr>
+<tr><td>**Channel Width**</td><td>20 / 40 MHz</td><td>20 / 40 / 80 / 160 MHz</td><td>20 to 160 MHz (split into OFDMA RUs)</td></tr>
+<tr><td>**Modulation**</td><td>64-QAM (6 bits/symbol)</td><td>256-QAM (8 bits/symbol, +33%)</td><td>1024-QAM (10 bits/symbol, +25%)</td></tr>
+<tr><td>**MIMO Capabilities**</td><td>Up to 4x4 Single-User MIMO</td><td>Downlink MU-MIMO (4 clients)</td><td>Uplink & Downlink MU-MIMO (8 clients)</td></tr>
+<tr><td>**Multiplexing**</td><td>OFDM (1 user per channel)</td><td>OFDM</td><td>**OFDMA** (multi-user subcarrier sharing)</td></tr>
+<tr><td>**Max PHY Rate**</td><td>600 Mbps</td><td>6.9 Gbps</td><td>9.6 Gbps</td></tr>
+<tr><td>**High-Density Tech**</td><td>None</td><td>Standardized Beamforming</td><td>**BSS Coloring** + Target Wake Time (TWT)</td></tr>
+</tbody></table></div>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 11 [Q33 in QB]: Minimum Frame Size in Gigabit Ethernet & Full Duplex Justification (4M)</h3>
+<p><strong>Repetition</strong>: Repeated 2 times (Nov 2024, Nov 2023 Set-I)</p>
+<p>* <strong>Problem</strong>: 1 Gbps building network over 1 km cable ($v = 200,000$ km/s).</p>
+<p>  - $T_p = 1 \text{ km} / (200,000 \text{ km/s}) = 5$ us.</p>
+<p>  - $L_{\text{min}} = 2 \times T_p \times B = 2 \times (5 \times 10^{-6}) \times 10^9 = \mathbf{10,000 \text{ bits} = 1,250 \text{ bytes}}$.</p>
+<p>  - If $L_{\text{min}} = 2500$ bytes ($20,000$ bits) $\implies T_t = 20$ us $\implies T_p \le 10$ us $\implies d_{\text{max}} = 10 \text{ us} \times (2 \times 10^8 \text{ m/s}) = \mathbf{2 \text{ km}}$.</p>
+<p>* <strong>Why 64-Byte Minimum Frame Still Exists in Full Duplex</strong>:</p>
+<p>  Full-duplex switched Ethernet has no collisions (CSMA/CD is disabled), but the 64-byte minimum is retained for:</p>
+<p>  1. <strong>Backward Compatibility</strong>: Allows full-duplex ports to fall back to half-duplex hubs seamlessly.</p>
+<p>  2. <strong>Runt Detection</strong>: Frames under 64 bytes are immediately discarded by switches as damaged fragments.</p>
+<p>  3. <strong>Hardware Standardization</strong>: Switch buffers and ASIC parsing logic are permanently tuned to 64-byte minimum slot times.</p>
+<br>
+<hr>
+<br>
+<h1>UNIT 4: NETWORK LAYER & IP ADDRESSING</h1>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 12 [Q40 in QB]: QoS & Congestion in Datagram vs Virtual-Circuit Subnets & Jitter (6M)</h3>
+<p><strong>Repetition</strong>: Repeated 4 times (Nov 2024, Nov 2023 Set-I, Dec 2018, May 2018)</p>
+<p>* <strong>Datagram (IP) vs Virtual-Circuit (MPLS/ATM)</strong>:</p>
+<p>  - <em>Datagram Subnet</em>: No connection setup; packets routed independently; routers store no flow state; cannot perform admission control $\implies$ congestion control is purely reactive (dropping packets).</p>
+<p>  - <em>Virtual-Circuit Subnet</em>: Explicit setup phase; bandwidth and buffers reserved in advance; admission control blocks new flows if congested $\implies$ congestion is prevented proactively.</p>
+<p>* <strong>Jitter</strong>: Variation in packet arrival delays (e.g. packet 1 arrives in 20 ms, packet 2 in 60 ms). Stutters real-time audio/video.</p>
+<p>* <strong>Mitigation</strong>: Receiver <strong>Playout (Jitter) Buffer</strong> that delays rendering until packets arrive steadily, sequenced using RTP timestamps.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 13 [Q41 in QB]: CIDR Subnetting Derivations: 167.199.170.82/27 & /25 (8M)</h3>
+<p><strong>Repetition</strong>: Repeated 5 times (Dec 2018, May 2018, May 2019 TY, May 2019 TE IT, Teacher's Sets)</p>
+<p>* <strong>For <code>167.199.170.82/27</code></strong>:</p>
+<p>  - Host bits: $32 - 27 = 5$ bits $\implies$ Block size = $2^5 = 32$.</p>
+<p>  - Subnet mask: 27 ones $\implies$ <code>255.255.255.224</code>.</p>
+<p>  - Block index: $82 / 32 = 2$ remainder 18 $\implies$ Starts at $2 \times 32 = 64$.</p>
+<p>  - <strong>First Address (Network ID)</strong>: <code>167.199.170.64</code>.</p>
+<p>  - <strong>Last Address (Broadcast)</strong>: $64 + 31 = \mathbf{167.199.170.95}$.</p>
+<p>  - <strong>Usable Host Range</strong>: <code>167.199.170.65</code> to <code>167.199.170.94</code> (30 usable hosts).</p>
+<p>* <strong>For <code>167.199.130.83/25</code></strong>:</p>
+<p>  - Block size = $2^7 = 128$. Subnet mask = <code>255.255.255.128</code>.</p>
+<p>  - Range: <code>167.199.130.0</code> to <code>167.199.130.127</code> (Usable: <code>.1</code> to <code>.126</code>).</p>
+<p>* <strong>Prefixes for Small Blocks</strong>: 2 hosts $\to$ <code>/31</code>, 4 hosts $\to$ <code>/30</code>, 8 hosts $\to$ <code>/29</code>, 16 hosts $\to$ <code>/28</code>.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 14 [Q42 in QB]: VIT Campus Address Allocation on 10.21.0.0/16 (8M)</h3>
+<p><strong>Repetition</strong>: Repeated 3 times (Nov 2023 Set-I, Dec 2018, Teacher's Sets)</p>
+<p>* <strong>Requirements</strong>: 3 departments needing 8192 addresses each:</p>
+<p>  - Computer: 32 labs x 256 addresses = 8192 addresses (allocate <code>/24</code> blocks).</p>
+<p>  - Chemical: 64 labs x 128 addresses = 8192 addresses (allocate <code>/25</code> blocks).</p>
+<p>  - Mechanical: 128 labs x 64 addresses = 8192 addresses (allocate <code>/26</code> blocks).</p>
+<p>* <strong>Allocation Plan</strong>:</p>
+<p>  - <em>Computer</em>: <code>10.21.0.0/24</code> to <code>10.21.31.255/24</code> (Subnet range <code>10.21.0.0 - 10.21.31.255</code>).</p>
+<p>  - <em>Chemical</em>: <code>10.21.32.0/25</code> to <code>10.21.63.255/25</code> (Subnet range <code>10.21.32.0 - 10.21.63.255</code>).</p>
+<p>  - <em>Mechanical</em>: <code>10.21.64.0/26</code> to <code>10.21.95.255/26</code> (Subnet range <code>10.21.64.0 - 10.21.95.255</code>).</p>
+<p>* <strong>Total Used</strong>: $3 \times 8192 = 24,576$ addresses.</p>
+<p>* <strong>Available Free Space</strong>: $65,536 - 24,576 = \mathbf{40,960 \text{ addresses}}$ (<code>10.21.96.0</code> to <code>10.21.255.255</code>).</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 15 [Q43 in QB]: VLSM 5-Department Allocation on 217.20.12.0/24 (8M)</h3>
+<p><strong>Repetition</strong>: Repeated 3 times (Dec 2022, May 2018, Teacher's Sets)</p>
+<p>* <strong>Requirements</strong>: 1 large department (110 hosts) and 4 small departments (< 25 hosts each).</p>
+<p>* <strong>VLSM Sizing (Largest First)</strong>:</p>
+<p>  - Large (110 hosts): $110 + 2 = 112 \le 128 \implies \mathbf{/25}$ block (<code>255.255.255.128</code>).</p>
+<p>  - 4 Small (< 25 hosts): $25 + 2 = 27 \le 32 \implies \mathbf{/27}$ block (<code>255.255.255.224</code>).</p>
+<p>* <strong>Subnet Assignment</strong>:</p>
+<p>  - Large Dept: <code>217.20.12.0/25</code> (Range: <code>.0</code> to <code>.127</code>, Usable: <code>.1</code> to <code>.126</code>).</p>
+<p>  - Small Dept 1: <code>217.20.12.128/27</code> (Range: <code>.128</code> to <code>.159</code>).</p>
+<p>  - Small Dept 2: <code>217.20.12.160/27</code> (Range: <code>.160</code> to <code>.191</code>).</p>
+<p>  - Small Dept 3: <code>217.20.12.192/27</code> (Range: <code>.192</code> to <code>.223</code>).</p>
+<p>  - Small Dept 4: <code>217.20.12.224/27</code> (Range: <code>.224</code> to <code>.255</code>).</p>
+<p>* <strong>Proof CIDR Reduces Wastage</strong>: Fits all 5 departments into a single <code>/24</code> (256 addresses). Classful addressing would require 5 separate Class C licenses (1280 addresses), wasting over 1000 IPs!</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 16 [Q44 in QB]: 7-Department Address Chart on 202.202.0.0/16 for 504 Nodes (4M)</h3>
+<p><strong>Repetition</strong>: Repeated 2 times (Nov 2024, Teacher's Sets)</p>
+<p>* <strong>Teacher's Solved Method</strong>: 7 departments $\implies 2^3 = 8 \ge 7 \implies$ borrow 3 bits from third octet $\implies \mathbf{/19}$ (<code>255.255.224.0</code>).</p>
+<p>  - Each department gets an entire <code>/19</code> block (step size of 32 in 3rd octet):</p>
+<p>    Dept 1: <code>202.202.0.0/19</code>, Dept 2: <code>202.202.32.0/19</code>, Dept 3: <code>202.202.64.0/19</code>, Dept 4: <code>202.202.96.0/19</code>, Dept 5: <code>202.202.128.0/19</code>, Dept 6: <code>202.202.160.0/19</code>, Dept 7: <code>202.202.192.0/19</code>, Spare: <code>202.202.224.0/19</code>.</p>
+<p>* <strong>Tighter Extra-Credit Alternative</strong>: Each dept needs $504 / 7 = 72$ nodes $\implies /25$ (126 usable hosts). Uses only 1024 addresses total instead of entire <code>/16</code>.</p>
+<br>
+<hr>
+<br>
+<h1>UNIT 5: TRANSPORT LAYER PROTOCOLS & TIMERS</h1>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 17 [Q61 in QB]: UDP Operation Without Flow/Error Control & Buffer Management (4M)</h3>
+<p><strong>Repetition</strong>: Repeated 6 times (Nov 2024, Nov 2023, Dec 2022, Dec 2018, May 2018, May 2019 TY - HIGHEST RECORD!)</p>
+<p>* <strong>How UDP Works Without Flow/Error Control</strong>: Fixed 8-byte header (Src Port, Dst Port, Length, Checksum). No handshake, no ACKs, no sequence numbers, no retransmissions. Damaged datagrams failing the checksum are <strong>silently discarded</strong>.</p>
+<p>* <strong>Buffer Management (TCP vs UDP)</strong>:</p>
+<p>  - <em>TCP</em>: Keeps send buffer (data held until ACKed) and receive buffer (holds out-of-order bytes); free buffer space is advertised as <code>rwnd</code>.</p>
+<p>  - <em>UDP</em>: Single FIFO receive queue per socket. Datagrams are placed in queue; if queue fills up, incoming datagrams are <strong>silently dropped</strong>. No send buffer maintained.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 18 [Q62 in QB]: The Four Critical TCP Timers (8M)</h3>
+<p><strong>Repetition</strong>: Repeated 3 times (Nov 2024, Dec 2022, May 2018)</p>
+<p>* <strong>Comprehensive Timers Breakdown</strong>:</p>
+<p>  1. <strong>Retransmission Timer (RTO)</strong>: Started when segment is sent. Value: $\text{RTO} = \text{SRTT} + 4 \times \text{RTTVAR}$ (Jacobson's algorithm). Doubled upon each timeout (Karn's rule: no RTT samples from retransmissions).</p>
+<p>  2. <strong>Persistence Timer</strong>: Started when receiver announces window size = 0. Prevents deadlock if window-update packet is lost. Sender periodically sends a <strong>1-byte Window Probe</strong> to query current buffer status.</p>
+<p>  3. <strong>Keepalive Timer</strong>: Typically set to 2 hours of inactivity. Sends 10 probe segments spaced 75 seconds apart to detect crashed or unreachable clients and reclaim half-open server resources.</p>
+<p>  4. <strong>Time-Wait Timer (2MSL)</strong>: Runs for twice the Maximum Segment Lifetime (e.g. 60 to 120 seconds) on the side that initiated active close. Ensures final ACK reaches receiver and allows delayed duplicate packets to expire before port reuse.</p>
+<br>
+<hr>
+<br>
+<h1>UNIT 6: APPLICATION LAYER SERVICES & PROTOCOLS</h1>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 19 [Q72 in QB]: Persistent vs Non-Persistent HTTP & RTT Calculations (8M)</h3>
+<p><strong>Repetition</strong>: Repeated 5 times (Nov 2024, Dec 2022, Dec 2018, May 2018, Teacher's Sets)</p>
+<p>* <strong>Counting Rule (Base HTML + $n$ Embedded Objects)</strong>:</p>
+<p>  - Non-Persistent (HTTP/1.0): $\mathbf{2(n + 1) \text{ RTT}}$. (1 RTT TCP handshake + 1 RTT request/response per object).</p>
+<p>  - Persistent Non-Pipelined (HTTP/1.1): $\mathbf{n + 2 \text{ RTT}}$. (1 RTT TCP handshake + 1 RTT base + $n$ sequential RTTs).</p>
+<p>  - Persistent Pipelined (HTTP/1.1): $\mathbf{3 \text{ RTT}}$. (1 RTT TCP handshake + 1 RTT base + 1 RTT parallel request for all $n$ objects).</p>
+<p>* <strong>Solved Examples Table</strong>:</p>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Objects ($n$)</th><th>Non-Persistent (HTTP/1.0)</th><th>Persistent Non-Pipelined</th><th>Persistent Pipelined</th></tr></thead>
+<tbody>
+<tr><td>**5 Objects**</td><td>$2(5 + 1) = \mathbf{12 \text{ RTT}}$</td><td>$5 + 2 = \mathbf{7 \text{ RTT}}$</td><td>**3 RTT**</td></tr>
+<tr><td>**12 Objects**</td><td>$2(12 + 1) = \mathbf{26 \text{ RTT}}$</td><td>$12 + 2 = \mathbf{14 \text{ RTT}}$</td><td>**3 RTT**</td></tr>
+<tr><td>**50 Objects** (RTT = 10 ms)</td><td>$102 \text{ RTT} = \mathbf{1.02 \text{ s}}$</td><td>$52 \text{ RTT} = \mathbf{520 \text{ ms}}$</td><td>$3 \text{ RTT} = \mathbf{30 \text{ ms}}$</td></tr>
+<tr><td>**100 Objects**</td><td>$202 \text{ RTT}$</td><td>$102 \text{ RTT}$</td><td>**3 RTT**</td></tr>
+</tbody></table></div>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 20 [Q73 in QB]: DNS Hierarchical Resolution of `www.vit.edu` (6M)</h3>
+<p><strong>Repetition</strong>: Repeated 5 times (Dec 2022, Dec 2018, May 2018, May 2019 TY, May 2019 TE IT)</p>
+<p>* <strong>Architecture</strong>: Distributed tree database. Port 53 UDP.</p>
+<p>* <strong>Resolution Steps (Recursive to Local Resolver, Iterative Upstream)</strong>:</p>
+<div class="avoid-break"><pre><code>  [Laptop] &lt;--(1) Recursive Request-- [Local DNS Resolver]
+     |     &lt;--(8) IP 115.111.x.x ----       |
+     |                                      +--(2) Iterative Query--&gt; [Root Server .]
+     |                                      &lt;--(3) Referral to .edu--
+     |                                      |
+     |                                      +--(4) Iterative Query--&gt; [.edu TLD Server]
+     |                                      &lt;--(5) Referral to vit.edu-
+     |                                      |
+     |                                      +--(6) Iterative Query--&gt; [vit.edu Authoritative]
+     |                                      &lt;--(7) A Record (IP) ----</code></pre></div>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 21 [Q74 in QB]: DHCP DORA Process & Mobile Laptop IP Allocation (8M)</h3>
+<p><strong>Repetition</strong>: Repeated 5 times (Dec 2022, Dec 2018, May 2018, May 2019 TY, May 2019 TE IT)</p>
+<p>* <strong>The 4-Way DORA Handshake (UDP 67 Server, UDP 68 Client)</strong>:</p>
+<p>  1. <strong>Discover</strong>: Client broadcasts <code>DHCPDISCOVER</code> (<code>Src: 0.0.0.0, Dst: 255.255.255.255</code>).</p>
+<p>  2. <strong>Offer</strong>: Server broadcasts <code>DHCPOFFER</code> offering unallocated IP, subnet mask, gateway, lease time.</p>
+<p>  3. <strong>Request</strong>: Client broadcasts <code>DHCPREQUEST</code> confirming selection of the offered IP.</p>
+<p>  4. <strong>Acknowledge</strong>: Server broadcasts <code>DHCPACK</code> committing the binding to its lease database.</p>
+<p>* <strong>Mobile Laptops</strong>: Roaming laptops run DORA on every new subnet to acquire a temporary lease; renew lease at 50% timer ($T_1$) and rebind at 87.5% ($T_2$).</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 22 [Q75 in QB]: Electronic Mail: POP3 vs IMAP & Webmail (6M)</h3>
+<p><strong>Repetition</strong>: Repeated 3 times (Nov 2024, Nov 2023 Set-I, May 2018)</p>
+<p>* <strong>Comparative Summary</strong>:</p>
+<p>  - <em>POP3 (Port 110)</em>: <strong>Download-and-delete</strong> model. Mail downloaded to single client device and purged from server. Unsuitable for users with phones and laptops.</p>
+<p>  - <em>IMAP (Port 143)</em>: <strong>Server-side synchronization</strong> model. All emails, folders, and read/unread flags remain centrally on server. Allows multi-device sync and partial header downloads.</p>
+<p>* <strong>ISP Advice</strong>: Offer <strong>IMAP over TLS</strong> by default to support multi-device customers; offer POP3 only as an archival option.</p>
+<p>* <strong>Webmail Protocol</strong>: Browser communicates with webmail server over <strong>HTTP/HTTPS</strong>; webmail server retrieves mail from mailbox via IMAP and transmits outbound mail via SMTP.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 23 [Q76 in QB]: FTP Dual Connection Architecture (Port 20 vs Port 21) (4M)</h3>
+<p><strong>Repetition</strong>: Repeated 3 times (Nov 2023 Set-I, May 2018, May 2019 TE IT)</p>
+<p>* <strong>Out-of-Band Design</strong>:</p>
+<p>  - <strong>Control Connection (Port 21)</strong>: Stays open for whole session; carries user commands (<code>USER</code>, <code>PASS</code>, <code>QUIT</code>) and status replies.</p>
+<p>  - <strong>Data Connection (Port 20)</strong>: Ephemeral TCP connection opened on-demand for each file transfer (<code>RETR</code>, <code>STOR</code>) or directory listing (<code>LIST</code>), and closed immediately upon transfer completion.</p>
+<p>* <strong>Does it Make FTP Faster?</strong>: No (opening new TCP sockets adds RTT overhead), but it prevents command traffic from being blocked behind huge file payloads.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>HIT 24 [Q77 in QB]: DNS Over UDP Packet Loss Recovery (6M)</h3>
+<p><strong>Repetition</strong>: Repeated 2 times (Nov 2024, Nov 2023 Set-I)</p>
+<p>* <strong>The Problem</strong>: DNS uses UDP port 53 (connectionless, no transport retransmissions).</p>
+<p>* <strong>How Problem is Solved at Application Layer</strong>:</p>
+<p>  1. <strong>Resolver Timeout & Retransmit</strong>: Local DNS resolver sets a timer; if no reply arrives within timeout, it resends query with exponential backoff.</p>
+<p>  2. <strong>Alternate Server Failover</strong>: If primary server is unresponsive, resolver queries secondary authoritative server.</p>
+<p>  3. <strong>16-Bit Transaction ID</strong>: Matches arriving replies to outstanding queries, rejecting delayed duplicates.</p>
+<p>  4. <strong>TCP Fallback</strong>: If response exceeds 512 bytes, server sets <strong>TC (Truncation) bit</strong>; resolver repeats query over <strong>TCP port 53</strong>.</p>
+</body>
+</html>
