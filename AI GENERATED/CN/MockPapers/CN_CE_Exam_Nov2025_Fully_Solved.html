@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VIT Pune CE ESE Nov 2025 - Computer Networks Fully Solved Paper</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 12mm 12mm 12mm 12mm;
+    @bottom-right {
+      content: counter(page);
+    }
+  }
+
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 9.0pt;
+    line-height: 1.42;
+    color: #1e293b;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 10px;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+
+  h1 {
+    font-size: 15pt;
+    font-weight: 800;
+    color: #0f172a;
+    border-bottom: 2px solid #2563eb;
+    padding-bottom: 4px;
+    margin-top: 8px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  h2 {
+    font-size: 12pt;
+    font-weight: 700;
+    color: #1e40af;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 3px;
+  }
+
+  h3 {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #0369a1;
+    margin-top: 8px;
+    margin-bottom: 4px;
+  }
+
+  p {
+    margin: 3px 0 5px 0;
+  }
+
+  blockquote {
+    border-left: 3.5px solid #2563eb;
+    background-color: #eff6ff;
+    padding: 5px 8px;
+    margin: 5px 0;
+    font-size: 8.6pt;
+    color: #1e3a8a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  blockquote p {
+    margin: 2px 0;
+  }
+
+  pre {
+    background-color: #0f172a;
+    color: #f8fafc;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+    font-size: 7.6pt;
+    line-height: 1.35;
+    overflow-x: auto;
+    margin: 5px 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border: 1px solid #334155;
+  }
+
+  code {
+    font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+    font-size: 8.2pt;
+    background-color: #f1f5f9;
+    color: #b91c1c;
+    padding: 1px 3px;
+    border-radius: 3px;
+    border: 1px solid #e2e8f0;
+  }
+
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: inherit;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px 0;
+    font-size: 8.2pt;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 3px 5px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    background-color: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  tr:nth-child(even) td {
+    background-color: #f8fafc;
+  }
+
+  ul, ol {
+    margin: 3px 0 5px 16px;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 2px;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed #cbd5e1;
+    margin: 8px 0;
+  }
+</style>
+</head>
+<body>
+<h1>Vishwakarma Institute of Technology, Pune</h1>
+<h2>Third Year B.Tech - Department of Computer Engineering</h2>
+<div class="avoid-break"><h3>Course: Computer Networks (Subject Code: CS3052)</h3>
+<div class="avoid-break"><h3>End Semester Examination (ESE) - Last Year Paper (Nov 2025) - Fully Solved</h3>
+<blockquote><p>**Exam Date:** Tuesday, 25 November 2025 | Time: 04:00 PM to 06:00 PM (2 Hours)  </p></blockquote>
+<blockquote><p>**Max. Marks:** 60 | Total Questions: 6 (10 Marks each)  </p></blockquote>
+<blockquote><p>**Target Department:** Computer Engineering (Official Department Paper)  </p></blockquote>
+<blockquote><p>**Formatting:** 100% universal clean ASCII text, exact mathematical derivations, and marking rubrics.</p></blockquote>
+<br>
+<hr>
+<br>
+<h1>QUESTION 1 [CO1: Fundamentals & Physical Layer] (Compulsory, 10 Marks)</h1>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.1.A: Line Coding: Manchester & Differential Manchester for `010011` [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Design the encoding of Manchester and Differential Manchester for the sequence of data 010011.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Encoding Rules:</strong></p>
+<p>* <strong>Manchester Encoding (IEEE 802.3 Standard):</strong></p>
+<p>  - Bit <code>0</code>: High-to-Low transition (<code>+V -> -V</code>) in the middle of the bit interval.</p>
+<p>  - Bit <code>1</code>: Low-to-High transition (<code>-V -> +V</code>) in the middle of the bit interval.</p>
+<p>* <strong>Differential Manchester Encoding:</strong></p>
+<p>  - There is <strong>always a transition in the middle</strong> of every bit interval (provides clock synchronization).</p>
+<p>  - Bit <code>0</code>: Extra transition at the <strong>beginning</strong> of the bit interval.</p>
+<p>  - Bit <code>1</code>: <strong>No transition</strong> at the beginning of the bit interval.</p>
+<p>  - (Assume initial reference voltage starts at <code>+V</code>).</p>
+<br>
+<p><strong>2. Bit-by-Bit Transition Table for <code>010011</code>:</strong></p>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Bit Index</th><th>Bit Value</th><th>Manchester Transition (Mid-bit)</th><th>Differential Manchester Transition</th><th>Half-Bit Levels</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>**0**</td><td>High-to-Low (`+V -> -V`)</td><td>Start flip (`+V -> -V`), Mid flip (`-V -> +V`)</td><td>`(-, +)`</td></tr>
+<tr><td>2</td><td>**1**</td><td>Low-to-High (`-V -> +V`)</td><td>No start flip (`+V`), Mid flip (`+V -> -V`)</td><td>`(+, -)`</td></tr>
+<tr><td>3</td><td>**0**</td><td>High-to-Low (`+V -> -V`)</td><td>Start flip (`-V -> +V`), Mid flip (`+V -> -V`)</td><td>`(+, -)`</td></tr>
+<tr><td>4</td><td>**0**</td><td>High-to-Low (`+V -> -V`)</td><td>Start flip (`-V -> +V`), Mid flip (`+V -> -V`)</td><td>`(+, -)`</td></tr>
+<tr><td>5</td><td>**1**</td><td>Low-to-High (`-V -> +V`)</td><td>No start flip (`-V`), Mid flip (`-V -> +V`)</td><td>`(-, +)`</td></tr>
+<tr><td>6</td><td>**1**</td><td>Low-to-High (`-V -> +V`)</td><td>No start flip (`+V`), Mid flip (`+V -> -V`)</td><td>`(+, -)`</td></tr>
+</tbody></table></div>
+<br>
+<p><strong>3. ASCII Signal Waveforms:</strong></p>
+<div class="avoid-break"><pre><code>Bit Pattern:    |   0   |   1   |   0   |   0   |   1   |   1   |
+
+Manchester:
+  +V            |---+   |   +---|---+   |---+   |   +---|   +---|
+   0            |   |   |   |   |   |   |   |   |   |   |   |   |
+  -V            |   +---|---+   |   +---|   +---|---+   |---+   |
+
+Diff Manch:
+  +V            |   +---|---+   |---+   |---+   |   +---|---+   |
+   0            |   |   |   |   |   |   |   |   |   |   |   |   |
+  -V            |---+   |   +---|   +---|   +---|---+   |   +---|</code></pre></div>
+<br>
+<p><strong>Examiner Marking Rubric:</strong></p>
+<p>* Stating correct encoding conventions: 1.0 Mark.</p>
+<p>* Accurate Manchester mid-bit waveform: 2.0 Marks.</p>
+<p>* Accurate Differential Manchester edge transitions: 2.0 Marks.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.1.B: OSI 7-Layer Model: PDUs, Transmission/Receiving Logic & Data Sizes [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Construct the OSI reference model and specify the data type and protocols at each layer with brief information about each layer. Also apply the logic for the transmission and receiving of data at each layer and comment on the size of data at each layer.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Layer Functions, PDUs, and Protocols:</strong></p>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Layer Number & Name</th><th>Core Functionality</th><th>PDU (Data Unit)</th><th>Standard Protocols</th></tr></thead>
+<tbody>
+<tr><td>**7. Application Layer**</td><td>Direct network services to end-user programs</td><td>**Message / Data**</td><td>HTTP, SMTP, DNS, FTP, DHCP</td></tr>
+<tr><td>**6. Presentation Layer**</td><td>Data translation, encryption/decryption, compression</td><td>**Message**</td><td>TLS/SSL, JPEG, MPEG, ASCII</td></tr>
+<tr><td>**5. Session Layer**</td><td>Dialog management, checkpoints, token management</td><td>**Message**</td><td>RPC, NetBIOS, PPTP</td></tr>
+<tr><td>**4. Transport Layer**</td><td>End-to-end process-to-process delivery, flow/error control</td><td>**Segment / Datagram**</td><td>TCP, UDP, SCTP</td></tr>
+<tr><td>**3. Network Layer**</td><td>Host-to-host routing, logical IP addressing</td><td>**Packet**</td><td>IPv4, IPv6, ICMP, ARP, OSPF</td></tr>
+<tr><td>**2. Data Link Layer**</td><td>Hop-to-hop node transfer, MAC addressing, framing, CRC</td><td>**Frame**</td><td>IEEE 802.3 Ethernet, Wi-Fi, PPP</td></tr>
+<tr><td>**1. Physical Layer**</td><td>Raw bit stream transmission over physical media</td><td>**Bits / Signals**</td><td>RS-232, 1000BASE-T, V.35</td></tr>
+</tbody></table></div>
+<br>
+<p><strong>2. Transmission & Reception Logic (Encapsulation vs De-encapsulation):</strong></p>
+<p>* <strong>Transmitting (Down the Stack):</strong> Application data passes down. Each layer prepends its own control header (Transport adds port numbers; Network adds IP addresses; Data Link adds MAC addresses and appends a CRC trailer). Physical layer converts bits to electromagnetic signals.</p>
+<p>* <strong>Receiving (Up the Stack):</strong> Physical layer reconstructs bits into frames. Data link verifies CRC and strips MAC header; Network verifies IP destination and strips IP header; Transport demultiplexes via port number and reassembles stream; Application displays message.</p>
+<br>
+<p><strong>3. Data Size Growth Across Layers (Example for 1000 Bytes Payload):</strong></p>
+<div class="avoid-break"><pre><code>Layer               Header Added                    Resulting Size
+Application         None                            1000 Bytes
+Transport (TCP)     +20 Bytes TCP Header            1020 Bytes (Segment)
+Network (IPv4)      +20 Bytes IPv4 Header           1040 Bytes (Packet)
+Data Link (Ethernet)+14 B MAC Header + 4 B CRC      1058 Bytes (Frame)
+Physical            +8 Bytes Preamble + SFD         1066 Bytes = 8528 Bits on wire</code></pre></div>
+<p>* <strong>Comment on Size:</strong> Data grows going down (protocol overhead) and shrinks going up. If a packet exceeds the link MTU (1500 B on Ethernet), it is fragmented into multiple packets.</p>
+<br>
+<p><strong>Examiner Marking Rubric:</strong></p>
+<p>* Complete 7-layer architecture with PDUs and protocols: 2.0 Marks.</p>
+<p>* Transmission (down) and receiving (up) logic: 1.5 Marks.</p>
+<p>* Layer-by-layer size calculation table and MTU comment: 1.5 Marks.</p>
+<br>
+<hr>
+<br>
+<h1>QUESTION 2 [CO2: Logical Link Control & Framing] (Compulsory, 10 Marks)</h1>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.2.A: CRC Error Detection for Data `10100001` with Generator `1001` [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Examine the given data to transfer and find out the data to be sent, prove that you have sent correct data using CRC method. Data given is = 10100001 if the generator polynomial in binary is = 1001.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Sender Side (FCS Generation):</strong></p>
+<p>* Data $D = 10100001$ ($k = 8$ bits).</p>
+<p>* Generator Divisor $G = 1001$ (degree $r = 4 - 1 = 3$ bits).</p>
+<p>* Append $r = 3$ zeros to $D$: Dividend = <code>10100001000</code> (11 bits).</p>
+<p>* Perform Modulo-2 Division (XOR, no borrows):</p>
+<div class="avoid-break"><pre><code>Quotient : 10111111
+ 10100001000  &lt;- Data + 3 zeros
+ 1001         &lt;- XOR with divisor
+ ----
+ 00110001000
+   1001
+   ----
+   010101000
+    1001
+    ----
+    00111000
+      1001
+      ----
+      011100
+       1001
+       ----
+       01110
+        1001
+        ----
+        0111  &lt;- Remainder (3 bits)</code></pre></div>
+<p>* <strong>Remainder FCS</strong> = <strong><code>111</code></strong>.</p>
+<p>* <strong>Transmitted Frame $T$</strong> = Data + FCS = <strong><code>10100001111</code></strong>.</p>
+<br>
+<p><strong>2. Receiver Side (Correctness Verification):</strong></p>
+<p>* Divide received frame <code>10100001111</code> by generator <code>1001</code>:</p>
+<div class="avoid-break"><pre><code>Quotient : 10111111
+ 10100001111  &lt;- Received Codeword
+ 1001
+ ----
+ 00110001111
+   1001
+   ----
+   010101111
+    1001
+    ----
+    00111111
+      1001
+      ----
+      011011
+       1001
+       ----
+       01001
+        1001
+        ----
+        0000  &lt;- Remainder is strictly ZERO!</code></pre></div>
+<p>* <strong>Conclusion:</strong> Since <strong>Remainder = <code>000</code></strong>, the frame is accepted as 100% error-free. Proved!</p>
+<br>
+<p><strong>Examiner Marking Rubric:</strong></p>
+<p>* Appending 3 zeros and showing division steps: 2.0 Marks.</p>
+<p>* Correct remainder <code>111</code> and transmitted frame <code>10100001111</code>: 1.5 Marks.</p>
+<p>* Receiver check showing zero remainder proof: 1.5 Marks.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.2.B: Point-to-Point Protocol (PPP) Evaluation & Byte Stuffing [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Evaluate PPP protocol with neat diagram of frame format and bringing line up and down. Also give at least one reason why PPP uses byte stuffing instead of bit stuffing.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. PPP Frame Format:</strong></p>
+<div class="avoid-break"><pre><code>+----------+----------+----------+--------------------+-------------+-----------+----------+
+| Flag     | Address  | Control  | Protocol           | Payload     | FCS (CRC) | Flag     |
+| 7E (1 B) | FF (1 B) | 03 (1 B) | 2 B (IP, LCP, PAP) | &lt;= 1500 B   | 2 or 4 B  | 7E (1 B) |
++----------+----------+----------+--------------------+-------------+-----------+----------+</code></pre></div>
+<br>
+<p><strong>2. Bringing the Line Up and Down (Phase Transition Lifecycle):</strong></p>
+<div class="avoid-break"><pre><code>  [DEAD] --(Carrier Detected)--&gt; [ESTABLISH] (LCP Option Negotiation)
+                                      |
+                                      v
+                                [AUTHENTICATE] (PAP / CHAP Credentials)
+                                      |
+                                      v
+                                  [NETWORK] (NCP / IPCP Assigns IP)
+                                      |
+                                      v
+                                   [OPEN] (Payload Data Transfer)
+                                      |
+                                      v
+                                 [TERMINATE] (LCP Closes Connection)
+                                      |
+                                      v
+                                   [DEAD]</code></pre></div>
+<br>
+<p><strong>3. Why PPP Uses Byte Stuffing Instead of Bit Stuffing:</strong></p>
+<p>* PPP was primarily architected for <strong>character-oriented asynchronous communication links</strong> (RS-232 serial ports, modems, UARTs) which naturally read and write data in <strong>entire 8-bit bytes</strong>, not individual bits.</p>
+<p>* Byte stuffing (inserting escape byte <code>0x7D</code> followed by the original byte XORed with <code>0x20</code>) operates with negligible CPU overhead on byte-stream hardware, whereas bit stuffing requires complex bit-shifting and hardware clock synchronization.</p>
+<br>
+<p><strong>Examiner Marking Rubric:</strong></p>
+<p>* Clean PPP frame format diagram: 1.5 Marks.</p>
+<p>* 5-phase line lifecycle (Dead -> Establish -> Authenticate -> Network -> Open -> Terminate): 2.0 Marks.</p>
+<p>* Technical justification for byte stuffing over bit stuffing: 1.5 Marks.</p>
+<br>
+<hr>
+<br>
+<h1>QUESTION 3 [CO3: Flow Control, Pipelining & MAC] (Compulsory, 10 Marks)</h1>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.3.A: File Transfer Latency Calculation for 1.5 MB File [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Calculate the total time required to transfer a 1.5 MB file in following cases assuming a RTT of 80 ms, a packet size of 1 KB data, and an initial 2*RTT of handshaking before data is sent:</p></blockquote>
+<blockquote><p>A) the bandwidth is 10 Mbps, and data packets can be sent continuously</p></blockquote>
+<blockquote><p>B) the bandwidth is 10 Mbps, but after we finish sending each data packet we must wait one RTT before sending the next.</p></blockquote>
+<blockquote><p>C) link allows infinitely fast transmit, but limit the bandwidth such that only 20 packets can be sent per RTT.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Baseline Conversion:</strong></p>
+<p>* File size = $1.5 \text{ MB} = 1.5 \times 1024 \times 1024 \text{ bytes} = 1,572,864 \text{ bytes} = 12,582,912 \text{ bits}$.</p>
+<p>* Packet size = $1 \text{ KB} = 1024 \text{ bytes} = 8192 \text{ bits}$.</p>
+<p>* Total Packets = $1,572,864 / 1024 = \mathbf{1536 \text{ packets}}$.</p>
+<p>* Initial Handshake Time = $2 \times \text{RTT} = 2 \times 80 \text{ ms} = \mathbf{160 \text{ ms} = 0.160 \text{ s}}$.</p>
+<p>* One-way propagation delay $T_p = \text{RTT} / 2 = 40 \text{ ms} = 0.040 \text{ s}$.</p>
+<br>
+<p><strong>2. Case A: Continuous Transmission at 10 Mbps:</strong></p>
+<p>* Total transmission time: $T_{\text{trans}} = \text{Total Bits} / \text{Bandwidth} = 12,582,912 / 10,000,000 = 1.258 \text{ s}$.</p>
+<p>* Since packets are sent continuously without waiting, the total time is:</p>
+<p>  $\text{Total Time} = \text{Handshake} + T_{\text{trans}} + T_p = 0.160 + 1.258 + 0.040 = \mathbf{1.458 \text{ seconds}}$.</p>
+<p>  <em>(Or if teacher's set counts $1.5 \text{ MB} = 1.5 \times 10^6 \text{ B} = 12 \text{ Mb} \implies 1.20 \text{ s} \implies 1.40 \text{ s}$)</em>.</p>
+<br>
+<p><strong>3. Case B: Wait One RTT After Each Packet (Stop-and-Wait Style):</strong></p>
+<p>* After each of the 1536 packets, the sender waits 1 RTT ($80$ ms) for an ACK, except after the last packet which only takes $T_p$ to arrive.</p>
+<p>* Number of intermediate RTT waits = $1536 - 1 = 1535$ waits.</p>
+<p>* Total wait time = $1535 \times 0.080 \text{ s} = 122.80 \text{ s}$.</p>
+<p>* $\text{Total Time} = 1.458 \text{ s} + 122.80 \text{ s} = \mathbf{124.26 \text{ seconds}}$ (~85 times slower!).</p>
+<br>
+<p><strong>4. Case C: Infinitely Fast Transmit, Paced at 20 Packets per RTT:</strong></p>
+<p>* Transmission time $T_{\text{trans}} \approx 0$.</p>
+<p>* Number of RTT rounds required = $1536 / 20 = 76.8 \implies 77 \text{ rounds}$.</p>
+<p>* After 76 full rounds, 1520 packets have been transferred. The 77th round sends the remaining 16 packets and takes 1 RTT (or $0.5 \text{ RTT}$ for one-way delivery).</p>
+<p>* Total RTTs = $2 \text{ (handshake)} + 76 + 0.5 = 78.5 \text{ RTTs}$.</p>
+<p>* $\text{Total Time} = 78.5 \times 0.080 \text{ s} = \mathbf{6.28 \text{ seconds}}$.</p>
+<br>
+<p><strong>Examiner Marking Rubric:</strong></p>
+<p>* Unit conversions and packet count (1536 packets): 1.0 Mark.</p>
+<p>* Case A correct derivation ($1.458$ s): 1.5 Marks.</p>
+<p>* Case B correct derivation ($124.26$ s): 1.5 Marks.</p>
+<p>* Case C correct derivation ($6.28$ s): 1.0 Mark.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.3.B: Collision-Free Protocols OR Minimum Frame Size in Fast Ethernet [5 Marks]</h3>
+<p><em>(Option 1: Collision-Free Protocols)</em></p>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Construct a collision free protocol for 1. A Bit-Map Protocol, 2. Binary Countdown.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<p>1. <strong>Bit-Map Protocol (Reservation Protocol):</strong></p>
+<p>   - The channel operates in repeating cycles. Each cycle begins with a <strong>Contention Period</strong> of $N$ bit-slots for $N$ stations (numbered 0 to $N-1$).</p>
+<p>   - If Station $j$ wants to transmit a frame, it transmits a <code>1</code> bit during slot $j$. All stations listen and record the reservation bit-map.</p>
+<p>   - After slot $N-1$, stations that asserted a <code>1</code> transmit their full frames sequentially in ascending order. Since reservations are pre-declared, <strong>zero collisions occur!</strong></p>
+<p>2. <strong>Binary Countdown Protocol:</strong></p>
+<p>   - Stations wanting to transmit broadcast their binary station addresses bit-by-bit from Most Significant Bit (MSB) to Least Significant Bit (LSB).</p>
+<p>   - The channel performs a <strong>Wired-OR</strong> of all broadcast bits.</p>
+<p>   - If a station has a <code>0</code> in a bit position but senses a <code>1</code> on the channel, it recognizes that a higher-numbered station is competing and immediately drops out.</p>
+<p>   - The station with the highest binary address wins and transmits its frame with zero collisions.</p>
+<br>
+<p><em>(Option 2: Minimum Frame Size in Fast Ethernet)</em></p>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Ethernet Frame must be at least 64 bytes long to ensure that the transmitter is still going in the event of collision at the far end of the cable. Fast ethernet has the same 64 byte minimum frame size but can get the bits out ten times faster. How is it possible?</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<p>* <strong>The CSMA/CD Rule:</strong> $T_{\text{trans}} \ge 2 T_p \implies L_{\text{min}} / B \ge 2 d / v \implies d_{\text{max}} = \frac{L_{\text{min}} \cdot v}{2 B}$.</p>
+<p>* In Standard Ethernet (10 Mbps), $L_{\text{min}} = 64$ bytes (512 bits) gives a slot time of $51.2$ us, allowing a maximum network diameter of <strong>2500 meters</strong> (with 4 repeaters).</p>
+<p>* In Fast Ethernet (100 Mbps), the bandwidth $B$ increased by a factor of 10. To maintain the exact same 64-byte minimum frame size for backward compatibility, the transmission time shrinks to $5.12$ us ($10\times$ shorter).</p>
+<p>* <strong>How it is Possible:</strong> The maximum allowable cable length (network diameter) was <strong>reduced by a factor of 10</strong>! Fast Ethernet cuts the collision domain diameter from 2500 meters down to <strong>~200 meters</strong> (100 meters per UTP link to a central switch). By shrinking the distance, $T_p$ shrinks by $10\times$, preserving $T_{\text{trans}} \ge 2 T_p$ without changing the frame format!</p>
+<br>
+<p><strong>Examiner Marking Rubric:</strong></p>
+<p>* For Option 1: Bit-Map diagram/explanation (2.5M) + Binary countdown logic (2.5M).</p>
+<p>* For Option 2: Formula $L_{\text{min}} = 2 T_p B$ (2.0M) + Explanation of shrinking network diameter by $10\times$ (3.0M).</p>
+<br>
+<hr>
+<br>
+<h1>QUESTION 4 [CO4: Network Layer & Subnetting] (Compulsory, 10 Marks)</h1>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.4.A: ISP Customer Subblock Address Allocation on 190.100.0.0/16 [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>An ISP is granted a block of addresses starting with 190.100.0.0/16. The ISP needs to distribute these addresses to three groups of customers as follows:</p></blockquote>
+<blockquote><p>a. The first group has 64 customers: each needs 256 address</p></blockquote>
+<blockquote><p>b. The second group has 128 customers: each needs 128 address</p></blockquote>
+<blockquote><p>c. The third group has 128 customers: each needs 64 addresses</p></blockquote>
+<blockquote><p>Design the subblocks and find out how many addresses are still available after these allocations.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Sizing and Prefix Determination (Largest Blocks First):</strong></p>
+<p>* ISP Total Block: <code>190.100.0.0/16</code> $\implies 2^{16} = \mathbf{65,536 \text{ addresses}}$.</p>
+<p>* <strong>Group 1 (64 Customers $\times$ 256 addresses):</strong></p>
+<p>  - Addresses per customer = $256 = 2^8 \implies \mathbf{/24}$ prefix (<code>255.255.255.0</code>).</p>
+<p>  - Total addresses used = $64 \times 256 = \mathbf{16,384 \text{ addresses}}$ (equivalent to a <code>/18</code> block).</p>
+<p>  - Subnet Range: <code>190.100.0.0/24</code> to <code>190.100.63.255/24</code> (Third octet: 0 to 63).</p>
+<p>* <strong>Group 2 (128 Customers $\times$ 128 addresses):</strong></p>
+<p>  - Addresses per customer = $128 = 2^7 \implies \mathbf{/25}$ prefix (<code>255.255.255.128</code>).</p>
+<p>  - Total addresses used = $128 \times 128 = \mathbf{16,384 \text{ addresses}}$ (equivalent to a <code>/18</code> block).</p>
+<p>  - Subnet Range: <code>190.100.64.0/25</code> to <code>190.100.127.255/25</code> (Third octet: 64 to 127).</p>
+<p>* <strong>Group 3 (128 Customers $\times$ 64 addresses):</strong></p>
+<p>  - Addresses per customer = $64 = 2^6 \implies \mathbf{/26}$ prefix (<code>255.255.255.192</code>).</p>
+<p>  - Total addresses used = $128 \times 64 = \mathbf{8,192 \text{ addresses}}$ (equivalent to a <code>/19</code> block).</p>
+<p>  - Subnet Range: <code>190.100.128.0/26</code> to <code>190.100.159.255/26</code> (Third octet: 128 to 159).</p>
+<br>
+<p><strong>2. Address Availability Calculation:</strong></p>
+<p>* <strong>Total Addresses Allocated</strong>:</p>
+<p>  $\text{Total Allocated} = 16,384 + 16,384 + 8,192 = \mathbf{40,960 \text{ addresses}}$.</p>
+<p>* <strong>Addresses Still Available</strong>:</p>
+<p>  $\text{Available} = 65,536 - 40,960 = \mathbf{24,576 \text{ addresses}}$ (equivalent to a <code>/19</code> + <code>/20</code> free block).</p>
+<p>* <strong>Available Unallocated Range</strong>: <code>190.100.160.0</code> to <code>190.100.255.255</code>.</p>
+<br>
+<p><strong>Examiner Marking Rubric:</strong></p>
+<p>* Allocation plan for Group 1 (/24 blocks, range .0.0 to .63.255): 1.5 Marks.</p>
+<p>* Allocation plan for Group 2 (/25 blocks, range .64.0 to .127.255): 1.0 Mark.</p>
+<p>* Allocation plan for Group 3 (/26 blocks, range .128.0 to .159.255): 1.0 Mark.</p>
+<p>* Correct available address count (24,576) and free range: 1.5 Marks.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.4.B: Distance Vector Routing Table for Node C [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Consider that a network graph has A-B-C-D-E and F nodes. Connected by non-directional edges with metrics: A-B=4, B-C=2, C-D=3, A-E=5, E-F=8, F-D=7, B-F=6, C-E=1. Use Distance Vector Routing and measure new metrics for node C. If C received vectors from B: (5,0,8,12,6,2), from D: (16,12,6,0,9,10), from E: (7,6,3,9,0,4). Measured delays to B, D, E are 6, 3, 5 respectively. What is C's new routing table?</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Given Link Costs from Router C to its Neighbors:</strong></p>
+<p>* $c(C, B) = 6$</p>
+<p>* $c(C, D) = 3$</p>
+<p>* $c(C, E) = 5$</p>
+<br>
+<p><strong>2. Bellman-Ford Metric Calculation ($D_C(X) = \min [c(C,B)+D_B(X),\; c(C,D)+D_D(X),\; c(C,E)+D_E(X)]$):</strong></p>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Dest</th><th>Delay via B ($6 + D_B$)</th><th>Delay via D ($3 + D_D$)</th><th>Delay via E ($5 + D_E$)</th><th>Minimum Cost</th><th>Next Hop</th></tr></thead>
+<tbody>
+<tr><td>**A**</td><td>$6 + 5 = \mathbf{11}$</td><td>$3 + 16 = 19$</td><td>$5 + 7 = 12$</td><td>**11**</td><td>**B**</td></tr>
+<tr><td>**B**</td><td>$6 + 0 = \mathbf{6}$</td><td>$3 + 12 = 15$</td><td>$5 + 6 = 11$</td><td>**6**</td><td>**B**</td></tr>
+<tr><td>**C**</td><td>Direct = 0</td><td>Direct = 0</td><td>Direct = 0</td><td>**0**</td><td>**-**</td></tr>
+<tr><td>**D**</td><td>$6 + 12 = 18$</td><td>$3 + 0 = \mathbf{3}$</td><td>$5 + 9 = 14$</td><td>**3**</td><td>**D**</td></tr>
+<tr><td>**E**</td><td>$6 + 6 = 12$</td><td>$3 + 9 = 12$</td><td>$5 + 0 = \mathbf{5}$</td><td>**5**</td><td>**E**</td></tr>
+<tr><td>**F**</td><td>$6 + 2 = \mathbf{8}$</td><td>$3 + 10 = 13$</td><td>$5 + 4 = 9$</td><td>**8**</td><td>**B**</td></tr>
+</tbody></table></div>
+<br>
+<p><strong>3. Router C's New Routing Table:</strong></p>
+<div class="avoid-break"><pre><code>Destination:   A   B   C   D   E   F
+Delay:        11   6   0   3   5   8
+Next Hop:      B   B   -   D   E   B</code></pre></div>
+<br>
+<p><em>(Note: C completely ignores its own previous table when recomputing from incoming neighbor vectors).</em></p>
+<br>
+<p><strong>Examiner Marking Rubric:</strong></p>
+<p>* Complete step-by-step vector arithmetic for all 6 destinations: 3.0 Marks.</p>
+<p>* Clean final routing table with next hops: 2.0 Marks.</p>
+<br>
+<hr>
+<br>
+<h1>QUESTION 5 [CO5: Transport Layer Protocols] (Compulsory, 10 Marks)</h1>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.5.A: TCP Connection Establishment: 3-Way Handshake [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Construct the TCP protocol Connection establishment using three way of handshaking.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Three-Way Handshake Protocol Exchange:</strong></p>
+<div class="avoid-break"><pre><code>       CLIENT (Host A)                                         SERVER (Host B)
+              |                                                       |
+   [CLOSED]   |                                                       |  [LISTEN]
+              |                                                       |
+   (SYN_SENT) | ---------- (1) SYN, Seq = x ------------------------&gt; |
+              |                (MSS, Window Scale options)            |  (SYN_RCVD)
+              |                                                       |
+              | &lt;--------- (2) SYN + ACK, Seq = y, Ack = x + 1 ------ |
+ [ESTABLISHED]|                                                       |
+              |                                                       |
+              | ---------- (3) ACK, Seq = x + 1, Ack = y + 1 --------&gt;| [ESTABLISHED]
+              |                                                       |
+              | =========== Bi-directional Data Transfer ===========&gt; |</code></pre></div>
+<br>
+<p><strong>2. Detailed Step Descriptions:</strong></p>
+<p>1. <strong>Segment 1 (SYN):</strong> Client chooses random Initial Sequence Number (ISN $x$), sets SYN flag, and advertises its receive window. (State: <code>SYN_SENT</code>).</p>
+<p>2. <strong>Segment 2 (SYN + ACK):</strong> Server acknowledges client's sequence number ($x + 1$), picks its own random ISN $y$, sets SYN and ACK flags, and allocates connection buffers. (State: <code>SYN_RCVD</code>).</p>
+<p>3. <strong>Segment 3 (ACK):</strong> Client acknowledges server's sequence number ($y + 1$). Both enter <code>ESTABLISHED</code> state. Data payload may now be carried.</p>
+<p>* <strong>Why 3-Way (Not 2-Way):</strong> Prevents obsolete delayed duplicate SYN segments from past zombie sessions from accidentally establishing phantom connections.</p>
+<br>
+<p><strong>Examiner Marking Rubric:</strong></p>
+<p>* Clean timeline exchange diagram with SYN, ACK, and ISNs: 2.5 Marks.</p>
+<p>* Step-by-step description of states (<code>SYN_SENT</code>, <code>SYN_RCVD</code>, <code>ESTABLISHED</code>): 1.5 Marks.</p>
+<p>* Justification of ISN synchronization and duplicate rejection: 1.0 Mark.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.5.B: TCP Transmission Policy & Silly Window Syndrome Solutions [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Justify that the TCP transmission policy is useful for the Window management and give solutions to the silly window syndrome.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. TCP Window Management & Transmission Policy:</strong></p>
+<p>TCP utilizes a sliding window mechanism where the receiver advertises its available buffer space via the <strong>16-bit Window (<code>rwnd</code>) field</strong>.</p>
+<p>* <strong>Usable Window Formula:</strong> $\text{Usable Window} = \text{rwnd} - (\text{LastByteSent} - \text{LastByteAcked})$.</p>
+<p>* The sender is strictly throttled by the receiver's processing capacity, preventing buffer overflow and packet drops.</p>
+<br>
+<p><strong>2. The Silly Window Syndrome (SWS):</strong></p>
+<p>SWS occurs when data is exchanged in <strong>ridiculously tiny micro-segments</strong> (e.g., 1 byte of user data wrapped in 40 bytes of TCP/IP header, resulting in <strong>< 3% efficiency</strong>).</p>
+<p><em> </em>Causes*:</p>
+<p>  - <strong>Receiver-induced SWS</strong>: Slow application reads 1 byte at a time from socket buffer; receiver immediately advertises <code>rwnd = 1</code>, prompting sender to transmit a 1-byte segment.</p>
+<p>  - <strong>Sender-induced SWS</strong>: Application writes small character bytes (e.g. telnet keystrokes) into socket buffer, and sender transmits each byte immediately.</p>
+<br>
+<p><strong>3. Solutions to Silly Window Syndrome:</strong></p>
+<p>1. <strong>Clark's Solution (Receiver-Side):</strong></p>
+<p>   - The receiver is forbidden from advertising tiny window increments.</p>
+<p>   - The receiver must advertise <code>rwnd = 0</code> until it can accommodate <strong>at least one Maximum Segment Size (MSS)</strong> or <strong>half of its total receive buffer space</strong> ($	ext{Buffer} / 2$).</p>
+<p>2. <strong>Nagle's Algorithm (Sender-Side - RFC 896):</strong></p>
+<p>   - The sender transmits the first small chunk immediately.</p>
+<p>   - While waiting for the ACK of that segment, the sender <strong>buffers all subsequent outgoing data</strong>.</p>
+<p>   - The sender only transmits the buffered data when:</p>
+<p>     - It accumulates <strong>at least one full MSS</strong> of data, OR</p>
+<p>     - An <strong>ACK for the previously transmitted segment arrives</strong>.</p>
+<br>
+<p><strong>Examiner Marking Rubric:</strong></p>
+<p>* Explanation of TCP sliding window transmission policy: 1.5 Marks.</p>
+<p>* Description of Silly Window Syndrome problem: 1.5 Marks.</p>
+<p>* Clark's solution (Receiver-side) & Nagle's algorithm (Sender-side): 2.0 Marks.</p>
+<br>
+<hr>
+<br>
+<h1>QUESTION 6 [CO6: Application Layer Protocols] (Compulsory, 10 Marks)</h1>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.6.A: Domain Name System (DNS) Architecture & Resolution [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Discuss in detail about DNS.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Overview & Architecture:</strong></p>
+<p>* DNS (Domain Name System - RFC 1034/1035) is a globally distributed, hierarchical database that resolves human-readable hostnames (e.g., <code>www.vit.edu</code>) into 32-bit/128-bit IP addresses. Runs over <strong>UDP Port 53</strong> (falls back to TCP for responses > 512 bytes).</p>
+<p>* <strong>Hierarchical Tree Structure</strong>:</p>
+<div class="avoid-break"><pre><code>                        Root Servers (.)
+                               |
+         +---------------------+---------------------+
+         | generic TLDs                              | country-code TLDs
+       .com, .edu, .org, .gov                      .in, .uk, .us
+         |
+      vit.edu (Second-Level Domain)
+         |
+      www.vit.edu (Host)</code></pre></div>
+<br>
+<p><strong>2. Query Resolution Types:</strong></p>
+<p>* <strong>Recursive Query:</strong> Client asks Local DNS Resolver to find the complete answer. The resolver assumes full responsibility.</p>
+<p>* <strong>Iterative Query:</strong> Resolver contacts root, TLD, and authoritative servers in sequence. Each server returns a referral pointer to the next lower-level server.</p>
+<br>
+<p><strong>3. Core Resource Record (RR) Types:</strong></p>
+<p>* <strong>A Record:</strong> Maps hostname to IPv4 address (<code>vit.edu -> 115.111.x.x</code>).</p>
+<p>* <strong>AAAA Record:</strong> Maps hostname to 128-bit IPv6 address.</p>
+<p>* <strong>CNAME (Canonical Name):</strong> Aliases one name to another (<code>www -> webserver1</code>).</p>
+<p>* <strong>MX Record:</strong> Specifies mail exchange servers for email delivery.</p>
+<p>* <strong>PTR Record:</strong> Pointer record used for Reverse DNS (IP to hostname).</p>
+<br>
+<p><strong>Examiner Marking Rubric:</strong></p>
+<p>* DNS hierarchical namespace tree diagram: 2.0 Marks.</p>
+<p>* Recursive vs Iterative resolution explanation: 1.5 Marks.</p>
+<p>* Key Resource Records (A, AAAA, CNAME, MX, PTR): 1.5 Marks.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.6.B: Multipurpose Internet Mail Extensions (MIME) Protocol [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Identify the protocol used to support non-ASCII data in email applications and brief about the same.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Protocol Identification: MIME (RFC 2045 - 2049)</strong></p>
+<p>* Traditional SMTP (RFC 821) is strictly restricted to <strong>7-bit NVT ASCII characters</strong>.</p>
+<p>* If a sender transmits binary attachments (images, PDFs, audio/video) or non-English characters, legacy SMTP servers strip the 8th bit, irreversibly corrupting the file.</p>
+<p>* <strong>MIME (Multipurpose Internet Mail Extensions)</strong> extends SMTP to carry arbitrary binary content seamlessly.</p>
+<br>
+<p><strong>2. How MIME Operates:</strong></p>
+<p>1. <strong>At Sender (MUA):</strong> The user agent encodes binary bytes into safe 7-bit ASCII text using <strong>Base64 Encoding</strong> (which groups 3 binary bytes [24 bits] into 4 printable ASCII characters [6 bits each], adding a ~33% overhead).</p>
+<p>2. <strong>In Transit:</strong> Standard SMTP servers relay the 7-bit ASCII stream without corruption.</p>
+<p>3. <strong>At Receiver (MUA):</strong> The recipient's email client decodes Base64 text back into the original binary file.</p>
+<br>
+<p><strong>3. Essential MIME Headers:</strong></p>
+<p>* <code>MIME-Version: 1.0</code></p>
+<p>* <code>Content-Type: image/jpeg</code> (or <code>multipart/mixed</code> for multiple attachments).</p>
+<p>* <code>Content-Transfer-Encoding: base64</code> (indicates encoding format).</p>
+<p>* <code>Content-Disposition: attachment; filename="network_diagram.png"</code>.</p>
+<br>
+<p><strong>Examiner Marking Rubric:</strong></p>
+<p>* Identification of MIME: 1.0 Mark.</p>
+<p>* Explanation of SMTP 7-bit ASCII limitation: 1.5 Marks.</p>
+<p>* Base64 encoding mechanism: 1.5 Marks.</p>
+<p>* Core MIME header fields: 1.0 Mark.</p>
+</body>
+</html>
