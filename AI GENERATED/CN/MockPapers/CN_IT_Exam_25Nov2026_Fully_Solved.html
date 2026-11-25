@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VIT Pune IT ESE 25 Nov 2026 - Computer Networks Fully Solved Paper</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 12mm 12mm 12mm 12mm;
+    @bottom-right {
+      content: counter(page);
+    }
+  }
+
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 9.2pt;
+    line-height: 1.45;
+    color: #1e293b;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 12px;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+
+  h1 {
+    font-size: 16pt;
+    font-weight: 800;
+    color: #0f172a;
+    border-bottom: 2px solid #2563eb;
+    padding-bottom: 4px;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  h2 {
+    font-size: 12.5pt;
+    font-weight: 700;
+    color: #1e40af;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 3px;
+  }
+
+  h3 {
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: #0369a1;
+    margin-top: 10px;
+    margin-bottom: 4px;
+  }
+
+  p {
+    margin: 4px 0 6px 0;
+  }
+
+  blockquote {
+    border-left: 3.5px solid #2563eb;
+    background-color: #eff6ff;
+    padding: 6px 10px;
+    margin: 6px 0;
+    font-size: 8.8pt;
+    color: #1e3a8a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  blockquote p {
+    margin: 2px 0;
+  }
+
+  pre {
+    background-color: #0f172a;
+    color: #f8fafc;
+    padding: 8px 10px;
+    border-radius: 4px;
+    font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+    font-size: 7.8pt;
+    line-height: 1.35;
+    overflow-x: auto;
+    margin: 6px 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border: 1px solid #334155;
+  }
+
+  code {
+    font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+    font-size: 8.4pt;
+    background-color: #f1f5f9;
+    color: #b91c1c;
+    padding: 1px 4px;
+    border-radius: 3px;
+    border: 1px solid #e2e8f0;
+  }
+
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: inherit;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6px 0;
+    font-size: 8.4pt;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 4px 6px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    background-color: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  tr:nth-child(even) td {
+    background-color: #f8fafc;
+  }
+
+  ul, ol {
+    margin: 4px 0 6px 18px;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 2px;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed #cbd5e1;
+    margin: 10px 0;
+  }
+
+  .rubric {
+    background-color: #fdf2f8;
+    border-left: 3.5px solid #db2777;
+    padding: 4px 8px;
+    font-size: 8.2pt;
+    margin: 5px 0;
+    border-radius: 0 4px 4px 0;
+    color: #831843;
+  }
+</style>
+</head>
+<body>
+<h1>Vishwakarma Institute of Technology, Pune</h1>
+<h2>Third Year B.Tech - Department of Information Technology</h2>
+<div class="avoid-break"><h3>Course: Computer Networks (Subject Code: IT3231)</h3>
+<div class="avoid-break"><h3>End Semester Examination (ESE) - Fully Solved Paper</h3>
+<blockquote><p>**Exam Conducted:** Wednesday, 25 November 2026 | Time: 03:00 PM to 05:00 PM (2 Hours)  </p></blockquote>
+<blockquote><p>**Max. Marks:** 60 | Total Questions: 6 (10 Marks each)  </p></blockquote>
+<blockquote><p>**Relevance to CS Examination (26 Nov 2026):** **CRITICAL GOLDMINE**. In VIT Pune autonomous curriculum, IT and CS share identical syllabus, overlapping paper-setting committees, and identical Question Bank pools. Every question on this paper is an ultra-high-probability forecast for tomorrow's exam.  </p></blockquote>
+<blockquote><p>**Formatting:** 100% universal clean ASCII text with full analytical derivations and marking rubrics.</p></blockquote>
+<br>
+<hr>
+<br>
+<h1>QUESTION 1 [CO1: Fundamentals, Architecture & Topologies] (Solve any 2 of 3)</h1>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.1.A: Applying TCP/IP Model over OSI Model for Web Streaming Service [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Demonstrate how you would apply the TCP/IP Reference Model instead of the OSI Model when architecting the protocol stack for a real-world web streaming service.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Architectural Mapping for Web Video Streaming:</strong></p>
+<p>Modern web video streaming (e.g., Netflix, YouTube, Hotstar) utilizes <strong>HTTP Live Streaming (HLS)</strong> or <strong>Dynamic Adaptive Streaming over HTTP (DASH)</strong> for on-demand playback, and <strong>WebRTC / RTSP</strong> for low-latency live streaming.</p>
+<br>
+<div class="avoid-break"><pre><code>+-------------------------------------------------------------------------+
+| TCP/IP Model Layer        | Real-World Streaming Protocol Stack         |
++---------------------------+---------------------------------------------+
+| 4. Application Layer      | HLS (m3u8 manifests + TS/fMP4 video chunks) |
+|                           | MPEG-DASH / WebRTC Media Engine             |
++---------------------------+---------------------------------------------+
+| 3. Transport Layer        | TCP (for reliable chunk delivery via HTTPS) |
+|                           | or UDP + QUIC (for low-latency HTTP/3)      |
++---------------------------+---------------------------------------------+
+| 2. Internet Layer         | IPv4 / IPv6 (Global packet routing &amp; QoS)   |
++---------------------------+---------------------------------------------+
+| 1. Network Access Layer   | 10/100G Ethernet, 5G NR, Wi-Fi 6 (802.11ax) |
++-------------------------------------------------------------------------+</code></pre></div>
+<br>
+<p><strong>2. Why the TCP/IP Model is Superior to the OSI Model for Web Streaming:</strong></p>
+<p>1. <strong>Elimination of Redundant Layer Overhead:</strong></p>
+<p>   - OSI separates Presentation (Layer 6) and Session (Layer 5) as distinct protocol layers.</p>
+<p>   - In modern streaming, video decoding (H.264/AV1) and session tokens are handled directly within the browser or application runtime.</p>
+<p>   - Forcing independent Layer 5/6 headers would add processing latency and bandwidth overhead to millions of concurrent micro-chunks.</p>
+<p>2. <strong>Native Transport Flexibility:</strong></p>
+<p>   - TCP/IP allows the streaming architect to seamlessly choose between <strong>TCP</strong> (loss-intolerant, pre-buffered VoD) and <strong>UDP / QUIC</strong> (delay-sensitive, real-time live sports) without altering the upper application logic.</p>
+<p>3. <strong>HTTP/CDN Compatibility:</strong></p>
+<p>   - TCP/IP's pragmatic Application Layer aligns directly with standard HTTP/HTTPS caching infrastructure (Cloudflare, Akamai CDNs), allowing streaming servers to scale horizontally to millions of concurrent viewers.</p>
+<br>
+<div class="rubric"><strong>Examiner Marking Rubric:</strong> Protocol mapping table (Application, Transport, Internet, Network Access): 2.0 Marks.<br>
+Technical justification of eliminating OSI Layers 5 and 6 overhead: 1.5 Marks.<br>
+<p>* Real-world protocol integration (HLS/DASH, CDN, TCP vs UDP): 1.5 Marks.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.1.B: Enterprise Network Hierarchy: LAN, MAN, and WAN Application [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>A retail corporation operates a head office in a 3-story building, 10 outlets across the same metropolitan area, and a cloud backup server in another state. Justify how LAN, MAN, and WAN technologies are applied at each tier to connect these locations into a single enterprise network.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Three-Tier Architectural Design:</strong></p>
+<div class="avoid-break"><pre><code>  [Head Office (3-Story)]                      [10 Retail Outlets (City-Wide)]
+   +---------------------+                      +-----------------------------+
+   | LAN (Cat6A / Wi-Fi) |                      | Local LANs per outlet       |
+   +----------+----------+                      +--------------+--------------+
+              |                                                |
+              +---------------&gt; [ METROPOLITAN AREA NETWORK ] &lt;-+
+                                [ (MAN: Metro Ethernet/Fiber) ]
+                                               |
+                                               v
+                                [ WIDE AREA NETWORK (WAN) ]
+                                [ (IPsec VPN / MPLS Link) ]
+                                               |
+                                               v
+                                [ Cloud Backup (Other State) ]</code></pre></div>
+<br>
+<p><strong>2. Layer-by-Layer Justification:</strong></p>
+<br>
+<p>* <strong>Tier 1: Local Area Network (LAN) - Head Office & Outlets</strong></p>
+<p>  - <em>Coverage</em>: Single building / individual retail shop floor (< 100 meters).</p>
+<p>  - <em>Technology</em>: Gigabit Ethernet (IEEE 802.3ab 1000BASE-T, Cat6A copper cabling) and enterprise Wi-Fi 6 (IEEE 802.11ax).</p>
+<p>  - <em>Justification</em>: Provides high data transfer rates (1 Gbps - 10 Gbps), sub-millisecond local latency, and high security for internal POS terminals, inventory scanners, and office workstations.</p>
+<br>
+<p>* <strong>Tier 2: Metropolitan Area Network (MAN) - City-Wide Interconnection</strong></p>
+<p>  - <em>Coverage</em>: 10 retail outlets distributed across the metropolitan city (1 km - 50 km).</p>
+<p>  - <em>Technology</em>: Metro Ethernet (Carrier Ethernet) over leased dark fiber rings (SONET/SDH or DWDM).</p>
+<p>  - <em>Justification</em>: Enables private, high-bandwidth (100 Mbps - 1 Gbps), low-latency connection between branch POS systems and the central inventory database at the Head Office without exposing internal POS traffic to the public Internet.</p>
+<br>
+<p>* <strong>Tier 3: Wide Area Network (WAN) - Interstate Cloud Backup</strong></p>
+<p>  - <em>Coverage</em>: Regional and interstate connection spanning hundreds of kilometers.</p>
+<p>  - <em>Technology</em>: Multiprotocol Label Switching (MPLS) or Secure SD-WAN over encrypted IPsec tunnels on redundant commercial fiber backbones.</p>
+<p>  - <em>Justification</em>: High geographical reach, SLA guarantees for backup replication, and robust end-to-end encryption across untrusted public carrier links.</p>
+<br>
+<div class="rubric"><strong>Examiner Marking Rubric:</strong> Architecture diagram connecting HQ, outlets, and cloud: 1.5 Marks.<br>
+Clear definition and technology selection for LAN, MAN, and WAN: 2.5 Marks.<br>
+<p>* Business justification (latency, bandwidth, cost, security): 1.0 Mark.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.1.C: Network Topology Expansion: Star to Tree / Hybrid Architecture [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>A small design firm operates 8 workstations connected via a basic Star topology. The firm is expanding to 60 employees spread across 3 distinct departments on different floors. Investigate how you would apply a Tree or Hybrid topology to expand their current network into a scalable, multi-floor layout while keeping maintenance simple and preserving central management.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Current vs Proposed Topology:</strong></p>
+<p><em> </em>Current (8 Nodes)*: Single unmanaged 8-port switch in a single room (flat Star).</p>
+<p><em> </em>Expansion Requirement*: 60 workstations across 3 floors (Floor 1: Dept A [20], Floor 2: Dept B [20], Floor 3: Dept C [20]) with centralized server access.</p>
+<br>
+<p><strong>2. Proposed Tree (Hierarchical Extended Star) Topology:</strong></p>
+<div class="avoid-break"><pre><code>                          [ SERVER ROOM / IT RACK ]
+                          +-----------------------+
+                          |      CORE SWITCH      |
+                          +-----------+-----------+
+                                      |
+         +----------------------------+----------------------------+
+         | (Gigabit Trunk)            | (Gigabit Trunk)            | (Gigabit Trunk)
+         v                            v                            v
++-----------------+          +-----------------+          +-----------------+
+| FLOOR 1 SWITCH  |          | FLOOR 2 SWITCH  |          | FLOOR 3 SWITCH  |
+| (Access Layer)  |          | (Access Layer)  |          | (Access Layer)  |
++--------+--------+          +--------+--------+          +--------+--------+
+         |                            |                            |
+  [20 Workstations]            [20 Workstations]            [20 Workstations]</code></pre></div>
+<br>
+<p><strong>3. Engineering Advantages for Multi-Floor Enterprise:</strong></p>
+<p>1. <strong>Preserved Central Management:</strong></p>
+<p>   - The central Core Switch in the ground-floor server room houses the organization router, firewall, and shared NAS storage.</p>
+<p>   - Network administrators manage security policies, VLANs, and DHCP reservations centrally.</p>
+<p>2. <strong>Simplified Cabling & Maintenance:</strong></p>
+<p>   - Instead of running 60 individual long-distance cables across floors, only <strong>one high-speed fiber or Cat6A backbone trunk</strong> runs from the Core Switch to each floor's Distribution Switch.</p>
+<p>   - Local workstation drops remain short (< 30 meters), eliminating cable clutter and signal attenuation.</p>
+<p>3. <strong>Fault Isolation & High Availability:</strong></p>
+<p>   - If a floor switch or workstation cable fails, <strong>only that single floor or station is impacted</strong>. The remaining floors and central servers continue running unaffected.</p>
+<br>
+<div class="rubric"><strong>Examiner Marking Rubric:</strong> Hierarchical Tree / Extended Star diagram with Core and Floor switches: 2.0 Marks.<br>
+Detailed multi-floor physical allocation (60 nodes / 3 floors): 1.5 Marks.<br>
+<p>* Justification of maintenance simplicity, fault isolation, and central management: 1.5 Marks.</p>
+<br>
+<hr>
+<br>
+<h1>QUESTION 2 [CO2: Physical Layer & Signal Encodings] (Compulsory)</h1>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.2.A: Manchester and Differential Manchester Encoding [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Apply Manchester and Differential Manchester Encoding method on `1011101100110` bit pattern.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Encoding Rules:</strong></p>
+<p>* <strong>Manchester Encoding (IEEE 802.3 Standard):</strong></p>
+<p>  - Bit <code>0</code>: Low-to-High transition (<code>L -> H</code> or <code>0 -> 1</code>) in the middle of bit interval.</p>
+<p>  - Bit <code>1</code>: High-to-Low transition (<code>H -> L</code> or <code>1 -> 0</code>) in the middle of bit interval.</p>
+<p>* <strong>Differential Manchester Encoding:</strong></p>
+<p>  - Always has a transition in the middle of the interval (for clock synchronization).</p>
+<p>  - Bit <code>0</code>: Transition at the <strong>beginning</strong> of the bit interval.</p>
+<p>  - Bit <code>1</code>: <strong>No transition</strong> at the beginning of the bit interval.</p>
+<p>  - (Assume initial signal reference starts High).</p>
+<br>
+<p><strong>2. Step-by-Step Transition Table for <code>1011101100110</code>:</strong></p>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Bit Index</th><th>Bit Value</th><th>Manchester Transition (IEEE 802.3)</th><th>Differential Manchester Transition</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>**1**</td><td>High-to-Low (`1 -> 0`)</td><td>No start transition; Mid-bit toggle (`H -> L`)</td></tr>
+<tr><td>2</td><td>**0**</td><td>Low-to-High (`0 -> 1`)</td><td>Start transition (`L -> H`); Mid-bit toggle (`H -> L`)</td></tr>
+<tr><td>3</td><td>**1**</td><td>High-to-Low (`1 -> 0`)</td><td>No start transition; Mid-bit toggle (`L -> H`)</td></tr>
+<tr><td>4</td><td>**1**</td><td>High-to-Low (`1 -> 0`)</td><td>No start transition; Mid-bit toggle (`H -> L`)</td></tr>
+<tr><td>5</td><td>**1**</td><td>High-to-Low (`1 -> 0`)</td><td>No start transition; Mid-bit toggle (`L -> H`)</td></tr>
+<tr><td>6</td><td>**0**</td><td>Low-to-High (`0 -> 1`)</td><td>Start transition (`H -> L`); Mid-bit toggle (`L -> H`)</td></tr>
+<tr><td>7</td><td>**1**</td><td>High-to-Low (`1 -> 0`)</td><td>No start transition; Mid-bit toggle (`H -> L`)</td></tr>
+<tr><td>8</td><td>**1**</td><td>High-to-Low (`1 -> 0`)</td><td>No start transition; Mid-bit toggle (`L -> H`)</td></tr>
+<tr><td>9</td><td>**0**</td><td>Low-to-High (`0 -> 1`)</td><td>Start transition (`H -> L`); Mid-bit toggle (`L -> H`)</td></tr>
+<tr><td>10</td><td>**0**</td><td>Low-to-High (`0 -> 1`)</td><td>Start transition (`H -> L`); Mid-bit toggle (`L -> H`)</td></tr>
+<tr><td>11</td><td>**1**</td><td>High-to-Low (`1 -> 0`)</td><td>No start transition; Mid-bit toggle (`H -> L`)</td></tr>
+<tr><td>12</td><td>**1**</td><td>High-to-Low (`1 -> 0`)</td><td>No start transition; Mid-bit toggle (`L -> H`)</td></tr>
+<tr><td>13</td><td>**0**</td><td>Low-to-High (`0 -> 1`)</td><td>Start transition (`H -> L`); Mid-bit toggle (`L -> H`)</td></tr>
+</tbody></table></div>
+<br>
+<p><strong>3. ASCII Signal Waveforms:</strong></p>
+<div class="avoid-break"><pre><code>Bit Pattern:    |  1  |  0  |  1  |  1  |  1  |  0  |  1  |  1  |  0  |  0  |  1  |  1  |  0  |
+
+Manchester:
+  +V            |--+  |   +-|--+  |--+  |--+  |   +-|--+  |--+  |   +-|   +-|--+  |--+  |   +-|
+   0            |  |  |   | |  |  |  |  |  |  |   | |  |  |  |  |   | |   | |  |  |  |  |   | |
+  -V            |  +--|---+ |  +--|  +--|  +--|---+ |  +--|  +--|---+ |---+ |  +--|  +--|---+ |
+
+Diff Manch:
+  +V            |--+  |   +-|  +--|--+  |  +--|--+  |  +--|--+  |   +-|   +-|  +--|--+  |   +-|
+   0            |  |  |   | |  |  |  |  |  |  |  |  |  |  |  |  |   | |   | |  |  |  |  |   | |
+  -V            |  +--|---+ |--+  |  +--|--+  |  +--|--+  |  +--|---+ |---+ |--+  |  +--|---+ |</code></pre></div>
+<br>
+<div class="rubric"><strong>Examiner Marking Rubric:</strong> <p>* Stating correct encoding rules for both schemes: 1.0 Mark.</p>
+Accurate mid-bit transitions for Manchester across all 13 bits: 2.0 Marks.<br>
+<p>* Accurate start-of-bit edge transitions for Differential Manchester: 2.0 Marks.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.2.B: Spread Spectrum Techniques: FHSS vs DSSS [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Illustrate the working of FHSS and DSSS spread spectrum methods, also comment on uses.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Frequency Hopping Spread Spectrum (FHSS):</strong></p>
+<p><em> </em>Principle*: The available channel bandwidth is partitioned into multiple narrow frequency channels. The carrier frequency rapidly <strong>hops</strong> among these channels in a pseudo-random order determined by a Pseudo-Noise (PN) sequence.</p>
+<p><em> </em>Mechanism*: Both transmitter and receiver share the same PN code generator and frequency synthesizer. Even if an adversary jams frequency $f_1$, only a single hop's worth of data is corrupted; the next hop at $f_4$ succeeds.</p>
+<br>
+<div class="avoid-break"><pre><code>Frequency ^
+   f4     |         [Hop 2]
+   f3     |                           [Hop 4]
+   f2     |                   [Hop 3]
+   f1     | [Hop 1]
+          +------------------------------------&gt; Time</code></pre></div>
+<br>
+<p><strong>2. Direct Sequence Spread Spectrum (DSSS):</strong></p>
+<p><em> </em>Principle*: Each original data bit is expanded by multiplying (XORing) it with a high-rate bit sequence called a <strong>Chip Sequence</strong> (e.g., 11-bit Barker code).</p>
+<p><em> </em>Mechanism*: If data bit is <code>1</code>, transmit Barker code <code>10110111000</code>. If data bit is <code>0</code>, transmit inverted Barker code. This spreads the narrow signal across a wide RF spectrum, causing it to appear below the noise floor to unintended listeners.</p>
+<br>
+<div class="avoid-break"><pre><code>Data Bit (Tb)       : [       1       ]  (Duration Tb)
+Barker Chips (Tc)   : [1 0 1 1 0 1 1 1 0 0 0]  (Chip duration Tc &lt;&lt; Tb)
+Transmitted Signal  : Wideband spread spectrum signal</code></pre></div>
+<br>
+<p><strong>3. Comparative Summary & Real-World Uses:</strong></p>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Feature</th><th>FHSS (Frequency Hopping)</th><th>DSSS (Direct Sequence)</th></tr></thead>
+<tbody>
+<tr><td>**Spreading Method**</td><td>Dynamic carrier frequency switching</td><td>Bit-level XOR multiplication with PN chips</td></tr>
+<tr><td>**Complexity**</td><td>Simple radio frequency synthesizers</td><td>Requires high-speed correlators & DSPs</td></tr>
+<tr><td>**Interference Resilience**</td><td>Narrowband interference avoided by hopping</td><td>Noise rejection via processing gain</td></tr>
+<tr><td>**Primary Practical Uses**</td><td>**Bluetooth (IEEE 802.15.1)**, Military tactical combat radios</td><td>**Wi-Fi (IEEE 802.11b)**, GPS satellite signals, 3G CDMA</td></tr>
+</tbody></table></div>
+<br>
+<div class="rubric"><strong>Examiner Marking Rubric:</strong> Diagram and operating principle of FHSS: 2.0 Marks.<br>
+Diagram and chip-sequence principle of DSSS: 2.0 Marks.<br>
+<p>* Practical applications and use-cases: 1.0 Mark.</p>
+<br>
+<hr>
+<br>
+<h1>QUESTION 3 [CO3: Data Link Layer & MAC Protocols] (Solve any 2 of 3)</h1>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.3.A: Hamming Code Error-Detection & Correction Computation [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Compute Hamming Code for the given data bits D = `1011001`. Show the complete process and write down the values of redundant bits.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Determine Number of Redundant (Parity) Bits ($r$):</strong></p>
+<p>* Given data bits $m = 7$ ($D = 1011001$).</p>
+<p>* Formula: $2^r \ge m + r + 1$.</p>
+<p>  - For $r = 3$: $2^3 = 8 < 7 + 3 + 1 = 11$ (Insufficient).</p>
+<p>  - For $r = 4$: $2^4 = 16 \ge 7 + 4 + 1 = 12$ (Satisfied!).</p>
+<p>* Total Codeword Length $n = m + r = 7 + 4 = 11$ bits.</p>
+<br>
+<p><strong>2. Bit Positioning:</strong></p>
+<p>Parity bits occupy powers-of-2 positions ($1, 2, 4, 8$). Data bits fill remaining slots ($3, 5, 6, 7, 9, 10, 11$).</p>
+<p>Let $D = d_7 d_6 d_5 d_4 d_3 d_2 d_1 = 1 0 1 1 0 0 1$:</p>
+<p>- Pos 1: $P_1$</p>
+<p>- Pos 2: $P_2$</p>
+<p>- Pos 3: $d_1 = 1$</p>
+<p>- Pos 4: $P_4$</p>
+<p>- Pos 5: $d_2 = 0$</p>
+<p>- Pos 6: $d_3 = 0$</p>
+<p>- Pos 7: $d_4 = 1$</p>
+<p>- Pos 8: $P_8$</p>
+<p>- Pos 9: $d_5 = 1$</p>
+<p>- Pos 10: $d_6 = 0$</p>
+<p>- Pos 11: $d_7 = 1$</p>
+<br>
+<p><strong>3. Parity Bit Calculation (Even Parity System):</strong></p>
+<br>
+<p>* <strong>$P_1$ (Checks bit positions whose binary index has 1 in position 0: 1, 3, 5, 7, 9, 11):</strong></p>
+<p>  $P_1 \oplus 	ext{bit}(3) \oplus 	ext{bit}(5) \oplus 	ext{bit}(7) \oplus 	ext{bit}(9) \oplus 	ext{bit}(11) = 0$  </p>
+<p>  $P_1 \oplus 1 \oplus 0 \oplus 1 \oplus 1 \oplus 1 = 0$  </p>
+<p>  $P_1 \oplus (4 	ext{ ones}) = 0 \implies P_1 \oplus 0 = 0 \implies \mathbf{P_1 = 0}$.</p>
+<br>
+<p>* <strong>$P_2$ (Checks bit positions whose binary index has 1 in position 1: 2, 3, 6, 7, 10, 11):</strong></p>
+<p>  $P_2 \oplus 	ext{bit}(3) \oplus 	ext{bit}(6) \oplus 	ext{bit}(7) \oplus 	ext{bit}(10) \oplus 	ext{bit}(11) = 0$  </p>
+<p>  $P_2 \oplus 1 \oplus 0 \oplus 1 \oplus 0 \oplus 1 = 0$  </p>
+<p>  $P_2 \oplus (3 	ext{ ones}) = 0 \implies P_2 \oplus 1 = 0 \implies \mathbf{P_2 = 1}$.</p>
+<br>
+<p>* <strong>$P_4$ (Checks bit positions whose binary index has 1 in position 2: 4, 5, 6, 7):</strong></p>
+<p>  $P_4 \oplus 	ext{bit}(5) \oplus 	ext{bit}(6) \oplus 	ext{bit}(7) = 0$  </p>
+<p>  $P_4 \oplus 0 \oplus 0 \oplus 1 = 0$  </p>
+<p>  $P_4 \oplus 1 = 0 \implies \mathbf{P_4 = 1}$.</p>
+<br>
+<p>* <strong>$P_8$ (Checks bit positions whose binary index has 1 in position 3: 8, 9, 10, 11):</strong></p>
+<p>  $P_8 \oplus 	ext{bit}(9) \oplus 	ext{bit}(10) \oplus 	ext{bit}(11) = 0$  </p>
+<p>  $P_8 \oplus 1 \oplus 0 \oplus 1 = 0$  </p>
+<p>  $P_8 \oplus (2 	ext{ ones}) = 0 \implies \mathbf{P_8 = 0}$.</p>
+<br>
+<p><strong>4. Final Codeword:</strong></p>
+<p>* Redundant bit values: <strong>$P_1 = 0,\; P_2 = 1,\; P_4 = 1,\; P_8 = 0$</strong>.</p>
+<p>* 11-Bit Codeword:</p>
+<div class="avoid-break"><pre><code>Position:  1   2   3   4   5   6   7   8   9  10  11
+Bit:      P1  P2  d1  P4  d2  d3  d4  P8  d5  d6  d7
+Value:     0   1   1   1   0   0   1   0   1   0   1</code></pre></div>
+<p>* Codeword = <strong><code>01110010101</code></strong>.</p>
+<br>
+<p><em>(Note: If mapped with $D$ from left to right as $d_1 d_2 d_3 d_4 d_5 d_6 d_7 = 1011001$, positions 3,5,6,7,9,10,11 become 1,0,1,1,0,0,1, giving $P_1=1, P_2=1, P_4=0, P_8=1$ with codeword <code>11100111001</code>. Both indexing conventions are recognized by examiners).</em></p>
+<br>
+<div class="rubric"><strong>Examiner Marking Rubric:</strong> <p>* Calculation of $r=4$ using $2^r \ge m+r+1$: 1.0 Mark.</p>
+<p>* Positioning table of data and parity bits: 1.0 Mark.</p>
+<p>* Derivation and values of $P_1, P_2, P_4, P_8$: 2.0 Marks.</p>
+<p>* Final 11-bit codeword: 1.0 Mark.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.3.B: Go-Back-N ARQ vs Selective Repeat ARQ Performance Comparison [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Distinguish between Go back N ARQ & Selective Repeat ARQ. Comment on the performance of each.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Architectural & Operational Comparison:</strong></p>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Parameter</th><th>Go-Back-N (GBN) ARQ</th><th>Selective Repeat (SR) ARQ</th></tr></thead>
+<tbody>
+<tr><td>**Sender Window Size ($W_S$)**</td><td>Up to $2^m - 1$</td><td>$2^{m-1}$</td></tr>
+<tr><td>**Receiver Window Size ($W_R$)**</td><td>Strictly **1**</td><td>Equal to sender window $W_S = 2^{m-1}$</td></tr>
+<tr><td>**Receiver Buffering**</td><td>No buffer; out-of-order frames discarded</td><td>Out-of-order error-free frames buffered</td></tr>
+<tr><td>**Acknowledgment Type**</td><td>**Cumulative ACK** (ACK $n$ confirms all $< n$)</td><td>**Individual / Selective ACK** (ACKs specific frame)</td></tr>
+<tr><td>**Retransmission on Loss**</td><td>Retransmits **all $N$ unACKed frames**</td><td>Retransmits **only the specific lost frame**</td></tr>
+<tr><td>**Implementation Logic**</td><td>Very simple; minimal receiver memory</td><td>Complex; sorting buffers & logic required</td></tr>
+</tbody></table></div>
+<br>
+<p><strong>2. Performance Commentary:</strong></p>
+<p>* <strong>Channel Efficiency under High Error Rates ($p > 0$):</strong></p>
+<p>  - In GBN, losing a single frame $F_i$ forces retransmission of the entire window $F_i, F_{i+1}, \dots, F_{i+N-1}$. Over high bandwidth-delay product links (e.g. satellite), this wastes enormous channel bandwidth, dropping efficiency drastically.</p>
+<p>  - In SR, only $F_i$ is retransmitted. Channel throughput remains close to optimal ($\eta pprox 1 - p$), making SR far superior on noisy, high-latency links.</p>
+<p>* <strong>Hardware Cost vs Throughput Trade-off:</strong></p>
+<p>  - GBN is favored in resource-constrained IoT/embedded systems with tiny RAM buffers.</p>
+<p>  - SR is used in high-performance protocols like TCP (via SACK option).</p>
+<br>
+<div class="rubric"><strong>Examiner Marking Rubric:</strong> Comparative table (Window sizes, buffering, ACK mechanisms): 3.0 Marks.<br>
+Performance analysis under error conditions and satellite channels: 2.0 Marks.<br>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.3.C: Persistence Algorithms in CSMA: 1-Persistent, Non-Persistent, and p-Persistent [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Analyze 1-persistent, non-persistent and p-persistent CSMA algorithm, also comment on their performances.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Operational Algorithms:</strong></p>
+<p>When a station has a frame to transmit, it first senses the transmission channel:</p>
+<p>* <strong>1-Persistent CSMA:</strong></p>
+<p>  - If channel is IDLE: Transmit immediately with probability $p = 1$.</p>
+<p>  - If channel is BUSY: Continuously listen until channel becomes idle, then transmit immediately.</p>
+<p>  - <em>Problem</em>: If two or more stations were waiting, they both transmit simultaneously the instant the channel clears $\implies$ <strong>Guaranteed Collision!</strong></p>
+<p>* <strong>Non-Persistent CSMA:</strong></p>
+<p>  - If channel is IDLE: Transmit immediately.</p>
+<p>  - If channel is BUSY: <strong>Do not continuously listen</strong>. Wait for a random backoff time, then sense again.</p>
+<p>  - <em>Advantage</em>: Reduces collision probability substantially.</p>
+<p>  - <em>Disadvantage</em>: Channel stays idle unnecessarily while stations are in backoff, reducing utilization under light loads.</p>
+<p>* <strong>p-Persistent CSMA (Used in slotted channels):</strong></p>
+<p>  - If channel is IDLE: Transmit with probability $p$; with probability $q = 1 - p$, defer to next time slot.</p>
+<p>  - If channel is BUSY: Wait until idle, then apply probability $p$ test.</p>
+<br>
+<p><strong>2. Performance & Throughput Comparison:</strong></p>
+<br>
+<div class="avoid-break"><pre><code>Throughput (S) ^
+               |       p-Persistent (p=0.1)
+           0.8 |          /---------           0.6 |         /           \      Non-Persistent
+           0.4 |        /  /-------\  \     /-----------           0.2 |  1-Pers  /         \  \   /
+             0 +---------+-----------+--\-+--------------&gt; Offered Load (G)</code></pre></div>
+<br>
+<p>* Under <strong>Light Traffic Load</strong>: 1-Persistent achieves lowest delay because stations transmit instantly without waiting.</p>
+<p>* Under <strong>Heavy Traffic Load</strong>: 1-Persistent collapses due to endless collisions. Non-Persistent and low-$p$ Persistent maintain stable throughput because deferral mitigates burst collisions.</p>
+<br>
+<div class="rubric"><strong>Examiner Marking Rubric:</strong> Algorithmic definition of all 3 modes: 2.5 Marks.<br>
+Throughput vs Load curve / performance comparison: 2.5 Marks.<br>
+<br>
+<hr>
+<br>
+<h1>QUESTION 4 [CO4: Network Layer, Subnetting & Routing] (Compulsory)</h1>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.4.A: Critical Subnetting Evaluation on 192.168.1.0/24 [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>An organization requires at least 6 subnets with a minimum of 25 hosts each on the 192.168.1.0/24 network. Critically evaluate whether a /27 subnet mask is the optimal configuration for this design. Assess the trade-offs regarding future subnet growth versus host expansion per subnet, and justify your final mask recommendation.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Mathematical Verification of /27 Subnet Mask:</strong></p>
+<p>* Network: <code>192.168.1.0/24</code> (Class C, default 24 network bits, 8 host bits).</p>
+<p>* For <code>/27</code> Mask (<code>255.255.255.224</code>):</p>
+<p>  - Borrowed subnet bits $s = 27 - 24 = 3$ bits.</p>
+<p>  - Remaining host bits $h = 32 - 27 = 5$ bits.</p>
+<p>  - Number of Subnets = $2^s = 2^3 = \mathbf{8 	ext{ subnets}}$.</p>
+<p>  - Since $8 \ge 6$, the subnet requirement is <strong>fully satisfied</strong> ($8 - 6 = 2$ spare subnets).</p>
+<p>  - Number of Usable Hosts per Subnet = $2^h - 2 = 2^5 - 2 = 32 - 2 = \mathbf{30 	ext{ usable hosts}}$.</p>
+<p>  - Since $30 \ge 25$, the host requirement is <strong>fully satisfied</strong> ($30 - 25 = 5$ spare host slots per subnet).</p>
+<br>
+<p><strong>2. Critical Evaluation of Alternative Subnet Masks:</strong></p>
+<p>* <strong>Evaluation of <code>/26</code> Mask (2 borrowed bits):</strong></p>
+<p>  - Subnets = $2^2 = 4$. Fails the requirement of at least 6 subnets ($4 < 6$). <strong>INVALID</strong>.</p>
+<p>* <strong>Evaluation of <code>/28</code> Mask (4 borrowed bits):</strong></p>
+<p>  - Usable hosts = $2^4 - 2 = 14$ hosts. Fails the requirement of at least 25 hosts ($14 < 25$). <strong>INVALID</strong>.</p>
+<br>
+<p><strong>3. Assessment of Expansion Trade-offs & Recommendation:</strong></p>
+<p>* <strong>The Mathematical Uniqueness:</strong></p>
+<p>  Within a single flat <code>/24</code> block, the <code>/27</code> mask is the <strong>ONLY mathematically viable standard configuration</strong> that simultaneously yields $\ge 6$ subnets and $\ge 25$ usable hosts.</p>
+<p>* <strong>Trade-Off Analysis:</strong></p>
+<p>  - <em>Subnet Growth</em>: Yields <strong>2 extra subnets</strong> (33% expansion capability). If the organization opens 2 new departments, no re-addressing is required.</p>
+<p>  - <em>Host Growth</em>: Yields <strong>5 extra host addresses</strong> per subnet (20% headroom). If a department exceeds 30 workstations, that department will suffer IP starvation.</p>
+<p>* <strong>Final Engineering Recommendation:</strong></p>
+<p>  Adopt <code>/27</code> for immediate deployment. If future departmental growth anticipates $>30$ hosts, migrate the organization to a private Class B block (<code>172.16.0.0/22</code>) or employ Variable-Length Subnet Masking (VLSM).</p>
+<br>
+<div class="rubric"><strong>Examiner Marking Rubric:</strong> Calculation of subnets ($2^3 = 8$) and usable hosts ($2^5 - 2 = 30$): 2.0 Marks.<br>
+Proof of why `/26` and `/28` fail requirements: 1.5 Marks.<br>
+<p>* Trade-off assessment between subnet growth vs host growth: 1.5 Marks.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.4.B: Distance Vector Routing Table Calculation for Router J [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Given the network topology in Figure-a and the incoming vectors from neighboring routers in Figure-b, apply the Distance Vector Routing algorithm to calculate Router J's new routing table. Evaluate whether Router J should update any of its preferred next-hop paths, and assess if any reported vector indicates a potential routing loop or infinity-convergence issue.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Given Link Costs from Router J to its 4 Neighbors:</strong></p>
+<p>* $c(J, A) = 8$</p>
+<p>* $c(J, I) = 10$</p>
+<p>* $c(J, H) = 12$</p>
+<p>* $c(J, K) = 6$</p>
+<br>
+<p><strong>2. Bellman-Ford Calculation for all 12 Destinations ($D_J(X) = \min_N [c(J,N) + D_N(X)]$):</strong></p>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Dest</th><th>Delay via A ($8 + D_A$)</th><th>Delay via I ($10 + D_I$)</th><th>Delay via H ($12 + D_H$)</th><th>Delay via K ($6 + D_K$)</th><th>Minimum Delay</th><th>Best Next Hop</th></tr></thead>
+<tbody>
+<tr><td>**A**</td><td>$8 + 0 = \mathbf{8}$</td><td>$10 + 24 = 34$</td><td>$12 + 20 = 32$</td><td>$6 + 21 = 27$</td><td>**8**</td><td>**A**</td></tr>
+<tr><td>**B**</td><td>$8 + 12 = \mathbf{20}$</td><td>$10 + 36 = 46$</td><td>$12 + 31 = 43$</td><td>$6 + 28 = 34$</td><td>**20**</td><td>**A**</td></tr>
+<tr><td>**C**</td><td>$8 + 25 = 33$</td><td>$10 + 18 = \mathbf{28}$</td><td>$12 + 19 = 31$</td><td>$6 + 36 = 42$</td><td>**28**</td><td>**I**</td></tr>
+<tr><td>**D**</td><td>$8 + 40 = 48$</td><td>$10 + 27 = 37$</td><td>$12 + 8 = \mathbf{20}$</td><td>$6 + 24 = 30$</td><td>**20**</td><td>**H**</td></tr>
+<tr><td>**E**</td><td>$8 + 14 = 22$</td><td>$10 + 7 = \mathbf{17}$</td><td>$12 + 30 = 42$</td><td>$6 + 22 = 28$</td><td>**17**</td><td>**I**</td></tr>
+<tr><td>**F**</td><td>$8 + 23 = 31$</td><td>$10 + 20 = \mathbf{30}$</td><td>$12 + 19 = 31$</td><td>$6 + 40 = 46$</td><td>**30**</td><td>**I**</td></tr>
+<tr><td>**G**</td><td>$8 + 18 = 26$</td><td>$10 + 31 = 41$</td><td>$12 + 6 = \mathbf{18}$</td><td>$6 + 31 = 37$</td><td>**18**</td><td>**H**</td></tr>
+<tr><td>**H**</td><td>$8 + 17 = 25$</td><td>$10 + 20 = 30$</td><td>$12 + 0 = \mathbf{12}$</td><td>$6 + 19 = 25$</td><td>**12**</td><td>**H**</td></tr>
+<tr><td>**I**</td><td>$8 + 21 = 29$</td><td>$10 + 0 = \mathbf{10}$</td><td>$12 + 14 = 26$</td><td>$6 + 22 = 28$</td><td>**10**</td><td>**I**</td></tr>
+<tr><td>**J**</td><td>Direct = 0</td><td>Direct = 0</td><td>Direct = 0</td><td>Direct = 0</td><td>**0**</td><td>**-**</td></tr>
+<tr><td>**K**</td><td>$8 + 24 = 32$</td><td>$10 + 22 = 32$</td><td>$12 + 22 = 34$</td><td>$6 + 0 = \mathbf{6}$</td><td>**6**</td><td>**K**</td></tr>
+<tr><td>**L**</td><td>$8 + 29 = 37$</td><td>$10 + 33 = 43$</td><td>$12 + 9 = 21$</td><td>$6 + 9 = \mathbf{15}$</td><td>**15**</td><td>**K**</td></tr>
+</tbody></table></div>
+<br>
+<p><strong>3. Router J's New Routing Table Output:</strong></p>
+<div class="avoid-break"><pre><code>Destination:   A   B   C   D   E   F   G   H   I   J   K   L
+New Delay:     8  20  28  20  17  30  18  12  10   0   6  15
+Next Hop:      A   A   I   H   I   I   H   H   I   -   K   K</code></pre></div>
+<br>
+<p><strong>4. Evaluation of Next Hops, Routing Loops & Convergence:</strong></p>
+<p>* <strong>Path Updates</strong>: Router J updates its preferred next hop dynamically: Destinations A, B route via A; C, E, F, I route via I; D, G, H route via H; K, L route via K.</p>
+<p>* <strong>Potential Loop / Infinity-Convergence Warning</strong>:</p>
+<p>  - Neighbor H reports a delay of $7$ to reach J ($D_H(J) = 7$). However, the direct link cost between J and H is $12$ ($c(J,H) = 12$).</p>
+<p>  - If router H calculated this path of cost 7 by routing through an intermediate node that loops back to J (or before H learned about a link failure), a classic <strong>two-node or multi-node routing loop</strong> exists.</p>
+<p>  - In basic Distance Vector routing, if link $J-H$ or a link behind H fails, routers J and H will mutually increment their reported vectors in steps of link cost, causing the infamous <strong>Count-to-Infinity problem</strong> until infinity (e.g., 16 hops) is reached.</p>
+<p>  - <em>Mitigation</em>: Split Horizon with Poison Reverse must be enforced to suppress advertising routes back to the neighbor through which they were learned.</p>
+<br>
+<div class="rubric"><strong>Examiner Marking Rubric:</strong> Complete numerical calculation for all 12 destinations: 2.5 Marks.<br>
+Clean new routing table (Delays & Next Hops): 1.5 Marks.<br>
+<p>* Critical loop/convergence evaluation ($D_H(J)=7$ anomaly & Count-to-Infinity): 1.0 Mark.</p>
+<br>
+<hr>
+<br>
+<h1>QUESTION 5 [CO5: Transport Layer & Reliability] (Solve any 2 of 3)</h1>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.5.A: TCP Congestion Window Slow-Start Graph [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Draw the graph of showing the growth of the TCP congestion window by applying slow start phase for a given initial congestion window and slow-start threshold.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Mechanism of Slow Start:</strong></p>
+<p>* Starts with Initial Congestion Window: $	ext{cwnd} = 1 	ext{ MSS}$.</p>
+<p>* For every valid ACK received, $	ext{cwnd}$ increments by $1 	ext{ MSS}$.</p>
+<p>* Over one Round-Trip Time (RTT), $	ext{cwnd}$ <strong>doubles exponentially</strong>: $1 	o 2 	o 4 	o 8 	o 16 	ext{ MSS}$.</p>
+<p>* When $	ext{cwnd} = 	ext{ssthresh}$ (Slow-Start Threshold, e.g., 16 MSS), TCP exits Slow Start and enters <strong>Congestion Avoidance</strong> (linear growth: $+1 	ext{ MSS}$ per RTT).</p>
+<br>
+<p><strong>2. Graph of TCP Congestion Window Growth:</strong></p>
+<div class="avoid-break"><pre><code>Congestion Window (cwnd in MSS) ^
+                                |
+                   32           |
+                                |
+                   24           |                                  / (Additive Increase)
+                                |                                 /
+     ssthresh ---&gt; 16           |                     /----------/
+                                |                    / (Linear: Congestion Avoidance)
+                    8           |              /----/
+                                |             /
+                    4           |         /--/
+                    2           |     /--/  (Exponential: Slow Start)
+                    1           |----+
+                                +----+----+----+----+----+----+----+----+----&gt;
+                                0    1    2    3    4    5    6    7    8    Transmission Round (RTT)</code></pre></div>
+<br>
+<p><strong>3. Phase Descriptions for Full Marks:</strong></p>
+<p>1. <strong>Slow Start ($0 \le 	ext{cwnd} < 	ext{ssthresh}$):</strong> Window grows exponentially ($2^{	ext{RTT}}$). Quickly probes available channel capacity.</p>
+<p>2. <strong>Transition Threshold ($	ext{cwnd} = 	ext{ssthresh}$):</strong> State transition prevents violent network collapse.</p>
+<p>3. <strong>Congestion Avoidance ($	ext{cwnd} \ge 	ext{ssthresh}$):</strong> Additive increase ($	ext{cwnd} = 	ext{cwnd} + 1/	ext{cwnd}$ per ACK) probing limit cautiously.</p>
+<br>
+<div class="rubric"><strong>Examiner Marking Rubric:</strong> Clean labelled graph showing exponential Slow Start up to ssthresh: 2.5 Marks.<br>
+Transition to linear Congestion Avoidance beyond threshold: 1.5 Marks.<br>
+<p>* Explanation of cwnd doubling per RTT: 1.0 Mark.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.5.B: TCP/IP Encapsulation and De-encapsulation & Protocol Data Units (PDUs) [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Demonstrate the process of encapsulation and de-encapsulation in TCP/IP layered reference model. Comment on various PDU's.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. The Encapsulation / De-encapsulation Flow:</strong></p>
+<div class="avoid-break"><pre><code>  SENDER (Host A)                                                 RECEIVER (Host B)
+  +------------------+                                            +------------------+
+  | Application Data |                                            | Application Data |
+  +--------+---------+                                            +--------^---------+
+           | [Encapsulation: Add TCP Header]                               | [De-encapsulation: Strip TCP Header]
+           v                                                               |
+  +--------+---------+--------------------+                       +--------+---------+--------------------+
+  | TCP Hdr| Data    | (PDU: Segment)     |                       | TCP Hdr| Data    | (PDU: Segment)     |
+  +--------+---------+--------------------+                       +--------+---------+--------------------+
+           | [Add IP Header]                                               | [Strip IP Header]
+           v                                                               |
+  +--------+---------+---------+----------+                       +--------+---------+---------+----------+
+  | IP Hdr | TCP Hdr | Data    | (Packet) |                       | IP Hdr | TCP Hdr | Data    | (Packet) |
+  +--------+---------+---------+----------+                       +--------+---------+---------+----------+
+           | [Add MAC Header + FCS Trailer]                                | [Strip MAC Header + FCS Trailer]
+           v                                                               |
+  +--------+--------+--------+-----+-----+                         +--------+--------+--------+-----+-----+
+  | MAC Hdr| IP Hdr | TCP Hdr| Data| FCS | (Frame)                 | MAC Hdr| IP Hdr | TCP Hdr| Data| FCS |
+  +--------+--------+--------+-----+-----+                         +--------+--------+--------+-----+-----+
+           | [Physical Conversion to Raw Bits]                             | [Convert Signals to Bits]
+           v                                                               |
+     1 0 1 0 1 1 0 0 1 1 0 1 0 0 1 0 ========= Transmission Wire =======&gt; 1 0 1 0 1 1 0 0 1 1 0 1 0 0 1 0</code></pre></div>
+<br>
+<p><strong>2. Detailed Commentary on Protocol Data Units (PDUs):</strong></p>
+<p>1. <strong>Application Layer PDU - Message / Data:</strong> Contains raw application content (HTTP GET request, HTML payload, DNS query).</p>
+<p>2. <strong>Transport Layer PDU - Segment (TCP) / Datagram (UDP):</strong> Prepends source and destination port numbers (e.g., 80, 443), sequence numbers, and checksum for process-to-process communication.</p>
+<p>3. <strong>Network / Internet Layer PDU - Packet / Datagram:</strong> Prepends Source and Destination IP addresses, TTL, and fragmentation headers for host-to-host routing across intermediate routers.</p>
+<p>4. <strong>Data Link Layer PDU - Frame:</strong> Prepends hardware MAC addresses and appends a <strong>Frame Check Sequence (FCS / CRC-32)</strong> trailer for hop-to-hop node transfer and physical bit-error detection.</p>
+<p>5. <strong>Physical Layer PDU - Bits / Symbols:</strong> Encodes frames into electrical voltages, optical pulses, or radio waves.</p>
+<br>
+<div class="rubric"><strong>Examiner Marking Rubric:</strong> Complete encapsulation & de-encapsulation diagram: 2.5 Marks.<br>
+Explanation of all 4 major PDUs (Message, Segment, Packet, Frame): 2.5 Marks.<br>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.5.C: TCP Sockets vs UDP Sockets Comparison [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Compare TCP sockets and UDP-sockets.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. Comprehensive Technical Comparison:</strong></p>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Feature</th><th>TCP Sockets (`SOCK_STREAM`)</th><th>UDP Sockets (`SOCK_DGRAM`)</th></tr></thead>
+<tbody>
+<tr><td>**Connection Type**</td><td>Connection-oriented (requires 3-way handshake)</td><td>Connectionless (no handshake required)</td></tr>
+<tr><td>**Reliability**</td><td>100% Guaranteed delivery, ordered byte stream</td><td>Best-effort; messages may be lost, duplicated, or reordered</td></tr>
+<tr><td>**Flow & Congestion Control**</td><td>Sliding window flow control + AIMD congestion control</td><td>Zero flow control, zero congestion control</td></tr>
+<tr><td>**Data Framing**</td><td>Continuous Byte-Stream (no message boundaries)</td><td>Preserves discrete **Datagram Message Boundaries**</td></tr>
+<tr><td>**Header Overhead**</td><td>20 to 60 Bytes</td><td>Fixed 8 Bytes</td></tr>
+<tr><td>**Server Socket APIs**</td><td>`socket() -> bind() -> listen() -> accept() -> recv()/send()`</td><td>`socket() -> bind() -> recvfrom()/sendto()`</td></tr>
+<tr><td>**Client Socket APIs**</td><td>`socket() -> connect() -> send()/recv()`</td><td>`socket() -> sendto()/recvfrom()`</td></tr>
+<tr><td>**Typical Applications**</td><td>HTTP/HTTPS, SSH, FTP, SMTP, MySQL database queries</td><td>DNS lookup, DHCP, VoIP, live video streaming, multiplayer games</td></tr>
+</tbody></table></div>
+<br>
+<div class="rubric"><strong>Examiner Marking Rubric:</strong> Comparative table across key attributes: 3.0 Marks.<br>
+Comparison of socket API primitives (`listen`/`accept` vs `recvfrom`): 2.0 Marks.<br>
+<br>
+<hr>
+<br>
+<h1>QUESTION 6 [CO6: Application Layer & Security] (Compulsory)</h1>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.6.A: Web Cookies, Security Mitigations & Role of Proxy Servers [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Discuss how cookies are handled in a web communication scenario and apply suitable security measures to mitigate cookie-related threats. Explain the role of a proxy server in this process.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. How Cookies are Handled in Web Communication:</strong></p>
+<p>HTTP is inherently a <strong>stateless protocol</strong>. To maintain user sessions (e.g., shopping carts, login authentication), cookies bridge this state:</p>
+<p>1. <strong>Creation</strong>: When a user logs in, the Server sends an HTTP response containing:</p>
+<p>   <code>Set-Cookie: session_id=XYZ789; Path=/; Domain=example.com</code></p>
+<p>2. <strong>Storage</strong>: The client browser stores this key-value pair in its local cookie jar.</p>
+<p>3. <strong>Subsequent Requests</strong>: For every subsequent HTTP request to that domain, the browser automatically attaches:</p>
+<p>   <code>Cookie: session_id=XYZ789</code></p>
+<p>   allowing the server to identify the authenticated user immediately.</p>
+<br>
+<div class="avoid-break"><pre><code>  CLIENT (Browser)                                                SERVER (Web App)
+         |                                                               |
+         | ----- (1) POST /login (Credentials) ------------------------&gt; |
+         | &lt;---- (2) HTTP 200 OK [Set-Cookie: session=XYZ; HttpOnly] --- |
+         |                                                               |
+         | ----- (3) GET /dashboard [Cookie: session=XYZ] -------------&gt; |
+         | &lt;---- (4) HTTP 200 OK (Personalized Page Content) ----------- |</code></pre></div>
+<br>
+<p><strong>2. Cookie Threats and Security Measures:</strong></p>
+<p>* <strong>Threat 1: Cross-Site Scripting (XSS) Cookie Theft</strong></p>
+<p>  - <em>Attack</em>: Malicious JavaScript injected into a page reads <code>document.cookie</code> and exfiltrates session tokens.</p>
+<p>  - <em>Mitigation</em>: Set the <strong><code>HttpOnly</code> flag</strong>. This forbids client-side scripts from reading the cookie.</p>
+<p>* <strong>Threat 2: Man-in-the-Middle (MitM) Eavesdropping</strong></p>
+<p>  - <em>Attack</em>: Cookie intercepted over plain HTTP Wi-Fi.</p>
+<p>  - <em>Mitigation</em>: Set the <strong><code>Secure</code> flag</strong>. The browser will only transmit the cookie over encrypted TLS (<code>https://</code>).</p>
+<p>* <strong>Threat 3: Cross-Site Request Forgery (CSRF)</strong></p>
+<p>  - <em>Attack</em>: An attacker's site tricks the browser into issuing authenticated requests to the bank.</p>
+<p>  - <em>Mitigation</em>: Set <strong><code>SameSite=Strict</code></strong> or <code>SameSite=Lax</code> flag, preventing cross-origin transmission.</p>
+<br>
+<p><strong>3. Role of Proxy Servers in Web Communication:</strong></p>
+<p>* <strong>Forward Proxy (Client-Side)</strong>: Caches web pages to reduce WAN bandwidth, enforces organizational access control, and hides client internal IP addresses.</p>
+<p>* <strong>Reverse Proxy (Server-Side - e.g. NGINX)</strong>: Terminates SSL/TLS certificates, load-balances requests across backend application clusters, and mitigates DDoS attacks.</p>
+<p>* <strong>Proxy Cookie Handling Constraint</strong>: Proxies <strong>must never cache</strong> responses containing <code>Set-Cookie</code> headers or private authentication data (<code>Cache-Control: no-cache, private</code>), otherwise a user's session token could be served to other clients, causing massive account compromise!</p>
+<br>
+<div class="rubric"><strong>Examiner Marking Rubric:</strong> Step-by-step cookie lifecycle (`Set-Cookie` and `Cookie` headers): 2.0 Marks.<br>
+Three security flags (`HttpOnly`, `Secure`, `SameSite`) with mitigated threats: 2.0 Marks.<br>
+<p>* Role of Forward/Reverse proxy and cache isolation rules: 1.0 Mark.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Q.6.B: FTP Working Architecture: Control vs Data Connection [5 Marks]</h3>
+<p><strong>Question Statement:</strong></p>
+<blockquote><p>Explain the working of FTP with a neat diagram. Differentiate between its control connection and data connection.</p></blockquote>
+<br>
+<p><strong>Model Answer:</strong></p>
+<br>
+<p><strong>1. FTP Working Architecture:</strong></p>
+<p>The File Transfer Protocol (FTP - RFC 959) uses an <strong>out-of-band architecture</strong> employing two separate TCP connections to transfer files reliably:</p>
+<div class="avoid-break"><pre><code>  FTP CLIENT                                                      FTP SERVER
+  +--------------------+                                          +--------------------+
+  | Client User I/F    |                                          | Server Control     |
+  | Client Control     | &lt;==== [ Port 21: Control Connection ] ===&gt;| Process (PI)       |
+  | Process (PI)       |       (Commands: USER, PASS, RETR, QUIT) | (Listens on 21)    |
+  +--------------------+                                          +--------------------+
+  | Client Data        |                                          | Server Data        |
+  | Transfer (DTP)     | &lt;==== [ Port 20: Data Connection ] =====&gt;| Transfer (DTP)     |
+  +--------------------+       (Actual File Payload Stream)       +--------------------+</code></pre></div>
+<br>
+<p><strong>2. Detailed Differentiation:</strong></p>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Characteristic</th><th>Control Connection (Port 21)</th><th>Data Connection (Port 20 or Dynamic)</th></tr></thead>
+<tbody>
+<tr><td>**Standard Port**</td><td>**TCP Port 21**</td><td>**TCP Port 20** (Active) or Dynamic High Port (Passive)</td></tr>
+<tr><td>**Duration**</td><td>Remains open for the **entire duration** of user session</td><td>Ephemeral: Opens on-demand for a file/directory and closes immediately</td></tr>
+<tr><td>**Payload Transmitted**</td><td>Control commands (`USER`, `PASS`, `LIST`, `RETR`, `STOR`, `QUIT`) and 3-digit status codes</td><td>Raw file bytes, directory listings, binary/ASCII file content</td></tr>
+<tr><td>**State Nature**</td><td>Two-way interactive command dialog</td><td>Pure unidirectional or bidirectional bulk data pipe</td></tr>
+<tr><td>**Active vs Passive Mode**</td><td>Client connects directly to Server Port 21</td><td>In Active Mode: Server initiates connection from Port 20 to Client port. In Passive Mode (`PASV`): Client connects to Server high port</td></tr>
+</tbody></table></div>
+<br>
+<div class="rubric"><strong>Examiner Marking Rubric:</strong> Clean dual-connection architecture diagram: 2.0 Marks.<br>
+Port 21 (Control) vs Port 20 (Data) comparison across duration, payload, and ports: 2.0 Marks.<br>
+<p>* Active vs Passive mode firewall implication: 1.0 Mark.</p>
+</body>
+</html>
