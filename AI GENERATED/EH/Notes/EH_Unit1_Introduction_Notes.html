@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ethical Hacking - Unit 1 Comprehensive Visual Notes</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 12mm 12mm 12mm 12mm;
+    @bottom-right {
+      content: counter(page);
+    }
+  }
+
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 8.8pt;
+    line-height: 1.40;
+    color: #1e293b;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 14pt;
+    font-weight: 800;
+    color: #0f172a;
+    border-bottom: 2px solid #dc2626;
+    padding-bottom: 4px;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  h2 {
+    font-size: 11.5pt;
+    font-weight: 700;
+    color: #991b1b;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    border-bottom: 1.5px solid #cbd5e1;
+    padding-bottom: 3px;
+  }
+
+  h3 {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #b91c1c;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    border-left: 3.5px solid #dc2626;
+    padding-left: 6px;
+  }
+
+  h4 {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #475569;
+    margin-top: 6px;
+    margin-bottom: 3px;
+  }
+
+  p {
+    margin: 3px 0 5px 0;
+  }
+
+  blockquote {
+    border-left: 3.5px solid #dc2626;
+    background-color: #fef2f2;
+    padding: 6px 10px;
+    margin: 6px 0;
+    font-size: 8.5pt;
+    color: #991b1b;
+    border-radius: 0 4px 4px 0;
+  }
+
+  blockquote p {
+    margin: 2px 0;
+  }
+
+  pre {
+    background-color: #0f172a;
+    color: #f8fafc;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+    font-size: 7.3pt;
+    line-height: 1.30;
+    overflow-x: auto;
+    margin: 5px 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border: 1px solid #334155;
+  }
+
+  code {
+    font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+    font-size: 8.0pt;
+    background-color: #f1f5f9;
+    color: #b91c1c;
+    padding: 1px 3px;
+    border-radius: 3px;
+    border: 1px solid #e2e8f0;
+  }
+
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: inherit;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px 0;
+    font-size: 8.0pt;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 3px 5px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    background-color: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  tr:nth-child(even) td {
+    background-color: #f8fafc;
+  }
+
+  ul, ol {
+    margin: 3px 0 5px 16px;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 2px;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed #cbd5e1;
+    margin: 8px 0;
+  }
+
+  .visual-card {
+    background-color: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 8px;
+    margin: 10px 0;
+    text-align: center;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .visual-card img {
+    max-width: 95%;
+    max-height: 280px;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #cbd5e1;
+  }
+
+  .visual-card .caption {
+    font-size: 8pt;
+    font-weight: 600;
+    color: #475569;
+    margin-top: 6px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<h1>Ethical Hacking (MD***) — Unit I: Introduction to Ethical Hacking Comprehensive Notes</h1>
+<br>
+<p><strong>Target Exam</strong>: End-Semester Written Examination (27 November 2026, 11:00 AM – 1:00 PM)  </p>
+<p><strong>Weightage</strong>: ~16 to 20 Marks  </p>
+<p><strong>Universal Notation Rule</strong>: Unicode symbols only (<code>≤</code>, <code>≥</code>, <code>×</code>, <code>→</code>, <code>∈</code>, <code>²</code>, <code>ⁿ</code>, <code>₁</code>). Clean ASCII diagrams for exam reproduction.</p>
+<br>
+<hr>
+<br>
+<h2>1. Information Security Fundamentals & Cybersecurity Concepts</h2>
+<br>
+<p>Information security focuses on protecting electronic data and information systems from unauthorized access, use, disclosure, disruption, modification, or destruction.</p>
+<br>
+<div class="avoid-break"><h3>1.1 What is Ethical Hacking?</h3>
+<p>- <strong>Definition</strong>: Ethical hacking involves the <strong>authorized, systematic, and scoped testing</strong> of computer systems, networks, and applications to discover security vulnerabilities that a malicious adversary could exploit.</p>
+<p>- <strong>The Core Differentiator (Authorization & Intent)</strong>:</p>
+<p>  - What separates an ethical hacker from a cyber criminal is <strong>formal written authorization (Rules of Engagement - RoE)</strong> from the system owner, a strictly defined scope, and defensive intent.</p>
+<p>  - Ethical hackers adhere to strict codes of conduct: they never steal data, never cause denial of service unless explicitly scoped, and provide actionable remediation guidance.</p>
+<br>
+<div class="avoid-break"><h3>1.2 The CIA Triad & Extended Security Attributes</h3>
+<p>The foundation of information security rests on the <strong>CIA Triad</strong>:</p>
+<p>1. <strong>Confidentiality</strong>:</p>
+<p>   - Ensures that sensitive information is accessible only to authorized entities and protected from unauthorized disclosure or eavesdropping.</p>
+<p>   - <em>Threats</em>: Packet sniffing, unauthorized data exfiltration, man-in-the-middle attacks, shoulder surfing.</p>
+<p>   - <em>Defenses</em>: Strong symmetric/asymmetric encryption (AES-256, RSA), Role-Based Access Control (RBAC), data masking, multi-factor authentication (MFA).</p>
+<p>2. <strong>Integrity</strong>:</p>
+<p>   - Guarantees the accuracy, completeness, and trustworthiness of data over its entire lifecycle; ensures data has not been modified, tampered with, or corrupted in transit or storage.</p>
+<p>   - <em>Threats</em>: Unauthorized alteration, database SQL injection, replay attacks, malware modification.</p>
+<p>   - <em>Defenses</em>: Cryptographic hash functions (SHA-256), Digital Signatures, Message Authentication Codes (HMAC), database transaction logs.</p>
+<p>3. <strong>Availability</strong>:</p>
+<p>   - Guarantees that computing systems, network services, and information assets are accessible to authorized users whenever required.</p>
+<p>   - <em>Threats</em>: Denial-of-Service (DoS) and Distributed Denial-of-Service (DDoS) attacks, ransomware encrypting disks, power outages, hardware failures.</p>
+<p>   - <em>Defenses</em>: High availability clustering, hardware redundancy (RAID), load balancing, offsite automated backups, disaster recovery plans.</p>
+<br>
+<h4>The Extended Security Attributes:</h4>
+<p>- <strong>Authenticity</strong>: Verification that a user or system is genuinely who they claim to be (e.g., PKI X.509 certificates, cryptographic handshakes).</p>
+<p>- <strong>Non-Repudiation</strong>: Guarantees that the sender of a message cannot deny having sent it, and the receiver cannot deny having received it (achieved via asymmetric Digital Signatures and trusted timestamping).</p>
+<p>- <strong>Accountability</strong>: Ensures that every security-relevant action on a system can be traced back uniquely to a specific authenticated user (auditing, centralized logging via SIEM).</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>1.3 Vulnerability, Threat, Exploit, and Risk</h3>
+<p>Understanding these four inter-related concepts is mandatory for the exam:</p>
+<p>1. <strong>Asset</strong>: Any valuable item of data, hardware, intellectual property, or process owned by an organization (e.g., customer database, proprietary source code).</p>
+<p>2. <strong>Vulnerability</strong>: A flaw, bug, weakness, or misconfiguration in software, hardware, or human processes that can be exploited by an attacker (e.g., unpatched SMBv1 buffer overflow, default root password).</p>
+<p>3. <strong>Threat</strong>: Any potential circumstance, event, or entity that has the capability to exploit a vulnerability and cause harm or financial loss to an asset (e.g., a ransomware gang, an insider employee).</p>
+<p>4. <strong>Exploit</strong>: A defined, engineered method, script, or software payload that takes advantage of a specific vulnerability to breach a system (e.g., the <em>EternalBlue</em> exploit script).</p>
+<p>5. <strong>Risk</strong>: The probability and potential business impact resulting from a threat agent exploiting a vulnerability.</p>
+<p>   - <strong>Governing Mathematical Formulation</strong>:  </p>
+<p>     <code>Risk = Threat × Vulnerability × Impact (Asset Value)</code></p>
+<p>   - <strong>Risk Management Treatment Strategies</strong>:</p>
+<p>     - <em>Risk Mitigation</em>: Applying security controls or patches to reduce risk to an acceptable level.</p>
+<p>     - <em>Risk Avoidance</em>: Discontinuing the risky activity altogether (e.g., shutting down a legacy insecure server).</p>
+<p>     - <em>Risk Transfer</em>: Shifting the financial liability to a third party (e.g., buying cyber insurance, outsourcing to a secure cloud provider).</p>
+<p>     - <em>Risk Acceptance</em>: Acknowledging low-level residual risk where mitigation cost exceeds potential asset damage.</p>
+<br>
+<hr>
+<br>
+<h2>2. Cyber Threat Landscape & Types of Hackers</h2>
+<br>
+<div class="avoid-break"><h3>2.1 Hacker Classifications (Threat Actors)</h3>
+<p>1. <strong>White Hat Hackers (Ethical Hackers / Security Researchers)</strong>:</p>
+<p>   - Fully authorized by written contract.</p>
+<p>   - Use identical tools and methodologies as malicious attackers, but their goal is purely defensive: finding vulnerabilities, assessing risk, and reporting remediation steps.</p>
+<p>2. <strong>Black Hat Hackers (Crackers / Cyber Criminals)</strong>:</p>
+<p>   - Malicious, unauthorized actors who breach networks for illegal personal gain, financial theft, data extortion, espionage, or malicious destruction.</p>
+<p>3. <strong>Grey Hat Hackers</strong>:</p>
+<p>   - Act without prior authorization from the target organization, but without explicitly malicious intent. They discover a security flaw and notify the vendor, often publicly disclosing the bug or demanding a bug bounty reward.</p>
+<p>4. <strong>Script Kiddies</strong>:</p>
+<p>   - Inexperienced attackers who lack deep knowledge of networking, operating systems, or programming. They execute pre-written scripts and automated tools (e.g., LOIC, ready-made Metasploit modules) without understanding how they work.</p>
+<p>5. <strong>Hacktivists</strong>:</p>
+<p>   - Individuals or collectives motivated by political, religious, environmental, or social agendas (e.g., Anonymous). Their primary tactics include website defacement, sensitive document leaks, and DDoS attacks.</p>
+<p>6. <strong>State-Sponsored Actors / Advanced Persistent Threats (APTs)</strong>:</p>
+<p>   - Highly skilled, heavily funded teams backed by national intelligence or military agencies. They execute prolonged, stealthy cyber espionage campaigns targeting critical national infrastructure (power grids, defense contractors, government databases).</p>
+<p>7. <strong>Insider Threats</strong>:</p>
+<p>   - Current or former employees, contractors, or business partners who possess legitimate credentials and inside knowledge of company networks, abusing privileges for sabotage or IP theft.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>2.2 Security Operations Teams: Red, Blue, and Purple</h3>
+<p>- <strong>Red Team (Offensive Security)</strong>:</p>
+<p>  - Simulates a real-world adversary attempting to penetrate an organization's defenses without prior notification to defenders.</p>
+<p>  - Performs physical intrusion, phishing, weaponized exploits, lateral movement, and privilege escalation to measure how resilient the organization is.</p>
+<p>- <strong>Blue Team (Defensive Security)</strong>:</p>
+<p>  - The internal security operations center (SOC) analysts and incident response teams.</p>
+<p>  - Manages firewalls, monitors SIEM event logs, analyzes network traffic, patches vulnerabilities, and contains security breaches.</p>
+<p>- <strong>Purple Team (Collaborative Model)</strong>:</p>
+<p>  - A collaborative structure where Red and Blue teams work together in a real-time feedback loop.</p>
+<p>  - The Red Team performs an attack technique step-by-step; the Blue Team verifies if their security logging and EDR alerts fired; if detection failed, the Blue Team tunes its detection rules immediately with Red Team guidance.</p>
+<br>
+<hr>
+<br>
+<h2>3. Ethical Hacking Methodology & Penetration Testing Lifecycle</h2>
+<br>
+<div class="avoid-break"><h3>3.1 The 5-Phase Ethical Hacking Methodology (CEH Framework)</h3>
+<br>
+<div class="avoid-break"><pre><code> [ 1. Reconnaissance ] ──► [ 2. Scanning ] ──► [ 3. Gaining Access ] ──► [ 4. Maintaining ] ──► [ 5. Reporting ]</code></pre></div>
+<br>
+<p>1. <strong>Phase 1: Reconnaissance (Footprinting)</strong>:</p>
+<p>   - Information gathering phase to map the target's public footprint without touching critical internal systems.</p>
+<p>   - <em>Passive Reconnaissance</em>: Gathering intelligence from publicly available sources without sending direct packets to the target (WHOIS lookups, DNS querying, Google Dorking, OSINT via Shodan/theHarvester). Completely undetectable by target logs.</p>
+<p>   - <em>Active Reconnaissance</em>: Interacting directly with target systems (ping sweeps, banner querying). Detectable in firewall and IDS logs.</p>
+<p>2. <strong>Phase 2: Scanning & Enumeration</strong>:</p>
+<p>   - Probing the target network to discover live hosts, open ports, running services, operating system versions, and known vulnerabilities.</p>
+<p>   - Tools: Nmap (TCP SYN scan, service detection <code>-sV</code>), Nessus / OpenVAS (vulnerability scanning).</p>
+<p>3. <strong>Phase 3: Gaining Access (Exploitation)</strong>:</p>
+<p>   - Launching exploits against identified vulnerabilities to breach the target perimeter and establish a foothold (shell access).</p>
+<p>   - Involves password cracking (Hydra, John the Ripper), exploitation frameworks (Metasploit), web application exploits (SQL injection, XSS), or buffer overflows.</p>
+<p>4. <strong>Phase 4: Maintaining Access (Post-Exploitation)</strong>:</p>
+<p>   - Establishing persistent control over compromised systems so the tester does not lose access upon system reboot.</p>
+<p>   - Involves privilege escalation (horizontal and vertical), installing backdoors/implants, and lateral movement (pivoting through internal subnets).</p>
+<p>5. <strong>Phase 5: Covering Tracks & Comprehensive Reporting</strong>:</p>
+<p>   - <em>Covering Tracks</em>: In a real attack, malicious hackers erase logs (<code>/var/log/auth.log</code>, Windows Event Viewer) to evade detection. In an ethical test, the tester safely cleans up all uploaded tools, scripts, and temporary user accounts created during the assessment.</p>
+<p>   - <em>Reporting</em>: Preparing a formal Penetration Testing Report containing an Executive Summary for management, a technical vulnerability breakdown categorized by CVSS severity, proof-of-concept evidence, and prioritized remediation recommendations.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>3.2 Penetration Testing Assessment Models</h3>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Parameter</th><th>Black Box Testing (Zero Knowledge)</th><th>Grey Box Testing (Partial Knowledge)</th><th>White Box Testing (Full Knowledge)</th></tr></thead>
+<tbody>
+<tr><td>**Tester Knowledge**</td><td>**Zero prior knowledge**; tester receives only target domain or IP range.</td><td>**Partial knowledge**; tester receives limited credentials or architecture overview.</td><td>**Complete knowledge**; tester receives full source code, network diagrams, and configs.</td></tr>
+<tr><td>**Simulated Adversary**</td><td>Realistic external Internet hacker.</td><td>Disgruntled insider employee, contractor, or authenticated partner.</td><td>Malicious developer, internal administrator, or complete code auditor.</td></tr>
+<tr><td>**Depth & Focus**</td><td>Broad perimeter attack surface; unauthenticated testing.</td><td>Internal privilege escalation, API vulnerabilities, business logic bugs.</td><td>Exhaustive structural code review, edge-case vulnerability detection.</td></tr>
+<tr><td>**Time & Cost**</td><td>Time-consuming; high effort on reconnaissance.</td><td>Balanced effort and high Return on Investment (ROI).</td><td>Fast execution per asset; highest thoroughness and depth.</td></tr>
+</tbody></table></div>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>3.3 Vulnerability Assessment (VA) vs Penetration Testing (PT)</h3>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Parameter</th><th>Vulnerability Assessment (VA)</th><th>Penetration Testing (PT)</th></tr></thead>
+<tbody>
+<tr><td>**Primary Goal**</td><td>Identify, catalog, and rank **all known vulnerabilities** across assets.</td><td>Prove **exploitability** and demonstrate real-world business impact.</td></tr>
+<tr><td>**Scope**</td><td>Broad enterprise-wide scan across hundreds of systems.</td><td>Narrow, deep, and goal-oriented (e.g., compromise domain controller).</td></tr>
+<tr><td>**Execution Method**</td><td>**Automated** vulnerability scanners (Nessus, Qualys, OpenVAS).</td><td>**Manual testing** augmented by specialized tools (Burp Suite, Metasploit).</td></tr>
+<tr><td>**Exploitation**</td><td>**Non-intrusive**: Never actively launches exploits.</td><td>**Active exploitation**: Executes payloads to obtain shells and extract proof data.</td></tr>
+<tr><td>**False Positives**</td><td>**High**: Scanners rely on version banners without verifying if a bug is exploitable.</td><td>**Near zero**: A vulnerability is reported only if successfully exploited.</td></tr>
+<tr><td>**Deliverable**</td><td>Prioritized list of vulnerabilities sorted by CVSS scores.</td><td>Comprehensive narrative report with step-by-step attack chains and remediation.</td></tr>
+</tbody></table></div>
+<br>
+<hr>
+<br>
+<h2>4. The Lockheed Martin Cyber Kill Chain</h2>
+<br>
+<p>The Cyber Kill Chain is a 7-stage framework modeling the sequential phases an external adversary must execute to compromise an organization and achieve their objective.  </p>
+<p><strong>Core Principle</strong>: Breaking any single link in the chain stops the attack entirely!</p>
+<br>
+<div class="avoid-break"><pre><code> 1. Recon ──► 2. Weaponize ──► 3. Deliver ──► 4. Exploit ──► 5. Install ──► 6. C2 ──► 7. Actions</code></pre></div>
+<br>
+<div class="avoid-break"><h3>4.1 Detailed 7-Stage Walkthrough & Defensive Countermeasures</h3>
+<br>
+<p>1. <strong>Reconnaissance</strong>:</p>
+<p>   - <em>Adversary</em>: Researches target using OSINT, LinkedIn, Shodan, harvesting employee emails, mapping IP ranges, and identifying software versions.</p>
+<p>   - <em>Defenses</em>: Threat intelligence monitoring, security awareness training, minimizing public digital footprints, scanning external-facing assets for exposed ports.</p>
+<p>2. <strong>Weaponization</strong>:</p>
+<p>   - <em>Adversary</em>: Pairs an exploit targeting a known vulnerability with a malicious payload (e.g., coupling the <em>EternalBlue</em> exploit with the WannaCry ransomware payload inside an executable package).</p>
+<p>   - <em>Defenses</em>: Threat hunting, threat intelligence feeds, secure software supply chain validation. (Takes place on attacker infrastructure; difficult to detect directly).</p>
+<p>3. <strong>Delivery</strong>:</p>
+<p>   - <em>Adversary</em>: Transmits the weaponized payload to the target environment via spear-phishing emails with attachments, malicious links, infected USB drives, or open internet ports (e.g., SMB Port 445).</p>
+<p>   - <em>Defenses</em>: Email gateway spam filters, SPF/DKIM/DMARC authentication, disabling legacy insecure protocols (SMBv1), blocking untrusted attachments (.exe, .scr).</p>
+<p>4. <strong>Exploitation</strong>:</p>
+<p>   - <em>Adversary</em>: The delivered payload triggers the software vulnerability (e.g., executing a buffer overflow in unpatched Windows SMB service <code>MS17-010</code>) to execute arbitrary malicious code on the victim system.</p>
+<p>   - <em>Defenses</em>: Rigorous patch management (promptly applying security updates), Data Execution Prevention (DEP), Address Space Layout Randomization (ASLR), Endpoint Detection and Response (EDR).</p>
+<p>5. <strong>Installation</strong>:</p>
+<p>   - <em>Adversary</em>: Installs a persistent backdoor, rootkit, or implant (e.g., the <em>DoublePulsar</em> backdoor) allowing long-term access across reboots.</p>
+<p>   - <em>Defenses</em>: Host-based Intrusion Detection (HIDS), File Integrity Monitoring (FIM), application whitelisting, limiting administrative privileges.</p>
+<p>6. <strong>Command and Control (C2 / C&C)</strong>:</p>
+<p>   - <em>Adversary</em>: The compromised host opens an outbound communication beacon back to an attacker-controlled server (over HTTP, HTTPS, DNS tunneling, or Tor) to receive commands.</p>
+<p>   - <em>Defenses</em>: Strict outbound firewall egress filtering, DNS sinkholing, deep packet TLS inspection, network intrusion prevention systems (NIPS).</p>
+<p>7. <strong>Actions on Objectives</strong>:</p>
+<p>   - <em>Adversary</em>: Accomplishes original malicious intent: encrypting files for ransom (WannaCry), exfiltrating confidential intellectual property, stealing customer databases, or destroying systems.</p>
+<p>   - <em>Defenses</em>: Immutable offline backups, Data Loss Prevention (DLP), network segmentation, Least Privilege access policies.</p>
+<br>
+<hr>
+<br>
+<h2>5. Legal, Ethical Frameworks & Responsible Disclosure</h2>
+<br>
+<div class="avoid-break"><h3>5.1 Cyber Laws in India: The Information Technology Act (IT Act 2000 & 2008 Amendment)</h3>
+<p>Every ethical hacker operating in India must understand the legal boundary between authorized testing and criminal computer crime under the IT Act 2000:</p>
+<p>- <strong>Section 43</strong>: Penalty for unauthorized access, downloading or copying data, introducing computer viruses, damaging computer systems, or disrupting access without permission. Liable to pay civil compensation to affected victims.</p>
+<p>- <strong>Section 66 (Computer-Related Offences / Hacking)</strong>:</p>
+<p>  - If any person, dishonestly or fraudulently, commits any act referred to in Section 43.</p>
+<p>  - <em>Penalty</em>: Imprisonment up to <strong>3 years</strong>, or fine up to <strong>5 lakh rupees</strong>, or both.</p>
+<p>- <strong>Section 66C (Identity Theft)</strong>: Dishonestly using another person's digital signature, password, or unique identification feature. Penalty: Imprisonment up to 3 years and fine up to 1 lakh rupees.</p>
+<p>- <strong>Section 66D (Cheating by Impersonation)</strong>: Cheating by impersonating someone using any computer resource. Penalty: Imprisonment up to 3 years and fine up to 1 lakh rupees.</p>
+<p>- <strong>Section 66E (Violation of Privacy)</strong>: Intentionally capturing, publishing, or transmitting images of a private area of any person without consent.</p>
+<p>- <strong>Section 66F (Cyber Terrorism)</strong>:</p>
+<p>  - Intentionally accessing a computer resource without authorization or exceeding authorization to threaten the unity, integrity, security, or sovereignty of India, or to strike terror in people, or causing damage to critical infrastructure.</p>
+<p>  - <em>Penalty</em>: <strong>Imprisonment for life</strong>.</p>
+<p>- <strong>Section 72 & 72A (Breach of Confidentiality)</strong>: Penalty for disclosure of information in breach of a lawful contract without consent (imprisonment up to 3 years or fine up to 5 lakh rupees).</p>
+<p>- <strong>Digital Personal Data Protection Act (DPDP Act 2023)</strong>: Governs personal data processing, requiring explicit consent, strict data fiduciary obligations, and imposing penalties up to 250 crore rupees for data breaches.</p>
+<br>
+<h4>International Cyber Legislation:</h4>
+<p>- <strong>United States</strong>: Computer Fraud and Abuse Act (CFAA - 18 U.S.C. § 1030) prohibits accessing a protected computer without authorization or exceeding authorized access.</p>
+<p>- <strong>United Kingdom</strong>: Computer Misuse Act 1990 penalizes unauthorized access, unauthorized access with intent to commit serious crimes, and unauthorized acts impairing computer operation.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>5.2 Vulnerability Disclosure Models & Bug Bounties</h3>
+<p>1. <strong>Responsible Disclosure (Coordinated Vulnerability Disclosure - CVD)</strong>:</p>
+<p>   - The ethical security standard.</p>
+<p>   - The security researcher privately reports the vulnerability to the affected vendor.</p>
+<p>   - The researcher grants the vendor a reasonable remediation window (typically <strong>60 to 90 days</strong>) to develop, test, and release a security patch before making any details public.</p>
+<p>2. <strong>Full Disclosure</strong>:</p>
+<p>   - The researcher immediately releases all vulnerability details, technical proof-of-concept, and exploit code to the public without giving the vendor prior notice. Leaves users completely defenseless against immediate attack until a patch is developed.</p>
+<p>3. <strong>Zero-Day Disclosure (0-Day)</strong>:</p>
+<p>   - A vulnerability that is actively exploited or disclosed when no vendor patch exists.</p>
+<p>4. <strong>Bug Bounty Programs</strong>:</p>
+<p>   - Formalized programs offered by organizations (e.g., HackerOne, Bugcrowd, Google Vulnerability Reward Program) where ethical hackers are invited to test scoped assets under a formal <strong>Safe Harbor</strong> policy, earning financial rewards (bounties) for responsibly disclosed valid vulnerabilities.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>5.3 Vulnerability Management Standards: CVE & CVSS</h3>
+<p>- <strong>CVE (Common Vulnerabilities and Exposures)</strong>: A standardized, publicly accessible catalog of known cybersecurity vulnerabilities maintained by MITRE (e.g., <code>CVE-2017-0144</code> for EternalBlue, <code>CVE-2021-44228</code> for Log4Shell).</p>
+<p>- <strong>CVSS (Common Vulnerability Scoring System v3.1 / v4.0)</strong>:</p>
+<p>  - An open industry standard providing a numerical severity rating from <strong>0.0 to 10.0</strong>.</p>
+<p>  - <strong>Metric Groups</strong>:</p>
+<p>    1. <em>Base Metrics</em>: Intrinsic qualities of a vulnerability (Attack Vector AV, Attack Complexity AC, Privileges Required PR, User Interaction UI, Scope S, and Impact on C, I, A).</p>
+<p>    2. <em>Temporal Metrics</em>: Factors that change over time (Exploit Code Maturity, Remediation Level).</p>
+<p>    3. <em>Environmental Metrics</em>: Custom characteristics specific to an organization's internal environment.</p>
+<p>  - <strong>CVSS Qualitative Severity Ratings</strong>:</p>
+<p>    - <strong>None</strong>: <code>0.0</code></p>
+<p>    - <strong>Low</strong>: <code>0.1 – 3.9</code></p>
+<p>    - <strong>Medium</strong>: <code>4.0 – 6.9</code></p>
+<p>    - <strong>High</strong>: <code>7.0 – 8.9</code></p>
+<p>    - <strong>Critical</strong>: <code>9.0 – 10.0</code></p>
+</body>
+</html>

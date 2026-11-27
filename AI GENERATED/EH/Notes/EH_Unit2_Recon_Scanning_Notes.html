@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ethical Hacking - Unit 2 Footprinting, Recon & Scanning Visual Notes</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 12mm 12mm 12mm 12mm;
+    @bottom-right {
+      content: counter(page);
+    }
+  }
+
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 8.8pt;
+    line-height: 1.40;
+    color: #1e293b;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 14pt;
+    font-weight: 800;
+    color: #0f172a;
+    border-bottom: 2px solid #dc2626;
+    padding-bottom: 4px;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  h2 {
+    font-size: 11.5pt;
+    font-weight: 700;
+    color: #991b1b;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    border-bottom: 1.5px solid #cbd5e1;
+    padding-bottom: 3px;
+  }
+
+  h3 {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #b91c1c;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    border-left: 3.5px solid #dc2626;
+    padding-left: 6px;
+  }
+
+  h4 {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #475569;
+    margin-top: 6px;
+    margin-bottom: 3px;
+  }
+
+  p {
+    margin: 3px 0 5px 0;
+  }
+
+  blockquote {
+    border-left: 3.5px solid #dc2626;
+    background-color: #fef2f2;
+    padding: 6px 10px;
+    margin: 6px 0;
+    font-size: 8.5pt;
+    color: #991b1b;
+    border-radius: 0 4px 4px 0;
+  }
+
+  blockquote p {
+    margin: 2px 0;
+  }
+
+  pre {
+    background-color: #0f172a;
+    color: #f8fafc;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+    font-size: 7.3pt;
+    line-height: 1.30;
+    overflow-x: auto;
+    margin: 5px 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border: 1px solid #334155;
+  }
+
+  code {
+    font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+    font-size: 8.0pt;
+    background-color: #f1f5f9;
+    color: #b91c1c;
+    padding: 1px 3px;
+    border-radius: 3px;
+    border: 1px solid #e2e8f0;
+  }
+
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: inherit;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px 0;
+    font-size: 8.0pt;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 3px 5px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    background-color: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  tr:nth-child(even) td {
+    background-color: #f8fafc;
+  }
+
+  ul, ol {
+    margin: 3px 0 5px 16px;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 2px;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed #cbd5e1;
+    margin: 8px 0;
+  }
+
+  .visual-card {
+    background-color: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 8px;
+    margin: 10px 0;
+    text-align: center;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .visual-card img {
+    max-width: 95%;
+    max-height: 280px;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #cbd5e1;
+  }
+
+  .visual-card .caption {
+    font-size: 8pt;
+    font-weight: 600;
+    color: #475569;
+    margin-top: 6px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<h1>Unit II: Footprinting, Reconnaissance and Scanning</h1>
+<p><strong>Course</strong>: Ethical Hacking (MD<strong><em>) | </strong>VIT Pune</em>*  </p>
+<p><strong>Faculty / Curriculum</strong>: AY 2026-27 | <strong>Exam Date</strong>: 27 Nov 2026</p>
+<br>
+<hr>
+<br>
+<h2>1. Introduction to Footprinting and Reconnaissance</h2>
+<br>
+<p>Reconnaissance (or Footprinting) is the preparatory first phase of ethical hacking. Its objective is to accumulate maximum actionable intelligence regarding the target organization’s digital footprint, network infrastructure, host systems, employee details, and external perimeter without causing disruption.</p>
+<br>
+<div class="avoid-break"><pre><code>+---------------------------------------------------------------------------------------+
+|                                RECONNAISSANCE TAXONOMY                                |
++-------------------------------------------+-------------------------------------------+
+|          PASSIVE RECONNAISSANCE           |           ACTIVE RECONNAISSANCE           |
++-------------------------------------------+-------------------------------------------+
+| * Indirect information gathering.         | * Direct packet interaction with target.  |
+| * Zero direct traffic sent to target.     | * Packets touch target firewalls/hosts.   |
+| * Completely stealthy; undetectable.      | * Logged by IDS, IPS, Firewalls, SIEM.    |
+| * Sources: OSINT, WHOIS, DNS, Dorking.    | * Tools: Nmap, Ping sweeps, Port probes.  |
++-------------------------------------------+-------------------------------------------+</code></pre></div>
+<br>
+<div class="avoid-break"><h3>1.1 Passive Reconnaissance</h3>
+<p>* <strong>Concept</strong>: The attacker or penetration tester gathers data from third-party intermediaries, public databases, search engine caches, and public registries. The target’s intrusion detection systems (IDS) and firewalls record zero inbound connection attempts from the tester's IP address.</p>
+<p>* <strong>Key Targets</strong>: Domain names, IP address blocks (CIDR allocations), autonomous system numbers (ASNs), employee email conventions, tech stack job advertisements, and organizational hierarchy.</p>
+<br>
+<div class="avoid-break"><h3>1.2 Active Reconnaissance</h3>
+<p>* <strong>Concept</strong>: The tester sends crafted network packets directly to target interfaces, routers, and firewalls to elicit operational responses.</p>
+<p>* <strong>Risk</strong>: High visibility. Active probes trigger alert thresholds on Web Application Firewalls (WAF), Network Intrusion Detection Systems (NIDS), and Endpoint Detection and Response (EDR) platforms.</p>
+<p>* <strong>Scope Control</strong>: Must be rigorously conducted only within agreed testing windows and IP boundaries established in the client's Rules of Engagement (RoE).</p>
+<br>
+<hr>
+<br>
+<h2>2. Open Source Intelligence (OSINT) & Passive Reconnaissance Techniques</h2>
+<br>
+<p>OSINT involves collecting, processing, and analyzing publicly available data to construct an actionable threat profile.</p>
+<br>
+<div class="avoid-break"><h3>2.1 WHOIS Reconnaissance</h3>
+<p>WHOIS is a query and response protocol (RFC 3912, TCP port 43) used for querying databases that store the registered users or assignees of an Internet resource:</p>
+<p>* <strong>Information Disclosed</strong>:</p>
+<p>  * Registrar Name and IANA ID.</p>
+<p>  * Domain Registration, Update, and Expiration Dates.</p>
+<p>  * Registrant Name, Organization, Physical Address, Email, and Telephone (unless WHOIS Privacy/GDPR redaction is applied).</p>
+<p>  * Authoritative Name Servers (NS records) pointing to host providers or CDN proxies (e.g., Cloudflare, Akamai).</p>
+<p>* <strong>Command Syntax</strong>:</p>
+<p>  <code></code>`bash</p>
+<p>  whois example.com</p>
+<p>  whois 198.51.100.1</p>
+<p>  <code></code>`</p>
+<br>
+<div class="avoid-break"><h3>2.2 DNS Enumeration & Architecture</h3>
+<p>Domain Name System (DNS) maps human-readable domain names to numerical IP addresses (UDP/TCP Port 53). Querying DNS provides deep insights into network topology:</p>
+<br>
+<h4>Standard Resource Records (RR)</h4>
+<p>1. <strong>A</strong>: IPv4 Host Address mapping (32-bit).</p>
+<p>2. <strong>AAAA</strong>: IPv6 Host Address mapping (128-bit).</p>
+<p>3. <strong>MX (Mail Exchange)</strong>: Mail servers handling inbound email (with priority integers; lower number = higher priority).</p>
+<p>4. <strong>NS (Name Server)</strong>: Authoritative DNS servers for the domain zone.</p>
+<p>5. <strong>CNAME (Canonical Name)</strong>: Alias mapping pointing to another domain name.</p>
+<p>6. <strong>TXT (Text)</strong>: Human/machine-readable text; commonly stores SPF (<code>v=spf1 ...</code>), DKIM, DMARC, and domain ownership verification strings.</p>
+<p>7. <strong>SOA (Start of Authority)</strong>: Zone serial numbers, refresh/retry timers, and primary authoritative master server.</p>
+<p>8. <strong>PTR (Pointer)</strong>: Reverse DNS mapping (IP address to FQDN).</p>
+<p>9. <strong>SRV (Service)</strong>: Defines location (hostname and port) of specific enterprise services (e.g., SIP, LDAP, Active Directory Kerberos).</p>
+<br>
+<h4>DNS Query Tools</h4>
+<div class="avoid-break"><pre><code># Querying Name Servers
+dig example.com NS +short
+nslookup -type=ns example.com
+
+# Querying Mail Exchangers
+dig example.com MX
+nslookup -type=mx example.com
+
+# Reverse Lookup
+dig -x 192.0.2.1</code></pre></div>
+<br>
+<h4>DNS Zone Transfer (AXFR) Misconfiguration Attack</h4>
+<p>* <strong>Mechanism</strong>: In a high-availability master-slave DNS architecture, secondary (slave) name servers synchronize zone records from the primary (master) using an <strong>Asynchronous Full Transfer (AXFR)</strong> query over <strong>TCP port 53</strong>.</p>
+<p>* <strong>Vulnerability</strong>: If the administrator fails to restrict AXFR transfers to authorized secondary slave IP addresses (allowing queries from <code>any</code>), any external attacker can issue an AXFR request and download the <strong>entire DNS zone database</strong>.</p>
+<p>* <strong>Impact</strong>: Total compromise of internal domain topology, revealing hidden intranet portals, staging servers, VPN endpoints, development subdomains, and internal IP addressing schemes.</p>
+<p>* <strong>Exploitation Command</strong>:</p>
+<p>  <code></code>`bash</p>
+<p>  dig @ns1.target.com target.com AXFR</p>
+<p>  host -l target.com ns1.target.com</p>
+<p>  <code></code>`</p>
+<p>* <strong>Remediation</strong>: In BIND (<code>named.conf</code>), configure strict Access Control Lists (ACLs) using <code>allow-transfer { 192.168.1.5; };</code> and enforce Transaction Signatures (TSIG) using cryptographic shared keys.</p>
+<br>
+<div class="avoid-break"><h3>2.3 Email Enumeration</h3>
+<p>* <strong>Objective</strong>: Discover corporate email naming conventions (e.g., <code>firstname.lastname@company.com</code>, <code>flastname@company.com</code>) and harvesting employee email addresses.</p>
+<p>* <strong>Relevance</strong>: Facilitates targeted spear-phishing campaigns and password brute-forcing / credential stuffing dictionaries.</p>
+<p>* <strong>OSINT Tools</strong>:</p>
+<p>  * <strong>theHarvester</strong>: Gathers emails, subdomains, employee names, open ports, and banners from search engines, PGP key servers, and LinkedIn.</p>
+<p>    <code></code>`bash</p>
+<p>    theHarvester -d target.com -b google,linkedin,bing -l 500</p>
+<p>    <code></code>`</p>
+<p>  * <strong>Hunter.io</strong>: Commercial API indexing web-scraped employee addresses and corporate syntax patterns.</p>
+<p>  * <strong>Have I Been Pwned (HIBP)</strong>: Validates if gathered corporate credentials appear in historical third-party data breaches.</p>
+<br>
+<div class="avoid-break"><h3>2.4 Google Dorking (Google Hacking)</h3>
+<p>Google Dorking utilizes advanced search engine syntax and operators to locate sensitive, unindexed, or accidentally exposed data cached by Google web crawlers.</p>
+<br>
+<h4>Essential Search Operators</h4>
+<p>* <code>site:target.com</code> — Restricts search results strictly to the specified domain.</p>
+<p>* <code>filetype:pdf</code> or <code>ext:sql</code> — Restricts results to specific file extensions.</p>
+<p>* <code>inurl:admin</code> — Locates occurrences of the string inside the URL structure.</p>
+<p>* <code>intitle:"index of /"</code> — Locates directory listing pages where server directory browsing is enabled.</p>
+<p>* <code>cache:target.com</code> — Displays Google’s cached historical snapshot of a webpage.</p>
+<br>
+<h4>High-Yield Exam Dorks</h4>
+<div class="avoid-break"><pre><code># Directory Browsing / Sensitive Backups:
+site:target.com intitle:"Index of" "parent directory"
+site:target.com filetype:sql "INSERT INTO"
+site:target.com ext:env "DB_PASSWORD"
+
+# Exposed Admin Portals:
+site:target.com inurl:admin | inurl:login | inurl:portal
+
+# Publicly Indexed Configuration Files:
+site:target.com filetype:xml inurl:web.config
+site:target.com ext:log inurl:error_log
+
+# Exposed CCTV / Network Hardware:
+inurl:"ViewerFrame?Mode="
+intitle:"RouterOS router configuration page"</code></pre></div>
+<br>
+<h4>Defensive Countermeasures</h4>
+<p>* Deploy properly configured <code>robots.txt</code>? <strong>CAUTION: <code>robots.txt</code> is an advisory protocol, NOT an access control mechanism</strong>. Malicious attackers routinely inspect <code>Disallow:</code> paths in <code>robots.txt</code> to find sensitive directories!</p>
+<p>* Enforce server-side authentication (HTTP Basic Auth, OAuth2) on internal directories.</p>
+<p>* Disable web server directory browsing (<code>Options -Indexes</code> in Apache HTTPD).</p>
+<p>* Request emergency URL cache removal via Google Search Console.</p>
+<br>
+<div class="avoid-break"><h3>2.5 Specialized OSINT Search Engines</h3>
+<p>* <strong>Shodan (<code>shodan.io</code>)</strong>: Search engine for Internet-connected devices. Scans the entire IPv4 address space, grabbing banners from webcams, industrial control systems (SCADA/ICS), IoT devices, routers, and open database ports (e.g., Elasticsearch port 9200, MongoDB port 27017).</p>
+<p>* <strong>Censys (<code>censys.io</code>)</strong>: Continuously catalogs Internet assets, SSL/TLS certificates, and exposed host configurations.</p>
+<p>* <strong>Maltego</strong>: Visual link analysis software mapping relationships between domains, subnets, email addresses, individuals, and organizational infrastructure into graphical relationship trees.</p>
+<br>
+<hr>
+<br>
+<h2>3. Active Reconnaissance & Network Scanning</h2>
+<br>
+<p>Network scanning involves sending raw packets to discover live hosts, open network ports, and actively running services.</p>
+<br>
+<div class="avoid-break"><pre><code>       [ Target IP Subnet ]
+                │
+     ┌──────────┴──────────┐
+     ▼                     ▼
+[ Host Discovery ]   [ Port Scanning ]
+  (Ping Sweeps,       (TCP Connect, SYN,
+   ARP, ICMP)          UDP, FIN, Xmas)
+                           │
+                           ▼
+                    [ Port States ]
+                   Open | Closed | Filtered
+                           │
+                           ▼
+                 [ Service Detection ]
+                  (Banner Grabbing,
+                   Nmap -sV, NSE)</code></pre></div>
+<br>
+<div class="avoid-break"><h3>3.1 Host Discovery (Ping Sweeps)</h3>
+<p>Determines which IP addresses on a subnet have active, responsive network nodes.</p>
+<p>* <strong>ARP Ping (<code>-PR</code>)</strong>: Used on local Ethernet subnets (Layer 2). Extremely fast and cannot be blocked by host software firewalls because ARP is required for MAC resolution.</p>
+<p>* <strong>ICMP Echo Ping (<code>-PE</code>)</strong>: Sends standard ICMP Type 8 (Echo Request). Responsive hosts return ICMP Type 0 (Echo Reply). Frequently dropped by modern corporate firewalls.</p>
+<p>* <strong>TCP SYN Ping (<code>-PS<port></code>)</strong>: Sends an empty TCP SYN packet to specific ports (default 80, 443). If the host is alive, it responds with SYN/ACK (port open) or RST (port closed). Both prove the host is active even if ICMP is blocked!</p>
+<p>* <strong>TCP ACK Ping (<code>-PA<port></code>)</strong>: Sends a bare TCP ACK. Hosts respond with RST if alive, cutting through stateless firewalls.</p>
+<p>* <strong>Nmap Flag <code>-Pn</code></strong>: Disables host discovery completely. Tells Nmap to assume all target hosts are online; essential when scanning targets behind strict firewalls that drop all ping probes.</p>
+<br>
+<hr>
+<br>
+<h2>4. Nmap Port Scanning Mechanics & Scan Types</h2>
+<br>
+<p>A port scan systematically probes TCP and UDP ports (from 1 to 65,535) to determine the status of listening network daemons.</p>
+<br>
+<div class="avoid-break"><h3>4.1 The Three Primary Nmap Port States</h3>
+<p>1. <strong>Open</strong>: An application actively accepts connections on the port. A response packet (e.g., SYN/ACK for TCP) was received.</p>
+<p>2. <strong>Closed</strong>: The port is accessible (packets reach the host), but no application daemon is listening. The target host responds with a TCP <strong>RST</strong> packet (or ICMP Port Unreachable for UDP).</p>
+<p>3. <strong>Filtered</strong>: Nmap cannot determine if the port is open because packet filtering (firewall, router ACL, or IDS) intercepts and drops the probes before reaching the port, or drops the responses. The probe times out, or returns an ICMP Type 3 Destination Unreachable (Code 1, 2, 3, 9, 10, or 13).</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>4.2 Comprehensive Nmap Scan Types</h3>
+<br>
+<h4>1. TCP Connect Scan (`-sT`)</h4>
+<p>* <strong>Mechanism</strong>: Completes the full RFC 793 <strong>Three-Way Handshake</strong> using the operating system's native <code>connect()</code> system call:</p>
+<p>  1. Attacker sends <code>SYN</code>.</p>
+<p>  2. Target responds with <code>SYN/ACK</code> (if Open).</p>
+<p>  3. Attacker sends <code>ACK</code> (completing connection), followed immediately by <code>RST</code> or <code>FIN</code> to close.</p>
+<p>* <strong>Response Summary</strong>:</p>
+<p>  * <strong>Open</strong>: <code>SYN/ACK</code> received.</p>
+<p>  * <strong>Closed</strong>: <code>RST</code> received.</p>
+<p>  * <strong>Filtered</strong>: No response (timeout) or ICMP Type 3 error.</p>
+<p>* <strong>Pros</strong>: Does not require administrative/root privileges; works reliably on any operating system.</p>
+<p>* <strong>Cons</strong>: Noisiest scan type; web and system logs record an established and abruptly terminated connection. Easily detected by simple application log monitors.</p>
+<br>
+<div class="avoid-break"><pre><code>Attacker                         Target (Port OPEN)
+   │                                     │
+   │ ────────── TCP SYN ───────────────&gt; │
+   │ &lt;───────── TCP SYN/ACK ───────────  │
+   │ ────────── TCP ACK ───────────────&gt; │ (Handshake Complete)
+   │ ────────── TCP RST ───────────────&gt; │ (Torn Down)</code></pre></div>
+<br>
+<h4>2. TCP SYN "Stealth" / Half-Open Scan (`-sS`)</h4>
+<p>* <strong>Mechanism</strong>: Bypasses full connection establishment:</p>
+<p>  1. Attacker sends <code>SYN</code>.</p>
+<p>  2. Target responds with <code>SYN/ACK</code> (if Open).</p>
+<p>  3. Attacker immediately transmits a <code>RST</code> packet instead of the final <code>ACK</code>!</p>
+<p>* <strong>Why Stealthy?</strong>: Because the 3-way handshake is never completed, the target application layer never receives an accepted socket connection, preventing application-level server daemons (e.g., Apache, Nginx) from writing an access log entry.</p>
+<p>* <strong>Pros</strong>: Extremely fast, stealthy, scans thousands of ports per minute. Default Nmap scan mode when executed as root.</p>
+<p>* <strong>Cons</strong>: Requires raw socket creation privileges (<code>sudo</code> / root / <code>admin</code>). Readily flagged by modern stateful firewalls tracking half-open states.</p>
+<br>
+<div class="avoid-break"><pre><code>Attacker                         Target (Port OPEN)
+   │                                     │
+   │ ────────── TCP SYN ───────────────&gt; │
+   │ &lt;───────── TCP SYN/ACK ───────────  │
+   │ ────────── TCP RST ───────────────&gt; │ (Never Completed!)</code></pre></div>
+<br>
+<h4>3. Inverse TCP Scans: Null, FIN, and Xmas Scans</h4>
+<p>These scan types exploit an architectural loophole in <strong>RFC 793</strong> (TCP specification page 65): <em>"If the destination port state is CLOSED, an incoming segment not containing a RST causes a RST to be sent in response. If the destination port is OPEN, the segment is discarded without response."</em></p>
+<br>
+<p>* <strong>Null Scan (<code>-sN</code>)</strong>: Sends a packet with <strong>zero TCP flags</strong> set (<code>Flags = 0x00</code>).</p>
+<p>* <strong>FIN Scan (<code>-sF</code>)</strong>: Sends a packet with only the <strong>FIN flag</strong> set (<code>Flags = 0x01</code>).</p>
+<p>* <strong>Xmas Tree Scan (<code>-sX</code>)</strong>: Sends a packet with <strong>FIN, PSH, and URG</strong> flags set (lighting up the packet like a Christmas tree, <code>Flags = 0x29</code>).</p>
+<p>* <strong>Behavior Matrix</strong>:</p>
+<p>  * <strong>Target Port is CLOSED</strong>: Target OS generates a standard TCP <strong>RST</strong> packet.</p>
+<p>  * <strong>Target Port is OPEN</strong>: Target OS drops the malformed packet silently — <strong>NO RESPONSE</strong>.</p>
+<p>  * <strong>Target Port is FILTERED</strong>: Probe is blocked by a firewall — <strong>NO RESPONSE</strong> (or ICMP unreachable).</p>
+<p>  <em> </em>Resulting State*: Nmap reports the state ambiguously as <code>Open|Filtered</code>.</p>
+<p>* <strong>Advantage</strong>: Penetrates non-stateful (stateless) packet-filtering firewalls configured to block inbound SYN packets.</p>
+<p>* <strong>Critical Limitation / Exception</strong>: <strong>Does NOT work against Microsoft Windows, Cisco, BSDI, or IBM OS/400 systems!</strong> These systems violate RFC 793 and send a <code>RST</code> response regardless of whether the port is open or closed. Only works reliably on compliant Unix/Linux/BSD systems.</p>
+<br>
+<h4>4. UDP Scan (`-sU`)</h4>
+<p>* <strong>Mechanism</strong>: UDP is connectionless; sends raw empty UDP packet (or protocol-specific payload like DNS query to port 53).</p>
+<p>* <strong>Behavior</strong>:</p>
+<p>  * If the port is <strong>CLOSED</strong>: The target operating system responds with an <strong>ICMP Type 3, Code 3 (Destination Unreachable: Port Unreachable)</strong> error packet.</p>
+<p>  * If the port is <strong>OPEN</strong>: Most UDP services send <strong>NO RESPONSE</strong> (unless the payload matches the expected application protocol, e.g., SNMP or DNS, which returns a response).</p>
+<p>  * If no response is received, Nmap reports <code>Open|Filtered</code>.</p>
+<p>* <strong>Limitation</strong>: Incredibly slow. Operating systems strictly rate-limit ICMP error generation (e.g., Linux kernel limits ICMP Destination Unreachable replies to 1 per second), causing a full 65,535-port UDP scan to take 18+ hours.</p>
+<br>
+<h4>5. TCP ACK Scan (`-sA`)</h4>
+<p>* <strong>Mechanism</strong>: Sends a packet with only the <strong>ACK flag</strong> set.</p>
+<p>* <strong>Purpose</strong>: <strong>Does NOT determine whether a port is open!</strong> Used exclusively to map firewall rulesets and determine whether firewall filtering is stateful or stateless.</p>
+<p>* <strong>Behavior</strong>:</p>
+<p>  * If target responds with <strong>RST</strong>: The port is <strong>Unfiltered</strong> (the ACK packet passed through the firewall and hit the OS TCP stack).</p>
+<p>  * If <strong>No Response</strong> (timeout) or ICMP Type 3 Code 13 error: The port is <strong>Filtered</strong> (the firewall blocked the probe).</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>4.3 Nmap Command Cheat Sheet for University Exams</h3>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Flag</th><th>Category</th><th>Technical Operation</th></tr></thead>
+<tbody>
+<tr><td>`nmap -sn <target>`</td><td>Host Discovery</td><td>Ping scan (disables port scanning; discovers live hosts).</td></tr>
+<tr><td>`nmap -Pn <target>`</td><td>Firewall Evasion</td><td>Treats all hosts as online; bypasses ICMP ping blocking.</td></tr>
+<tr><td>`nmap -sS <target>`</td><td>Port Scan</td><td>TCP SYN Stealth (Half-open) scan (default root).</td></tr>
+<tr><td>`nmap -sT <target>`</td><td>Port Scan</td><td>TCP Connect scan (full 3-way handshake; unprivileged).</td></tr>
+<tr><td>`nmap -sU <target>`</td><td>Port Scan</td><td>UDP port scan.</td></tr>
+<tr><td>`nmap -sN / -sF / -sX`</td><td>Port Scan</td><td>Null / FIN / Xmas tree RFC 793 inverse scan.</td></tr>
+<tr><td>`nmap -sA <target>`</td><td>Firewall Recon</td><td>TCP ACK scan (differentiates filtered vs unfiltered).</td></tr>
+<tr><td>`nmap -sV <target>`</td><td>Service Version</td><td>Probes open ports to determine application service & version.</td></tr>
+<tr><td>`nmap -O <target>`</td><td>OS Detection</td><td>TCP/IP stack fingerprinting to determine exact OS & kernel.</td></tr>
+<tr><td>`nmap -A <target>`</td><td>Aggressive Scan</td><td>Combines `-sV`, `-O`, traceroute, and default NSE scripts.</td></tr>
+<tr><td>`nmap -p <ports>`</td><td>Port Range</td><td>e.g., `-p 80,443`, `-p 1-1024`, or `-p-` (all 65,535 ports).</td></tr>
+<tr><td>`nmap -T<0-5>`</td><td>Timing Template</td><td>`T0` (Paranoid), `T1` (Sneaky), `T2` (Polite), `T3` (Normal), `T4` (Aggressive), `T5` (Insane).</td></tr>
+<tr><td>`nmap --script vuln`</td><td>Vulnerability Scan</td><td>Executes Nmap Scripting Engine (NSE) vulnerability detection category.</td></tr>
+</tbody></table></div>
+<br>
+<hr>
+<br>
+<h2>5. Banner Grabbing & Service Enumeration</h2>
+<br>
+<p>Once open ports are mapped, service enumeration extracts granular metadata regarding running daemons to pinpoint known vulnerabilities.</p>
+<br>
+<div class="avoid-break"><h3>5.1 Banner Grabbing</h3>
+<p>Banner grabbing queries a service’s welcome greeting message displayed upon connection:</p>
+<p>* <strong>Information Disclosed</strong>: Application software name, exact version number, patch revision, and underlying OS platform (e.g., <code>Apache/2.4.41 (Ubuntu) Server at 192.168.1.50 Port 80</code>).</p>
+<p>* <strong>Active Banner Grabbing</strong>:</p>
+<p>  Directly initiating a network socket connection:</p>
+<p>  <code></code>`bash</p>
+<p>  # Web Server Banner via Curl</p>
+<p>  curl -I http://192.168.1.50</p>
+<br>
+<p>  # FTP Banner via Netcat</p>
+<p>  nc -v 192.168.1.50 21</p>
+<p>  # Response: 220 ProFTPD 1.3.5 Server (Ubuntu) [192.168.1.50]</p>
+<br>
+<p>  # SMTP Banner via Telnet</p>
+<p>  telnet 192.168.1.50 25</p>
+<p>  # Response: 220 mail.corporate.com ESMTP Postfix (Debian)</p>
+<p>  <code></code>`</p>
+<p>* <strong>Passive Banner Grabbing</strong>:</p>
+<p>  Inspecting captured packet pcaps in Wireshark without transmitting packets. Analyzes client-server negotiation fields, TCP Window Size, IP TTL, and Server HTTP headers.</p>
+<p>* <strong>Defensive Hardening</strong>:</p>
+<p>  * In Apache: Configure <code>ServerTokens Prod</code> and <code>ServerSignature Off</code> (reduces banner strictly to <code>Apache</code>).</p>
+<p>  * In Nginx: Configure <code>server_tokens off;</code>.</p>
+<p>  * Replace default software banners with generic or misleading strings.</p>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>5.2 Deep Protocol Enumeration</h3>
+<br>
+<h4>1. Server Message Block (SMB - TCP Ports 139 / 445)</h4>
+<p>* Windows and Samba file/print sharing. High-priority target in internal penetration tests.</p>
+<p>* <strong>Information Leaked</strong>: Active usernames, local group memberships, network share names (<code>C$</code>, <code>ADMIN$</code>, <code>IPC$</code>), domain name, OS build version, null session support.</p>
+<p>* <strong>Tools</strong>:</p>
+<p>  <code></code>`bash</p>
+<p>  enum4linux -a 192.168.1.50</p>
+<p>  smbclient -L //192.168.1.50 -N   # List shares with NULL password</p>
+<p>  nmap --script smb-enum-shares,smb-enum-users -p 445 192.168.1.50</p>
+<p>  <code></code>`</p>
+<br>
+<h4>2. Simple Network Management Protocol (SNMP - UDP Port 161)</h4>
+<p>* Used by network engineers to monitor network devices, switches, routers, and servers.</p>
+<p>* <strong>Vulnerability</strong>: Legacy SNMP v1 and v2c transmit authentication credentials as plaintext <strong>Community Strings</strong> (commonly left as default: <code>public</code> for Read-Only, <code>private</code> for Read-Write).</p>
+<p>* <strong>Information Leaked</strong>: Full process list, open TCP/UDP sockets, connected network interfaces, routing tables, installed software, and domain usernames via the Management Information Base (MIB).</p>
+<p>* <strong>Tools</strong>:</p>
+<p>  <code></code>`bash</p>
+<p>  snmpwalk -v2c -c public 192.168.1.50 1.3.6.1.2.1.25.4.2.1.2 # Process listing</p>
+<p>  onesixtyone -c community.txt 192.168.1.50</p>
+<p>  <code></code>`</p>
+<br>
+<h4>3. Simple Mail Transfer Protocol (SMTP - TCP Port 25)</h4>
+<p>* SMTP servers support built-in enumeration commands:</p>
+<p>  * <code>VRFY <username></code>: Asks the server to verify if a mailbox exists.</p>
+<p>  * <code>EXPN <mailing-list></code>: Expands and reveals members of an email distribution list.</p>
+<p>  * <code>RCPT TO:<username></code>: Tests if the server accepts mail for an address.</p>
+<p>* Testers automate username harvesting scripts against dictionaries:</p>
+<p>  <code></code>`text</p>
+<p>  VRFY admin  ──> 250 2.1.5 Administrator <admin@company.com> (Valid User!)</p>
+<p>  VRFY fake   ──> 550 5.1.1 User unknown (Invalid)</p>
+<p>  <code></code>`</p>
+<br>
+<hr>
+<br>
+<h2>6. Vulnerability Scanning Concepts & Tooling</h2>
+<br>
+<p>A Vulnerability Assessment (VA) is an automated inspection comparing discovered network services, ports, and banners against centralized vulnerability databases (such as the National Vulnerability Database - NVD, tracking Common Vulnerabilities and Exposures - CVEs).</p>
+<br>
+<div class="avoid-break"><h3>6.1 Vulnerability Scanning Lifecycle</h3>
+<div class="avoid-break"><pre><code>[ Scope Definition ] ──&gt; [ Host Discovery ] ──&gt; [ Port &amp; Service Detection ]
+                                                          │
+[ Remediation &amp; Patching ] &lt;── [ Reporting &amp; CVSS ] &lt;── [ CVE Database Matching ]</code></pre></div>
+<br>
+<div class="avoid-break"><h3>6.2 Credentialed (Authenticated) vs Non-Credentialed (Unauthenticated) Scans</h3>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Feature</th><th>Non-Credentialed (External) Scan</th><th>Credentialed (Internal) Scan</th></tr></thead>
+<tbody>
+<tr><td>**Perspective**</td><td>External perimeter attacker with no login rights.</td><td>Malicious insider or compromised domain workstation.</td></tr>
+<tr><td>**Method**</td><td>Probes open ports, inspects banners, checks network services.</td><td>Logs into host OS via SSH or SMB using admin credentials.</td></tr>
+<tr><td>**Visibility**</td><td>Limited to externally listening services and banners.</td><td>Deep internal visibility: unpatched DLLs, registry keys, missing OS patches, local misconfigurations.</td></tr>
+<tr><td>**False Positives**</td><td>**High** (cannot verify if an exposed banner is backported).</td><td>**Extremely Low** (checks exact file versions and hashes).</td></tr>
+<tr><td>**System Impact**</td><td>Low CPU overhead; generates firewall alerts.</td><td>Minimal network traffic; higher local CPU during audit.</td></tr>
+</tbody></table></div>
+<br>
+<div class="avoid-break"><h3>6.3 Industry Standard Vulnerability Scanning Tools</h3>
+<p>* <strong>Tenable Nessus</strong>: Comprehensive commercial enterprise scanner featuring vast plugin libraries covering network devices, virtualization, operating systems, and compliance benchmarks.</p>
+<p>* <strong>OpenVAS (Greenbone Vulnerability Management)</strong>: Leading open-source vulnerability scanner utilizing daily updated Network Vulnerability Tests (NVTs).</p>
+<p>* <strong>Qualys VMDR</strong>: Cloud-native vulnerability management, detection, and response solution.</p>
+<p>* <strong>Nikto</strong>: Specialized open-source command-line web server scanner identifying outdated server software, dangerous default files, CGIs, and misconfigured HTTP headers.</p>
+<p>  <code></code>`bash</p>
+<p>  nikto -h http://192.168.1.50</p>
+<p>  <code></code>`</p>
+<br>
+<hr>
+<br>
+<h2>7. High-Yield University Exam Comparison Tables</h2>
+<br>
+<div class="avoid-break"><h3>Table 1: Passive vs Active Reconnaissance</h3>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Dimension</th><th>Passive Reconnaissance</th><th>Active Reconnaissance</th></tr></thead>
+<tbody>
+<tr><td>**Direct Contact**</td><td>None. Interacts only with third-party databases.</td><td>Yes. Transmits raw IP packets directly to target.</td></tr>
+<tr><td>**Detectability**</td><td>Impossible for target IDS/firewall to detect.</td><td>Easily detected and logged by firewalls, NIDS, and SIEM.</td></tr>
+<tr><td>**Tools Used**</td><td>WHOIS, DNS queries, Google Dorking, Shodan, Maltego.</td><td>Nmap, Ping sweeps, Port scanners, Nessus, Banner grabs.</td></tr>
+<tr><td>**Information Type**</td><td>Domain ownership, IP ranges, public records, staff emails.</td><td>Open ports, running daemon versions, OS stack, live hosts.</td></tr>
+<tr><td>**Legal Exposure**</td><td>Low (accessing publicly available public data).</td><td>Moderate to High (requires explicit written client scope).</td></tr>
+</tbody></table></div>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Table 2: Nmap Port Scanning Techniques Comparison</h3>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Scan Type</th><th>Command Flag</th><th>Packet Sent</th><th>Response (Open)</th><th>Response (Closed)</th><th>Privileges</th><th>Firewall Detection</th></tr></thead>
+<tbody>
+<tr><td>**TCP Connect**</td><td>`-sT`</td><td>`SYN`</td><td>`SYN/ACK` (then `ACK`, `RST`)</td><td>`RST`</td><td>User</td><td>High (logged in app logs)</td></tr>
+<tr><td>**TCP SYN**</td><td>`-sS`</td><td>`SYN`</td><td>`SYN/ACK` (then `RST`)</td><td>`RST`</td><td>Root / Admin</td><td>Moderate (no app log)</td></tr>
+<tr><td>**TCP Null**</td><td>`-sN`</td><td>None (`0x00`)</td><td>No response</td><td>`RST`</td><td>Root / Admin</td><td>Low (bypasses stateless)</td></tr>
+<tr><td>**TCP FIN**</td><td>`-sF`</td><td>`FIN`</td><td>No response</td><td>`RST`</td><td>Root / Admin</td><td>Low (bypasses stateless)</td></tr>
+<tr><td>**TCP Xmas**</td><td>`-sX`</td><td>`FIN, PSH, URG`</td><td>No response</td><td>`RST`</td><td>Root / Admin</td><td>Low (bypasses stateless)</td></tr>
+<tr><td>**UDP Scan**</td><td>`-sU`</td><td>UDP packet</td><td>No response / UDP reply</td><td>ICMP Port Unreachable</td><td>Root / Admin</td><td>Low (rate-limited by OS)</td></tr>
+<tr><td>**TCP ACK**</td><td>`-sA`</td><td>`ACK`</td><td>`RST` (Unfiltered)</td><td>`RST` (Unfiltered)</td><td>Root / Admin</td><td>Maps firewall rulesets</td></tr>
+</tbody></table></div>
+<br>
+<hr>
+<br>
+<div class="avoid-break"><h3>Table 3: Port States (Open vs Closed vs Filtered)</h3>
+<br>
+<div class="avoid-break"><table>
+<thead><tr><th>Port State</th><th>Meaning</th><th>Network Behavior & Response</th></tr></thead>
+<tbody>
+<tr><td>**Open**</td><td>Service daemon is listening and accepting connections.</td><td>Responds with `SYN/ACK` (TCP) or application payload.</td></tr>
+<tr><td>**Closed**</td><td>Host received packet, but no daemon is listening.</td><td>Responds with `RST` (TCP) or ICMP Port Unreachable (UDP).</td></tr>
+<tr><td>**Filtered**</td><td>A firewall, filter, or router is blocking probe delivery.</td><td>Probe times out with **No Response**, or returns ICMP Destination Unreachable Type 3 (Code 13: Communication Administratively Prohibited).</td></tr>
+</tbody></table></div>
+</body>
+</html>
